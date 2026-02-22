@@ -1,89 +1,307 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシーポリシー - トレログ</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-        }
-        h1 {
-            color: #00D9FF;
-            border-bottom: 2px solid #00D9FF;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #0099FF;
-            margin-top: 30px;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .update-date {
-            color: #86868b;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — トレログ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:           #0a0a0c;
+      --bg2:          #111116;
+      --bg3:          #18181f;
+      --card:         #1c1c24;
+      --card2:        #22222c;
+      --accent:       #00D9FF;
+      --accent-dim:   rgba(0,217,255,0.12);
+      --accent-glow:  rgba(0,217,255,0.25);
+      --text:         #e8e8f0;
+      --text2:        #9090a8;
+      --text3:        #5a5a70;
+      --border:       rgba(255,255,255,0.07);
+      --border-accent:rgba(0,217,255,0.25);
+      --radius:       10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 4px; }
+
+    /* ── Top bar ─── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+    }
+    .top-bar h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: var(--accent);
+    }
+
+    /* ── Layout ─── */
+    .page-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── Hero ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 36px 32px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 4px;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-meta {
+      color: var(--text3);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* ── Sections ─── */
+    section { margin-bottom: 48px; }
+
+    .section-num {
+      display: inline-block;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p { color: var(--text2); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Cards ─── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .card p { margin-bottom: 0; font-size: 13.5px; }
+
+    /* ── List ─── */
+    ul.policy-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+    ul.policy-list li {
+      color: var(--text2);
+      font-size: 13.5px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    ul.policy-list li:last-child { border-bottom: none; }
+    ul.policy-list li::before {
+      content: '—';
+      color: var(--text3);
+      flex-shrink: 0;
+    }
+
+    /* ── Highlight ─── */
+    .hl { color: var(--accent); font-weight: 600; }
+
+    /* ── Footer ─── */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .page-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13.5px;
+    }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ─── */
+    @media (max-width: 600px) {
+      .page-wrap { padding: 28px 20px 60px; }
+      .top-bar { padding: 12px 20px; }
+      .hero { padding: 24px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>プライバシーポリシー</h1>
-        <p class="update-date">最終更新日: 2026年2月17日</p>
 
-        <h2>1. はじめに</h2>
-        <p>「ジム・筋トレ記録 - トレログ」（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めています。</p>
-
-        <h2>2. 情報の収集</h2>
-        <p>本アプリは、以下の情報を一切収集しません：</p>
-        <ul>
-            <li>個人を特定できる情報（氏名、メールアドレス、電話番号など）</li>
-            <li>位置情報</li>
-            <li>デバイス情報</li>
-            <li>使用状況データ・分析データ</li>
-            <li>トレーニング記録や身体データ（外部への送信は行いません）</li>
-        </ul>
-
-        <h2>3. データの保存</h2>
-        <p>本アプリで入力された全てのデータ（トレーニング記録、身体データなど）は、お使いのデバイス内にのみ保存されます。</p>
-        <p>これらのデータは、開発者を含む第三者の外部サーバーに送信されることはありません。</p>
-
-        <h2>4. データの共有</h2>
-        <p>本アプリは、ユーザーのデータを第三者と共有することはありません。</p>
-
-        <h2>5. iCloud同期</h2>
-        <p>本アプリはiCloudを利用したデバイス間データ同期に対応しています。iCloud同期を有効にしている場合、データはAppleのiCloudサービスを通じて同じApple IDでサインインした端末間で同期されます。この場合、データの取り扱いはAppleのプライバシーポリシーに準じます。</p>
-        <p>iCloud同期を無効にしている場合、データはデバイス内にのみ保存されます。</p>
-
-        <h2>6. Appleヘルスケア連携</h2>
-        <p>本アプリはAppleのヘルスケアフレームワーク（HealthKit）を使用して、身体データ（体重・体脂肪率・身長など）の読み取りおよび書き込みを行う機能を提供しています。</p>
-        <p>HealthKitから取得したデータは、本アプリの機能提供のみに使用され、開発者や第三者と共有されることはありません。また、広告目的での使用は行いません。</p>
-        <p>HealthKit連携はユーザーの許可を得た上でのみ動作し、許可はiOSの設定からいつでも変更できます。</p>
-
-        <h2>7. 広告とトラッキング</h2>
-        <p>本アプリは、広告を表示せず、ユーザーの行動をトラッキングすることもありません。</p>
-
-        <h2>8. お子様のプライバシー</h2>
-        <p>本アプリは13歳未満のお子様を対象としておらず、13歳未満のお子様から意図的に個人情報を収集することはありません。</p>
-
-        <h2>9. セキュリティ</h2>
-        <p>本アプリは、デバイス内のデータ保護にiOSの標準的なセキュリティ機能を使用しています。</p>
-
-        <h2>10. プライバシーポリシーの変更</h2>
-        <p>本プライバシーポリシーは、必要に応じて更新される場合があります。変更があった場合は、本ページに掲載いたします。</p>
-
-        <h2>11. お問い合わせ</h2>
-        <p>本プライバシーポリシーに関するご質問やご意見がございましたら、以下のサポートページよりお問い合わせください。</p>
-        <p><a href="support.html" style="color: #00D9FF;">サポートページへ</a></p>
+  <div class="top-bar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <h1>TORE<span style="color:var(--accent)">LOG</span></h1>
+      <span style="color:var(--text3);font-size:13px">—</span>
+      <span style="color:var(--text2);font-size:13px">プライバシーポリシー</span>
     </div>
+    <a href="support.html" style="color:var(--text3);font-size:13px;text-decoration:none">← サポートへ戻る</a>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-title">プライバシー<span>ポリシー</span></div>
+      <p class="hero-meta">最終更新日: 2026年2月17日</p>
+    </div>
+
+    <!-- 1. はじめに -->
+    <section>
+      <div class="section-num">01</div>
+      <h2>はじめに</h2>
+      <p>「ジム・筋トレ記録 — トレログ」（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めています。本ポリシーは本アプリにおける情報の取り扱いについて説明します。</p>
+    </section>
+
+    <!-- 2. 情報の収集 -->
+    <section>
+      <div class="section-num">02</div>
+      <h2>情報の収集</h2>
+      <p>本アプリは、以下の情報を<span class="hl">一切収集しません</span>。</p>
+      <ul class="policy-list">
+        <li>個人を特定できる情報（氏名、メールアドレス、電話番号など）</li>
+        <li>位置情報</li>
+        <li>デバイス情報</li>
+        <li>使用状況データ・分析データ</li>
+        <li>トレーニング記録や身体データ（外部への送信は行いません）</li>
+      </ul>
+    </section>
+
+    <!-- 3. データの保存 -->
+    <section>
+      <div class="section-num">03</div>
+      <h2>データの保存</h2>
+      <p>本アプリで入力されたすべてのデータ（トレーニング記録、身体データなど）は、<span class="hl">お使いのデバイス内にのみ保存</span>されます。</p>
+      <p>これらのデータは、開発者を含む第三者の外部サーバーに送信されることはありません。</p>
+    </section>
+
+    <!-- 4. データの共有 -->
+    <section>
+      <div class="section-num">04</div>
+      <h2>データの共有</h2>
+      <p>本アプリは、ユーザーのデータを第三者と共有することはありません。</p>
+    </section>
+
+    <!-- 5. iCloudバックアップ -->
+    <section>
+      <div class="section-num">05</div>
+      <h2>iCloudバックアップ</h2>
+      <p>本アプリのデータは、iOSの標準iCloudバックアップを通じて自動的にバックアップされます。これはiOSシステムが行うものであり、開発者はバックアップデータにアクセスできません。</p>
+      <p>iCloudバックアップを無効にしている場合、データはデバイス内にのみ保存されます。iCloudバックアップを有効にしている場合、データの取り扱いはAppleのプライバシーポリシーに準じます。</p>
+    </section>
+
+    <!-- 6. HealthKit連携 -->
+    <section>
+      <div class="section-num">06</div>
+      <h2>Appleヘルスケア連携</h2>
+      <p>本アプリはAppleのヘルスケアフレームワーク（HealthKit）を使用して、身体データ（体重・体脂肪率・身長など）の読み取りおよび書き込みを行う機能を提供しています。</p>
+      <div class="card">
+        <p>HealthKitから取得したデータは、本アプリの機能提供のみに使用され、開発者や第三者と共有されることはありません。また、広告目的での使用は行いません。</p>
+      </div>
+      <p>HealthKit連携はユーザーの許可を得た上でのみ動作し、許可はiOSの設定からいつでも変更できます。</p>
+    </section>
+
+    <!-- 7. 広告とトラッキング -->
+    <section>
+      <div class="section-num">07</div>
+      <h2>広告とトラッキング</h2>
+      <p>本アプリは、<span class="hl">広告を表示せず</span>、ユーザーの行動をトラッキングすることもありません。</p>
+    </section>
+
+    <!-- 8. お子様のプライバシー -->
+    <section>
+      <div class="section-num">08</div>
+      <h2>お子様のプライバシー</h2>
+      <p>本アプリは13歳未満のお子様を対象としておらず、13歳未満のお子様から意図的に個人情報を収集することはありません。</p>
+    </section>
+
+    <!-- 9. セキュリティ -->
+    <section>
+      <div class="section-num">09</div>
+      <h2>セキュリティ</h2>
+      <p>本アプリは、デバイス内のデータ保護にiOSの標準的なセキュリティ機能を使用しています。</p>
+    </section>
+
+    <!-- 10. ポリシーの変更 -->
+    <section>
+      <div class="section-num">10</div>
+      <h2>プライバシーポリシーの変更</h2>
+      <p>本プライバシーポリシーは、必要に応じて更新される場合があります。変更があった場合は、本ページの「最終更新日」を更新し、内容を反映します。</p>
+    </section>
+
+    <!-- 11. お問い合わせ -->
+    <section>
+      <div class="section-num">11</div>
+      <h2>お問い合わせ</h2>
+      <p>本プライバシーポリシーに関するご質問やご意見は、サポートページよりお問い合わせください。</p>
+      <p><a href="support.html" style="color:var(--accent);text-decoration:none">→ サポートページへ</a></p>
+    </section>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <a href="index.html">📖 ユーザーマニュアル</a>
+      <a href="support.html">🛟 サポート</a>
+    </div>
+
+  </div>
 </body>
 </html>

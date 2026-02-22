@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレログ — ユーザーマニュアル</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── CSS Variables ─────────────────────────────── */
+    :root {
+      --bg:           #0a0a0c;
+      --bg2:          #111116;
+      --bg3:          #18181f;
+      --card:         #1c1c24;
+      --card2:        #22222c;
+      --accent:       #00D9FF;
+      --accent-dim:   rgba(0,217,255,0.12);
+      --accent-glow:  rgba(0,217,255,0.25);
+      --text:         #e8e8f0;
+      --text2:        #9090a8;
+      --text3:        #5a5a70;
+      --border:       rgba(255,255,255,0.07);
+      --border-accent:rgba(0,217,255,0.25);
+      --success:      #34d399;
+      --warn:         #fbbf24;
+      --sidebar-w:    260px;
+      --radius:       10px;
+    }
+
+    /* ── Reset & Base ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Scrollbar ─────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 4px; }
+
+    /* ── Sidebar ───────────────────────────────────── */
+    #sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-logo .app-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 4px;
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+    .sidebar-logo .app-sub {
+      font-size: 10px;
+      color: var(--text3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* 検索ボックス */
+    .sidebar-search {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .search-wrap {
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 12px 8px 34px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: 'Noto Sans JP', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-wrap input:focus { border-color: var(--accent); }
+    .search-wrap input::placeholder { color: var(--text3); }
+    .search-icon {
+      position: absolute;
+      left: 10px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3);
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    /* ナビゲーションリンク */
+    .nav-section { padding: 8px 0; }
+    .nav-heading {
+      padding: 10px 20px 4px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text3);
+      font-weight: 500;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: all .15s;
+      border-left: 2px solid transparent;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+      background: var(--accent-dim);
+      border-left-color: var(--accent);
+    }
+    .nav-link .icon {
+      width: 18px;
+      text-align: center;
+      font-size: 15px;
+      opacity: .75;
+    }
+    .nav-link.active .icon { opacity: 1; }
+
+    /* ── Main Content ──────────────────────────────── */
+    #main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      max-width: 860px;
+    }
+
+    /* ── Header ────────────────────────────────────── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+    }
+    .top-bar h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: var(--accent);
+    }
+    .top-bar .version-badge {
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── Sections ──────────────────────────────────── */
+    .content { padding: 48px 32px 80px; }
+
+    section { margin-bottom: 72px; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.25;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    p { color: var(--text2); margin-bottom: 14px; }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 40px 36px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px;
+      letter-spacing: 5px;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-desc {
+      color: var(--text2);
+      margin-top: 10px;
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .tab-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .tab-badge {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Cards ─────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: rgba(0,217,255,0.2); }
+    .card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p { font-size: 13.5px; margin-bottom: 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ── Steps ─────────────────────────────────────── */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .step-num {
+      counter-increment: step;
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-body { padding-top: 6px; }
+    .step-body strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .step-body p { font-size: 13px; margin-bottom: 0; }
+
+    /* ── Info boxes ────────────────────────────────── */
+    .tip-box {
+      display: flex;
+      gap: 14px;
+      background: rgba(52,211,153,0.07);
+      border: 1px solid rgba(52,211,153,0.25);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .tip-box .tip-icon { font-size: 18px; flex-shrink: 0; }
+    .tip-box p { color: var(--text2); font-size: 13.5px; margin: 0; }
+
+    .warn-box {
+      display: flex;
+      gap: 14px;
+      background: rgba(251,191,36,0.07);
+      border: 1px solid rgba(251,191,36,0.25);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .warn-box .warn-icon { font-size: 18px; flex-shrink: 0; }
+    .warn-box p { color: var(--text2); font-size: 13.5px; margin: 0; }
+
+    /* ── Table ─────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13.5px;
+    }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--card2);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-accent);
+    }
+    td {
+      padding: 10px 14px;
+      color: var(--text2);
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--card2); }
+
+    /* ── Tags ──────────────────────────────────────── */
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'Space Mono', monospace;
+    }
+    .tag-cyan   { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
+    .tag-green  { background: rgba(52,211,153,.12); color: var(--success); border: 1px solid rgba(52,211,153,.25); }
+    .tag-yellow { background: rgba(251,191,36,.12); color: var(--warn); border: 1px solid rgba(251,191,36,.25); }
+
+    /* ── Kbd ───────────────────────────────────────── */
+    kbd {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    /* ── Highlight text ────────────────────────────── */
+    .hl { color: var(--accent); font-weight: 600; }
+    .mono { font-family: 'Space Mono', monospace; font-size: 12px; }
+
+    /* ── Divider ───────────────────────────────────── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── Inline icon ───────────────────────────────── */
+    .i { display: inline-flex; align-items: center; gap: 4px; }
+
+    /* ── TOC back-to-top ───────────────────────────── */
+    #back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 40px; height: 40px;
+      background: var(--card);
+      border: 1px solid var(--border-accent);
+      border-radius: 50%;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 200;
+    }
+    #back-to-top.visible { opacity: 1; }
+    #back-to-top:hover { background: var(--accent-dim); }
+
+    /* ── Search highlight ──────────────────────────── */
+    mark { background: var(--accent-dim); color: var(--accent); border-radius: 2px; padding: 0 2px; }
+
+    /* ── Mobile hamburger ──────────────────────────── */
+    #hamburger {
+      display: none;
+      position: fixed;
+      top: 14px; left: 14px;
+      z-index: 300;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 38px; height: 38px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 900px) {
+      #hamburger { display: flex; }
+      #sidebar {
+        transform: translateX(-100%);
+        transition: transform .25s;
+      }
+      #sidebar.open { transform: translateX(0); }
+      #main { margin-left: 0; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-title { font-size: 32px; }
+      .top-bar { padding: 14px 16px; }
+      .content { padding: 32px 18px 60px; }
+    }
+
+    /* ── Active nav highlight via JS ───────────────── */
+    .nav-link.active {
+      color: var(--accent) !important;
+    }
+
+    /* ── Animated accent line ──────────────────────── */
+    .accent-line {
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-bottom: 24px;
+      border-radius: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <div class="app-name">トレログ</div>
+    <div class="app-sub">User Manual</div>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input id="search-input" type="text" placeholder="マニュアルを検索...">
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-heading">はじめに</div>
+    <a class="nav-link" href="#overview"><span class="icon">📖</span>アプリ概要</a>
+    <a class="nav-link" href="#quickstart"><span class="icon">🚀</span>クイックスタート</a>
+    <a class="nav-link" href="#ui-basic"><span class="icon">🧭</span>基本的な操作</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-heading">タブ別ガイド</div>
+    <a class="nav-link" href="#tab-workout"><span class="icon">🏋️</span>Workout（トレーニング）</a>
+    <a class="nav-link" href="#tab-stats"><span class="icon">📊</span>Stats（統計）</a>
+    <a class="nav-link" href="#tab-interval"><span class="icon">⏱️</span>Interval（タイマー）</a>
+    <a class="nav-link" href="#tab-exercises"><span class="icon">📚</span>Exercises（種目）</a>
+    <a class="nav-link" href="#tab-personal"><span class="icon">👤</span>Personal（個人情報）</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-heading">詳細機能</div>
+    <a class="nav-link" href="#set-recording"><span class="icon">✏️</span>セットの記録方法</a>
+    <a class="nav-link" href="#cardio"><span class="icon">🏃</span>有酸素運動の記録</a>
+    <a class="nav-link" href="#bodyweight"><span class="icon">⚖️</span>自重トレーニング</a>
+    <a class="nav-link" href="#templates"><span class="icon">📋</span>ルーティンテンプレート</a>
+    <a class="nav-link" href="#personal-best"><span class="icon">🏆</span>パーソナルベスト</a>
+    <a class="nav-link" href="#live-activity"><span class="icon">🏝️</span>Dynamic Island</a>
+    <a class="nav-link" href="#healthkit"><span class="icon">❤️</span>HealthKit連携</a>
+    <a class="nav-link" href="#archive"><span class="icon">🗑️</span>アーカイブ機能</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-heading">設定・その他</div>
+    <a class="nav-link" href="#settings"><span class="icon">⚙️</span>各種設定</a>
+    <a class="nav-link" href="#faq"><span class="icon">❓</span>よくある質問</a>
+  </div>
+</nav>
+
+<!-- Hamburger -->
+<button id="hamburger" aria-label="メニューを開く">☰</button>
+
+<!-- Main -->
+<div id="main">
+  <div class="top-bar">
+    <h1>USER MANUAL</h1>
+    <span class="version-badge">v1.8.1</span>
+  </div>
+
+  <div class="content" id="top">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-title">トレ<span>ログ</span></div>
+      <p class="hero-desc">
+        筋力トレーニング・有酸素運動の記録に特化した、完全オフライン動作のiOSアプリ。
+        シンプルな操作で、あなたのトレーニングを正確に記録・分析します。
+      </p>
+      <div class="tab-badges">
+        <span class="tab-badge">🏋️ Workout</span>
+        <span class="tab-badge">📊 Stats</span>
+        <span class="tab-badge">⏱️ Interval</span>
+        <span class="tab-badge">📚 Exercises</span>
+        <span class="tab-badge">👤 Personal</span>
+      </div>
+    </div>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="overview">
+      <div class="section-label">Introduction</div>
+      <h2>アプリ概要</h2>
+      <div class="accent-line"></div>
+
+      <p>トレログは、ジムや自宅でのトレーニングを真剣に行う方向けの、高機能なワークアウトログアプリです。インターネット接続不要で完全にオフラインで動作します。</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>💪 筋力トレーニング記録</h4>
+          <p>重量・レップ数・セット数を素早く入力。自重トレーニング・加重トレーニングにも対応。</p>
+        </div>
+        <div class="card">
+          <h4>🏃 有酸素運動記録</h4>
+          <p>時間・距離・カロリーを記録。トレッドミル・エアロバイクなど各種マシンに対応。</p>
+        </div>
+        <div class="card">
+          <h4>📊 詳細な統計分析</h4>
+          <p>ベスト記録・部位別ボリューム・トレーニングカレンダーなど多彩な統計表示。</p>
+        </div>
+        <div class="card">
+          <h4>⏱️ インターバルタイマー</h4>
+          <p>Dynamic Islandに残り時間を表示。プリセット登録で素早くセット間休憩を計測。</p>
+        </div>
+        <div class="card">
+          <h4>📋 テンプレート機能</h4>
+          <p>よく使うルーティンをテンプレートとして保存。ワンタップで種目群を呼び出し。</p>
+        </div>
+        <div class="card">
+          <h4>❤️ HealthKit連携</h4>
+          <p>体重・体脂肪率・身長データをApple Healthと同期（オプション設定）。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="quickstart">
+      <div class="section-label">Getting Started</div>
+      <h2>クイックスタート</h2>
+      <div class="accent-line"></div>
+
+      <p>初めてアプリを起動すると、スプラッシュ画面のあとにオンボーディング画面が表示されます。ガイドに従って初期設定を完了させてください。</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>アプリを起動する</strong>
+            <p>スプラッシュ画面が表示されます。初回起動時のみオンボーディングガイドが開始されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>Workoutタブを開く</strong>
+            <p>下部タブバーの中央「🏋️ Workout」をタップしてトレーニング画面を開きます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>「種目を追加」をタップ</strong>
+            <p>初めから56種類以上の種目が登録されています。種目を選んでトレーニングを開始しましょう。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>セットを記録する</strong>
+            <p>重量とレップ数を入力し、チェックボタンを押してセットを完了。自動保存されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <strong>インターバルタイマーを活用する</strong>
+            <p>「⏱️ Interval」タブでタイマーをセット。Dynamic Islandに残り時間が表示されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">✅</span>
+        <p>データは自動保存されます。セットを記録するたびにリアルタイムで保存されるので、記録し忘れる心配はありません。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ui-basic">
+      <div class="section-label">Navigation</div>
+      <h2>基本的な操作</h2>
+      <div class="accent-line"></div>
+
+      <h3>タブバー</h3>
+      <p>画面下部の5つのタブで主要機能にアクセスします。</p>
+
+      <table>
+        <tr><th>タブ</th><th>アイコン</th><th>機能</th></tr>
+        <tr><td><strong>Personal</strong></td><td>👤</td><td>体重・体脂肪率・身長の記録とグラフ表示</td></tr>
+        <tr><td><strong>Stats</strong></td><td>📊</td><td>トレーニング統計・ベスト記録・カレンダー</td></tr>
+        <tr><td><strong>Workout</strong></td><td>🏋️</td><td>本日のトレーニングを記録（メイン画面）</td></tr>
+        <tr><td><strong>Interval</strong></td><td>⏱️</td><td>インターバルタイマー</td></tr>
+        <tr><td><strong>Exercises</strong></td><td>📚</td><td>種目の管理・検索・詳細確認</td></tr>
+      </table>
+
+      <h3>共通のジェスチャー</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>👆 タップ</h4>
+          <p>ボタンの操作、選択、入力欄のフォーカスなど基本操作。</p>
+        </div>
+        <div class="card">
+          <h4>👈 スワイプ（左）</h4>
+          <p>セット・セッションの削除アクションを呼び出す。</p>
+        </div>
+        <div class="card">
+          <h4>☝️ 長押し</h4>
+          <p>一部のカードで追加オプションメニューを表示。</p>
+        </div>
+        <div class="card">
+          <h4>🔽 プルダウン</h4>
+          <p>リストを上から引っ張ってシートを閉じる操作。</p>
+        </div>
+      </div>
+
+      <h3>ナビゲーションバーのボタン</h3>
+      <p>各タブ右上の <span class="hl">…（省略記号）ボタン</span> をタップすると、そのタブ固有のメニュー（追加・管理・設定など）が表示されます。</p>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="tab-workout">
+      <div class="section-label">Tab</div>
+      <h2>🏋️ Workout（トレーニング）</h2>
+      <div class="accent-line"></div>
+
+      <p>Workoutタブはアプリの中心機能です。日付を選択してその日のトレーニングを記録します。過去の日付に遡って記録することも可能です。</p>
+
+      <h3>画面の構成</h3>
+      <div class="card">
+        <h4>📅 日付セレクター</h4>
+        <p>画面上部の日付をタップするとカレンダーが開きます。過去の日付を選ぶと、その日のセッションデータが表示されます。</p>
+      </div>
+      <div class="card">
+        <h4>📝 セッションメモ</h4>
+        <p>セッション全体のメモを記録できます。コンディション・体調・特記事項などに活用してください。</p>
+      </div>
+      <div class="card">
+        <h4>➕ 種目を追加</h4>
+        <p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。</p>
+      </div>
+      <div class="card">
+        <h4>📋 テンプレートを読み込む</h4>
+        <p>右上メニューからルーティンテンプレートを読み込み、種目群をまとめて追加できます。</p>
+      </div>
+
+      <h3>種目カードの操作</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>種目を追加する</strong>
+            <p>「+ 種目を追加」ボタン → 種目を検索・選択。カード形式で追加されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>セットを記録する</strong>
+            <p>種目カード内の「+ セット追加」をタップ。重量・レップ数を入力後、チェックボタンで完了。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>セットを削除する</strong>
+            <p>セット行を左にスワイプして「削除」をタップ。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>種目にメモを追加</strong>
+            <p>種目カードのメモアイコンをタップして、その種目専用のメモを記録。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <strong>種目を削除する</strong>
+            <p>種目カード右上の「⋮」メニューから削除を選択。記録したセットも含め削除されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>セッション全体を削除するには、右上の「⋮」メニュー →「セッションを削除」を選択してください。削除したセッションはゴミ箱から復元できます。</p>
+      </div>
+
+      <h3>種目ヘッダーの前回値表示</h3>
+      <p>種目カードのヘッダーには、前回セッションのベストセット（最大ボリューム = 重量 × 回数）が <span class="hl">📅 前回: X.Xkg × X回</span> の形式で自動表示されます。前回の記録を見ながら今日の目標重量を設定できます。</p>
+
+      <h3>表示・並び順の設定</h3>
+      <table>
+        <tr><th>設定項目</th><th>選択肢</th><th>説明</th></tr>
+        <tr><td>種目の並び順</td><td>新しい順 / 古い順</td><td>追加した種目の表示順序</td></tr>
+        <tr><td>セットの並び順</td><td>新しい順 / 古い順</td><td>記録したセットの表示順序</td></tr>
+        <tr><td>入力方式</td><td>テキスト入力 / ダイヤル</td><td>数値の入力方法の切り替え</td></tr>
+      </table>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="tab-stats">
+      <div class="section-label">Tab</div>
+      <h2>📊 Stats（統計）</h2>
+      <div class="accent-line"></div>
+
+      <p>Statsタブでは、これまでのトレーニング履歴を多角的に分析・可視化します。3つのサブタブで情報を切り替えられます。</p>
+
+      <h3>概要タブ</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>📆 トレーニングカレンダー</h4>
+          <p>月間のトレーニング日をカレンダー上で確認。実施した日は強調表示。「今日」ボタンで当日に素早くジャンプできます。</p>
+        </div>
+        <div class="card">
+          <h4>🔥 連続記録（ストリーク）</h4>
+          <p>何日連続でトレーニングしたかを表示。モチベーション維持に活用できます。</p>
+        </div>
+        <div class="card">
+          <h4>📈 累計統計</h4>
+          <p>総セット数・総ボリューム（重量×回数の合計）・今月/今週の実績を表示。</p>
+        </div>
+        <div class="card">
+          <h4>🦾 部位別ボリューム</h4>
+          <p>胸・背中・脚・肩・腕・腹筋それぞれのトレーニングボリューム分布を表示。</p>
+        </div>
+      </div>
+
+      <h3>ベスト記録タブ</h3>
+      <p>各種目の自己ベスト記録を一覧表示します。横スクロールフィルターで絞り込みが可能です。</p>
+
+      <table>
+        <tr><th>フィルター</th><th>内容</th></tr>
+        <tr><td>全て</td><td>すべての種目のベスト記録を表示（デフォルト）</td></tr>
+        <tr><td>お気に入り</td><td>お気に入り登録済みの種目のみ表示</td></tr>
+        <tr><td>胸 / 背中 / 脚 / 肩 / 腕 / 腹筋</td><td>各部位の種目のみ表示</td></tr>
+        <tr><td>有酸素</td><td>有酸素種目のみ表示</td></tr>
+      </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">🏆</span>
+        <p>筋力種目は推定1RM（1回最大挙上重量）で比較されます。有酸素種目は最長時間・最長距離で表示されます。</p>
+      </div>
+
+      <h3>分析タブ</h3>
+      <p>期間を「日・週・月・6ヶ月・年」から選び、以下のグラフとサマリーを確認できます。</p>
+      <div class="card">
+        <h4>🏃 有酸素サマリー</h4>
+        <p>期間フィルターに連動して、有酸素運動の総時間・総距離・消費カロリーを集計表示。有酸素記録がある場合のみ表示されます。</p>
+      </div>
+      <div class="card">
+        <h4>📅 トレーニング頻度グラフ</h4>
+        <p>月別のトレーニング実施回数を棒グラフで表示。</p>
+      </div>
+      <div class="card">
+        <h4>📈 セット数推移グラフ</h4>
+        <p>期間内の日別セット数の推移を折れ線グラフで表示。</p>
+      </div>
+      <div class="card">
+        <h4>💪 総ボリューム推移グラフ</h4>
+        <p>重量×回数の合計ボリュームの時系列変化を表示。筋力種目のみが対象。</p>
+      </div>
+      <div class="card">
+        <h4>🍩 部位別分布グラフ</h4>
+        <p>全体に占める各部位のトレーニング割合を円グラフで表示。「サブ部位を含む」トグルで補助筋群のカウントを切り替えられます。</p>
+      </div>
+      <div class="card">
+        <h4>📊 種目別分布グラフ</h4>
+        <p>どの種目を最も多く行ったかを分布グラフで表示。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="tab-interval">
+      <div class="section-label">Tab</div>
+      <h2>⏱️ Interval（タイマー）</h2>
+      <div class="accent-line"></div>
+
+      <p>セット間のインターバル（休憩）を計測するタイマー機能です。Dynamic Islandやロックスクリーンにリアルタイムでカウントダウンが表示されます。</p>
+
+      <h3>基本的な使い方</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>タイマー時間を選ぶ</strong>
+            <p>画面下部のプリセットボタン（1分・1分30秒・2分・3分）をタップするか、カスタム時間を指定。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>スタートボタンをタップ</strong>
+            <p>カウントダウンが始まります。Dynamic Islandに残り時間が表示されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>終了時に通知を受け取る</strong>
+            <p>タイマーが0になると通知音とバイブレーションでお知らせします。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>プリセット管理</h3>
+      <div class="card">
+        <h4>➕ プリセットを追加</h4>
+        <p>右上「⋮」メニュー → 「プリセット追加」。名前と秒数を設定してよく使う時間を登録できます（最大10個）。</p>
+      </div>
+      <div class="card">
+        <h4>✏️ カスタム時間</h4>
+        <p>右上「⋮」メニュー → 「カスタム時間」で任意の秒数を指定してタイマーをセット。</p>
+      </div>
+      <div class="card">
+        <h4>🔧 プリセット管理</h4>
+        <p>右上「⋮」メニュー → 「プリセット管理」で登録済みプリセットの削除・並び替えが可能。</p>
+      </div>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>Live Activityの表示にはiOS 16.1以降のDynamic Island対応機種が必要です。また、アプリを強制終了するとLive Activityが停止する場合があります。</p>
+      </div>
+
+      <h3>Dynamic Island / ロック画面での表示</h3>
+      <table>
+        <tr><th>表示エリア</th><th>内容</th></tr>
+        <tr><td>コンパクト（左）</td><td>タイマーアイコン</td></tr>
+        <tr><td>コンパクト（右）</td><td>残り時間（カウントダウン）</td></tr>
+        <tr><td>拡大表示</td><td>「インターバル」ラベル + 大きな残り時間 + 合計時間</td></tr>
+        <tr><td>ロック画面バナー</td><td>タイマーアイコン・残り時間・合計時間</td></tr>
+      </table>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="tab-exercises">
+      <div class="section-label">Tab</div>
+      <h2>📚 Exercises（種目）</h2>
+      <div class="accent-line"></div>
+
+      <p>登録されているトレーニング種目の一覧と管理画面です。初期状態で50種類以上の種目が登録されています。</p>
+
+      <h3>種目の検索と絞り込み</h3>
+      <div class="card">
+        <h4>🔍 検索バー</h4>
+        <p>画面上部に常時表示される検索バーで種目名・主動筋・補助筋を横断検索できます。入力中は「×」ボタンで素早くクリア可能。</p>
+      </div>
+      <div class="card">
+        <h4>🎯 部位フィルター</h4>
+        <p>検索バー下のボタンで「胸・背中・脚・肩・腕・腹筋・有酸素」に絞り込めます。検索テキストとの組み合わせも可能。</p>
+      </div>
+      <div class="card">
+        <h4>⭐ お気に入りフィルター</h4>
+        <p>星マークをタップしてお気に入り登録した種目のみを表示するフィルター。</p>
+      </div>
+
+      <h3>種目の詳細確認</h3>
+      <p>種目名をタップすると詳細シートが開き、以下の情報を確認できます。</p>
+      <table>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr><td>説明</td><td>種目の概要・対象筋肉の解説</td></tr>
+        <tr><td>フォームのポイント</td><td>正しいフォームのコツ・注意点</td></tr>
+        <tr><td>器具</td><td>使用する器具（バーベル・ダンベル・マシンなど）</td></tr>
+        <tr><td>ベスト記録</td><td>これまでの自己最高重量・回数・推定1RM</td></tr>
+        <tr><td>過去のセット記録</td><td>直近のトレーニング履歴</td></tr>
+      </table>
+
+      <h3>種目の追加・編集</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>新規種目を追加</strong>
+            <p>右上「⋮」→「種目を追加」。名前・主動筋・補助筋・器具・説明・フォームのポイントを入力。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>種目を編集</strong>
+            <p>種目を長押しまたは詳細画面から編集ボタンをタップして内容を変更。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>種目をアーカイブ</strong>
+            <p>使わなくなった種目はアーカイブ（非表示）にできます。過去の記録は保持されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">⭐</span>
+        <p>お気に入りに登録した種目は、Statsタブの「ベスト記録」でフィルター表示でき、種目ピッカーでも優先的に表示されます。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="tab-personal">
+      <div class="section-label">Tab</div>
+      <h2>👤 Personal（個人情報）</h2>
+      <div class="accent-line"></div>
+
+      <p>体重・体脂肪率・身長を時系列で記録・グラフ表示するタブです。HealthKitとの連携設定もここから行います。</p>
+
+      <h3>データの記録</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>右上「+」をタップ</strong>
+            <p>新規データ追加シートが開きます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>値を入力する</strong>
+            <p>体重（kg）・体脂肪率（%）・身長（cm）の一部または全部を入力。すべて任意です。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>「保存」をタップ</strong>
+            <p>履歴リストとグラフに反映されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>3つのサブタブ</h3>
+      <div class="card">
+        <h4>📜 履歴</h4>
+        <p>記録した体重・体脂肪率・身長を時系列リストで表示。タップで編集、左スワイプで削除。</p>
+      </div>
+      <div class="card">
+        <h4>📈 グラフ</h4>
+        <p>期間（日・週・月・6ヶ月・年）を選んで体重・体脂肪率・身長の推移をグラフで確認。</p>
+      </div>
+      <div class="card">
+        <h4>⚙️ 設定</h4>
+        <p>HealthKit連携・ハプティックフィードバック・スプラッシュ画面・入力方式などのアプリ全体設定。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="set-recording">
+      <div class="section-label">Detail</div>
+      <h2>✏️ セットの記録方法</h2>
+      <div class="accent-line"></div>
+
+      <p>筋力種目のセット記録は、重量とレップ数（回数）の組み合わせで行います。</p>
+
+      <h3>入力方式の選択</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>⌨️ テキスト入力（デフォルト）</h4>
+          <p>数字キーボードで重量・回数を直接入力。素早い入力が可能。</p>
+        </div>
+        <div class="card">
+          <h4>🎛️ ダイヤル入力</h4>
+          <p>スクロールホイール形式で値を選択。誤入力が少ない。</p>
+        </div>
+      </div>
+      <p>切り替えはPersonalタブの設定、またはWorkoutタブのメニューから行えます。</p>
+
+      <h3>セットの各項目</h3>
+      <table>
+        <tr><th>項目</th><th>単位</th><th>説明</th></tr>
+        <tr><td>重量</td><td>kg</td><td>使用した重量（0.5kg単位で入力可能）</td></tr>
+        <tr><td>回数</td><td>reps</td><td>実施したレップ数</td></tr>
+        <tr><td>メモ</td><td>—</td><td>そのセットへの一言メモ</td></tr>
+      </table>
+
+      <h3>前回記録の自動引き継ぎ</h3>
+      <p>同じ種目を次のセッションで記録する際、前回の重量・回数が自動入力されます。重量を上げた際は数値を変更するだけでOKです。</p>
+
+      <h3>セットの完了</h3>
+      <p>重量と回数を入力後、<kbd>✓</kbd> チェックボタンをタップするとセット完了となり、記録がすぐに保存されます。自動でパーソナルベストとの比較が行われます。</p>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="cardio">
+      <div class="section-label">Detail</div>
+      <h2>🏃 有酸素運動の記録</h2>
+      <div class="accent-line"></div>
+
+      <p>有酸素種目（トレッドミル・エアロバイク・エリプティカルなど）は、筋力種目とは異なる記録項目を持ちます。</p>
+
+      <h3>有酸素種目の記録項目</h3>
+      <table>
+        <tr><th>項目</th><th>単位</th><th>説明</th></tr>
+        <tr><td>時間</td><td>分:秒</td><td>実施した時間</td></tr>
+        <tr><td>距離</td><td>m</td><td>走った・こいだ距離（任意）</td></tr>
+        <tr><td>カロリー</td><td>kcal</td><td>消費カロリー（任意）</td></tr>
+      </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>有酸素種目のベスト記録はStatsタブで確認できます。最長時間・最長距離が自動的に記録されます。</p>
+      </div>
+
+      <h3>有酸素種目の追加方法</h3>
+      <p>種目タイプが「有酸素」の種目を追加するには、Exercisesタブで種目を新規追加する際に種目タイプを「有酸素（Cardio）」に設定してください。</p>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>一度記録した種目の「筋力 ↔ 有酸素」タイプ変更は、既存の記録と整合性が取れなくなるため制限されています。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="bodyweight">
+      <div class="section-label">Detail</div>
+      <h2>⚖️ 自重トレーニング</h2>
+      <div class="accent-line"></div>
+
+      <p>クランチ・プランク・チンニングなど自体重を使う種目に対応しています。加重ベストや重りを使う場合の加重入力も可能です。</p>
+
+      <h3>自重設定の流れ</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>自重種目をWorkoutに追加</strong>
+            <p>自重種目（例：クランチ）を追加すると「自重設定」ダイアログが表示される場合があります。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>デフォルト体重を設定</strong>
+            <p>体重を入力（Personalタブの最新記録から自動引き継ぎ）。ここで入力した値がセットの重量として使用されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>加重がある場合</strong>
+            <p>加重ベストやダンベルを使う場合は、セット入力画面で「加重」フィールドに追加重量を入力します。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>自重の記録は「自体重 + 加重」の合計で管理されます。Personalタブに最新の体重記録があると、自動的にデフォルト体重として設定されます。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="templates">
+      <div class="section-label">Detail</div>
+      <h2>📋 ルーティンテンプレート</h2>
+      <div class="accent-line"></div>
+
+      <p>よく行うトレーニングの組み合わせ（例：胸の日・背中の日・脚の日）をテンプレートとして保存しておくと、毎回種目を選ぶ手間が省けます。</p>
+
+      <h3>テンプレートの保存</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>トレーニング後にWorkoutタブのメニューを開く</strong>
+            <p>右上「⋮」ボタン → 「テンプレートとして保存」を選択。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>テンプレート名を入力</strong>
+            <p>「胸トレ」「背中の日」など分かりやすい名前を付けて保存。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>テンプレートの読み込み</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Workoutタブのメニューを開く</strong>
+            <p>右上「⋮」→「テンプレートを読み込む」を選択。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>テンプレートを選択する</strong>
+            <p>保存済みテンプレートの一覧から使うものをタップ。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>種目が追加される</strong>
+            <p>既存の種目がある場合は「差し替えるか追加するか」を確認するダイアログが表示されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>テンプレートには種目の順序のみが保存されます。前回の重量・回数は引き継がれません（各セッションの最新記録から自動設定されます）。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="personal-best">
+      <div class="section-label">Detail</div>
+      <h2>🏆 パーソナルベスト（自己ベスト）</h2>
+      <div class="accent-line"></div>
+
+      <p>セットを記録するたびに、自動的にパーソナルベスト（PB）との比較が行われます。</p>
+
+      <h3>パーソナルベストの種類</h3>
+      <table>
+        <tr><th>指標</th><th>説明</th></tr>
+        <tr><td>最高重量</td><td>単一セットで挙げた最大重量</td></tr>
+        <tr><td>推定1RM</td><td>重量 × 回数から計算した1回最大挙上重量の推定値</td></tr>
+        <tr><td>最高レップ数</td><td>同じ重量での最多回数</td></tr>
+        <tr><td>最多セット数</td><td>1セッションでの最多セット数</td></tr>
+        <tr><td>重量別最多レップ</td><td>各重量帯での最高レップ数</td></tr>
+      </table>
+
+      <h3>PBを更新したとき</h3>
+      <p>パーソナルベストを更新すると、画面上に <span class="tag tag-yellow">🏆 PB更新！</span> のトースト通知が表示されます。</p>
+
+      <h3>PBの再計算</h3>
+      <p>まれに統計が正しく表示されない場合、PersonalタブのSettingsから「統計情報を再計算」を実行できます。</p>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>推定1RMはEpley式（weight × (1 + reps / 30)）またはそれに準じる計算式で算出されます。実際の1RMとは異なる場合があります。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="live-activity">
+      <div class="section-label">Detail</div>
+      <h2>🏝️ Dynamic Island & Live Activity</h2>
+      <div class="accent-line"></div>
+
+      <p>インターバルタイマーを起動すると、iPhone 14 Pro以降のDynamic Islandとロックスクリーンにカウントダウンがリアルタイム表示されます。</p>
+
+      <h3>有効化の方法</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>通知の許可</strong>
+            <p>初回起動時または設定から「通知を許可」してください。Live Activityの表示に必要です。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>PersonalタブでLive Activityを有効化</strong>
+            <p>設定タブ → 「Live Activityを有効にする」をONに。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>インターバルタイマーを起動</strong>
+            <p>タイマーを開始すると自動的にLive Activityが起動します。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>表示される情報</h3>
+      <table>
+        <tr><th>場所</th><th>表示内容</th></tr>
+        <tr><td>Dynamic Island（コンパクト左）</td><td>⏱️ タイマーアイコン</td></tr>
+        <tr><td>Dynamic Island（コンパクト右）</td><td>残り時間（カウントダウン）</td></tr>
+        <tr><td>Dynamic Island（拡大）</td><td>「インターバル」ラベル・大きな残り時間・設定時間</td></tr>
+        <tr><td>ロック画面バナー</td><td>タイマーアイコン・残り時間・設定時間</td></tr>
+      </table>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>アプリを強制終了（スワイプアップで完全に閉じる）するとLive Activityが終了します。ホームボタンに戻るだけ（バックグラウンド）なら継続して表示されます。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="healthkit">
+      <div class="section-label">Detail</div>
+      <h2>❤️ HealthKit連携</h2>
+      <div class="accent-line"></div>
+
+      <p>Apple HealthとトレログのPersonalデータを同期できます。体重・体脂肪率・身長の双方向連携が可能です。</p>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>HealthKit連携はオプション機能です。使用しない場合はPersonalタブの設定で無効のままにしておいてください。</p>
+      </div>
+
+      <h3>連携の設定</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Personalタブ → 設定 → HealthKit連携</strong>
+            <p>HealthKitセクションを開きます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>アクセス許可を承認</strong>
+            <p>ヘルスケアアプリへのアクセス許可ダイアログが表示されます。体重・体脂肪率・身長の読み書き権限を許可。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>初回同期を実行</strong>
+            <p>「HealthKitから読み込む」で既存のHealthKitデータをアプリに取り込みます。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>同期設定の詳細</h3>
+      <table>
+        <tr><th>設定</th><th>説明</th></tr>
+        <tr><td>自動同期</td><td>データ変更時にHealthKitへ自動送信</td></tr>
+        <tr><td>同期対象</td><td>体重 / 体脂肪率 / 身長を個別にON/OFF</td></tr>
+        <tr><td>優先度（自動）</td><td>競合時に「最新のデータ」を優先するか設定</td></tr>
+        <tr><td>優先度（手動）</td><td>手動同期時の優先設定</td></tr>
+        <tr><td>プレビュー表示</td><td>同期前に変更内容を確認するプレビューの表示</td></tr>
+        <tr><td>同期通知</td><td>同期完了時のトースト通知の表示/非表示</td></tr>
+      </table>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="archive">
+      <div class="section-label">Detail</div>
+      <h2>🗑️ アーカイブ機能</h2>
+      <div class="accent-line"></div>
+
+      <p>種目やセッションを完全に削除するのではなく、「アーカイブ」として非表示にすることができます。過去の記録はすべて保持されます。</p>
+
+      <h3>種目のアーカイブ</h3>
+      <div class="card">
+        <h4>アーカイブする</h4>
+        <p>Exercisesタブで種目を左スワイプ → 「アーカイブ」をタップ。種目リストから非表示になりますが、過去の記録・ベスト記録は保持されます。</p>
+      </div>
+      <div class="card">
+        <h4>アーカイブを確認する</h4>
+        <p>Exercisesタブ右上「⋮」→「アーカイブ（N件）」を選択してアーカイブ済み種目を確認。</p>
+      </div>
+      <div class="card">
+        <h4>復元する</h4>
+        <p>アーカイブ画面で種目をタップ →「復元」で通常の種目リストに戻ります。</p>
+      </div>
+
+      <h3>セッションのゴミ箱</h3>
+      <div class="card">
+        <h4>セッションを削除する</h4>
+        <p>Workoutタブのメニュー →「セッションを削除」。セッションはゴミ箱に移動します。</p>
+      </div>
+      <div class="card">
+        <h4>ゴミ箱を確認する</h4>
+        <p>Workoutタブのメニュー →「ゴミ箱」でゴミ箱に入ったセッションを確認。</p>
+      </div>
+      <div class="card">
+        <h4>復元・完全削除</h4>
+        <p>ゴミ箱からセッションを復元するか、完全に削除するか選択できます。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="settings">
+      <div class="section-label">Settings</div>
+      <h2>⚙️ 各種設定</h2>
+      <div class="accent-line"></div>
+
+      <p>PersonalタブのSettingsサブタブからアプリ全体の設定が可能です。</p>
+
+      <h3>表示・入力設定</h3>
+      <table>
+        <tr><th>設定項目</th><th>説明</th></tr>
+        <tr><td>入力方式</td><td>テキスト入力 / ダイヤル入力の切り替え</td></tr>
+        <tr><td>スプラッシュ画面</td><td>起動時のスプラッシュ画面の表示/非表示</td></tr>
+        <tr><td>ハプティックフィードバック</td><td>ボタン操作時の振動フィードバックのON/OFF</td></tr>
+        <tr><td>種目の並び順</td><td>Workoutタブでの種目の表示順序</td></tr>
+        <tr><td>セットの並び順</td><td>セットの表示順序（新しい順/古い順）</td></tr>
+      </table>
+
+      <h3>HealthKit設定</h3>
+      <p>上述の「<a href="#healthkit" style="color:var(--accent)">HealthKit連携</a>」セクションを参照してください。</p>
+
+      <h3>Live Activity設定</h3>
+      <table>
+        <tr><th>設定項目</th><th>説明</th></tr>
+        <tr><td>Live Activityを有効化</td><td>インターバルタイマー使用時のDynamic Island表示のON/OFF</td></tr>
+      </table>
+
+      <h3>データ管理</h3>
+      <div class="card">
+        <h4>🔄 統計情報を再計算</h4>
+        <p>パーソナルベストや統計データの再計算を強制実行します。表示に問題がある場合にお試しください。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="faq">
+      <div class="section-label">FAQ</div>
+      <h2>❓ よくある質問</h2>
+      <div class="accent-line"></div>
+
+      <h3>トレーニングデータが消えてしまった</h3>
+      <div class="card">
+        <h4>A. ゴミ箱を確認してください</h4>
+        <p>誤ってセッションを削除した場合、Workoutタブのメニュー →「ゴミ箱」から復元できます。種目をアーカイブした場合はExercisesタブのアーカイブから復元できます。</p>
+      </div>
+
+      <h3>統計グラフが正しく表示されない</h3>
+      <div class="card">
+        <h4>A. 統計情報を再計算してください</h4>
+        <p>Personalタブ → 設定 → 「統計情報を再計算」を実行してください。処理中はローディング画面が表示されます。</p>
+      </div>
+
+      <h3>Dynamic Islandにタイマーが表示されない</h3>
+      <div class="card">
+        <h4>A. 設定と通知を確認してください</h4>
+        <p>①PersonalタブでLive Activityが有効になっているか確認。②iOSの設定アプリ →「通知」→「トレログ」で通知が許可されているか確認。③Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p>
+      </div>
+
+      <h3>種目を追加できない・種目が見つからない</h3>
+      <div class="card">
+        <h4>A. アーカイブを確認してください</h4>
+        <p>以前使っていた種目がアーカイブされている可能性があります。Exercisesタブ →「⋮」→「アーカイブ」から確認・復元してください。</p>
+      </div>
+
+      <h3>HealthKitとデータが一致しない</h3>
+      <div class="card">
+        <h4>A. 手動同期を実行してください</h4>
+        <p>PersonalタブのHealthKit設定から手動同期を実行してください。優先度（トレログ優先 / HealthKit優先）の設定を確認してください。</p>
+      </div>
+
+      <h3>プリセットが追加できない</h3>
+      <div class="card">
+        <h4>A. 上限（10個）に達していないか確認してください</h4>
+        <p>プリセットは最大10個まで登録できます。「⋮」→「プリセット管理」から不要なプリセットを削除してから追加してください。また、同じ秒数のプリセットは重複登録できません。</p>
+      </div>
+
+      <h3>オフラインでも使えますか？</h3>
+      <div class="card">
+        <h4>A. 完全オフラインで動作します</h4>
+        <p>トレログはインターネット接続を一切必要としません。すべてのデータはお使いのiPhone内に保存されます。（iCloudバックアップは除く）</p>
+      </div>
+
+      <h3>データのバックアップはどうすればいいですか？</h3>
+      <div class="card">
+        <h4>A. iCloudバックアップをご利用ください</h4>
+        <p>iOSの標準バックアップ（iCloud / iTunes/Finder経由）を利用することでデータを保護できます。機種変更の際はバックアップからの復元をお試しください。</p>
+      </div>
+
+      <hr class="divider">
+
+      <p style="font-size:13px;text-align:center;color:var(--text3);">
+        このマニュアルに記載されていない問題が発生した場合は、App Store のレビューページよりお問い合わせください。
+      </p>
+    </section>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- Back to top -->
+<a href="#top" id="back-to-top" aria-label="トップへ戻る">↑</a>
+
+<script>
+  /* ── Search ──────────────────────────────────────── */
+  const searchInput = document.getElementById('search-input');
+  const contentEl   = document.querySelector('.content');
+  let originalHTML  = contentEl.innerHTML;
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+
+    // リセット
+    contentEl.innerHTML = originalHTML;
+
+    if (!q) {
+      updateActiveNav();
+      return;
+    }
+
+    // テキストノードを走査してハイライト
+    const regex = new RegExp(`(${escapeReg(q)})`, 'gi');
+    highlightText(contentEl, regex);
+
+    // 最初のマークへスクロール
+    const first = contentEl.querySelector('mark');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  function escapeReg(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightText(node, regex) {
+    if (node.nodeType === 3) {
+      const newHTML = node.textContent.replace(regex, '<mark>$1</mark>');
+      if (newHTML !== node.textContent) {
+        const span = document.createElement('span');
+        span.innerHTML = newHTML;
+        node.parentNode.replaceChild(span, node);
+      }
+    } else if (node.nodeType === 1 && !['SCRIPT','STYLE','INPUT'].includes(node.tagName)) {
+      [...node.childNodes].forEach(child => highlightText(child, regex));
+    }
+  }
+
+  /* ── Active nav on scroll ───────────────────────── */
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  /* ── Back to top ────────────────────────────────── */
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  /* ── Mobile hamburger ───────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const sidebar   = document.getElementById('sidebar');
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+
+  // サイドバー外タップで閉じる
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && e.target !== hamburger) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  // ナビリンクをクリックしたら閉じる（モバイル）
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+
+  /* ── Smooth reveal on load ──────────────────────── */
+  document.querySelectorAll('section').forEach((sec, i) => {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(20px)';
+    sec.style.transition = 'opacity .4s ease, transform .4s ease';
+    setTimeout(() => {
+      sec.style.opacity = '1';
+      sec.style.transform = 'none';
+    }, 80 + i * 40);
+  });
+</script>
+</body>
+</html>

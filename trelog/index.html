@@ -482,6 +482,21 @@
       margin-bottom: 24px;
       border-radius: 1px;
     }
+
+    /* ── New badge ─── */
+    .badge-new {
+      display: inline-block;
+      background: linear-gradient(135deg, #00D9FF, #0099cc);
+      color: #000;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 6px;
+      letter-spacing: 0.5px;
+    }
   </style>
 </head>
 <body>
@@ -524,6 +539,7 @@
     <a class="nav-link" href="#templates"><span class="icon">📋</span>ルーティンテンプレート</a>
     <a class="nav-link" href="#personal-best"><span class="icon">🏆</span>パーソナルベスト</a>
     <a class="nav-link" href="#live-activity"><span class="icon">🏝️</span>Dynamic Island</a>
+    <a class="nav-link" href="#widget"><span class="icon">📱</span>ホーム画面ウィジェット</a>
     <a class="nav-link" href="#healthkit"><span class="icon">❤️</span>HealthKit連携</a>
     <a class="nav-link" href="#archive"><span class="icon">🗑️</span>アーカイブ機能</a>
   </div>
@@ -542,7 +558,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v1.8.1</span>
+    <span class="version-badge">v1.9.3</span>
   </div>
 
   <div class="content" id="top">
@@ -757,6 +773,13 @@
             <p>種目カード右上の「⋮」メニューから削除を選択。記録したセットも含め削除されます。</p>
           </div>
         </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <strong>種目を並び替える <span class="badge-new">NEW</span></strong>
+            <p>種目カードを長押ししてそのままドラッグすると、好きな位置に並び替えられます。</p>
+          </div>
+        </div>
       </div>
 
       <div class="tip-box">
@@ -766,6 +789,19 @@
 
       <h3>種目ヘッダーの前回値表示</h3>
       <p>種目カードのヘッダーには、前回セッションのベストセット（最大ボリューム = 重量 × 回数）が <span class="hl">📅 前回: X.Xkg × X回</span> の形式で自動表示されます。前回の記録を見ながら今日の目標重量を設定できます。</p>
+
+      <h3>ワークアウトサマリー <span class="badge-new">NEW</span></h3>
+      <p>セッション完了後に表示されるサマリーが、筋トレと有酸素で分けて表示されるようになりました。</p>
+      <div class="grid-2">
+        <div class="card">
+          <h4>💪 筋トレサマリー</h4>
+          <p>総ボリューム・総セット数・種目数・最高重量・合計レップ・平均レップを2行6項目で表示。</p>
+        </div>
+        <div class="card">
+          <h4>🏃 有酸素サマリー</h4>
+          <p>総時間・総距離・消費カロリーを表示（記録がある項目のみ）。筋トレのみ/有酸素のみの日は該当セクションのみ表示。</p>
+        </div>
+      </div>
 
       <h3>表示・並び順の設定</h3>
       <table>
@@ -782,7 +818,7 @@
       <h2>📊 Stats（統計）</h2>
       <div class="accent-line"></div>
 
-      <p>Statsタブでは、これまでのトレーニング履歴を多角的に分析・可視化します。3つのサブタブで情報を切り替えられます。</p>
+      <p>Statsタブでは、これまでのトレーニング履歴を多角的に分析・可視化します。3つのサブタブで情報を切り替えられます。サブタブの切り替えはタップのみ対応しており、スワイプ操作では切り替わりません（スクロール位置が意図せずリセットされない設計）。</p>
 
       <h3>概要タブ</h3>
       <div class="grid-2">
@@ -839,12 +875,12 @@
         <p>重量×回数の合計ボリュームの時系列変化を表示。筋力種目のみが対象。</p>
       </div>
       <div class="card">
-        <h4>🍩 部位別分布グラフ</h4>
-        <p>全体に占める各部位のトレーニング割合を円グラフで表示。「サブ部位を含む」トグルで補助筋群のカウントを切り替えられます。</p>
+        <h4>🍩 部位別分布グラフ <span class="badge-new">NEW</span></h4>
+        <p>全体に占める各部位のトレーニング割合を表示。グラフ右上のボタンでドーナツグラフ⇄横棒グラフを切り替え可能。「サブ部位を含む」トグルで補助筋群のカウントを切り替えられます。切り替え設定はアプリ再起動後も保持されます。</p>
       </div>
       <div class="card">
-        <h4>📊 種目別分布グラフ</h4>
-        <p>どの種目を最も多く行ったかを分布グラフで表示。</p>
+        <h4>📊 種目別分布グラフ <span class="badge-new">NEW</span></h4>
+        <p>どの種目を最も多く行ったかを分布グラフで表示。グラフ右上のボタンでドーナツグラフ⇄横棒グラフを切り替え可能。</p>
       </div>
     </section>
 
@@ -917,6 +953,17 @@
       <div class="accent-line"></div>
 
       <p>登録されているトレーニング種目の一覧と管理画面です。初期状態で50種類以上の種目が登録されています。</p>
+
+      <div class="card">
+        <h4>🆕 胸種目を3つ追加 <span class="badge-new">NEW</span></h4>
+        <p>v1.9.3より以下の胸種目が新たに登録されました。</p>
+        <table style="margin-top:8px">
+          <tr><th>種目名</th><th>ターゲット部位</th></tr>
+          <tr><td>ダンベルアダクション</td><td>大胸筋下部</td></tr>
+          <tr><td>アッパーチェストフライ</td><td>大胸筋上部</td></tr>
+          <tr><td>サイドチェストフライ</td><td>大胸筋内側</td></tr>
+        </table>
+      </div>
 
       <h3>種目の検索と絞り込み</h3>
       <div class="card">
@@ -1008,6 +1055,7 @@
       </div>
 
       <h3>3つのサブタブ</h3>
+      <p>サブタブの切り替えはタップのみ対応しています。スワイプ操作では切り替わりません（各タブのスクロール位置が保持される設計）。</p>
       <div class="card">
         <h4>📜 履歴</h4>
         <p>記録した体重・体脂肪率・身長を時系列リストで表示。タップで編集、左スワイプで削除。</p>
@@ -1263,6 +1311,39 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="widget">
+      <div class="section-label">Detail</div>
+      <h2>📱 ホーム画面ウィジェット <span class="badge-new">NEW</span></h2>
+      <div class="accent-line"></div>
+
+      <p>ホーム画面やロック画面にウィジェットを追加することで、アプリを開かずにトレーニング状況を確認できます。</p>
+
+      <h3>ウィジェットの追加方法</h3>
+      <p>ホーム画面を長押し →「＋」ボタン → 「トレログ」を検索・選択 → サイズを選んで追加。</p>
+
+      <h3>ウィジェットの種類</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>小（Small）</h4>
+          <p>今日のトレーニング状況とストリークを表示。未実施の場合は「未実施」と表示。</p>
+        </div>
+        <div class="card">
+          <h4>中（Medium）</h4>
+          <p>ストリーク・今週のセット数・ボリューム・カロリーを一覧表示。今日が未実施の場合は自動でメッセージ表示。</p>
+        </div>
+        <div class="card">
+          <h4>大（Large）</h4>
+          <p>今日・今週・今月・最終トレーニング日をセクション分けして詳細表示。最終トレーニング日は「今日」「昨日」「X日前」で自動判定。</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>ウィジェットの表示は1時間ごとに自動更新されます。ワークアウト保存直後はアプリが即時更新を要求するため、すぐに反映されます。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="healthkit">
       <div class="section-label">Detail</div>
       <h2>❤️ HealthKit連携</h2>
@@ -1378,10 +1459,24 @@
 
       <h3>データ管理</h3>
       <div class="card">
+        <h4>💾 バックアップ作成</h4>
+        <p>トレーニング記録・種目・ルーティン・身体データ・設定をまとめてJSONファイルにバックアップ。「ファイル」アプリから確認・共有できます。</p>
+      </div>
+      <div class="card">
+        <h4>📂 バックアップから復元</h4>
+        <p>保存済みバックアップファイルを選択してデータを復元。保存済みバックアップ一覧はデフォルト折りたたみ表示で、タップで展開できます。<span class="badge-new">NEW</span></p>
+      </div>
+      <div class="card">
+        <h4>🔄 自動バックアップ</h4>
+        <p>ワークアウト保存のたびに自動でバックアップを作成。設定画面でON/OFF切り替え可能（デフォルト: ON）。保持する世代数（3/5/10/20件）を選択できます。</p>
+      </div>
+      <div class="card">
         <h4>🔄 統計情報を再計算</h4>
         <p>パーソナルベストや統計データの再計算を強制実行します。表示に問題がある場合にお試しください。</p>
       </div>
-    </section>
+
+      <h3>ウィジェット設定</h3>
+      <p>ホーム画面ウィジェットの詳細は「<a href="#widget" style="color:var(--accent)">ホーム画面ウィジェット</a>」セクションを参照してください。</p>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="faq">

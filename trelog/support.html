@@ -302,7 +302,7 @@
 
   <div class="top-bar">
     <div class="top-bar-left">
-      <h1>TORE<span style="color:var(--accent)">LOG</span></h1>
+      <h1>BU<span style="color:var(--accent)">FF</span></h1>
       <span style="color:var(--text3);font-size:13px">—</span>
       <span style="color:var(--text2);font-size:13px">サポート</span>
     </div>
@@ -332,11 +332,11 @@
       <div class="grid-2">
         <div class="card">
           <h4>🏋️ トレーニング記録</h4>
-          <p>重量・回数を素早く記録。自重・加重・補助モード、有酸素運動（時間・距離・カロリー）にも対応。セットごとのメモも記録できます。ダンベルアダクション・アッパーチェストフライなど胸種目を新たに追加<span class="badge-new">NEW</span>。</p>
+          <p>重量・回数を素早く記録。自重・加重・補助モード、有酸素運動（時間・距離・カロリー）にも対応。セットごとのメモも記録できます。前回比インジケーター（↑↓→）で前回との比較を一目で確認<span class="badge-new">NEW</span>。</p>
         </div>
         <div class="card">
           <h4>📊 統計とグラフ</h4>
-          <p>トレーニングストリーク、部位別分析、パーソナルベストを自動で追跡。期間フィルターで長期的な成長を確認できます。ワークアウトサマリーで💪 筋トレと🏃 有酸素を分けて表示<span class="badge-new">NEW</span>。部位別・種目別グラフはドーナツ⇄横棒で切り替え可能<span class="badge-new">NEW</span>。</p>
+          <p>トレーニングストリーク、部位別分析、パーソナルベストを自動で追跡。CSVエクスポート、週次/月次プログレスサマリー、筋肉バランスアラート、週間目標の設定・進捗表示に対応<span class="badge-new">NEW</span>。部位別・種目別グラフはドーナツ⇄横棒で切り替え可能。</p>
         </div>
         <div class="card">
           <h4>👤 身体データ管理</h4>
@@ -348,15 +348,19 @@
         </div>
         <div class="card">
           <h4>⏱️ インターバルタイマー</h4>
-          <p>セット間の休憩時間を計測。Dynamic Islandにカウントダウンを表示。よく使う時間はプリセットとして登録できます。</p>
+          <p>セット間の休憩時間を計測。Dynamic Islandにカウントダウンを表示。ワークアウト画面にフローティングミニタイマーを常時表示<span class="badge-new">NEW</span>。よく使う時間はプリセットとして登録できます。</p>
         </div>
         <div class="card">
           <h4>☁️ iCloudバックアップ</h4>
           <p>iOSのiCloudバックアップを通じてデータを自動保護。機種変更時もバックアップから復元できます。設定画面から手動バックアップや世代管理も可能。</p>
         </div>
         <div class="card">
-          <h4>📱 ウィジェット <span class="badge-new">NEW</span></h4>
+          <h4>📱 ウィジェット</h4>
           <p>ホーム画面・ロック画面に今日の実績やストリークを表示。中サイズではストリーク・今週のセット数・ボリューム・カロリーを追加表示。大サイズは今日/今週/今月/最終トレーニング日をセクション別に表示します。</p>
+        </div>
+        <div class="card">
+          <h4>⚙️ 高度な設定 <span class="badge-new">NEW</span></h4>
+          <p>種目の自動並び替え（部位カテゴリー別）、ワークアウト中の種目ロック、セット進捗リング表示。設定画面は階層型メニューにリニューアルし、視認性が向上。</p>
         </div>
       </div>
     </section>
@@ -367,16 +371,23 @@
       <h2>使い方のヒント</h2>
 
       <ul class="tip-list">
-        <li><strong>チュートリアル表示</strong>　— パーソナルタブ → 設定 → チュートリアルを表示</li>
+        <li><strong>チュートリアル表示</strong>　— パーソナルタブ → 設定 → アプリ設定 → チュートリアルを表示</li>
         <li><strong>前回の値を使用</strong>　— ワークアウト画面右上のメニューから前回のデータを復元</li>
         <li><strong>前回値の確認</strong>　— 種目カードのヘッダーに前回セッションのベストセット（重量×回数）が自動表示されます</li>
-        <li><strong>セット複製</strong>　— セット行の複製アイコンで前のセットを素早くコピー</li>
-        <li><strong>種目の並び替え</strong><span class="badge-new">NEW</span>　— 種目カードを長押ししてドラッグで並び替え可能</li>
+        <li><strong>前回比インジケーター</strong><span class="badge-new">NEW</span>　— 種目カードに前回ベストとの比較が↑↓→で表示されます</li>
+        <li><strong>セット複製</strong>　— セット行の複製ボタンで前のセットを素早くコピー</li>
+        <li><strong>種目の並び替え</strong>　— 種目カードを長押ししてドラッグで並び替え可能</li>
+        <li><strong>種目の自動並び替え</strong><span class="badge-new">NEW</span>　— 設定 → ワークアウト設定で有効にすると、部位カテゴリーごとに自動グルーピング</li>
+        <li><strong>フローティングタイマー</strong><span class="badge-new">NEW</span>　— タイマー起動中はワークアウト画面下部にミニタイマーが常時表示</li>
+        <li><strong>CSVエクスポート</strong><span class="badge-new">NEW</span>　— Statsの概要タブからトレーニングデータをCSV出力・共有可能</li>
+        <li><strong>前回・次回ナビゲーション</strong>　— Workout/Statsタブで前回・次回のトレーニング日にワンタップ移動</li>
         <li><strong>お気に入り種目</strong>　— よく使う種目・テンプレートをお気に入りに追加して素早くアクセス</li>
-        <li><strong>ヘルスケア連携</strong>　— パーソナルタブ → 設定 → ヘルスケア連携からAppleヘルスケアとの同期を設定</li>
+        <li><strong>ヘルスケア連携</strong>　— パーソナルタブ → 設定 → 身体データ設定 → ヘルスケア連携からAppleヘルスケアとの同期を設定</li>
         <li><strong>タイマープリセット</strong>　— よく使う休憩時間をプリセット登録して素早く設定</li>
         <li><strong>入力モード切り替え</strong>　— ワークアウト画面右上のメニューからテキスト入力とダイヤル入力を切り替え可能</li>
         <li><strong>種目検索</strong>　— Exercisesタブの検索バーで種目名・主動筋・補助筋を横断検索</li>
+        <li><strong>一括編集</strong><span class="badge-new">NEW</span>　— Exercisesタブの編集モードで複数種目を選択し、一括アーカイブ・ジム/家設定が可能</li>
+        <li><strong>初期種目の復元</strong>　— 設定 → メンテナンス・データ管理 → 「初期種目を復元」で削除・アーカイブした初期種目を復元</li>
       </ul>
     </section>
 
@@ -389,19 +400,25 @@
       <p class="faq-a">すべてのデータはお使いのデバイス内にのみ保存されます。外部サーバーへの送信は一切行いません。</p>
 
       <p class="faq-q">データのバックアップは？</p>
-      <p class="faq-a">iOSのiCloudバックアップ機能を使用している場合、アプリのデータも自動的にバックアップされます。</p>
+      <p class="faq-a">iOSのiCloudバックアップ機能を使用している場合、アプリのデータも自動的にバックアップされます。また、設定画面から手動バックアップの作成・復元も可能です。</p>
+
+      <p class="faq-q">トレーニングデータをエクスポートできますか？</p>
+      <p class="faq-a">Statsタブの概要画面からCSVエクスポートが可能です。Excel互換のBOM付きUTF-8形式で出力され、共有シートから他のアプリに送れます。</p>
 
       <p class="faq-q">ヘルスケアアプリのデータを変更したい場合は？</p>
       <p class="faq-a">ヘルスケアアプリから連携されたデータはBUFFから直接編集・削除できません。Appleのヘルスケアアプリ内で変更してください。変更内容は次回同期時にBUFFへ反映されます。</p>
 
       <p class="faq-q">データを削除するには？</p>
-      <p class="faq-a">各データの左スワイプで削除できます。削除したセッションはゴミ箱から一定期間内に復元可能です。ヘルスケアから連携されたデータはヘルスケアアプリ側でのみ削除できます。</p>
+      <p class="faq-a">各データの左スワイプで削除できます。削除したセッションはゴミ箱から30日以内に復元可能です（30日を超えると自動クリーンアップされます）。ヘルスケアから連携されたデータはヘルスケアアプリ側でのみ削除できます。</p>
 
       <p class="faq-q">Dynamic Islandにタイマーが表示されない</p>
-      <p class="faq-a">①パーソナルタブでLive Activityが有効になっているか確認。②iOSの設定アプリ →「通知」→「BUFF」で通知が許可されているか確認。③Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p>
+      <p class="faq-a">①パーソナルタブの設定でLive Activityが有効になっているか確認。②iOSの設定アプリ →「通知」→「BUFF」で通知が許可されているか確認。③Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p>
 
       <p class="faq-q">オフラインでも使えますか？</p>
       <p class="faq-a">BUFFはインターネット接続を一切必要としません。すべてのデータはお使いのiPhone内に保存されます（iCloudバックアップは除く）。</p>
+
+      <p class="faq-q">削除・アーカイブした初期種目を復元したい</p>
+      <p class="faq-a">パーソナルタブ → 設定 → メンテナンス・データ管理 →「初期種目を復元」から、個別に選択して復元できます。</p>
 
       <div class="tip-box">
         <span class="tip-icon">📖</span>
@@ -424,4 +441,10 @@
 
     <!-- Footer -->
     <div class="page-footer">
-      <a href="index.html">�
+      <a href="index.html">📖 ユーザーマニュアル</a>
+      <a href="privacy-policy.html">🔒 プライバシーポリシー</a>
+    </div>
+
+  </div>
+</body>
+</html>

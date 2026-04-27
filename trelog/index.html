@@ -497,6 +497,84 @@
       margin-left: 6px;
       letter-spacing: 0.5px;
     }
+
+    /* ── Changelog ─── */
+    .changelog-entry {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--accent);
+    }
+    .changelog-entry .ver-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .changelog-entry .ver-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .changelog-entry .ver-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .changelog-entry .ver-pin {
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+    .change-group {
+      margin-top: 12px;
+    }
+    .change-group .group-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+    .group-feat  { background: rgba(0,217,255,.10);  color: var(--accent);  border: 1px solid rgba(0,217,255,.25); }
+    .group-imprv { background: rgba(52,211,153,.10); color: var(--success); border: 1px solid rgba(52,211,153,.25); }
+    .group-fix   { background: rgba(251,191,36,.10); color: var(--warn);    border: 1px solid rgba(251,191,36,.25); }
+    .change-group ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .change-group li {
+      color: var(--text2);
+      font-size: 13.5px;
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .change-group li::before {
+      content: '–';
+      position: absolute;
+      left: 4px;
+      color: var(--text3);
+    }
+    .change-group li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -526,7 +604,7 @@
     <div class="nav-heading">タブ別ガイド</div>
     <a class="nav-link" href="#tab-workout"><span class="icon">🏋️</span>Workout（トレーニング）</a>
     <a class="nav-link" href="#tab-stats"><span class="icon">📊</span>Stats（統計）</a>
-    <a class="nav-link" href="#tab-interval"><span class="icon">⏱️</span>Interval（タイマー）</a>
+    <a class="nav-link" href="#tab-ai"><span class="icon">🤖</span>AI（トレーナー）</a>
     <a class="nav-link" href="#tab-exercises"><span class="icon">📚</span>Exercises（種目）</a>
     <a class="nav-link" href="#tab-personal"><span class="icon">👤</span>Personal（個人情報）</a>
   </div>
@@ -538,6 +616,8 @@
     <a class="nav-link" href="#bodyweight"><span class="icon">⚖️</span>自重トレーニング</a>
     <a class="nav-link" href="#templates"><span class="icon">📋</span>ルーティンテンプレート</a>
     <a class="nav-link" href="#personal-best"><span class="icon">🏆</span>パーソナルベスト</a>
+    <a class="nav-link" href="#interval-timer"><span class="icon">⏱️</span>インターバルタイマー</a>
+    <a class="nav-link" href="#ai-suggestion"><span class="icon">🧠</span>AIによる種目提案</a>
     <a class="nav-link" href="#live-activity"><span class="icon">🏝️</span>Dynamic Island</a>
     <a class="nav-link" href="#widget"><span class="icon">📱</span>ホーム画面ウィジェット</a>
     <a class="nav-link" href="#healthkit"><span class="icon">❤️</span>HealthKit連携</a>
@@ -548,6 +628,7 @@
     <div class="nav-heading">設定・その他</div>
     <a class="nav-link" href="#settings"><span class="icon">⚙️</span>各種設定</a>
     <a class="nav-link" href="#faq"><span class="icon">❓</span>よくある質問</a>
+    <a class="nav-link" href="#changelog"><span class="icon">📝</span>更新履歴</a>
   </div>
 </nav>
 
@@ -558,7 +639,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v2.1.0</span>
+    <span class="version-badge">v2.3.8</span>
   </div>
 
   <div class="content" id="top">
@@ -573,7 +654,7 @@
       <div class="tab-badges">
         <span class="tab-badge">🏋️ Workout</span>
         <span class="tab-badge">📊 Stats</span>
-        <span class="tab-badge">⏱️ Interval</span>
+        <span class="tab-badge">🤖 AI</span>
         <span class="tab-badge">📚 Exercises</span>
         <span class="tab-badge">👤 Personal</span>
       </div>
@@ -611,6 +692,14 @@
         <div class="card">
           <h4>❤️ HealthKit連携</h4>
           <p>体重・体脂肪率・身長データをApple Healthと同期（オプション設定）。</p>
+        </div>
+        <div class="card">
+          <h4>🤖 AIトレーナー <span class="badge-new">NEW</span></h4>
+          <p>Apple Intelligenceを活用した対話型アドバイザー。トレーニング・栄養・回復を相談可能。すべてオンデバイス処理（iOS 26以上）。</p>
+        </div>
+        <div class="card">
+          <h4>🧠 AIによる種目提案 <span class="badge-new">NEW</span></h4>
+          <p>過去の記録と部位選択をもとに、今日のおすすめ種目を提案。ワンタップで呼び出し可能。</p>
         </div>
       </div>
     </section>
@@ -656,7 +745,7 @@
           <div class="step-num">5</div>
           <div class="step-body">
             <strong>インターバルタイマーを活用する</strong>
-            <p>「⏱️ Interval」タブでタイマーをセット。Dynamic Islandに残り時間が表示されます。</p>
+            <p>Workoutタブのメニュー、またはセット完了後のフローティングバナーからタイマーを起動。Dynamic Islandに残り時間が表示されます。</p>
           </div>
         </div>
       </div>
@@ -681,7 +770,7 @@
         <tr><td><strong>Personal</strong></td><td>👤</td><td>体重・体脂肪率・身長の記録とグラフ表示</td></tr>
         <tr><td><strong>Stats</strong></td><td>📊</td><td>トレーニング統計・ベスト記録・カレンダー</td></tr>
         <tr><td><strong>Workout</strong></td><td>🏋️</td><td>本日のトレーニングを記録（メイン画面）</td></tr>
-        <tr><td><strong>Interval</strong></td><td>⏱️</td><td>インターバルタイマー</td></tr>
+        <tr><td><strong>AI</strong> <span class="badge-new">NEW</span></td><td>🤖</td><td>AIトレーナーへの相談・質問テンプレート（iOS 26以上）</td></tr>
         <tr><td><strong>Exercises</strong></td><td>📚</td><td>種目の管理・検索・詳細確認</td></tr>
       </table>
 
@@ -735,11 +824,19 @@
         <p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。</p>
       </div>
       <div class="card">
+        <h4>🧠 AI提案 <span class="badge-new">NEW</span></h4>
+        <p>「種目を追加」ボタンの横に配置。タップすると過去の記録と選択した部位をもとに、おすすめ種目をAIが提案します。詳細は「<a href="#ai-suggestion" style="color:var(--accent)">AIによる種目提案</a>」をご覧ください。</p>
+      </div>
+      <div class="card">
         <h4>📋 テンプレートを読み込む</h4>
         <p>右上メニューからルーティンテンプレートを読み込み、種目群をまとめて追加できます。</p>
       </div>
       <div class="card">
-        <h4>⏱️ フローティングミニタイマー <span class="badge-new">NEW</span></h4>
+        <h4>⏱️ インターバルタイマー <span class="badge-new">NEW</span></h4>
+        <p>右上「⋮」メニュー →「インターバルタイマー」、または起動中のフローティングバナーからタイマーシートを開きます。プリセット選択・カスタム時間・停止・リセットをシート内で完結できます。詳細は「<a href="#interval-timer" style="color:var(--accent)">インターバルタイマー</a>」をご覧ください。</p>
+      </div>
+      <div class="card">
+        <h4>🪟 フローティングミニタイマー <span class="badge-new">NEW</span></h4>
         <p>タイマー起動中は画面下部にミニタイマーが常時表示され、残り時間の確認・再スタート・停止がその場で可能です。</p>
       </div>
 
@@ -915,65 +1012,61 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section id="tab-interval">
+    <section id="tab-ai">
       <div class="section-label">Tab</div>
-      <h2>⏱️ Interval（タイマー）</h2>
+      <h2>🤖 AI（トレーナー） <span class="badge-new">NEW</span></h2>
       <div class="accent-line"></div>
 
-      <p>セット間のインターバル（休憩）を計測するタイマー機能です。Dynamic Islandやロックスクリーンにリアルタイムでカウントダウンが表示されます。</p>
-
-      <h3>基本的な使い方</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>タイマー時間を選ぶ</strong>
-            <p>画面下部のプリセットボタン（1分・1分30秒・2分・3分）をタップするか、カスタム時間を指定。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>スタートボタンをタップ</strong>
-            <p>カウントダウンが始まります。Dynamic Islandに残り時間が表示されます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>終了時に通知を受け取る</strong>
-            <p>タイマーが0になると通知音とバイブレーションでお知らせします。</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>プリセット管理</h3>
-      <div class="card">
-        <h4>➕ プリセットを追加</h4>
-        <p>右上「⋮」メニュー → 「プリセット追加」。名前と秒数を設定してよく使う時間を登録できます（最大10個）。</p>
-      </div>
-      <div class="card">
-        <h4>✏️ カスタム時間</h4>
-        <p>右上「⋮」メニュー → 「カスタム時間」で任意の秒数を指定してタイマーをセット。</p>
-      </div>
-      <div class="card">
-        <h4>🔧 プリセット管理</h4>
-        <p>右上「⋮」メニュー → 「プリセット管理」で登録済みプリセットの削除・並び替えが可能。</p>
-      </div>
+      <p>AIタブは、Apple Intelligence を活用した対話型のトレーニングアドバイザーです。トレーニング・栄養・回復について自然な会話で相談できます。すべての処理はデバイス上で完結するため、データが外部に送信されることはありません。</p>
 
       <div class="warn-box">
         <span class="warn-icon">⚠️</span>
-        <p>Live Activityの表示にはiOS 16.1以降のDynamic Island対応機種が必要です。また、アプリを強制終了するとLive Activityが停止する場合があります。</p>
+        <p>AIトレーナーは <strong>iOS 26 以上 + Apple Intelligence が有効な端末</strong> で利用可能です。条件を満たさない場合は利用不可の理由が画面に表示されます。</p>
       </div>
 
-      <h3>Dynamic Island / ロック画面での表示</h3>
+      <h3>主な機能</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>💬 マルチターン対話</h4>
+          <p>会話履歴を保持しながら、自然な流れで複数回のやり取りが可能。「次はどの部位をやるべき？」「タンパク質はどれくらい必要？」などを継続的に相談できます。</p>
+        </div>
+        <div class="card">
+          <h4>📚 履歴ベースの回答</h4>
+          <p>経験済みの種目・未経験の登録種目・最近のトレーニング履歴を踏まえて回答。一般論ではなく、あなたの状況に合わせたアドバイスが得られます。</p>
+        </div>
+        <div class="card">
+          <h4>🔒 完全オンデバイス処理</h4>
+          <p>すべての推論はApple Intelligenceのオンデバイスモデルで実行。トレーニングデータ・会話内容が外部サーバーに送信されることはありません。</p>
+        </div>
+        <div class="card">
+          <h4>📝 マークダウン表示</h4>
+          <p>AIの回答は見出し・箇条書き・番号付きリスト・太字をきれいにレンダリング。長めのアドバイスも読みやすく表示されます。</p>
+        </div>
+      </div>
+
+      <h3>質問テンプレート</h3>
+      <p>AIタブの初期画面には、すぐに相談を始められる質問テンプレートが表示されます。</p>
+      <div class="card">
+        <h4>🤖 ルールベース動的生成</h4>
+        <p>あなたのトレーニング履歴をもとに、自動で文脈に沿った質問を生成。例：「胸を5日間やってないけど、今日やるべき？」など、状況に応じた質問が並びます。</p>
+      </div>
+      <div class="card">
+        <h4>✨ AIによる質問生成</h4>
+        <p>「AIでおすすめの質問を生成」ボタンをタップすると、Apple Intelligenceがよりパーソナライズされた質問を提案します。</p>
+      </div>
+
+      <h3>データ共有レベル</h3>
+      <p>AIに共有するデータの粒度を設定できます。Personalタブの設定 →「AIトレーナー設定」から変更可能です。</p>
       <table>
-        <tr><th>表示エリア</th><th>内容</th></tr>
-        <tr><td>コンパクト（左）</td><td>タイマーアイコン</td></tr>
-        <tr><td>コンパクト（右）</td><td>残り時間（カウントダウン）</td></tr>
-        <tr><td>拡大表示</td><td>「インターバル」ラベル + 大きな残り時間 + 合計時間</td></tr>
-        <tr><td>ロック画面バナー</td><td>タイマーアイコン・残り時間・合計時間</td></tr>
+        <tr><th>レベル</th><th>共有内容</th><th>用途</th></tr>
+        <tr><td><strong>標準</strong></td><td>登録種目・部位・最近のトレーニング有無</td><td>プライバシー重視の最小限の共有</td></tr>
+        <tr><td><strong>詳細</strong></td><td>標準の内容に加え、直近5セッションの重量・レップ・自己ベスト、体重・体脂肪の月次推移</td><td>具体的な数値を踏まえた的確なアドバイスを得たいとき</td></tr>
       </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>AIタブの初期画面にはオンデバイス処理・データ非送信であることが明示されています。共有データの内容と処理方式は設定画面でも確認できます。</p>
+      </div>
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
@@ -1027,6 +1120,13 @@
         </div>
         <div class="step">
           <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>「体重を重量に含める」オプション <span class="badge-new">NEW</span></strong>
+            <p>編集画面で「体重を重量に含める」をON/OFFで切り替え可能。自重種目に限らず全器具で設定でき、ONにすると記録時の重量に体重が加算されます。詳細は「<a href="#bodyweight" style="color:var(--accent)">自重トレーニング</a>」をご覧ください。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
           <div class="step-body">
             <strong>種目をアーカイブ</strong>
             <p>使わなくなった種目はアーカイブ（非表示）にできます。過去の記録は保持されます。</p>
@@ -1136,6 +1236,13 @@
 
       <h3>セットの完了</h3>
       <p>重量と回数を入力後、<kbd>✓</kbd> チェックボタンをタップするとセット完了となり、記録がすぐに保存されます。自動でパーソナルベストとの比較が行われます。セット行の操作ボタン（複製・削除など）はテキストラベルで表示され、初見でも分かりやすい操作感です。</p>
+
+      <h3>セットの複製</h3>
+      <p>セット行の「複製」ボタンをタップすると、直前のセットを下にコピーします。重量・ノート・補助モードなどの値はそのまま引き継がれます。</p>
+      <div class="card">
+        <h4>🔁 「セット複製時に回数を空にする」オプション <span class="badge-new">NEW</span></h4>
+        <p>設定 → ワークアウト設定 →「セット複製時に回数を空にする」をONにすると、複製したセットの回数のみが空になり、回数フィールドへ自動でフォーカスが入ります。同じ重量で次セットの回数を素早く入力したいときに便利です（デフォルト: OFF）。</p>
+      </div>
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
@@ -1174,36 +1281,56 @@
       <h2>⚖️ 自重トレーニング</h2>
       <div class="accent-line"></div>
 
-      <p>クランチ・プランク・チンニングなど自体重を使う種目に対応しています。加重ベストや重りを使う場合の加重入力も可能です。</p>
+      <p>プッシュアップ・チンニング・プランクなど、自体重を使う種目に対応しています。v2.3.6 から「回数のみで記録する」「付加重量のみ記録する」「体重を重量に含めて記録する」の3パターンを使い分けられるようになりました。</p>
 
-      <h3>自重設定の流れ</h3>
+      <h3>記録のパターン</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>🔢 回数のみ（重量0） <span class="badge-new">NEW</span></h4>
+          <p>重量を入力せず（または0kg）、回数だけを記録。一覧では「15回」のように回数のみが表示されます。プッシュアップやプランクなど自重で行う種目の標準的な記録方法です。</p>
+        </div>
+        <div class="card">
+          <h4>➕ 付加重量のみ <span class="badge-new">NEW</span></h4>
+          <p>加重ベスト・ダンベルなどを使う場合、付加重量だけを記録（例：20kg × 8回）。体重は含めません。</p>
+        </div>
+        <div class="card">
+          <h4>⚖️ 体重を重量に含める</h4>
+          <p>種目編集で「体重を重量に含める」をONにすると、Personalタブの最新体重をデフォルトとして自動加算。「体重 + 付加重量」の合計値で記録されます。総挙上量で管理したい場合に有効です。</p>
+        </div>
+        <div class="card">
+          <h4>🔧 設定の場所</h4>
+          <p>「体重を重量に含める」はExercisesタブの種目編集画面でON/OFF可能。自重種目に限らず全器具で設定できます。種目一覧・詳細・パーソナルベスト表示もすべて重量0に対応しています。</p>
+        </div>
+      </div>
+
+      <h3>記録の流れ</h3>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
             <strong>自重種目をWorkoutに追加</strong>
-            <p>自重種目（例：クランチ）を追加すると「自重設定」ダイアログが表示される場合があります。</p>
+            <p>Exercisesタブから自重種目（例：プッシュアップ）を選択して追加します。</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-body">
-            <strong>デフォルト体重を設定</strong>
-            <p>体重を入力（Personalタブの最新記録から自動引き継ぎ）。ここで入力した値がセットの重量として使用されます。</p>
+            <strong>重量と回数を入力</strong>
+            <p>付加重量がない場合は重量を空または0で、回数のみ入力してチェック。付加重量がある場合は重量フィールドに付加重量を入力します。</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
-            <strong>加重がある場合</strong>
-            <p>加重ベストやダンベルを使う場合は、セット入力画面で「加重」フィールドに追加重量を入力します。</p>
+            <strong>体重を含めたい場合（任意）</strong>
+            <p>Exercisesタブで該当種目を編集し、「体重を重量に含める」をON。Personalタブに体重記録があれば自動でデフォルト値として使用されます。</p>
           </div>
         </div>
       </div>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>自重の記録は「自体重 + 加重」の合計で管理されます。Personalタブに最新の体重記録があると、自動的にデフォルト体重として設定されます。</p>
+        <p>v2.3.6 への更新時、過去に体重が含まれていた自重セットは起動時に一度だけ自動補正され、付加重量のみ（または0kg）に変換されます。パーソナルベストも合わせて再計算されます。</p>
       </div>
     </section>
 
@@ -1291,6 +1418,125 @@
       <div class="tip-box">
         <span class="tip-icon">💡</span>
         <p>推定1RMはEpley式（weight × (1 + reps / 30)）またはそれに準じる計算式で算出されます。実際の1RMとは異なる場合があります。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="interval-timer">
+      <div class="section-label">Detail</div>
+      <h2>⏱️ インターバルタイマー</h2>
+      <div class="accent-line"></div>
+
+      <p>セット間のインターバル（休憩）を計測するタイマー機能です。v2.3.0 でWorkout画面に統合され、トレーニング中に画面遷移なくタイマー操作ができるようになりました。</p>
+
+      <h3>タイマーの起動方法</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>📋 メニューから起動</h4>
+          <p>Workoutタブ右上の「⋮」メニュー →「インターバルタイマー」をタップ。タイマーシートが開き、プリセット選択・カスタム時間・停止・リセットがすべてシート内で完結します。</p>
+        </div>
+        <div class="card">
+          <h4>🪟 フローティングバナーから起動</h4>
+          <p>タイマー起動中は画面下部にミニタイマーのバナーが表示されます。バナーをタップすると同じタイマーシートが開き、残り時間の確認・再スタート・停止が可能です。</p>
+        </div>
+      </div>
+
+      <h3>基本的な使い方</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>タイマーシートを開く</strong>
+            <p>Workout画面のメニューまたはフローティングバナーからシートを開きます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>タイマー時間を選ぶ</strong>
+            <p>登録済みプリセットボタンをタップするか、「カスタム時間」で任意の秒数を指定。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>スタートボタンをタップ</strong>
+            <p>カウントダウンが始まります。Dynamic Islandまたはロック画面に残り時間が表示されます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>終了時に通知を受け取る</strong>
+            <p>タイマーが0になると通知音とバイブレーションでお知らせします。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>プリセット管理</h3>
+      <p>プリセットの追加・削除・並び替えはPersonalタブの設定から行います。</p>
+      <div class="card">
+        <h4>🔧 プリセットの管理場所</h4>
+        <p>Personalタブ → 設定 → ワークアウト設定 →「インターバルタイマー プリセット」。名前と秒数を指定して登録（最大10件）。同じ秒数のプリセットは重複登録できません。</p>
+      </div>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>Dynamic Islandの表示にはiOS 16.1以降のDynamic Island対応機種が必要です。詳細は「<a href="#live-activity" style="color:var(--accent)">Dynamic Island & Live Activity</a>」をご覧ください。</p>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="ai-suggestion">
+      <div class="section-label">Detail</div>
+      <h2>🧠 AIによる種目提案 <span class="badge-new">NEW</span></h2>
+      <div class="accent-line"></div>
+
+      <p>Workoutタブの「AI提案」ボタンから、過去の記録と選んだ部位に基づいて、今日のおすすめ種目をAIが提案します。AIタブの対話型「AIトレーナー」とは別機能で、こちらは <strong>種目選びに特化した1ショットの提案</strong> です。</p>
+
+      <h3>使い方</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>AI提案ボタンをタップ</strong>
+            <p>Workoutタブの「種目を追加」ボタンの横にある「AI提案」をタップします。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>鍛える部位を選ぶ <span class="badge-new">NEW</span></strong>
+            <p>胸・背中・脚・肩・腕・腹筋からチェックボックスで選択。選んだ部位から各2〜3種目が提案され、バランスの取れたメニューになります。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>提案された種目を確認</strong>
+            <p>AIが過去の記録と部位選択をもとに、おすすめ種目と全体アドバイスを生成します。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>そのままWorkoutに追加</strong>
+            <p>気に入った提案をそのままWorkoutセッションに取り込めます。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>提案元バッジ</h3>
+      <p>提案画面には、Apple Intelligence で生成されたか、通常アルゴリズムで生成されたかを示すバッジが表示されます。</p>
+      <table>
+        <tr><th>バッジ</th><th>条件</th><th>動作</th></tr>
+        <tr><td>Apple Intelligence</td><td>iOS 26 以上 + Apple Intelligence 有効</td><td>FoundationModelsフレームワークによるオンデバイスAI推論</td></tr>
+        <tr><td>通常アルゴリズム</td><td>iOS 25 以下 / Apple Intelligence 無効</td><td>従来のルールベースで提案を生成（フォールバック）</td></tr>
+      </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>Apple Intelligenceが利用できない場合は、その理由（デバイス非対応・設定未有効など）が画面に表示されたうえで、ルールベースの提案にフォールバックします。提案機能自体はどの環境でも利用可能です。</p>
       </div>
     </section>
 
@@ -1484,6 +1730,8 @@
         <tr><td>種目の自動並び替え <span class="badge-new">NEW</span></td><td>部位カテゴリー別に自動グルーピング（デフォルト: ON）</td></tr>
         <tr><td>種目ロック <span class="badge-new">NEW</span></td><td>ワークアウト中の種目追加・削除・並び替えを禁止（デフォルト: OFF）</td></tr>
         <tr><td>前回データの取得方法 <span class="badge-new">NEW</span></td><td>最初のセット / 最後のセット / 最高値</td></tr>
+        <tr><td>セット複製時に回数を空にする <span class="badge-new">NEW</span></td><td>複製したセットの回数のみを空にし、回数フィールドへ自動フォーカス（デフォルト: OFF）</td></tr>
+        <tr><td>インターバルタイマー プリセット <span class="badge-new">NEW</span></td><td>タイマープリセット（名前と秒数）の追加・削除・並び替え（最大10件）</td></tr>
       </table>
 
       <h3>種目設定</h3>
@@ -1576,7 +1824,7 @@
       <h3>プリセットが追加できない</h3>
       <div class="card">
         <h4>A. 上限（10個）に達していないか確認してください</h4>
-        <p>プリセットは最大10個まで登録できます。「⋮」→「プリセット管理」から不要なプリセットを削除してから追加してください。また、同じ秒数のプリセットは重複登録できません。</p>
+        <p>プリセットは最大10個まで登録できます。Personalタブ → 設定 → ワークアウト設定 →「インターバルタイマー プリセット」から不要なプリセットを削除してから追加してください。また、同じ秒数のプリセットは重複登録できません。</p>
       </div>
 
       <h3>オフラインでも使えますか？</h3>
@@ -1608,6 +1856,166 @@
       <p style="font-size:13px;text-align:center;color:var(--text3);">
         このマニュアルに記載されていない問題が発生した場合は、App Store のレビューページよりお問い合わせください。
       </p>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="changelog">
+      <div class="section-label">Changelog</div>
+      <h2>📝 更新履歴</h2>
+      <div class="accent-line"></div>
+
+      <p>v2.1.1 から v2.3.8 までのリリース内容です。それより前のバージョンの詳細はリポジトリの CHANGELOG をご参照ください。</p>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.8</span>
+          <span class="ver-date">2026-04-26</span>
+          <span class="ver-pin">LATEST</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>セット複製時に回数を空にするオプションを追加</strong>：複製したセットで重量・ノート・補助モードは維持しつつ、回数のみ空にして回数フィールドへ自動フォーカス。同じ重量で次セットの回数を素早く入力できる（設定 → ワークアウト設定）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.7</span>
+          <span class="ver-date">2026-04-15</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>AIトレーナーが部位選択と合わない種目を提案する問題を修正</strong>：コンテキスト形式を「部位別の種目一覧」に変更し、各部位と種目の対応関係をAIに明示。指定部位以外を提案しないルールをシステムプロンプトに追加</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.6</span>
+          <span class="ver-date">2026-04-10</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>自重種目で回数のみ記録可能に</strong>：プッシュアップなどの自重種目で、体重を重量に含めず付加重量のみ（または0kg）で記録可能に。重量0のセットは「15回」のように回数だけ表示</li>
+            <li><strong>種目設定に「体重を重量に含める」オプションを追加</strong>：自重に限らず全器具で設定可能。種目一覧・詳細・パーソナルベスト表示もすべて重量0に対応</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>自重種目の過去記録を自動補正</strong>：起動時に一度だけマイグレーションを実行し、体重が含まれていた自重セットを付加重量のみまたは0kgに変換。パーソナルベストも再計算</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.5</span>
+          <span class="ver-date">2026-04-05</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>ワークアウト記録中のパフォーマンス低下を修正</strong>：多くのセットを記録した際に動作の引っかかりが出る問題を修正。autoSave時はパーソナルベスト再計算とバックアップをスキップし、日付変更・バックグラウンド移行・種目削除の各タイミングで確実に実行</li>
+            <li><strong>Statsカレンダーの最終週未表示バグを修正</strong>：再起動直後に月の最終週がカレンダーに表示されない問題を、明示的なグリッドレイアウトへの置き換えで解消</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.2</span>
+          <span class="ver-date">2026-03-30</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>AIメニュー提案に部位選択ステップを追加</strong>：提案前に鍛える部位をチェックボックスで選択可能。選択した部位から各2〜3種目が提案され、バランスの取れたメニューに</li>
+            <li><strong>肩種目を2種追加</strong>：ダンベルリアレイズ（三角筋後部）、インクラインサイドレイズ（三角筋中部）</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>AIトレーナーの口調が設定に正しく反映されないバグを修正</li>
+            <li>トレーニングに関する質問が誤ってメニュー提案に切り替わるバグを修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.0</span>
+          <span class="ver-date">2026-03-26</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>AIトレーナー（対話型アドバイザー）を追加</strong>（iOS 26以上）：Apple Intelligenceを使ったチャット形式でトレーニング・栄養・回復について相談可能。会話履歴を保持したマルチターン対話に対応。すべてオンデバイス処理</li>
+            <li><strong>AIトレーナー設定画面を追加</strong>：AIに共有するデータレベルを「標準」「詳細」から選択可能。詳細モードでは直近5セッションの数値や月次推移を共有</li>
+            <li><strong>AIタブの質問テンプレートを動的化</strong>：トレーニング履歴に基づくルールベース生成と、AIによるパーソナライズ生成の両方に対応</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">UI/UX改善</div>
+          <ul>
+            <li><strong>タブ構成を変更：「Interval」タブ→「AI」タブ</strong>：AIトレーナーに専用タブを割り当て、いつでもすぐにアクセス可能</li>
+            <li><strong>インターバルタイマーをワークアウト画面に統合</strong>：Workout画面のメニューまたはフローティングバナーのタップでタイマーを起動</li>
+            <li><strong>タイマープリセット管理を設定に移動</strong>：設定 → ワークアウト設定 →「インターバルタイマー プリセット」</li>
+            <li><strong>Workout画面に「AI提案」ボタンを追加</strong>：「種目を追加」ボタンの横に配置し、ワンタップでAI種目提案にアクセス可能</li>
+            <li>AIトレーナーの回答でマークダウンを正しく表示（見出し・箇条書き・番号付きリスト・太字）</li>
+            <li>AIタブ初期画面にプライバシー説明を表示</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>AIアドバイスカードの幅が他カードと異なる問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.2.0</span>
+          <span class="ver-date">2026-03-24</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>Apple Intelligenceによるトレーニング提案</strong>（iOS 26以上）：FoundationModelsフレームワークを使用したオンデバイスAIが過去の記録を分析し、今日おすすめの種目と全体アドバイスを生成</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">UI/UX改善</div>
+          <ul>
+            <li>種目提案画面に提案元バッジを追加（Apple Intelligence / 通常アルゴリズム）</li>
+            <li>Apple Intelligenceが利用できない場合の案内を追加し、従来のアルゴリズムにフォールバック</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.1.1</span>
+          <span class="ver-date">2026-03-24</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>フローティングタイマーを手動停止した際にバナーが消えない問題を修正（停止後2秒で自動非表示）</li>
+            <li>NEW PR!バッジがPR記録直後に消えてしまう問題を修正（セッション中は表示を維持）</li>
+            <li>インターバルタイマーがスクロール操作中に止まる問題を修正</li>
+            <li>体脂肪率の最新値がグラフと一致しない問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
     </section>
 
   </div><!-- /content -->

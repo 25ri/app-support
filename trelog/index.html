@@ -8,578 +8,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <style>
-    /* ── CSS Variables ─────────────────────────────── */
     :root {
-      --bg:           #0a0a0c;
-      --bg2:          #111116;
-      --bg3:          #18181f;
-      --card:         #1c1c24;
-      --card2:        #22222c;
-      --accent:       #00D9FF;
-      --accent-dim:   rgba(0,217,255,0.12);
-      --accent-glow:  rgba(0,217,255,0.25);
-      --text:         #e8e8f0;
-      --text2:        #9090a8;
-      --text3:        #5a5a70;
-      --border:       rgba(255,255,255,0.07);
-      --border-accent:rgba(0,217,255,0.25);
-      --success:      #34d399;
-      --warn:         #fbbf24;
-      --sidebar-w:    260px;
-      --radius:       10px;
+      --bg: #0a0a0c; --bg2: #111116; --bg3: #18181f;
+      --card: #1c1c24; --card2: #22222c;
+      --accent: #00D9FF; --accent-dim: rgba(0,217,255,0.12); --accent-glow: rgba(0,217,255,0.25);
+      --text: #e8e8f0; --text2: #9090a8; --text3: #5a5a70;
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(0,217,255,0.25);
+      --success: #34d399; --warn: #fbbf24;
+      --sidebar-w: 260px; --radius: 10px;
     }
-
-    /* ── Reset & Base ──────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 15px;
-      line-height: 1.75;
-      display: flex;
-      min-height: 100vh;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.75;display:flex;min-height:100vh;}
+    ::-webkit-scrollbar{width:4px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+    ::-webkit-scrollbar-thumb{background:var(--text3);border-radius:4px;}
+    #sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;z-index:100;}
+    .sidebar-logo{padding:28px 24px 20px;border-bottom:1px solid var(--border);}
+    .sidebar-logo .app-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--accent);text-shadow:0 0 20px var(--accent-glow);}
+    .sidebar-logo .app-sub{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+    .sidebar-search{padding:14px 16px;border-bottom:1px solid var(--border);}
+    .search-wrap{position:relative;}
+    .search-wrap input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px 8px 34px;color:var(--text);font-size:13px;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s;}
+    .search-wrap input:focus{border-color:var(--accent);}
+    .search-wrap input::placeholder{color:var(--text3);}
+    .search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;pointer-events:none;}
+    .nav-section{padding:8px 0;}
+    .nav-heading{padding:10px 20px 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;}
+    .nav-link{display:flex;align-items:center;gap:10px;padding:9px 20px;color:var(--text2);text-decoration:none;font-size:13.5px;transition:all .15s;border-left:2px solid transparent;}
+    .nav-link:hover,.nav-link.active{color:var(--text);background:var(--accent-dim);border-left-color:var(--accent);}
+    .nav-link .icon{width:18px;text-align:center;font-size:15px;opacity:.75;}
+    .nav-link.active .icon{opacity:1;}
+    #main{margin-left:var(--sidebar-w);flex:1;max-width:860px;}
+    .top-bar{position:sticky;top:0;z-index:50;background:rgba(10,10,12,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:14px 32px;}
+    .top-bar h1{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--accent);}
+    .top-bar .version-badge{background:var(--accent-dim);border:1px solid var(--border-accent);color:var(--accent);font-size:11px;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;}
+    .content{padding:48px 32px 80px;}
+    section{margin-bottom:72px;}
+    .section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px;}
+    h2{font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.25;border-bottom:1px solid var(--border);padding-bottom:14px;}
+    h3{font-size:17px;font-weight:600;color:var(--text);margin:28px 0 10px;}
+    p{color:var(--text2);margin-bottom:14px;}
+    .hero{background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);border:1px solid var(--border-accent);border-radius:14px;padding:40px 36px;margin-bottom:48px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);pointer-events:none;}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:5px;color:var(--text);line-height:1.1;}
+    .hero-title span{color:var(--accent);}
+    .hero-desc{color:var(--text2);margin-top:10px;font-size:14px;max-width:520px;}
+    .tab-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+    .tab-badge{background:var(--card2);border:1px solid var(--border);padding:5px 14px;border-radius:20px;font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin-bottom:16px;transition:border-color .2s;}
+    .card:hover{border-color:rgba(0,217,255,0.2);}
+    .card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+    .card p{font-size:13.5px;margin-bottom:0;}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .steps{counter-reset:step;}
+    .step{display:flex;gap:20px;margin-bottom:20px;}
+    .step-num{counter-increment:step;min-width:36px;height:36px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border-accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;flex-shrink:0;}
+    .step-body{padding-top:6px;}
+    .step-body strong{display:block;color:var(--text);font-size:14px;margin-bottom:4px;}
+    .step-body p{font-size:13px;margin-bottom:0;}
+    .tip-box{display:flex;gap:14px;background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.25);border-radius:var(--radius);padding:16px 20px;margin:16px 0;}
+    .tip-box .tip-icon{font-size:18px;flex-shrink:0;}
+    .tip-box p{color:var(--text2);font-size:13.5px;margin:0;}
+    .warn-box{display:flex;gap:14px;background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.25);border-radius:var(--radius);padding:16px 20px;margin:16px 0;}
+    .warn-box .warn-icon{font-size:18px;flex-shrink:0;}
+    .warn-box p{color:var(--text2);font-size:13.5px;margin:0;}
+    table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;}
+    th{text-align:left;padding:10px 14px;background:var(--card2);color:var(--accent);font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border-accent);}
+    td{padding:10px 14px;color:var(--text2);border-bottom:1px solid var(--border);}
+    tr:last-child td{border-bottom:none;}
+    tr:hover td{background:var(--card2);}
+    .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;font-family:'Space Mono',monospace;}
+    .tag-cyan{background:var(--accent-dim);color:var(--accent);border:1px solid var(--border-accent);}
+    .tag-green{background:rgba(52,211,153,.12);color:var(--success);border:1px solid rgba(52,211,153,.25);}
+    .tag-yellow{background:rgba(251,191,36,.12);color:var(--warn);border:1px solid rgba(251,191,36,.25);}
+    kbd{background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-family:'Space Mono',monospace;font-size:12px;color:var(--text);}
+    .hl{color:var(--accent);font-weight:600;}
+    .mono{font-family:'Space Mono',monospace;font-size:12px;}
+    hr.divider{border:none;border-top:1px solid var(--border);margin:32px 0;}
+    .i{display:inline-flex;align-items:center;gap:4px;}
+    #back-to-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;background:var(--card);border:1px solid var(--border-accent);border-radius:50%;color:var(--accent);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;opacity:0;transition:opacity .3s;z-index:200;}
+    #back-to-top.visible{opacity:1;}
+    #back-to-top:hover{background:var(--accent-dim);}
+    mark{background:var(--accent-dim);color:var(--accent);border-radius:2px;padding:0 2px;}
+    #hamburger{display:none;position:fixed;top:14px;left:14px;z-index:300;background:var(--card);border:1px solid var(--border);border-radius:8px;width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;color:var(--accent);font-size:18px;}
+    @media (max-width:900px){
+      #hamburger{display:flex;}
+      #sidebar{transform:translateX(-100%);transition:transform .25s;}
+      #sidebar.open{transform:translateX(0);}
+      #main{margin-left:0;}
+      .grid-2{grid-template-columns:1fr;}
+      .hero-title{font-size:32px;}
+      .top-bar{padding:14px 16px;}
+      .content{padding:32px 18px 60px;}
     }
-
-    /* ── Scrollbar ─────────────────────────────────── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 4px; }
-
-    /* ── Sidebar ───────────────────────────────────── */
-    #sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: var(--sidebar-w);
-      height: 100vh;
-      background: var(--bg2);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      z-index: 100;
-    }
-
-    .sidebar-logo {
-      padding: 28px 24px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .sidebar-logo .app-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px;
-      letter-spacing: 4px;
-      color: var(--accent);
-      text-shadow: 0 0 20px var(--accent-glow);
-    }
-    .sidebar-logo .app-sub {
-      font-size: 10px;
-      color: var(--text3);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    /* 検索ボックス */
-    .sidebar-search {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .search-wrap {
-      position: relative;
-    }
-    .search-wrap input {
-      width: 100%;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 8px 12px 8px 34px;
-      color: var(--text);
-      font-size: 13px;
-      font-family: 'Noto Sans JP', sans-serif;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .search-wrap input:focus { border-color: var(--accent); }
-    .search-wrap input::placeholder { color: var(--text3); }
-    .search-icon {
-      position: absolute;
-      left: 10px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--text3);
-      font-size: 14px;
-      pointer-events: none;
-    }
-
-    /* ナビゲーションリンク */
-    .nav-section { padding: 8px 0; }
-    .nav-heading {
-      padding: 10px 20px 4px;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text3);
-      font-weight: 500;
-    }
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 20px;
-      color: var(--text2);
-      text-decoration: none;
-      font-size: 13.5px;
-      transition: all .15s;
-      border-left: 2px solid transparent;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--text);
-      background: var(--accent-dim);
-      border-left-color: var(--accent);
-    }
-    .nav-link .icon {
-      width: 18px;
-      text-align: center;
-      font-size: 15px;
-      opacity: .75;
-    }
-    .nav-link.active .icon { opacity: 1; }
-
-    /* ── Main Content ──────────────────────────────── */
-    #main {
-      margin-left: var(--sidebar-w);
-      flex: 1;
-      max-width: 860px;
-    }
-
-    /* ── Header ────────────────────────────────────── */
-    .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(10,10,12,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 32px;
-    }
-    .top-bar h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 3px;
-      color: var(--accent);
-    }
-    .top-bar .version-badge {
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      color: var(--accent);
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-family: 'Space Mono', monospace;
-    }
-
-    /* ── Sections ──────────────────────────────────── */
-    .content { padding: 48px 32px 80px; }
-
-    section { margin-bottom: 72px; }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    h2 {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.25;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
-    }
-
-    h3 {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-      margin: 28px 0 10px;
-    }
-
-    p { color: var(--text2); margin-bottom: 14px; }
-
-    /* ── Hero ──────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
-      border: 1px solid var(--border-accent);
-      border-radius: 14px;
-      padding: 40px 36px;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 44px;
-      letter-spacing: 5px;
-      color: var(--text);
-      line-height: 1.1;
-    }
-    .hero-title span { color: var(--accent); }
-    .hero-desc {
-      color: var(--text2);
-      margin-top: 10px;
-      font-size: 14px;
-      max-width: 520px;
-    }
-    .tab-badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .tab-badge {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 12px;
-      color: var(--text2);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* ── Cards ─────────────────────────────────────── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-      margin-bottom: 16px;
-      transition: border-color .2s;
-    }
-    .card:hover { border-color: rgba(0,217,255,0.2); }
-    .card h4 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card p { font-size: 13.5px; margin-bottom: 0; }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    /* ── Steps ─────────────────────────────────────── */
-    .steps { counter-reset: step; }
-    .step {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .step-num {
-      counter-increment: step;
-      min-width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .step-body { padding-top: 6px; }
-    .step-body strong {
-      display: block;
-      color: var(--text);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-    .step-body p { font-size: 13px; margin-bottom: 0; }
-
-    /* ── Info boxes ────────────────────────────────── */
-    .tip-box {
-      display: flex;
-      gap: 14px;
-      background: rgba(52,211,153,0.07);
-      border: 1px solid rgba(52,211,153,0.25);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin: 16px 0;
-    }
-    .tip-box .tip-icon { font-size: 18px; flex-shrink: 0; }
-    .tip-box p { color: var(--text2); font-size: 13.5px; margin: 0; }
-
-    .warn-box {
-      display: flex;
-      gap: 14px;
-      background: rgba(251,191,36,0.07);
-      border: 1px solid rgba(251,191,36,0.25);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin: 16px 0;
-    }
-    .warn-box .warn-icon { font-size: 18px; flex-shrink: 0; }
-    .warn-box p { color: var(--text2); font-size: 13.5px; margin: 0; }
-
-    /* ── Table ─────────────────────────────────────── */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      font-size: 13.5px;
-    }
-    th {
-      text-align: left;
-      padding: 10px 14px;
-      background: var(--card2);
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border-accent);
-    }
-    td {
-      padding: 10px 14px;
-      color: var(--text2);
-      border-bottom: 1px solid var(--border);
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: var(--card2); }
-
-    /* ── Tags ──────────────────────────────────────── */
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      font-family: 'Space Mono', monospace;
-    }
-    .tag-cyan   { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
-    .tag-green  { background: rgba(52,211,153,.12); color: var(--success); border: 1px solid rgba(52,211,153,.25); }
-    .tag-yellow { background: rgba(251,191,36,.12); color: var(--warn); border: 1px solid rgba(251,191,36,.25); }
-
-    /* ── Kbd ───────────────────────────────────────── */
-    kbd {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2px 6px;
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--text);
-    }
-
-    /* ── Highlight text ────────────────────────────── */
-    .hl { color: var(--accent); font-weight: 600; }
-    .mono { font-family: 'Space Mono', monospace; font-size: 12px; }
-
-    /* ── Divider ───────────────────────────────────── */
-    hr.divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 32px 0;
-    }
-
-    /* ── Inline icon ───────────────────────────────── */
-    .i { display: inline-flex; align-items: center; gap: 4px; }
-
-    /* ── TOC back-to-top ───────────────────────────── */
-    #back-to-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 40px; height: 40px;
-      background: var(--card);
-      border: 1px solid var(--border-accent);
-      border-radius: 50%;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 18px;
-      opacity: 0;
-      transition: opacity .3s;
-      z-index: 200;
-    }
-    #back-to-top.visible { opacity: 1; }
-    #back-to-top:hover { background: var(--accent-dim); }
-
-    /* ── Search highlight ──────────────────────────── */
-    mark { background: var(--accent-dim); color: var(--accent); border-radius: 2px; padding: 0 2px; }
-
-    /* ── Mobile hamburger ──────────────────────────── */
-    #hamburger {
-      display: none;
-      position: fixed;
-      top: 14px; left: 14px;
-      z-index: 300;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      width: 38px; height: 38px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--accent);
-      font-size: 18px;
-    }
-
-    /* ── Responsive ────────────────────────────────── */
-    @media (max-width: 900px) {
-      #hamburger { display: flex; }
-      #sidebar {
-        transform: translateX(-100%);
-        transition: transform .25s;
-      }
-      #sidebar.open { transform: translateX(0); }
-      #main { margin-left: 0; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .hero-title { font-size: 32px; }
-      .top-bar { padding: 14px 16px; }
-      .content { padding: 32px 18px 60px; }
-    }
-
-    /* ── Active nav highlight via JS ───────────────── */
-    .nav-link.active {
-      color: var(--accent) !important;
-    }
-
-    /* ── Animated accent line ──────────────────────── */
-    .accent-line {
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      margin-bottom: 24px;
-      border-radius: 1px;
-    }
-
-    /* ── New badge ─── */
-    .badge-new {
-      display: inline-block;
-      background: linear-gradient(135deg, #00D9FF, #0099cc);
-      color: #000;
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      vertical-align: middle;
-      margin-left: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    /* ── Changelog ─── */
-    .changelog-entry {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-      margin-bottom: 20px;
-      border-left: 3px solid var(--accent);
-    }
-    .changelog-entry .ver-head {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .changelog-entry .ver-num {
-      font-family: 'Space Mono', monospace;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
-    .changelog-entry .ver-date {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--text3);
-    }
-    .changelog-entry .ver-pin {
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      color: var(--accent);
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 3px;
-      letter-spacing: 0.5px;
-    }
-    .change-group {
-      margin-top: 12px;
-    }
-    .change-group .group-label {
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 3px;
-    }
-    .group-feat  { background: rgba(0,217,255,.10);  color: var(--accent);  border: 1px solid rgba(0,217,255,.25); }
-    .group-imprv { background: rgba(52,211,153,.10); color: var(--success); border: 1px solid rgba(52,211,153,.25); }
-    .group-fix   { background: rgba(251,191,36,.10); color: var(--warn);    border: 1px solid rgba(251,191,36,.25); }
-    .change-group ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-    .change-group li {
-      color: var(--text2);
-      font-size: 13.5px;
-      line-height: 1.7;
-      padding-left: 18px;
-      position: relative;
-      margin-bottom: 4px;
-    }
-    .change-group li::before {
-      content: '–';
-      position: absolute;
-      left: 4px;
-      color: var(--text3);
-    }
-    .change-group li strong {
-      color: var(--text);
-      font-weight: 600;
-    }
+    .nav-link.active{color:var(--accent) !important;}
+    .accent-line{height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin-bottom:24px;border-radius:1px;}
+    .badge-new{display:inline-block;background:linear-gradient(135deg,#00D9FF,#0099cc);color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:6px;letter-spacing:0.5px;}
+    .changelog-entry{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin-bottom:20px;border-left:3px solid var(--accent);}
+    .changelog-entry .ver-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+    .changelog-entry .ver-num{font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:var(--accent);letter-spacing:1px;}
+    .changelog-entry .ver-date{font-family:'Space Mono',monospace;font-size:12px;color:var(--text3);}
+    .changelog-entry .ver-pin{background:var(--accent-dim);border:1px solid var(--border-accent);color:var(--accent);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:0.5px;}
+    .change-group{margin-top:12px;}
+    .change-group .group-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:8px;display:inline-block;padding:2px 8px;border-radius:3px;}
+    .group-feat{background:rgba(0,217,255,.10);color:var(--accent);border:1px solid rgba(0,217,255,.25);}
+    .group-imprv{background:rgba(52,211,153,.10);color:var(--success);border:1px solid rgba(52,211,153,.25);}
+    .group-fix{background:rgba(251,191,36,.10);color:var(--warn);border:1px solid rgba(251,191,36,.25);}
+    .change-group ul{list-style:none;padding-left:0;margin:0;}
+    .change-group li{color:var(--text2);font-size:13.5px;line-height:1.7;padding-left:18px;position:relative;margin-bottom:4px;}
+    .change-group li::before{content:'–';position:absolute;left:4px;color:var(--text3);}
+    .change-group li strong{color:var(--text);font-weight:600;}
   </style>
 </head>
 <body>
 
-<!-- Sidebar -->
 <nav id="sidebar">
   <div class="sidebar-logo">
     <div class="app-name">BUFF</div>
@@ -602,11 +145,11 @@
 
   <div class="nav-section">
     <div class="nav-heading">タブ別ガイド</div>
-    <a class="nav-link" href="#tab-workout"><span class="icon">🏋️</span>Workout（トレーニング）</a>
-    <a class="nav-link" href="#tab-stats"><span class="icon">📊</span>Stats（統計）</a>
+    <a class="nav-link" href="#tab-workout"><span class="icon">🏋️</span>ワークアウト</a>
+    <a class="nav-link" href="#tab-stats"><span class="icon">📊</span>統計</a>
     <a class="nav-link" href="#tab-ai"><span class="icon">🤖</span>AI（トレーナー）</a>
-    <a class="nav-link" href="#tab-exercises"><span class="icon">📚</span>Exercises（種目）</a>
-    <a class="nav-link" href="#tab-personal"><span class="icon">👤</span>Personal（個人情報）</a>
+    <a class="nav-link" href="#tab-exercises"><span class="icon">📚</span>種目</a>
+    <a class="nav-link" href="#tab-personal"><span class="icon">👤</span>プロフィール</a>
   </div>
 
   <div class="nav-section">
@@ -616,6 +159,8 @@
     <a class="nav-link" href="#bodyweight"><span class="icon">⚖️</span>自重トレーニング</a>
     <a class="nav-link" href="#templates"><span class="icon">📋</span>ルーティンテンプレート</a>
     <a class="nav-link" href="#personal-best"><span class="icon">🏆</span>パーソナルベスト</a>
+    <a class="nav-link" href="#exercise-history"><span class="icon">📈</span>種目別の履歴ビュー</a>
+    <a class="nav-link" href="#condition"><span class="icon">❤️‍🩹</span>コンディション分析</a>
     <a class="nav-link" href="#interval-timer"><span class="icon">⏱️</span>インターバルタイマー</a>
     <a class="nav-link" href="#ai-suggestion"><span class="icon">🧠</span>AIによる種目提案</a>
     <a class="nav-link" href="#live-activity"><span class="icon">🏝️</span>Dynamic Island</a>
@@ -627,40 +172,37 @@
   <div class="nav-section">
     <div class="nav-heading">設定・その他</div>
     <a class="nav-link" href="#settings"><span class="icon">⚙️</span>各種設定</a>
+    <a class="nav-link" href="#theme"><span class="icon">🌓</span>テーマ（外観）</a>
     <a class="nav-link" href="#faq"><span class="icon">❓</span>よくある質問</a>
     <a class="nav-link" href="#changelog"><span class="icon">📝</span>更新履歴</a>
   </div>
 </nav>
 
-<!-- Hamburger -->
 <button id="hamburger" aria-label="メニューを開く">☰</button>
 
-<!-- Main -->
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v2.3.8</span>
+    <span class="version-badge">v2.6.0</span>
   </div>
 
   <div class="content" id="top">
 
-    <!-- Hero -->
     <div class="hero">
       <div class="hero-title"><span>BUFF</span></div>
       <p class="hero-desc">
         筋力トレーニング・有酸素運動の記録に特化した、完全オフライン動作のiOSアプリ。
-        シンプルな操作で、あなたのトレーニングを正確に記録・分析します。
+        記録・分析・AI提案・コンディション管理までを1つのアプリで。
       </p>
       <div class="tab-badges">
-        <span class="tab-badge">🏋️ Workout</span>
-        <span class="tab-badge">📊 Stats</span>
+        <span class="tab-badge">👤 プロフィール</span>
+        <span class="tab-badge">📊 統計</span>
+        <span class="tab-badge">🏋️ ワークアウト</span>
         <span class="tab-badge">🤖 AI</span>
-        <span class="tab-badge">📚 Exercises</span>
-        <span class="tab-badge">👤 Personal</span>
+        <span class="tab-badge">📚 種目</span>
       </div>
     </div>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="overview">
       <div class="section-label">Introduction</div>
       <h2>アプリ概要</h2>
@@ -671,7 +213,7 @@
       <div class="grid-2">
         <div class="card">
           <h4>💪 筋力トレーニング記録</h4>
-          <p>重量・レップ数・セット数を素早く入力。自重トレーニング・加重トレーニングにも対応。</p>
+          <p>重量・レップ数・セット数を素早く入力。自重・加重・体重込みの3パターンに対応。</p>
         </div>
         <div class="card">
           <h4>🏃 有酸素運動記録</h4>
@@ -680,6 +222,22 @@
         <div class="card">
           <h4>📊 詳細な統計分析</h4>
           <p>ベスト記録・部位別ボリューム・トレーニングカレンダーなど多彩な統計表示。</p>
+        </div>
+        <div class="card">
+          <h4>📈 種目別の履歴ビュー <span class="badge-new">NEW</span></h4>
+          <p>種目を選ぶと、最大重量（または距離・時間）の推移チャートと過去のセッション別セット詳細を1画面で確認。</p>
+        </div>
+        <div class="card">
+          <h4>❤️‍🩹 コンディション分析 <span class="badge-new">NEW</span></h4>
+          <p>HealthKitのHRV・安静時心拍・睡眠から回復スコアを算出。負荷バランス・オーバートレーニング警告も。</p>
+        </div>
+        <div class="card">
+          <h4>🤖 AIトレーナー</h4>
+          <p>Apple Intelligenceを活用した対話型アドバイザー。トレーニング・栄養・回復を相談可能。すべてオンデバイス処理（iOS 26以上）。</p>
+        </div>
+        <div class="card">
+          <h4>🧠 AIによる種目提案</h4>
+          <p>過去の記録と部位選択をもとに、今日のおすすめ種目を提案。ワンタップで呼び出し可能。</p>
         </div>
         <div class="card">
           <h4>⏱️ インターバルタイマー</h4>
@@ -694,17 +252,16 @@
           <p>体重・体脂肪率・身長データをApple Healthと同期（オプション設定）。</p>
         </div>
         <div class="card">
-          <h4>🤖 AIトレーナー <span class="badge-new">NEW</span></h4>
-          <p>Apple Intelligenceを活用した対話型アドバイザー。トレーニング・栄養・回復を相談可能。すべてオンデバイス処理（iOS 26以上）。</p>
+          <h4>🌓 ライト／ダーク両モード <span class="badge-new">NEW</span></h4>
+          <p>設定でテーマ（ダーク／ライト／システム）を選択可能。OSの外観設定にも追従。</p>
         </div>
         <div class="card">
-          <h4>🧠 AIによる種目提案 <span class="badge-new">NEW</span></h4>
-          <p>過去の記録と部位選択をもとに、今日のおすすめ種目を提案。ワンタップで呼び出し可能。</p>
+          <h4>🔐 完全プライバシー保護</h4>
+          <p>広告なし・課金なし・データは端末内のみ。オフラインで全機能利用可能。</p>
         </div>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="quickstart">
       <div class="section-label">Getting Started</div>
       <h2>クイックスタート</h2>
@@ -723,15 +280,15 @@
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-body">
-            <strong>Workoutタブを開く</strong>
-            <p>下部タブバーの中央「🏋️ Workout」をタップしてトレーニング画面を開きます。</p>
+            <strong>ワークアウトタブを開く</strong>
+            <p>下部タブバーの中央「🏋️ ワークアウト」をタップしてトレーニング画面を開きます。</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
             <strong>「種目を追加」をタップ</strong>
-            <p>初めから56種類以上の種目が登録されています。種目を選んでトレーニングを開始しましょう。</p>
+            <p>初めから50種類以上の種目が登録されています。種目を選んでトレーニングを開始しましょう。</p>
           </div>
         </div>
         <div class="step">
@@ -745,7 +302,7 @@
           <div class="step-num">5</div>
           <div class="step-body">
             <strong>インターバルタイマーを活用する</strong>
-            <p>Workoutタブのメニュー、またはセット完了後のフローティングバナーからタイマーを起動。Dynamic Islandに残り時間が表示されます。</p>
+            <p>種目カードヘッダーの「タイマー」ボタンからタイマーを起動。Dynamic Islandに残り時間が表示されます。</p>
           </div>
         </div>
       </div>
@@ -756,135 +313,59 @@
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="ui-basic">
       <div class="section-label">Navigation</div>
       <h2>基本的な操作</h2>
       <div class="accent-line"></div>
 
       <h3>タブバー</h3>
-      <p>画面下部の5つのタブで主要機能にアクセスします。</p>
+      <p>画面下部の5つのタブで主要機能にアクセスします。<span class="badge-new">NEW</span> v2.6.0 でタブ名が日本語化されました。</p>
 
       <table>
         <tr><th>タブ</th><th>アイコン</th><th>機能</th></tr>
-        <tr><td><strong>Personal</strong></td><td>👤</td><td>体重・体脂肪率・身長の記録とグラフ表示</td></tr>
-        <tr><td><strong>Stats</strong></td><td>📊</td><td>トレーニング統計・ベスト記録・カレンダー</td></tr>
-        <tr><td><strong>Workout</strong></td><td>🏋️</td><td>本日のトレーニングを記録（メイン画面）</td></tr>
-        <tr><td><strong>AI</strong> <span class="badge-new">NEW</span></td><td>🤖</td><td>AIトレーナーへの相談・質問テンプレート（iOS 26以上）</td></tr>
-        <tr><td><strong>Exercises</strong></td><td>📚</td><td>種目の管理・検索・詳細確認</td></tr>
+        <tr><td><strong>プロフィール</strong></td><td>👤</td><td>体重・体脂肪率・身長の記録とグラフ表示、設定エントリポイント</td></tr>
+        <tr><td><strong>統計</strong></td><td>📊</td><td>トレーニング統計・ベスト記録・コンディション分析・グラフ</td></tr>
+        <tr><td><strong>ワークアウト</strong></td><td>🏋️</td><td>本日のトレーニングを記録（メイン画面）</td></tr>
+        <tr><td><strong>AI</strong></td><td>🤖</td><td>AIトレーナーへの相談・質問テンプレート（iOS 26以上）</td></tr>
+        <tr><td><strong>種目</strong></td><td>📚</td><td>種目の管理・検索・詳細確認</td></tr>
       </table>
 
       <h3>共通のジェスチャー</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>👆 タップ</h4>
-          <p>ボタンの操作、選択、入力欄のフォーカスなど基本操作。</p>
-        </div>
-        <div class="card">
-          <h4>👈 スワイプ（左）</h4>
-          <p>セット・セッションの削除アクションを呼び出す。</p>
-        </div>
-        <div class="card">
-          <h4>☝️ 長押し</h4>
-          <p>一部のカードで追加オプションメニューを表示。</p>
-        </div>
-        <div class="card">
-          <h4>🔽 プルダウン</h4>
-          <p>リストを上から引っ張ってシートを閉じる操作。</p>
-        </div>
+        <div class="card"><h4>👆 タップ</h4><p>ボタンの操作、選択、入力欄のフォーカスなど基本操作。</p></div>
+        <div class="card"><h4>👈 スワイプ（左）</h4><p>セット・セッションの削除アクションを呼び出す。</p></div>
+        <div class="card"><h4>☝️ 長押し</h4><p>一部のカードで追加オプションメニューを表示。</p></div>
+        <div class="card"><h4>🔽 プルダウン</h4><p>リストを上から引っ張ってシートを閉じる操作。</p></div>
       </div>
 
       <h3>ナビゲーションバーのボタン</h3>
       <p>各タブ右上の <span class="hl">…（省略記号）ボタン</span> をタップすると、そのタブ固有のメニュー（追加・管理・設定など）が表示されます。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="tab-workout">
       <div class="section-label">Tab</div>
-      <h2>🏋️ Workout（トレーニング）</h2>
+      <h2>🏋️ ワークアウト</h2>
       <div class="accent-line"></div>
 
-      <p>Workoutタブはアプリの中心機能です。日付を選択してその日のトレーニングを記録します。過去の日付に遡って記録することも可能です。</p>
+      <p>ワークアウトタブはアプリの中心機能です。日付を選択してその日のトレーニングを記録します。過去の日付に遡って記録することも可能です。</p>
 
       <h3>画面の構成</h3>
-      <div class="card">
-        <h4>📅 日付セレクター</h4>
-        <p>画面上部の日付をタップするとカレンダーが開きます。過去の日付を選ぶと、その日のセッションデータが表示されます。「前回」「次回」ボタンでトレーニング日をスキップ移動できます。</p>
-      </div>
-      <div class="card">
-        <h4>📝 セッションメモ</h4>
-        <p>セッション全体のメモを記録できます。コンディション・体調・特記事項などに活用してください。</p>
-      </div>
-      <div class="card">
-        <h4>🔄 セット進捗リング <span class="badge-new">NEW</span></h4>
-        <p>ナビゲーションバー中央に完了セット数/総セット数の進捗リングを表示。筋トレ（青）・有酸素（オレンジ）で色分けされます。</p>
-      </div>
-      <div class="card">
-        <h4>➕ 種目を追加</h4>
-        <p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。</p>
-      </div>
-      <div class="card">
-        <h4>🧠 AI提案 <span class="badge-new">NEW</span></h4>
-        <p>「種目を追加」ボタンの横に配置。タップすると過去の記録と選択した部位をもとに、おすすめ種目をAIが提案します。詳細は「<a href="#ai-suggestion" style="color:var(--accent)">AIによる種目提案</a>」をご覧ください。</p>
-      </div>
-      <div class="card">
-        <h4>📋 テンプレートを読み込む</h4>
-        <p>右上メニューからルーティンテンプレートを読み込み、種目群をまとめて追加できます。</p>
-      </div>
-      <div class="card">
-        <h4>⏱️ インターバルタイマー <span class="badge-new">NEW</span></h4>
-        <p>右上「⋮」メニュー →「インターバルタイマー」、または起動中のフローティングバナーからタイマーシートを開きます。プリセット選択・カスタム時間・停止・リセットをシート内で完結できます。詳細は「<a href="#interval-timer" style="color:var(--accent)">インターバルタイマー</a>」をご覧ください。</p>
-      </div>
-      <div class="card">
-        <h4>🪟 フローティングミニタイマー <span class="badge-new">NEW</span></h4>
-        <p>タイマー起動中は画面下部にミニタイマーが常時表示され、残り時間の確認・再スタート・停止がその場で可能です。</p>
-      </div>
+      <div class="card"><h4>📅 日付セレクター</h4><p>画面上部の日付をタップするとカレンダーが開きます。過去の日付を選ぶと、その日のセッションデータが表示されます。「前回」「次回」ボタンでトレーニング日をスキップ移動できます。</p></div>
+      <div class="card"><h4>📝 セッションメモ</h4><p>セッション全体のメモを記録できます。コンディション・体調・特記事項などに活用してください。</p></div>
+      <div class="card"><h4>➕ 種目を追加</h4><p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。</p></div>
+      <div class="card"><h4>🧠 AI提案</h4><p>「種目を追加」ボタンの横に配置。タップすると過去の記録と選択した部位をもとに、おすすめ種目をAIが提案します。</p></div>
+      <div class="card"><h4>📋 テンプレートを読み込む</h4><p>右上メニューからルーティンテンプレートを読み込み、種目群をまとめて追加できます。</p></div>
+      <div class="card"><h4>⏱️ タイマーボタン（種目ヘッダー） <span class="badge-new">NEW</span></h4><p>v2.6.0 から、タイマーボタンは各セット行ではなく <strong>種目カードのヘッダー</strong> に集約されました。種目ごとに1つだけ表示され、セット行の横幅が広く使えるようになりました。</p></div>
+      <div class="card"><h4>🪟 フローティングミニタイマー</h4><p>タイマー起動中は画面下部にミニタイマーが常時表示され、残り時間の確認・再スタート・停止がその場で可能です。</p></div>
 
       <h3>種目カードの操作</h3>
-
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>種目を追加する</strong>
-            <p>「+ 種目を追加」ボタン → 種目を検索・選択。カード形式で追加されます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>セットを記録する</strong>
-            <p>種目カード内の「+ セット追加」をタップ。重量・レップ数を入力後、チェックボタンで完了。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>セットを削除する</strong>
-            <p>セット行を左にスワイプして「削除」をタップ。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <strong>種目にメモを追加</strong>
-            <p>種目カードのメモアイコンをタップして、その種目専用のメモを記録。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-body">
-            <strong>種目を削除する</strong>
-            <p>種目カード右上の「⋮」メニューから削除を選択。記録したセットも含め削除されます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">6</div>
-          <div class="step-body">
-            <strong>種目を並び替える</strong>
-            <p>種目カードを長押ししてそのままドラッグすると、好きな位置に並び替えられます。</p>
-          </div>
-        </div>
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>種目を追加する</strong><p>「+ 種目を追加」ボタン → 種目を検索・選択。カード形式で追加されます。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>セットを記録する</strong><p>種目カード内の「+ セット追加」をタップ。重量・レップ数を入力後、チェックボタンで完了。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>セットを削除する</strong><p>セット行右端の「削除」ボタンをタップ。</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>種目にメモを追加</strong><p>セット行の「メモ」ボタンをタップして、そのセット専用のメモを記録。</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><strong>種目を削除する</strong><p>種目カードヘッダーの「削除」ボタンから種目を削除。記録したセットも含め削除されます。</p></div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-body"><strong>種目を並び替える</strong><p>種目カードを長押ししてそのままドラッグすると、好きな位置に並び替えられます。</p></div></div>
       </div>
 
       <div class="tip-box">
@@ -893,316 +374,128 @@
       </div>
 
       <h3>種目ヘッダーの前回値表示</h3>
-      <p>種目カードのヘッダーには、前回セッションのベストセット（最大ボリューム = 重量 × 回数）が <span class="hl">📅 前回: X.Xkg × X回</span> の形式で自動表示されます。前回の記録を見ながら今日の目標重量を設定できます。各種目ヘッダーには主部位ラベル（胸/背中/脚/腕/肩/腹筋/有酸素）も表示され、部位を視覚的に確認できます。</p>
-
-      <h3>前回比インジケーター <span class="badge-new">NEW</span></h3>
-      <p>種目カードに前回のベストセットとの比較を矢印アイコン（↑↓→）で表示。前回より上がったか、下がったか、同じかが一目で分かります。</p>
+      <p>種目カードのヘッダーには、前回セッションのベストセット（最大ボリューム = 重量 × 回数）が <span class="hl">📅 前回: X.Xkg × X回</span> の形式で自動表示されます。前回の記録を見ながら今日の目標重量を設定できます。</p>
 
       <h3>ワークアウトサマリー</h3>
       <p>セッション完了後に表示されるサマリーが、筋トレと有酸素で分けて表示されます。</p>
       <div class="grid-2">
-        <div class="card">
-          <h4>💪 筋トレサマリー</h4>
-          <p>総ボリューム・総セット数・種目数・最高重量・合計レップ・平均レップを2行6項目で表示。</p>
-        </div>
-        <div class="card">
-          <h4>🏃 有酸素サマリー</h4>
-          <p>総時間・総距離・消費カロリーを表示（記録がある項目のみ）。筋トレのみ/有酸素のみの日は該当セクションのみ表示。</p>
-        </div>
+        <div class="card"><h4>💪 筋トレサマリー</h4><p>総ボリューム・総セット数・種目数・最高重量・合計レップ・平均レップを2行6項目で表示。</p></div>
+        <div class="card"><h4>🏃 有酸素サマリー</h4><p>総時間・総距離・消費カロリーを表示（記録がある項目のみ）。</p></div>
       </div>
-
-      <h3>表示・並び順の設定</h3>
-      <table>
-        <tr><th>設定項目</th><th>選択肢</th><th>説明</th></tr>
-        <tr><td>種目の並び順</td><td>新しい順 / 古い順</td><td>追加した種目の表示順序</td></tr>
-        <tr><td>セットの並び順</td><td>新しい順 / 古い順</td><td>記録したセットの表示順序</td></tr>
-        <tr><td>入力方式</td><td>テキスト入力 / ダイヤル</td><td>数値の入力方法の切り替え</td></tr>
-        <tr><td>種目の自動並び替え <span class="badge-new">NEW</span></td><td>ON / OFF</td><td>部位カテゴリー別（胸→背中→脚→腕→肩→腹筋→有酸素）に自動グルーピング</td></tr>
-        <tr><td>種目ロック <span class="badge-new">NEW</span></td><td>ON / OFF</td><td>ワークアウト中に種目の追加・削除・並び替えを禁止し、セット入力に集中</td></tr>
-        <tr><td>前回データの取得方法 <span class="badge-new">NEW</span></td><td>最初のセット / 最後のセット / 最高値</td><td>初セットの「前回」ボタンで自動入力する値のソース</td></tr>
-      </table>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="tab-stats">
       <div class="section-label">Tab</div>
-      <h2>📊 Stats（統計）</h2>
+      <h2>📊 統計</h2>
       <div class="accent-line"></div>
 
-      <p>Statsタブでは、これまでのトレーニング履歴を多角的に分析・可視化します。3つのサブタブで情報を切り替えられます。サブタブの切り替えはタップのみ対応しており、スワイプ操作では切り替わりません（スクロール位置が意図せずリセットされない設計）。</p>
+      <p>統計タブでは、これまでのトレーニング履歴を多角的に分析・可視化します。3つのサブタブで情報を切り替えられます。</p>
 
       <h3>概要タブ</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>📆 トレーニングカレンダー</h4>
-          <p>月間のトレーニング日をカレンダー上で確認。実施した日は強調表示。「今日」ボタンで当日に素早くジャンプ。ストリーク日数も表示されます（例: 🔥 5日連続）。</p>
-        </div>
-        <div class="card">
-          <h4>🔥 連続記録（ストリーク）</h4>
-          <p>何日連続でトレーニングしたかを表示。モチベーション維持に活用できます。</p>
-        </div>
-        <div class="card">
-          <h4>📈 累計統計</h4>
-          <p>総セット数・総ボリューム（重量×回数の合計）・今月/今週の実績を表示。</p>
-        </div>
-        <div class="card">
-          <h4>🦾 部位別ボリューム</h4>
-          <p>胸・背中・脚・肩・腕・腹筋それぞれのトレーニングボリューム分布を表示。</p>
-        </div>
-        <div class="card">
-          <h4>📊 週次/月次プログレス <span class="badge-new">NEW</span></h4>
-          <p>先週比のボリューム・セット数・種目数の増減を表示。成長トレンドを把握できます。</p>
-        </div>
-        <div class="card">
-          <h4>⚖️ 筋肉バランスアラート <span class="badge-new">NEW</span></h4>
-          <p>トレーニング部位の偏りを検知して通知。バランスの良いトレーニングをサポートします。</p>
-        </div>
-        <div class="card">
-          <h4>🎯 週間トレーニング目標 <span class="badge-new">NEW</span></h4>
-          <p>週あたりのトレーニング回数目標を設定し、進捗を可視化します。</p>
-        </div>
-        <div class="card">
-          <h4>📤 CSVエクスポート <span class="badge-new">NEW</span></h4>
-          <p>トレーニングデータをCSV形式で出力・共有。Excel互換のBOM付きUTF-8で出力されます。</p>
-        </div>
+        <div class="card"><h4>❤️‍🩹 コンディションセクション <span class="badge-new">NEW</span></h4><p>v2.5.0 から先頭に追加。回復スコア・トレーニング負荷・オーバートレーニング警告をひと目で確認できます。詳細は「<a href="#condition" style="color:var(--accent)">コンディション分析</a>」をご覧ください。</p></div>
+        <div class="card"><h4>📆 トレーニングカレンダー</h4><p>月間のトレーニング日をカレンダー上で確認。実施した日は強調表示。「今日」ボタンで当日に素早くジャンプ。</p></div>
+        <div class="card"><h4>🔥 連続記録（ストリーク）</h4><p>何日連続でトレーニングしたかを表示。モチベーション維持に活用できます。</p></div>
+        <div class="card"><h4>📈 累計統計</h4><p>総セット数・総ボリューム・今月/今週の実績を表示。</p></div>
+        <div class="card"><h4>🦾 部位別ボリューム</h4><p>胸・背中・脚・肩・腕・腹筋それぞれのトレーニングボリューム分布を表示。</p></div>
+        <div class="card"><h4>📊 週次プログレス</h4><p>先週比のボリューム・セット数・種目数の増減を表示。週間目標の達成度も可視化。</p></div>
+        <div class="card"><h4>⚖️ 筋肉バランスアラート</h4><p>トレーニング部位の偏りを検知して通知。バランスの良いトレーニングをサポート。</p></div>
+        <div class="card"><h4>📤 CSVエクスポート</h4><p>トレーニングデータをCSV形式で出力・共有。Excel互換のBOM付きUTF-8で出力。</p></div>
       </div>
 
       <h3>ベスト記録タブ</h3>
-      <p>各種目の自己ベスト記録を一覧表示します。横スクロールフィルターで絞り込みが可能です。</p>
-
+      <p>各種目の自己ベスト記録を一覧表示します。フィルターは2段構成で絞り込みが可能です。</p>
       <table>
-        <tr><th>フィルター</th><th>内容</th></tr>
-        <tr><td>全て</td><td>すべての種目のベスト記録を表示（デフォルト）</td></tr>
-        <tr><td>お気に入り</td><td>お気に入り登録済みの種目のみ表示</td></tr>
-        <tr><td>胸 / 背中 / 脚 / 肩 / 腕 / 腹筋</td><td>各部位の種目のみ表示</td></tr>
-        <tr><td>有酸素</td><td>有酸素種目のみ表示</td></tr>
+        <tr><th>段</th><th>フィルター</th></tr>
+        <tr><td>上段</td><td>全て / お気に入り / 胸 / 背中 / 脚 / 肩 / 腕 / 腹筋 / 有酸素</td></tr>
+        <tr><td>下段</td><td>日 / 週 / 月 / 3ヶ月 / 6ヶ月 / 年（期間切替）</td></tr>
       </table>
 
       <div class="tip-box">
         <span class="tip-icon">🏆</span>
-        <p>筋力種目は推定1RM（1回最大挙上重量）で比較されます。有酸素種目は最長時間・最長距離で表示されます。</p>
+        <p>筋力種目は最高重量・回数・推定1RMで表示されます。有酸素種目は最長時間・最長距離で表示されます。各カードのチャートで時系列推移も確認できます。</p>
       </div>
 
       <h3>分析タブ</h3>
       <p>期間を「日・週・月・6ヶ月・年」から選び、以下のグラフとサマリーを確認できます。</p>
-      <div class="card">
-        <h4>🏃 有酸素サマリー</h4>
-        <p>期間フィルターに連動して、有酸素運動の総時間・総距離・消費カロリーを集計表示。有酸素記録がある場合のみ表示されます。</p>
-      </div>
-      <div class="card">
-        <h4>📅 トレーニング頻度グラフ</h4>
-        <p>期間に応じて日別/週別/月別に自動集計し、棒グラフで頻度を可視化。</p>
-      </div>
-      <div class="card">
-        <h4>📈 セット数推移グラフ</h4>
-        <p>期間内の日別セット数の推移を折れ線グラフで表示。</p>
-      </div>
-      <div class="card">
-        <h4>💪 総ボリューム推移グラフ</h4>
-        <p>重量×回数の合計ボリュームの時系列変化を表示。筋力種目のみが対象。</p>
-      </div>
-      <div class="card">
-        <h4>🍩 部位別分布グラフ</h4>
-        <p>全体に占める各部位のトレーニング割合を表示。グラフ右上のボタンでドーナツグラフ⇄横棒グラフを切り替え可能。タップで選択した部位の値を表示。集約表示と展開トグルで詳細の表示/非表示を切り替えられます。「サブ部位を含む」トグルで補助筋群のカウントを切り替えられます。</p>
-      </div>
-      <div class="card">
-        <h4>📊 種目別分布グラフ</h4>
-        <p>どの種目を最も多く行ったかを分布グラフで表示。グラフ右上のボタンでドーナツグラフ⇄横棒グラフを切り替え可能。タップで選択した種目の値を表示。集約表示と展開トグルで詳細の表示/非表示を切り替えられます。</p>
-      </div>
+      <div class="card"><h4>🏃 有酸素サマリー</h4><p>期間フィルターに連動して、有酸素運動の総時間・総距離・消費カロリーを集計表示。</p></div>
+      <div class="card"><h4>📅 トレーニング頻度グラフ</h4><p>期間に応じて日別/週別/月別に自動集計し、棒グラフで頻度を可視化。</p></div>
+      <div class="card"><h4>📈 セット数推移グラフ</h4><p>期間内の日別セット数の推移を折れ線グラフで表示。</p></div>
+      <div class="card"><h4>💪 総ボリューム推移グラフ</h4><p>重量×回数の合計ボリュームの時系列変化を表示。筋力種目のみが対象。</p></div>
+      <div class="card"><h4>🍩 部位別分布グラフ</h4><p>全体に占める各部位のトレーニング割合を表示。ドーナツ⇄横棒切替可能。</p></div>
+      <div class="card"><h4>📊 種目別分布グラフ</h4><p>どの種目を最も多く行ったかを分布グラフで表示。ドーナツ⇄横棒切替可能。</p></div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="tab-ai">
       <div class="section-label">Tab</div>
-      <h2>🤖 AI（トレーナー） <span class="badge-new">NEW</span></h2>
+      <h2>🤖 AI（トレーナー）</h2>
       <div class="accent-line"></div>
 
-      <p>AIタブは、Apple Intelligence を活用した対話型のトレーニングアドバイザーです。トレーニング・栄養・回復について自然な会話で相談できます。すべての処理はデバイス上で完結するため、データが外部に送信されることはありません。</p>
+      <p>AIタブは、Apple Intelligence を活用した対話型のトレーニングアドバイザーです。すべての処理はデバイス上で完結し、データは外部に送信されません。</p>
 
       <div class="warn-box">
         <span class="warn-icon">⚠️</span>
-        <p>AIトレーナーは <strong>iOS 26 以上 + Apple Intelligence が有効な端末</strong> で利用可能です。条件を満たさない場合は利用不可の理由が画面に表示されます。</p>
+        <p>AIトレーナーは <strong>iOS 26 以上 + Apple Intelligence が有効な端末</strong> で利用可能です。</p>
       </div>
 
       <h3>主な機能</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>💬 マルチターン対話</h4>
-          <p>会話履歴を保持しながら、自然な流れで複数回のやり取りが可能。「次はどの部位をやるべき？」「タンパク質はどれくらい必要？」などを継続的に相談できます。</p>
-        </div>
-        <div class="card">
-          <h4>📚 履歴ベースの回答</h4>
-          <p>経験済みの種目・未経験の登録種目・最近のトレーニング履歴を踏まえて回答。一般論ではなく、あなたの状況に合わせたアドバイスが得られます。</p>
-        </div>
-        <div class="card">
-          <h4>🔒 完全オンデバイス処理</h4>
-          <p>すべての推論はApple Intelligenceのオンデバイスモデルで実行。トレーニングデータ・会話内容が外部サーバーに送信されることはありません。</p>
-        </div>
-        <div class="card">
-          <h4>📝 マークダウン表示</h4>
-          <p>AIの回答は見出し・箇条書き・番号付きリスト・太字をきれいにレンダリング。長めのアドバイスも読みやすく表示されます。</p>
-        </div>
-      </div>
-
-      <h3>質問テンプレート</h3>
-      <p>AIタブの初期画面には、すぐに相談を始められる質問テンプレートが表示されます。</p>
-      <div class="card">
-        <h4>🤖 ルールベース動的生成</h4>
-        <p>あなたのトレーニング履歴をもとに、自動で文脈に沿った質問を生成。例：「胸を5日間やってないけど、今日やるべき？」など、状況に応じた質問が並びます。</p>
-      </div>
-      <div class="card">
-        <h4>✨ AIによる質問生成</h4>
-        <p>「AIでおすすめの質問を生成」ボタンをタップすると、Apple Intelligenceがよりパーソナライズされた質問を提案します。</p>
+        <div class="card"><h4>💬 マルチターン対話</h4><p>会話履歴を保持しながら、自然な流れで複数回のやり取りが可能。</p></div>
+        <div class="card"><h4>📚 履歴ベースの回答</h4><p>登録種目・最近のトレーニング履歴・コンディション情報を踏まえて回答。</p></div>
+        <div class="card"><h4>❤️‍🩹 コンディション連動 <span class="badge-new">NEW</span></h4><p>v2.5.0 から、AIに回復スコアやトレーニング負荷の情報も共有可能に。体調を踏まえたアドバイスが得られます。</p></div>
+        <div class="card"><h4>🔒 完全オンデバイス処理</h4><p>すべての推論はApple Intelligenceのオンデバイスモデルで実行。データは外部に送信されません。</p></div>
       </div>
 
       <h3>データ共有レベル</h3>
-      <p>AIに共有するデータの粒度を設定できます。Personalタブの設定 →「AIトレーナー設定」から変更可能です。</p>
+      <p>AIに共有するデータの粒度を「設定 → AIトレーナー」から変更可能です。</p>
       <table>
-        <tr><th>レベル</th><th>共有内容</th><th>用途</th></tr>
-        <tr><td><strong>標準</strong></td><td>登録種目・部位・最近のトレーニング有無</td><td>プライバシー重視の最小限の共有</td></tr>
-        <tr><td><strong>詳細</strong></td><td>標準の内容に加え、直近5セッションの重量・レップ・自己ベスト、体重・体脂肪の月次推移</td><td>具体的な数値を踏まえた的確なアドバイスを得たいとき</td></tr>
+        <tr><th>レベル</th><th>共有内容</th></tr>
+        <tr><td><strong>標準</strong></td><td>登録種目・部位・最近のトレーニング有無</td></tr>
+        <tr><td><strong>詳細</strong></td><td>標準 + 直近5セッションの数値・自己ベスト・体重推移・コンディション情報</td></tr>
       </table>
-
-      <div class="tip-box">
-        <span class="tip-icon">💡</span>
-        <p>AIタブの初期画面にはオンデバイス処理・データ非送信であることが明示されています。共有データの内容と処理方式は設定画面でも確認できます。</p>
-      </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="tab-exercises">
       <div class="section-label">Tab</div>
-      <h2>📚 Exercises（種目）</h2>
+      <h2>📚 種目</h2>
       <div class="accent-line"></div>
 
-      <p>登録されているトレーニング種目の一覧と管理画面です。初期状態で50種類以上の種目が登録されています。2行レイアウト（種目名/お気に入り + 部位/実施回数/ジム・家/最高記録）で情報を一覧表示します。</p>
+      <p>登録されているトレーニング種目の一覧と管理画面です。初期状態で50種類以上の種目が登録されています。</p>
 
-      <h3>種目の検索と絞り込み</h3>
-      <div class="card">
-        <h4>🔍 検索バー</h4>
-        <p>画面上部に常時表示される検索バーで種目名・主動筋・補助筋を横断検索できます。入力中は「×」ボタンで素早くクリア可能。検索結果が0件の場合は閉じるボタンが表示されます。</p>
-      </div>
-      <div class="card">
-        <h4>🎯 部位フィルター</h4>
-        <p>検索バー下のボタンで「胸・背中・脚・肩・腕・腹筋・有酸素」に絞り込めます。検索テキストとの組み合わせも可能。</p>
-      </div>
-      <div class="card">
-        <h4>⭐ お気に入りフィルター</h4>
-        <p>星マークをタップしてお気に入り登録した種目のみを表示するフィルター。</p>
-      </div>
+      <h3>種目の検索と絞り込み <span class="badge-new">NEW</span></h3>
+      <p>v2.6.0 から、フィルターが <strong>2段構成</strong> に整理されました。</p>
+      <div class="card"><h4>🔍 検索バー</h4><p>画面上部の検索バーで種目名・主動筋・補助筋を横断検索できます。</p></div>
+      <div class="card"><h4>上段フィルター：全て / ジム / 家 / お気に入り</h4><p>所在地（ジムだけ・家だけ）やお気に入り登録した種目のみを表示。組み合わせ可能。</p></div>
+      <div class="card"><h4>下段フィルター：部位</h4><p>胸 / 背中 / 脚 / 肩 / 腕 / 腹筋 / 有酸素から絞り込み。再タップで選択解除。</p></div>
 
       <h3>種目の詳細確認</h3>
-      <p>種目名をタップすると詳細シートが開き、以下の情報を確認できます。</p>
+      <p>種目名横の「i」アイコンをタップすると詳細シートが開きます。</p>
       <table>
         <tr><th>項目</th><th>内容</th></tr>
         <tr><td>説明</td><td>種目の概要・対象筋肉の解説</td></tr>
         <tr><td>フォームのポイント</td><td>正しいフォームのコツ・注意点</td></tr>
         <tr><td>器具</td><td>使用する器具（バーベル・ダンベル・マシンなど）</td></tr>
         <tr><td>ベスト記録</td><td>これまでの自己最高重量・回数・推定1RM</td></tr>
-        <tr><td>過去のセット記録</td><td>直近のトレーニング履歴</td></tr>
+        <tr><td>履歴を見る <span class="badge-new">NEW</span></td><td>種目別の履歴ビューに直接遷移できるボタン</td></tr>
       </table>
 
-      <h3>種目の追加・編集</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>新規種目を追加</strong>
-            <p>右上「⋮」→「種目を追加」。名前・主動筋・補助筋・器具・説明・フォームのポイントを入力。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>種目を編集</strong>
-            <p>種目を長押しまたは詳細画面から編集ボタンをタップして内容を変更。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>「体重を重量に含める」オプション <span class="badge-new">NEW</span></strong>
-            <p>編集画面で「体重を重量に含める」をON/OFFで切り替え可能。自重種目に限らず全器具で設定でき、ONにすると記録時の重量に体重が加算されます。詳細は「<a href="#bodyweight" style="color:var(--accent)">自重トレーニング</a>」をご覧ください。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <strong>種目をアーカイブ</strong>
-            <p>使わなくなった種目はアーカイブ（非表示）にできます。過去の記録は保持されます。</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>編集モード（一括操作） <span class="badge-new">NEW</span></h3>
-      <p>右上「⋮」→「編集」で編集モードに入ります。チェックボックスで複数の種目を選択し、以下の一括操作が可能です。</p>
-      <div class="grid-2">
-        <div class="card">
-          <h4>🗂️ 一括アーカイブ</h4>
-          <p>選択した種目をまとめてアーカイブ。</p>
-        </div>
-        <div class="card">
-          <h4>🏠 一括ジム/家設定</h4>
-          <p>ジムのみ・家のみ・両方・リセットを一括で設定。</p>
-        </div>
-      </div>
-
-      <div class="tip-box">
-        <span class="tip-icon">⭐</span>
-        <p>お気に入りに登録した種目は、Statsタブの「ベスト記録」でフィルター表示でき、種目ピッカーでも優先的に表示されます。</p>
-      </div>
+      <h3>種目の追加・編集・アーカイブ</h3>
+      <p>右上の「⋮」メニューから種目の追加・編集・アーカイブ管理が可能です。「体重を重量に含める」オプションで自重種目への体重加算も設定できます。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="tab-personal">
       <div class="section-label">Tab</div>
-      <h2>👤 Personal（個人情報）</h2>
+      <h2>👤 プロフィール</h2>
       <div class="accent-line"></div>
 
-      <p>体重・体脂肪率・身長を時系列で記録・グラフ表示するタブです。HealthKitとの連携設定もここから行います。身体データが未登録の場合はエンプティステート（案内画面）が表示されます。</p>
-
-      <h3>データの記録</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>右上「+」をタップ</strong>
-            <p>新規データ追加シートが開きます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>値を入力する</strong>
-            <p>体重（kg）・体脂肪率（%）・身長（cm）の一部または全部を入力。すべて任意です。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>「保存」をタップ</strong>
-            <p>履歴リストとグラフに反映されます。</p>
-          </div>
-        </div>
-      </div>
+      <p>体重・体脂肪率・身長を時系列で記録・グラフ表示するタブです。設定エントリポイントもここから開きます。</p>
 
       <h3>3つのサブタブ</h3>
-      <p>サブタブの切り替えはタップのみ対応しています。スワイプ操作では切り替わりません（各タブのスクロール位置が保持される設計）。</p>
-      <div class="card">
-        <h4>📜 履歴</h4>
-        <p>記録した体重・体脂肪率・身長を時系列リストで表示。タップで編集、左スワイプで削除。</p>
-      </div>
-      <div class="card">
-        <h4>📈 グラフ</h4>
-        <p>期間（日・週・月・6ヶ月・年）を選んで体重・体脂肪率・身長の推移をグラフで確認。グラフ上のデータポイントをタップすると具体的な値が表示されます。</p>
-      </div>
-      <div class="card">
-        <h4>⚙️ 設定</h4>
-        <p>階層型メニューでカテゴリー別に整理。ワークアウト設定・種目設定・身体データ設定・タイマー設定・アプリ設定・メンテナンス・データ管理から各項目にアクセス。</p>
-      </div>
+      <div class="card"><h4>📜 履歴</h4><p>記録した体重・体脂肪率・身長を時系列リストで表示。タップで編集、左スワイプで削除。データがない場合はわかりやすい空状態画面を表示。</p></div>
+      <div class="card"><h4>📈 グラフ</h4><p>期間（日・週・月・6ヶ月・年）を選んで体重・体脂肪率・身長の推移をグラフで確認。</p></div>
+      <div class="card"><h4>⚙️ 設定 <span class="badge-new">NEW</span></h4><p>v2.6.0 から、設定が単一の「設定」エントリポイントに集約されました。詳細は「<a href="#settings" style="color:var(--accent)">各種設定</a>」をご覧ください。</p></div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="set-recording">
       <div class="section-label">Detail</div>
       <h2>✏️ セットの記録方法</h2>
@@ -1212,40 +505,25 @@
 
       <h3>入力方式の選択</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>⌨️ テキスト入力（デフォルト）</h4>
-          <p>数字キーボードで重量・回数を直接入力。素早い入力が可能。</p>
-        </div>
-        <div class="card">
-          <h4>🎛️ ダイヤル入力</h4>
-          <p>スクロールホイール形式で値を選択。誤入力が少ない。</p>
-        </div>
+        <div class="card"><h4>⌨️ テキスト入力（デフォルト）</h4><p>数字キーボードで重量・回数を直接入力。素早い入力が可能。</p></div>
+        <div class="card"><h4>🎛️ ダイヤル入力</h4><p>スクロールホイール形式で値を選択。誤入力が少ない。</p></div>
       </div>
-      <p>切り替えはPersonalタブの設定、またはWorkoutタブのメニューから行えます。</p>
 
-      <h3>セットの各項目</h3>
+      <h3>セット行のボタン</h3>
+      <p>各セット行には、操作用のボタンが並びます（v2.6.0 でタイマーは種目ヘッダーへ移動）。</p>
       <table>
-        <tr><th>項目</th><th>単位</th><th>説明</th></tr>
-        <tr><td>重量</td><td>kg</td><td>使用した重量（0.5kg単位で入力可能）</td></tr>
-        <tr><td>回数</td><td>reps</td><td>実施したレップ数</td></tr>
-        <tr><td>メモ</td><td>—</td><td>そのセットへの一言メモ</td></tr>
+        <tr><th>ボタン</th><th>動作</th></tr>
+        <tr><td>↑↓</td><td>セットの並び替え</td></tr>
+        <tr><td>メモ</td><td>そのセット専用のメモを記録</td></tr>
+        <tr><td>W.Up</td><td>ウォームアップ判定（上級者モード時のみ）</td></tr>
+        <tr><td>複製/前回</td><td>直前のセットを複製（または前回値で複製）</td></tr>
+        <tr><td>削除</td><td>そのセットを削除</td></tr>
       </table>
 
       <h3>前回記録の自動引き継ぎ</h3>
-      <p>同じ種目を次のセッションで記録する際、前回の重量・回数が自動入力されます。初セットの「前回」ボタンで前回ワークアウトの値を自動入力できます。取得元（最初のセット/最後のセット/最高値）は設定から変更可能です。</p>
-
-      <h3>セットの完了</h3>
-      <p>重量と回数を入力後、<kbd>✓</kbd> チェックボタンをタップするとセット完了となり、記録がすぐに保存されます。自動でパーソナルベストとの比較が行われます。セット行の操作ボタン（複製・削除など）はテキストラベルで表示され、初見でも分かりやすい操作感です。</p>
-
-      <h3>セットの複製</h3>
-      <p>セット行の「複製」ボタンをタップすると、直前のセットを下にコピーします。重量・ノート・補助モードなどの値はそのまま引き継がれます。</p>
-      <div class="card">
-        <h4>🔁 「セット複製時に回数を空にする」オプション <span class="badge-new">NEW</span></h4>
-        <p>設定 → ワークアウト設定 →「セット複製時に回数を空にする」をONにすると、複製したセットの回数のみが空になり、回数フィールドへ自動でフォーカスが入ります。同じ重量で次セットの回数を素早く入力したいときに便利です（デフォルト: OFF）。</p>
-      </div>
+      <p>同じ種目を次のセッションで記録する際、前回の重量・回数が自動入力されます。取得元（最初のセット / 最後のセット / 最高値）は設定から変更可能です。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="cardio">
       <div class="section-label">Detail</div>
       <h2>🏃 有酸素運動の記録</h2>
@@ -1253,7 +531,6 @@
 
       <p>有酸素種目（トレッドミル・エアロバイク・エリプティカルなど）は、筋力種目とは異なる記録項目を持ちます。</p>
 
-      <h3>有酸素種目の記録項目</h3>
       <table>
         <tr><th>項目</th><th>単位</th><th>説明</th></tr>
         <tr><td>時間</td><td>分:秒</td><td>実施した時間</td></tr>
@@ -1263,135 +540,39 @@
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>有酸素種目のベスト記録はStatsタブで確認できます。最長時間・最長距離が自動的に記録されます。</p>
-      </div>
-
-      <h3>有酸素種目の追加方法</h3>
-      <p>種目タイプが「有酸素」の種目を追加するには、Exercisesタブで種目を新規追加する際に種目タイプを「有酸素（Cardio）」に設定してください。</p>
-
-      <div class="warn-box">
-        <span class="warn-icon">⚠️</span>
-        <p>一度記録した種目の「筋力 ↔ 有酸素」タイプ変更は、既存の記録と整合性が取れなくなるため制限されています。</p>
+        <p>有酸素種目のベスト記録は統計タブで確認できます。最長時間・最長距離が自動的に記録されます。</p>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="bodyweight">
       <div class="section-label">Detail</div>
       <h2>⚖️ 自重トレーニング</h2>
       <div class="accent-line"></div>
 
-      <p>プッシュアップ・チンニング・プランクなど、自体重を使う種目に対応しています。v2.3.6 から「回数のみで記録する」「付加重量のみ記録する」「体重を重量に含めて記録する」の3パターンを使い分けられるようになりました。</p>
+      <p>プッシュアップ・チンニング・プランクなど、自体重を使う種目に対応しています。3パターンの記録方法を使い分けられます。</p>
 
-      <h3>記録のパターン</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>🔢 回数のみ（重量0） <span class="badge-new">NEW</span></h4>
-          <p>重量を入力せず（または0kg）、回数だけを記録。一覧では「15回」のように回数のみが表示されます。プッシュアップやプランクなど自重で行う種目の標準的な記録方法です。</p>
-        </div>
-        <div class="card">
-          <h4>➕ 付加重量のみ <span class="badge-new">NEW</span></h4>
-          <p>加重ベスト・ダンベルなどを使う場合、付加重量だけを記録（例：20kg × 8回）。体重は含めません。</p>
-        </div>
-        <div class="card">
-          <h4>⚖️ 体重を重量に含める</h4>
-          <p>種目編集で「体重を重量に含める」をONにすると、Personalタブの最新体重をデフォルトとして自動加算。「体重 + 付加重量」の合計値で記録されます。総挙上量で管理したい場合に有効です。</p>
-        </div>
-        <div class="card">
-          <h4>🔧 設定の場所</h4>
-          <p>「体重を重量に含める」はExercisesタブの種目編集画面でON/OFF可能。自重種目に限らず全器具で設定できます。種目一覧・詳細・パーソナルベスト表示もすべて重量0に対応しています。</p>
-        </div>
-      </div>
-
-      <h3>記録の流れ</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>自重種目をWorkoutに追加</strong>
-            <p>Exercisesタブから自重種目（例：プッシュアップ）を選択して追加します。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>重量と回数を入力</strong>
-            <p>付加重量がない場合は重量を空または0で、回数のみ入力してチェック。付加重量がある場合は重量フィールドに付加重量を入力します。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>体重を含めたい場合（任意）</strong>
-            <p>Exercisesタブで該当種目を編集し、「体重を重量に含める」をON。Personalタブに体重記録があれば自動でデフォルト値として使用されます。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tip-box">
-        <span class="tip-icon">💡</span>
-        <p>v2.3.6 への更新時、過去に体重が含まれていた自重セットは起動時に一度だけ自動補正され、付加重量のみ（または0kg）に変換されます。パーソナルベストも合わせて再計算されます。</p>
+        <div class="card"><h4>🔢 回数のみ（重量0）</h4><p>重量を入力せず、回数だけを記録。プッシュアップやプランクなど自重で行う種目の標準的な記録方法。</p></div>
+        <div class="card"><h4>➕ 付加重量のみ</h4><p>加重ベスト・ダンベルなどを使う場合、付加重量だけを記録（例：20kg × 8回）。</p></div>
+        <div class="card"><h4>⚖️ 体重を重量に含める</h4><p>種目編集で「体重を重量に含める」をONにすると、最新体重を自動加算。総挙上量で管理したい場合に有効。</p></div>
+        <div class="card"><h4>🔧 設定の場所</h4><p>「体重を重量に含める」は種目タブの種目編集画面でON/OFF可能。自重種目に限らず全器具で設定できます。</p></div>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="templates">
       <div class="section-label">Detail</div>
       <h2>📋 ルーティンテンプレート</h2>
       <div class="accent-line"></div>
 
-      <p>よく行うトレーニングの組み合わせ（例：胸の日・背中の日・脚の日）をテンプレートとして保存しておくと、毎回種目を選ぶ手間が省けます。</p>
+      <p>よく行うトレーニングの組み合わせ（例：胸の日・背中の日・脚の日）をテンプレートとして保存できます。</p>
 
-      <h3>テンプレートの保存</h3>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>トレーニング後にWorkoutタブのメニューを開く</strong>
-            <p>右上「⋮」ボタン → 「テンプレートとして保存」を選択。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>テンプレート名を入力</strong>
-            <p>「胸トレ」「背中の日」など分かりやすい名前を付けて保存。</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>テンプレートの読み込み</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>Workoutタブのメニューを開く</strong>
-            <p>右上「⋮」→「テンプレートを読み込む」を選択。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>テンプレートを選択する</strong>
-            <p>保存済みテンプレートの一覧から使うものをタップ。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>種目が追加される</strong>
-            <p>既存の種目がある場合は「差し替えるか追加するか」を確認するダイアログが表示されます。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="warn-box">
-        <span class="warn-icon">⚠️</span>
-        <p>テンプレートには種目の順序のみが保存されます。前回の重量・回数は引き継がれません（各セッションの最新記録から自動設定されます）。</p>
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>テンプレートを保存する</strong><p>ワークアウトタブの右上「⋮」→「テンプレートとして保存」。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>テンプレートを読み込む</strong><p>ワークアウトタブの右上「⋮」→「テンプレートを読み込む」。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>その場で柔軟に編集</strong><p>テンプレートから始めて、その日の気分や体調に合わせて種目を足したり外したり可能。</p></div></div>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="personal-best">
       <div class="section-label">Detail</div>
       <h2>🏆 パーソナルベスト（自己ベスト）</h2>
@@ -1399,7 +580,6 @@
 
       <p>セットを記録するたびに、自動的にパーソナルベスト（PB）との比較が行われます。</p>
 
-      <h3>パーソナルベストの種類</h3>
       <table>
         <tr><th>指標</th><th>説明</th></tr>
         <tr><td>最高重量</td><td>単一セットで挙げた最大重量</td></tr>
@@ -1409,138 +589,92 @@
         <tr><td>重量別最多レップ</td><td>各重量帯での最高レップ数</td></tr>
       </table>
 
-      <h3>PBを更新したとき</h3>
-      <p>パーソナルベストを更新すると、画面上に <span class="tag tag-yellow">🏆 PB更新！</span> のトースト通知が表示されます。一度「NEW PR!」バッジが表示されると、そのセッション中は消えずに維持されます。</p>
-
-      <h3>PBの再計算</h3>
-      <p>まれに統計が正しく表示されない場合、PersonalタブのSettingsから「統計情報を再計算」を実行できます。</p>
-
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>推定1RMはEpley式（weight × (1 + reps / 30)）またはそれに準じる計算式で算出されます。実際の1RMとは異なる場合があります。</p>
+        <p>パーソナルベストを更新すると、画面上に <span class="tag tag-yellow">🏆 PB更新！</span> のトースト通知が表示されます。</p>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="exercise-history">
+      <div class="section-label">Detail</div>
+      <h2>📈 種目別の履歴ビュー <span class="badge-new">NEW</span></h2>
+      <div class="accent-line"></div>
+
+      <p>v2.6.0 で追加された新機能。種目を 1 つ選ぶと、その種目の <strong>時系列推移チャート</strong> と <strong>セッション別のセット詳細</strong> を1画面で振り返れます。</p>
+
+      <h3>表示内容</h3>
+      <div class="grid-2">
+        <div class="card"><h4>📊 推移チャート</h4><p>筋トレ種目: 最大重量の推移（kg）。有酸素種目: 最大距離（m）または最長時間（秒）の推移。期間切替（日・週・月・6ヶ月・年）に対応。</p></div>
+        <div class="card"><h4>📋 セッション別セット詳細</h4><p>日付降順で、各セッションのセット内容（重量×回数、または時間/距離）をすべて確認できます。</p></div>
+      </div>
+
+      <h3>開き方</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>種目タブから</strong><p>種目名横の「i」アイコン → 種目詳細シートの「履歴を見る」ボタンをタップ。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>統計タブから</strong><p>ベスト記録カードの「📈」アイコンをタップして時系列推移をシート表示。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>セッション履歴から</strong><p>セッションサマリーの各種目に表示される「履歴」アイコンをタップ。</p></div></div>
+      </div>
+    </section>
+
+    <section id="condition">
+      <div class="section-label">Detail</div>
+      <h2>❤️‍🩹 コンディション分析 <span class="badge-new">v2.5.0</span></h2>
+      <div class="accent-line"></div>
+
+      <p>HealthKitのデータを使い、その日の身体状態を可視化します。統計タブの「概要」先頭に表示されます。</p>
+
+      <h3>3つの指標</h3>
+      <div class="grid-2">
+        <div class="card"><h4>❤️ 回復スコア</h4><p>HRV・安静時心拍・睡眠から0〜100で算出。<strong>絶好調 / 良好 / やや疲労 / 要休養</strong>の4段階で表示。直近2日 vs 過去14日のベースライン比較で重み付け平均を計算。</p></div>
+        <div class="card"><h4>📊 トレーニング負荷指標</h4><p>直近1週間のボリュームと4週間平均を比較し、<strong>最適 / 過負荷 / 不足</strong>の3段階で判定。</p></div>
+        <div class="card"><h4>⚠️ オーバートレーニング警告</h4><p>同一部位3日以上連続実施・直近負荷が4週間平均の1.5倍超・7日以上の連続トレーニングをルールベースで検知し警告。</p></div>
+        <div class="card"><h4>🤖 AIアドバイス連動</h4><p>AIトレーナーが回復スコアや負荷状況を踏まえたアドバイスを返します（データ共有レベル「詳細」のとき）。</p></div>
+      </div>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p>コンディション分析はHealthKit連携が有効で、HRV・安静時心拍・睡眠データがある場合のみ表示されます。すべての処理は端末内で完結し、データは外部送信されません。</p>
+      </div>
+    </section>
+
     <section id="interval-timer">
       <div class="section-label">Detail</div>
       <h2>⏱️ インターバルタイマー</h2>
       <div class="accent-line"></div>
 
-      <p>セット間のインターバル（休憩）を計測するタイマー機能です。v2.3.0 でWorkout画面に統合され、トレーニング中に画面遷移なくタイマー操作ができるようになりました。</p>
+      <p>セット間のインターバル（休憩）を計測するタイマー機能です。<span class="badge-new">NEW</span> v2.6.0 から、タイマーボタンは <strong>種目カードのヘッダー</strong> に集約されました（以前は各セット行にありました）。</p>
 
       <h3>タイマーの起動方法</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>📋 メニューから起動</h4>
-          <p>Workoutタブ右上の「⋮」メニュー →「インターバルタイマー」をタップ。タイマーシートが開き、プリセット選択・カスタム時間・停止・リセットがすべてシート内で完結します。</p>
-        </div>
-        <div class="card">
-          <h4>🪟 フローティングバナーから起動</h4>
-          <p>タイマー起動中は画面下部にミニタイマーのバナーが表示されます。バナーをタップすると同じタイマーシートが開き、残り時間の確認・再スタート・停止が可能です。</p>
-        </div>
-      </div>
-
-      <h3>基本的な使い方</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>タイマーシートを開く</strong>
-            <p>Workout画面のメニューまたはフローティングバナーからシートを開きます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>タイマー時間を選ぶ</strong>
-            <p>登録済みプリセットボタンをタップするか、「カスタム時間」で任意の秒数を指定。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>スタートボタンをタップ</strong>
-            <p>カウントダウンが始まります。Dynamic Islandまたはロック画面に残り時間が表示されます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <strong>終了時に通知を受け取る</strong>
-            <p>タイマーが0になると通知音とバイブレーションでお知らせします。</p>
-          </div>
-        </div>
+        <div class="card"><h4>🏋️ 種目ヘッダーから起動 <span class="badge-new">NEW</span></h4><p>種目カードのヘッダーにある「タイマー」ボタンをタップ。即座にカウントダウンが開始されます（筋トレ種目のみ）。</p></div>
+        <div class="card"><h4>📋 メニューから起動</h4><p>ワークアウトタブ右上の「⋮」メニュー →「インターバルタイマー」をタップ。タイマーシートが開き、プリセット選択・カスタム時間・停止・リセットが可能。</p></div>
+        <div class="card"><h4>🪟 フローティングバナーから</h4><p>タイマー起動中は画面下部にミニタイマーが表示されます。バナーをタップすると残り時間の確認・再スタート・停止が可能。</p></div>
       </div>
 
       <h3>プリセット管理</h3>
-      <p>プリセットの追加・削除・並び替えはPersonalタブの設定から行います。</p>
-      <div class="card">
-        <h4>🔧 プリセットの管理場所</h4>
-        <p>Personalタブ → 設定 → ワークアウト設定 →「インターバルタイマー プリセット」。名前と秒数を指定して登録（最大10件）。同じ秒数のプリセットは重複登録できません。</p>
-      </div>
-
-      <div class="warn-box">
-        <span class="warn-icon">⚠️</span>
-        <p>Dynamic Islandの表示にはiOS 16.1以降のDynamic Island対応機種が必要です。詳細は「<a href="#live-activity" style="color:var(--accent)">Dynamic Island & Live Activity</a>」をご覧ください。</p>
-      </div>
+      <p>プリセットの追加・削除・並び替えは <strong>設定 → インターバルタイマー プリセット</strong> から行います。最大10件まで登録可能。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="ai-suggestion">
       <div class="section-label">Detail</div>
-      <h2>🧠 AIによる種目提案 <span class="badge-new">NEW</span></h2>
+      <h2>🧠 AIによる種目提案</h2>
       <div class="accent-line"></div>
 
-      <p>Workoutタブの「AI提案」ボタンから、過去の記録と選んだ部位に基づいて、今日のおすすめ種目をAIが提案します。AIタブの対話型「AIトレーナー」とは別機能で、こちらは <strong>種目選びに特化した1ショットの提案</strong> です。</p>
+      <p>ワークアウトタブの「AI提案」ボタンから、過去の記録と選んだ部位に基づいて、今日のおすすめ種目をAIが提案します。</p>
 
-      <h3>使い方</h3>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>AI提案ボタンをタップ</strong>
-            <p>Workoutタブの「種目を追加」ボタンの横にある「AI提案」をタップします。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>鍛える部位を選ぶ <span class="badge-new">NEW</span></strong>
-            <p>胸・背中・脚・肩・腕・腹筋からチェックボックスで選択。選んだ部位から各2〜3種目が提案され、バランスの取れたメニューになります。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>提案された種目を確認</strong>
-            <p>AIが過去の記録と部位選択をもとに、おすすめ種目と全体アドバイスを生成します。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <strong>そのままWorkoutに追加</strong>
-            <p>気に入った提案をそのままWorkoutセッションに取り込めます。</p>
-          </div>
-        </div>
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>AI提案ボタンをタップ</strong><p>ワークアウトタブの「種目を追加」ボタンの横にある「AI提案」をタップ。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>鍛える部位を選ぶ</strong><p>胸・背中・脚・肩・腕・腹筋からチェックボックスで選択。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>提案された種目を確認</strong><p>AIが過去の記録と部位選択をもとに、おすすめ種目と全体アドバイスを生成。</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>そのままワークアウトに追加</strong><p>気に入った提案をそのままセッションに取り込めます。</p></div></div>
       </div>
-
-      <h3>提案元バッジ</h3>
-      <p>提案画面には、Apple Intelligence で生成されたか、通常アルゴリズムで生成されたかを示すバッジが表示されます。</p>
-      <table>
-        <tr><th>バッジ</th><th>条件</th><th>動作</th></tr>
-        <tr><td>Apple Intelligence</td><td>iOS 26 以上 + Apple Intelligence 有効</td><td>FoundationModelsフレームワークによるオンデバイスAI推論</td></tr>
-        <tr><td>通常アルゴリズム</td><td>iOS 25 以下 / Apple Intelligence 無効</td><td>従来のルールベースで提案を生成（フォールバック）</td></tr>
-      </table>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>Apple Intelligenceが利用できない場合は、その理由（デバイス非対応・設定未有効など）が画面に表示されたうえで、ルールベースの提案にフォールバックします。提案機能自体はどの環境でも利用可能です。</p>
+        <p>Apple Intelligenceが利用できない場合は、ルールベースの提案にフォールバックします。提案機能自体はどの環境でも利用可能です。</p>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="live-activity">
       <div class="section-label">Detail</div>
       <h2>🏝️ Dynamic Island & Live Activity</h2>
@@ -1548,47 +682,9 @@
 
       <p>インターバルタイマーを起動すると、iPhone 14 Pro以降のDynamic Islandとロックスクリーンにカウントダウンがリアルタイム表示されます。</p>
 
-      <h3>有効化の方法</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>通知の許可</strong>
-            <p>初回起動時または設定から「通知を許可」してください。Live Activityの表示に必要です。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>PersonalタブでLive Activityを有効化</strong>
-            <p>設定タブ → 「Live Activityを有効にする」をONに。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>インターバルタイマーを起動</strong>
-            <p>タイマーを開始すると自動的にLive Activityが起動します。</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>表示される情報</h3>
-      <table>
-        <tr><th>場所</th><th>表示内容</th></tr>
-        <tr><td>Dynamic Island（コンパクト左）</td><td>⏱️ タイマーアイコン</td></tr>
-        <tr><td>Dynamic Island（コンパクト右）</td><td>残り時間（カウントダウン）</td></tr>
-        <tr><td>Dynamic Island（拡大）</td><td>「インターバル」ラベル・大きな残り時間・設定時間</td></tr>
-        <tr><td>ロック画面バナー</td><td>タイマーアイコン・残り時間・設定時間</td></tr>
-      </table>
-
-      <div class="warn-box">
-        <span class="warn-icon">⚠️</span>
-        <p>アプリを強制終了（スワイプアップで完全に閉じる）するとLive Activityが終了します。ホームボタンに戻るだけ（バックグラウンド）なら継続して表示されます。</p>
-      </div>
+      <p>有効化するには、設定 →「ダイナミックアイランド」をONにしてください。通知許可も必要です。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="widget">
       <div class="section-label">Detail</div>
       <h2>📱 ホーム画面ウィジェット</h2>
@@ -1596,260 +692,143 @@
 
       <p>ホーム画面やロック画面にウィジェットを追加することで、アプリを開かずにトレーニング状況を確認できます。</p>
 
-      <h3>ウィジェットの追加方法</h3>
-      <p>ホーム画面を長押し →「＋」ボタン → 「BUFF」を検索・選択 → サイズを選んで追加。</p>
-
-      <h3>ウィジェットの種類</h3>
       <div class="grid-2">
-        <div class="card">
-          <h4>小（Small）</h4>
-          <p>今日のトレーニング状況とストリークを表示。未実施の場合は「未実施」と表示。</p>
-        </div>
-        <div class="card">
-          <h4>中（Medium）</h4>
-          <p>ストリーク・今週のセット数・ボリューム・カロリーを一覧表示。今日が未実施の場合は自動でメッセージ表示。</p>
-        </div>
-        <div class="card">
-          <h4>大（Large）</h4>
-          <p>今日・今週・今月・最終トレーニング日をセクション分けして詳細表示。最終トレーニング日は「今日」「昨日」「X日前」で自動判定。</p>
-        </div>
+        <div class="card"><h4>小（Small）</h4><p>今日のトレーニング状況とストリークを表示。</p></div>
+        <div class="card"><h4>中（Medium）</h4><p>ストリーク・今週のセット数・ボリューム・カロリーを表示。</p></div>
+        <div class="card"><h4>大（Large）</h4><p>今日・今週・今月・最終トレーニング日を詳細表示。</p></div>
       </div>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>ウィジェットの表示は1時間ごとに自動更新されます。ワークアウト保存直後はアプリが即時更新を要求するため、すぐに反映されます。</p>
+        <p>v2.6.0 でウィジェット更新ロジックが改善され、必要な系統のウィジェットだけがリロードされるようになりました。タブ切替時のもたつきが軽減されています。</p>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="healthkit">
       <div class="section-label">Detail</div>
       <h2>❤️ HealthKit連携</h2>
       <div class="accent-line"></div>
 
-      <p>Apple HealthとBUFFのPersonalデータを同期できます。体重・体脂肪率・身長の双方向連携が可能です。</p>
+      <p>Apple HealthとBUFFのデータを同期できます。体重・体脂肪率・身長の双方向連携と、コンディション分析用のHRV・安静時心拍・睡眠データの読み取りに対応しています。</p>
 
-      <div class="warn-box">
-        <span class="warn-icon">⚠️</span>
-        <p>HealthKit連携はオプション機能です。使用しない場合はPersonalタブの設定で無効のままにしておいてください。</p>
-      </div>
-
-      <h3>連携の設定</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <strong>Personalタブ → 設定 → HealthKit連携</strong>
-            <p>HealthKitセクションを開きます。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <strong>アクセス許可を承認</strong>
-            <p>ヘルスケアアプリへのアクセス許可ダイアログが表示されます。体重・体脂肪率・身長の読み書き権限を許可。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <strong>初回同期を実行</strong>
-            <p>「HealthKitから読み込む」で既存のHealthKitデータをアプリに取り込みます。</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>同期設定の詳細</h3>
+      <h3>同期設定</h3>
       <table>
         <tr><th>設定</th><th>説明</th></tr>
         <tr><td>自動同期</td><td>データ変更時にHealthKitへ自動送信</td></tr>
         <tr><td>同期対象</td><td>体重 / 体脂肪率 / 身長を個別にON/OFF</td></tr>
-        <tr><td>優先度（自動）</td><td>競合時に「最新のデータ」を優先するか設定</td></tr>
-        <tr><td>優先度（手動）</td><td>手動同期時の優先設定</td></tr>
-        <tr><td>プレビュー表示</td><td>同期前に変更内容を確認するプレビューの表示</td></tr>
-        <tr><td>同期通知</td><td>同期完了時のトースト通知の表示/非表示</td></tr>
+        <tr><td>優先度</td><td>競合時に「最新のデータ」を優先するか設定</td></tr>
+        <tr><td>コンディション用データ</td><td>HRV・安静時心拍・睡眠（読み取りのみ）</td></tr>
       </table>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>HealthKitの権限を後から変更する場合は、iOSの <strong>設定 → ヘルスケア → データアクセスとデバイス → BUFF</strong> から設定できます（アプリ内の設定画面からは変更できません）。</p>
+        <p>v2.6.0 でHealthKit取り込み処理が高速化されました。長期間データの取り込みも素早く完了します。</p>
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="archive">
       <div class="section-label">Detail</div>
       <h2>🗑️ アーカイブ機能</h2>
       <div class="accent-line"></div>
 
-      <p>種目やセッションを完全に削除するのではなく、「アーカイブ」として非表示にすることができます。過去の記録はすべて保持されます。</p>
+      <p>種目やセッションを完全に削除するのではなく、「アーカイブ」として非表示にできます。過去の記録はすべて保持されます。</p>
 
       <h3>種目のアーカイブ</h3>
-      <div class="card">
-        <h4>アーカイブする</h4>
-        <p>Exercisesタブで種目を左スワイプ → 「アーカイブ」をタップ。種目リストから非表示になりますが、過去の記録・ベスト記録は保持されます。</p>
-      </div>
-      <div class="card">
-        <h4>アーカイブを確認する</h4>
-        <p>Exercisesタブ右上「⋮」→「アーカイブ（N件）」を選択してアーカイブ済み種目を確認。</p>
-      </div>
-      <div class="card">
-        <h4>復元する</h4>
-        <p>アーカイブ画面で種目をタップ →「復元」で通常の種目リストに戻ります。</p>
-      </div>
+      <div class="card"><h4>アーカイブする</h4><p>種目を編集モードで選択 → 一括アーカイブ。種目リストから非表示になりますが、過去の記録は保持されます。</p></div>
+      <div class="card"><h4>復元する</h4><p>種目タブ右上「⋮」→「アーカイブ」から復元可能。</p></div>
 
       <h3>セッションのゴミ箱</h3>
-      <div class="card">
-        <h4>セッションを削除する</h4>
-        <p>Workoutタブのメニュー →「セッションを削除」。セッションはゴミ箱に移動します。</p>
-      </div>
-      <div class="card">
-        <h4>ゴミ箱を確認する</h4>
-        <p>Workoutタブのメニュー →「ゴミ箱」でゴミ箱に入ったセッションを確認。</p>
-      </div>
-      <div class="card">
-        <h4>復元・完全削除</h4>
-        <p>ゴミ箱からセッションを復元するか、完全に削除するか選択できます。30日を超えたゴミ箱内のデータは自動的にクリーンアップされます。</p>
-      </div>
+      <p>削除したセッションはゴミ箱に移動し、30日以内であれば復元できます。30日を超えると自動的にクリーンアップされます。</p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="settings">
       <div class="section-label">Settings</div>
-      <h2>⚙️ 各種設定</h2>
+      <h2>⚙️ 各種設定 <span class="badge-new">v2.6.0 更新</span></h2>
       <div class="accent-line"></div>
 
-      <p>PersonalタブのSettingsサブタブからアプリ全体の設定が可能です。設定画面は階層型メニューにリニューアルされ、カテゴリー別に整理されています。</p>
+      <p>v2.6.0 から、設定が単一の「設定」エントリポイントに集約されました。プロフィールタブの「⚙️ 設定」をタップすると以下の項目にアクセスできます。</p>
 
-      <h3>ワークアウト設定</h3>
+      <h3>設定メニュー構成</h3>
       <table>
-        <tr><th>設定項目</th><th>説明</th></tr>
-        <tr><td>入力方式</td><td>テキスト入力 / ダイヤル入力の切り替え</td></tr>
-        <tr><td>種目の並び順</td><td>Workoutタブでの種目の表示順序</td></tr>
-        <tr><td>セットの並び順</td><td>セットの表示順序（新しい順/古い順）</td></tr>
-        <tr><td>種目の自動並び替え <span class="badge-new">NEW</span></td><td>部位カテゴリー別に自動グルーピング（デフォルト: ON）</td></tr>
-        <tr><td>種目ロック <span class="badge-new">NEW</span></td><td>ワークアウト中の種目追加・削除・並び替えを禁止（デフォルト: OFF）</td></tr>
-        <tr><td>前回データの取得方法 <span class="badge-new">NEW</span></td><td>最初のセット / 最後のセット / 最高値</td></tr>
-        <tr><td>セット複製時に回数を空にする <span class="badge-new">NEW</span></td><td>複製したセットの回数のみを空にし、回数フィールドへ自動フォーカス（デフォルト: OFF）</td></tr>
-        <tr><td>インターバルタイマー プリセット <span class="badge-new">NEW</span></td><td>タイマープリセット（名前と秒数）の追加・削除・並び替え（最大10件）</td></tr>
+        <tr><th>エントリ</th><th>内容</th></tr>
+        <tr><td>インターバルタイマー プリセット</td><td>タイマープリセット（名前と秒数）の追加・削除・並び替え（最大10件）</td></tr>
+        <tr><td>一般</td><td>テーマ・スプラッシュスクリーン・触覚フィードバック・ダイナミックアイランド・テキスト入力モード</td></tr>
+        <tr><td>AIトレーナー</td><td>AIに共有するデータレベル（標準/詳細）・応答スタイル</td></tr>
+        <tr><td>ヘルスケア連携</td><td>HealthKitとの同期設定</td></tr>
+        <tr><td>メンテナンス・データ管理</td><td>バックアップ・復元・統計の再計算など</td></tr>
+        <tr><td>情報</td><td>更新履歴・マニュアル・サポート等</td></tr>
       </table>
 
-      <h3>種目設定</h3>
+      <h3>一般設定</h3>
       <table>
-        <tr><th>設定項目</th><th>説明</th></tr>
-        <tr><td>デフォルト体重</td><td>自重トレーニングの基準体重</td></tr>
-        <tr><td>ジム・家フィルター</td><td>種目のジム/自宅利用フィルター</td></tr>
-        <tr><td>ウォームアップ除外設定</td><td>ウォームアップセットの統計除外ON/OFF</td></tr>
-      </table>
-
-      <h3>身体データ設定</h3>
-      <p>HealthKit連携の詳細は「<a href="#healthkit" style="color:var(--accent)">HealthKit連携</a>」セクションを参照してください。</p>
-
-      <h3>タイマー設定</h3>
-      <table>
-        <tr><th>設定項目</th><th>説明</th></tr>
-        <tr><td>Live Activityを有効化</td><td>インターバルタイマー使用時のDynamic Island表示のON/OFF</td></tr>
-      </table>
-
-      <h3>アプリ設定</h3>
-      <table>
-        <tr><th>設定項目</th><th>説明</th></tr>
-        <tr><td>スプラッシュ画面</td><td>起動時のスプラッシュ画面の表示/非表示</td></tr>
-        <tr><td>ハプティックフィードバック</td><td>ボタン操作時の振動フィードバックのON/OFF</td></tr>
-        <tr><td>チュートリアルを表示</td><td>オンボーディングチュートリアルの再表示</td></tr>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr><td>テーマ <span class="badge-new">NEW</span></td><td>ダーク / ライト / システム の3択。詳細は「<a href="#theme" style="color:var(--accent)">テーマ</a>」参照</td></tr>
+        <tr><td>スプラッシュスクリーン</td><td>起動時のスプラッシュ画面の表示/非表示</td></tr>
+        <tr><td>触覚フィードバック</td><td>ボタン操作時の振動フィードバックのON/OFF（v2.6.0 から即時反映）</td></tr>
+        <tr><td>ダイナミックアイランド</td><td>インターバルタイマー使用時のDynamic Island表示のON/OFF</td></tr>
+        <tr><td>テキスト入力モード</td><td>セット入力の方式切替</td></tr>
       </table>
 
       <h3>メンテナンス・データ管理</h3>
-      <div class="card">
-        <h4>💾 バックアップ作成</h4>
-        <p>トレーニング記録・種目・ルーティン・身体データ・設定をまとめてJSONファイルにバックアップ。「ファイル」アプリから確認・共有できます。</p>
-      </div>
-      <div class="card">
-        <h4>📂 バックアップから復元</h4>
-        <p>保存済みバックアップファイルを選択してデータを復元。保存済みバックアップ一覧はデフォルト折りたたみ表示で、タップで展開できます。</p>
-      </div>
-      <div class="card">
-        <h4>🔄 自動バックアップ</h4>
-        <p>ワークアウト保存のたびに自動でバックアップを作成。設定画面でON/OFF切り替え可能（デフォルト: ON）。保持する世代数（3/5/10/20件）を選択できます。バックアップファイルが0件の場合は警告カードが表示されます。</p>
-      </div>
-      <div class="card">
-        <h4>🔄 統計情報を再計算</h4>
-        <p>パーソナルベストや統計データの再計算を強制実行します。表示に問題がある場合にお試しください。</p>
-      </div>
-      <div class="card">
-        <h4>🔧 初期種目を復元</h4>
-        <p>リネーム・削除・アーカイブした初期種目を選択的に復元可能。「追加可能」と「アーカイブ済み」の2セクションで表示されます。</p>
-      </div>
+      <div class="card"><h4>💾 バックアップ作成</h4><p>トレーニング記録・種目・テンプレート・身体データ・設定をまとめてJSONファイルにバックアップ。<strong>ファイル app</strong> 経由で iCloud Drive・他のクラウドサービス・端末内に保存できます。</p></div>
+      <div class="card"><h4>📂 バックアップから復元</h4><p>保存済みバックアップファイルを選択してデータを復元。機種変更時も完全に再現できます。</p></div>
+      <div class="card"><h4>🔄 自動バックアップ</h4><p>ワークアウト保存のたびに自動でバックアップを作成。保持世代数を選択可能（3/5/10/20件）。</p></div>
+      <div class="card"><h4>🔄 統計情報を再計算</h4><p>パーソナルベストや統計データの再計算を強制実行。</p></div>
 
-      <h3>ウィジェット設定</h3>
-      <p>ホーム画面ウィジェットの詳細は「<a href="#widget" style="color:var(--accent)">ホーム画面ウィジェット</a>」セクションを参照してください。</p>
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>バックアップはアプリの Documents/Backups/ ディレクトリに JSON 形式で保存されます。ファイル app から iCloud Drive にも置けるので、機種変更時の完全復元も安心です。</p>
+      </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="theme">
+      <div class="section-label">Settings</div>
+      <h2>🌓 テーマ（外観） <span class="badge-new">NEW</span></h2>
+      <div class="accent-line"></div>
+
+      <p>v2.6.0 から、アプリの外観モードを選択できるようになりました。これまでダーク固定だったところから、ライト／ダーク／システム追従の3択に。</p>
+
+      <h3>選択肢</h3>
+      <div class="grid-2">
+        <div class="card"><h4>🌑 ダーク</h4><p>従来のダークモード固定。黒基調のUIで、ジムの暗めの環境でも目に優しい。</p></div>
+        <div class="card"><h4>☀️ ライト</h4><p>白基調のUI。明るい環境やライトモード好みの方向け。両モードで視認性が最適化されています。</p></div>
+        <div class="card"><h4>📱 システム</h4><p>iOSのシステム設定（コントロールセンターやおやすみモード等）に追従。時間帯で自動切替したい方向け。</p></div>
+      </div>
+
+      <p>設定方法：プロフィール → 設定 → 一般 → テーマ（セグメントピッカーで切替）</p>
+    </section>
+
     <section id="faq">
       <div class="section-label">FAQ</div>
       <h2>❓ よくある質問</h2>
       <div class="accent-line"></div>
 
       <h3>トレーニングデータが消えてしまった</h3>
-      <div class="card">
-        <h4>A. ゴミ箱を確認してください</h4>
-        <p>誤ってセッションを削除した場合、Workoutタブのメニュー →「ゴミ箱」から復元できます。種目をアーカイブした場合はExercisesタブのアーカイブから復元できます。</p>
-      </div>
+      <div class="card"><h4>A. ゴミ箱を確認してください</h4><p>誤ってセッションを削除した場合、ワークアウトタブのメニュー →「ゴミ箱」から30日以内であれば復元できます。</p></div>
 
       <h3>統計グラフが正しく表示されない</h3>
-      <div class="card">
-        <h4>A. 統計情報を再計算してください</h4>
-        <p>Personalタブ → 設定 → 「統計情報を再計算」を実行してください。処理中はローディング画面が表示されます。</p>
-      </div>
+      <div class="card"><h4>A. 統計情報を再計算してください</h4><p>プロフィール → 設定 → メンテナンス・データ管理 → 「統計情報を再計算」を実行してください。</p></div>
 
       <h3>Dynamic Islandにタイマーが表示されない</h3>
-      <div class="card">
-        <h4>A. 設定と通知を確認してください</h4>
-        <p>①PersonalタブでLive Activityが有効になっているか確認。②iOSの設定アプリ →「通知」→「BUFF」で通知が許可されているか確認。③Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p>
-      </div>
+      <div class="card"><h4>A. 設定と通知を確認してください</h4><p>① プロフィール → 設定 → 一般 → ダイナミックアイランドが有効か確認。② iOSの「通知」→「BUFF」で通知が許可されているか確認。③ Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p></div>
 
-      <h3>種目を追加できない・種目が見つからない</h3>
-      <div class="card">
-        <h4>A. アーカイブを確認してください</h4>
-        <p>以前使っていた種目がアーカイブされている可能性があります。Exercisesタブ →「⋮」→「アーカイブ」から確認・復元してください。</p>
-      </div>
+      <h3>ライトモードにすると一部の文字が薄く見える</h3>
+      <div class="card"><h4>A. v2.6.0 で大幅に視認性を改善しました</h4><p>v2.6.0 ではライト/ダーク両モードでのコントラストを徹底的に調整しています。それでも特定箇所で読みにくい場合は、レビューや連絡先からお知らせください。</p></div>
 
       <h3>HealthKitとデータが一致しない</h3>
-      <div class="card">
-        <h4>A. 手動同期を実行してください</h4>
-        <p>PersonalタブのHealthKit設定から手動同期を実行してください。優先度（ヘルスケア優先 / アプリ優先 / 新しい方を優先）の設定を確認してください。権限の変更はiOSの設定 → ヘルスケア → データアクセスとデバイス → BUFFから行えます。</p>
-      </div>
-
-      <h3>プリセットが追加できない</h3>
-      <div class="card">
-        <h4>A. 上限（10個）に達していないか確認してください</h4>
-        <p>プリセットは最大10個まで登録できます。Personalタブ → 設定 → ワークアウト設定 →「インターバルタイマー プリセット」から不要なプリセットを削除してから追加してください。また、同じ秒数のプリセットは重複登録できません。</p>
-      </div>
+      <div class="card"><h4>A. 手動同期を実行してください</h4><p>プロフィール → 設定 → ヘルスケア連携 から手動同期を実行。優先度設定もご確認ください。</p></div>
 
       <h3>オフラインでも使えますか？</h3>
-      <div class="card">
-        <h4>A. 完全オフラインで動作します</h4>
-        <p>BUFFはインターネット接続を一切必要としません。すべてのデータはお使いのiPhone内に保存されます。（iCloudバックアップは除く）</p>
-      </div>
+      <div class="card"><h4>A. 完全オフラインで動作します</h4><p>BUFFはインターネット接続を一切必要としません。すべてのデータはお使いのiPhone内に保存されます。</p></div>
 
       <h3>データのバックアップはどうすればいいですか？</h3>
-      <div class="card">
-        <h4>A. iCloudバックアップをご利用ください</h4>
-        <p>iOSの標準バックアップ（iCloud / iTunes/Finder経由）を利用することでデータを保護できます。機種変更の際はバックアップからの復元をお試しください。アプリ内の手動バックアップ機能も利用できます。</p>
-      </div>
+      <div class="card"><h4>A. JSONバックアップをご利用ください</h4><p>プロフィール → 設定 → メンテナンス・データ管理 →「バックアップ作成」で、JSONファイルをファイル appに書き出せます。iCloud Drive にも保存できるので、機種変更時の復元も容易です。</p></div>
 
       <h3>トレーニングデータをエクスポートできますか？</h3>
-      <div class="card">
-        <h4>A. CSVエクスポートが可能です</h4>
-        <p>Statsタブの概要画面からCSV形式でデータを出力できます。Excel互換のBOM付きUTF-8形式で、共有シートから他のアプリに送れます。</p>
-      </div>
+      <div class="card"><h4>A. CSVエクスポートが可能です</h4><p>統計タブの概要画面右上のシェアボタンからCSV形式でデータを出力できます。Excel互換のBOM付きUTF-8形式。</p></div>
 
-      <h3>削除・アーカイブした初期種目を復元したい</h3>
-      <div class="card">
-        <h4>A. 初期種目の復元機能をご利用ください</h4>
-        <p>Personalタブ → 設定 → メンテナンス・データ管理 →「初期種目を復元」から、個別に選択して復元できます。</p>
-      </div>
+      <h3>コンディション分析が表示されない</h3>
+      <div class="card"><h4>A. HealthKitデータを確認してください</h4><p>コンディション分析はHRV・安静時心拍・睡眠データが必要です。Apple Watchやヘルスケアアプリでこれらのデータが記録されているかご確認ください。HealthKit連携の許可も必要です。</p></div>
 
       <hr class="divider">
 
@@ -1858,201 +837,135 @@
       </p>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section id="changelog">
       <div class="section-label">Changelog</div>
       <h2>📝 更新履歴</h2>
       <div class="accent-line"></div>
 
-      <p>v2.1.1 から v2.3.8 までのリリース内容です。それより前のバージョンの詳細はリポジトリの CHANGELOG をご参照ください。</p>
+      <p>主要なバージョンのリリース内容です。それより前のバージョンの詳細はリポジトリの CHANGELOG をご参照ください。</p>
 
       <div class="changelog-entry">
         <div class="ver-head">
-          <span class="ver-num">v2.3.8</span>
-          <span class="ver-date">2026-04-26</span>
+          <span class="ver-num">v2.6.0</span>
+          <span class="ver-date">2026-06-03</span>
           <span class="ver-pin">LATEST</span>
         </div>
         <div class="change-group">
-          <div class="group-label group-imprv">機能改善</div>
+          <div class="group-label group-feat">新機能</div>
           <ul>
-            <li><strong>セット複製時に回数を空にするオプションを追加</strong>：複製したセットで重量・ノート・補助モードは維持しつつ、回数のみ空にして回数フィールドへ自動フォーカス。同じ重量で次セットの回数を素早く入力できる（設定 → ワークアウト設定）</li>
+            <li><strong>種目別の履歴ビューを追加</strong>：種目ごとに最大重量（有酸素は最大距離/最長時間）の時系列チャートと、過去のセッション別セット詳細を1画面で確認可能</li>
+            <li><strong>ライト／ダーク両モードに対応</strong>：設定 → 一般 → テーマで「ダーク／ライト／システム」を選択可能</li>
+            <li><strong>処理中トースト表示を追加</strong>：時間のかかる処理でスピナー付きトーストを表示し、進行を案内</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="ver-head">
-          <span class="ver-num">v2.3.7</span>
-          <span class="ver-date">2026-04-15</span>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-fix">不具合修正</div>
-          <ul>
-            <li><strong>AIトレーナーが部位選択と合わない種目を提案する問題を修正</strong>：コンテキスト形式を「部位別の種目一覧」に変更し、各部位と種目の対応関係をAIに明示。指定部位以外を提案しないルールをシステムプロンプトに追加</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="ver-head">
-          <span class="ver-num">v2.3.6</span>
-          <span class="ver-date">2026-04-10</span>
         </div>
         <div class="change-group">
           <div class="group-label group-imprv">機能改善</div>
           <ul>
-            <li><strong>自重種目で回数のみ記録可能に</strong>：プッシュアップなどの自重種目で、体重を重量に含めず付加重量のみ（または0kg）で記録可能に。重量0のセットは「15回」のように回数だけ表示</li>
-            <li><strong>種目設定に「体重を重量に含める」オプションを追加</strong>：自重に限らず全器具で設定可能。種目一覧・詳細・パーソナルベスト表示もすべて重量0に対応</li>
-          </ul>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-fix">不具合修正</div>
-          <ul>
-            <li><strong>自重種目の過去記録を自動補正</strong>：起動時に一度だけマイグレーションを実行し、体重が含まれていた自重セットを付加重量のみまたは0kgに変換。パーソナルベストも再計算</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="ver-head">
-          <span class="ver-num">v2.3.5</span>
-          <span class="ver-date">2026-04-05</span>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-fix">不具合修正</div>
-          <ul>
-            <li><strong>ワークアウト記録中のパフォーマンス低下を修正</strong>：多くのセットを記録した際に動作の引っかかりが出る問題を修正。autoSave時はパーソナルベスト再計算とバックアップをスキップし、日付変更・バックグラウンド移行・種目削除の各タイミングで確実に実行</li>
-            <li><strong>Statsカレンダーの最終週未表示バグを修正</strong>：再起動直後に月の最終週がカレンダーに表示されない問題を、明示的なグリッドレイアウトへの置き換えで解消</li>
+            <li><strong>設定画面を1つのエントリポイントに集約</strong>：プロフィールに直接並んでいた設定リンクを「設定」配下にまとめ情報密度を改善</li>
+            <li><strong>タブバーを日本語化</strong>：「プロフィール / 統計 / ワークアウト / AI / 種目」</li>
+            <li><strong>種目一覧のフィルタを2段構成に変更</strong>：上段（全て/ジム/家/お気に入り）、下段（部位）</li>
+            <li><strong>インターバルタイマーボタンを種目カードに集約</strong>：各セット行のタイマーを種目カードヘッダーに1つだけ配置</li>
+            <li><strong>カラーパレットをシステムカラー基盤に刷新</strong>：両モードでの視認性とアクセシビリティを向上</li>
+            <li><strong>Dynamic Type に対応</strong>：iOSの文字サイズ設定が画面全体に反映される</li>
+            <li><strong>身体データ履歴の空表示を ContentUnavailableView に刷新</strong>：iOS 17 標準API採用</li>
+            <li><strong>触覚フィードバック設定が即時反映</strong>：設定OFF時にHaptic呼び出しが自動で無効化</li>
+            <li><strong>ステータスカラーを意味づけして統一</strong>：危険・注意・成功の用途別に色を整理</li>
+            <li><strong>画面表示・集計のパフォーマンスを全面改善</strong>：重複していたセッション走査を1パス集計とキャッシュに統合</li>
+            <li><strong>ウィジェット更新を該当系統のみに絞り込み</strong>：タブ切替時のもたつきを軽減</li>
+            <li><strong>HealthKit 取り込みを高速化</strong>：日次ループの SwiftData 検索を期間一括取得＋辞書ルックアップに置換</li>
+            <li><strong>バックアップ書き出しの UI 応答性を改善</strong></li>
+            <li><strong>チャートのラベル生成を高速化</strong>：NumberFormatter を共有キャッシュ化</li>
           </ul>
         </div>
       </div>
 
       <div class="changelog-entry">
         <div class="ver-head">
-          <span class="ver-num">v2.3.2</span>
-          <span class="ver-date">2026-03-30</span>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-imprv">機能改善</div>
-          <ul>
-            <li><strong>AIメニュー提案に部位選択ステップを追加</strong>：提案前に鍛える部位をチェックボックスで選択可能。選択した部位から各2〜3種目が提案され、バランスの取れたメニューに</li>
-            <li><strong>肩種目を2種追加</strong>：ダンベルリアレイズ（三角筋後部）、インクラインサイドレイズ（三角筋中部）</li>
-          </ul>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-fix">不具合修正</div>
-          <ul>
-            <li>AIトレーナーの口調が設定に正しく反映されないバグを修正</li>
-            <li>トレーニングに関する質問が誤ってメニュー提案に切り替わるバグを修正</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="ver-head">
-          <span class="ver-num">v2.3.0</span>
-          <span class="ver-date">2026-03-26</span>
+          <span class="ver-num">v2.5.0</span>
+          <span class="ver-date">2026-05-06</span>
         </div>
         <div class="change-group">
           <div class="group-label group-feat">新機能</div>
           <ul>
-            <li><strong>AIトレーナー（対話型アドバイザー）を追加</strong>（iOS 26以上）：Apple Intelligenceを使ったチャット形式でトレーニング・栄養・回復について相談可能。会話履歴を保持したマルチターン対話に対応。すべてオンデバイス処理</li>
-            <li><strong>AIトレーナー設定画面を追加</strong>：AIに共有するデータレベルを「標準」「詳細」から選択可能。詳細モードでは直近5セッションの数値や月次推移を共有</li>
-            <li><strong>AIタブの質問テンプレートを動的化</strong>：トレーニング履歴に基づくルールベース生成と、AIによるパーソナライズ生成の両方に対応</li>
+            <li><strong>コンディション分析を追加</strong>：HealthKitのHRV・安静時心拍・睡眠データから回復スコア（0〜100）を算出。直近2日 vs 過去14日のベースライン比較で重み付け平均を計算し、絶好調/良好/やや疲労/要休養の4段階で表示</li>
+            <li><strong>トレーニング負荷指標を追加</strong>：直近1週間のボリュームと4週間平均を比較し、最適/過負荷/不足の3段階で判定</li>
+            <li><strong>オーバートレーニング警告を追加</strong>：同一部位3日以上連続実施・直近負荷が4週間平均の1.5倍超・7日以上の連続トレーニングをルールベースで検知し警告</li>
           </ul>
         </div>
         <div class="change-group">
-          <div class="group-label group-imprv">UI/UX改善</div>
+          <div class="group-label group-imprv">機能改善</div>
           <ul>
-            <li><strong>タブ構成を変更：「Interval」タブ→「AI」タブ</strong>：AIトレーナーに専用タブを割り当て、いつでもすぐにアクセス可能</li>
-            <li><strong>インターバルタイマーをワークアウト画面に統合</strong>：Workout画面のメニューまたはフローティングバナーのタップでタイマーを起動</li>
-            <li><strong>タイマープリセット管理を設定に移動</strong>：設定 → ワークアウト設定 →「インターバルタイマー プリセット」</li>
-            <li><strong>Workout画面に「AI提案」ボタンを追加</strong>：「種目を追加」ボタンの横に配置し、ワンタップでAI種目提案にアクセス可能</li>
-            <li>AIトレーナーの回答でマークダウンを正しく表示（見出し・箇条書き・番号付きリスト・太字）</li>
-            <li>AIタブ初期画面にプライバシー説明を表示</li>
-          </ul>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-fix">不具合修正</div>
-          <ul>
-            <li>AIアドバイスカードの幅が他カードと異なる問題を修正</li>
+            <li><strong>統計タブ「概要」の先頭にコンディションセクションを追加</strong>：回復状態と負荷バランスをひと目で確認可能</li>
+            <li><strong>AIアドバイザーのコンテキストにコンディション情報を追加</strong>：回復スコアや負荷状況を踏まえたより的確なアドバイスが可能に</li>
+            <li><strong>ヘルスケア設定画面にコンディション分析の説明カードを追加</strong></li>
           </ul>
         </div>
       </div>
 
       <div class="changelog-entry">
         <div class="ver-head">
-          <span class="ver-num">v2.2.0</span>
-          <span class="ver-date">2026-03-24</span>
+          <span class="ver-num">v2.3.11</span>
+          <span class="ver-date">2026-05-04</span>
         </div>
         <div class="change-group">
-          <div class="group-label group-feat">新機能</div>
+          <div class="group-label group-fix">不具合修正</div>
           <ul>
-            <li><strong>Apple Intelligenceによるトレーニング提案</strong>（iOS 26以上）：FoundationModelsフレームワークを使用したオンデバイスAIが過去の記録を分析し、今日おすすめの種目と全体アドバイスを生成</li>
-          </ul>
-        </div>
-        <div class="change-group">
-          <div class="group-label group-imprv">UI/UX改善</div>
-          <ul>
-            <li>種目提案画面に提案元バッジを追加（Apple Intelligence / 通常アルゴリズム）</li>
-            <li>Apple Intelligenceが利用できない場合の案内を追加し、従来のアルゴリズムにフォールバック</li>
+            <li><strong>自重種目のセット行レイアウトを修正</strong>：equipment=自重 かつ supportsBodyweight=false の種目で、加重/補助スイッチが重量入力欄の上に挟まり回数列との垂直位置がズレていた問題を修正</li>
           </ul>
         </div>
       </div>
 
       <div class="changelog-entry">
         <div class="ver-head">
-          <span class="ver-num">v2.1.1</span>
-          <span class="ver-date">2026-03-24</span>
+          <span class="ver-num">v2.3.10</span>
+          <span class="ver-date">2026-05-03</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>統計タブのベスト記録を最終実施日順に並び替え</strong>：最近やっていない種目が上位に固定される問題を解消</li>
+            <li><strong>ベスト記録カードに最終実施日ラベルを表示</strong>：「今日 / 昨日 / N日前 / MM/dd」の小キャプションを追加</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.3.9</span>
+          <span class="ver-date">2026-05-02</span>
         </div>
         <div class="change-group">
           <div class="group-label group-fix">不具合修正</div>
           <ul>
-            <li>フローティングタイマーを手動停止した際にバナーが消えない問題を修正（停止後2秒で自動非表示）</li>
-            <li>NEW PR!バッジがPR記録直後に消えてしまう問題を修正（セッション中は表示を維持）</li>
-            <li>インターバルタイマーがスクロール操作中に止まる問題を修正</li>
-            <li>体脂肪率の最新値がグラフと一致しない問題を修正</li>
+            <li><strong>ワークアウト記録中、種目数・セット数が増えると動作がカクつく問題を修正</strong>：サマリー表示の再生成停止、前回データ参照の1パス集約、セッション保存の差分更新化、自動バックアップのスロットル化など計11項目をまとめて改善</li>
+            <li><strong>autoSave時にWidget集計が二重実行されていた問題を修正</strong></li>
           </ul>
         </div>
       </div>
 
     </section>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+  </div>
+</div>
 
-<!-- Back to top -->
 <a href="#top" id="back-to-top" aria-label="トップへ戻る">↑</a>
 
 <script>
-  /* ── Search ──────────────────────────────────────── */
   const searchInput = document.getElementById('search-input');
-  const contentEl   = document.querySelector('.content');
-  let originalHTML  = contentEl.innerHTML;
+  const contentEl = document.querySelector('.content');
+  let originalHTML = contentEl.innerHTML;
 
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim();
-
-    // リセット
     contentEl.innerHTML = originalHTML;
-
-    if (!q) {
-      updateActiveNav();
-      return;
-    }
-
-    // テキストノードを走査してハイライト
+    if (!q) { updateActiveNav(); return; }
     const regex = new RegExp(`(${escapeReg(q)})`, 'gi');
     highlightText(contentEl, regex);
-
-    // 最初のマークへスクロール
     const first = contentEl.querySelector('mark');
     if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
-  function escapeReg(s) {
-    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
+  function escapeReg(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
   function highlightText(node, regex) {
     if (node.nodeType === 3) {
@@ -2067,7 +980,6 @@
     }
   }
 
-  /* ── Active nav on scroll ───────────────────────── */
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
   const sections = document.querySelectorAll('section[id]');
 
@@ -2084,33 +996,26 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
 
-  /* ── Back to top ────────────────────────────────── */
   const btt = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
 
-  /* ── Mobile hamburger ───────────────────────────── */
   const hamburger = document.getElementById('hamburger');
-  const sidebar   = document.getElementById('sidebar');
+  const sidebar = document.getElementById('sidebar');
 
-  hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', () => { sidebar.classList.toggle('open'); });
 
-  // サイドバー外タップで閉じる
   document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && e.target !== hamburger) {
       sidebar.classList.remove('open');
     }
   });
 
-  // ナビリンクをクリックしたら閉じる（モバイル）
   navLinks.forEach(link => {
     link.addEventListener('click', () => sidebar.classList.remove('open'));
   });
 
-  /* ── Smooth reveal on load ──────────────────────── */
   document.querySelectorAll('section').forEach((sec, i) => {
     sec.style.opacity = '0';
     sec.style.transform = 'translateY(20px)';

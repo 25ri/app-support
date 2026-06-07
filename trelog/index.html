@@ -183,7 +183,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v2.6.0</span>
+    <span class="version-badge">v2.8.0</span>
   </div>
 
   <div class="content" id="top">
@@ -357,6 +357,7 @@
       <div class="card"><h4>📋 テンプレートを読み込む</h4><p>右上メニューからルーティンテンプレートを読み込み、種目群をまとめて追加できます。</p></div>
       <div class="card"><h4>⏱️ タイマーボタン（種目ヘッダー） <span class="badge-new">NEW</span></h4><p>v2.6.0 から、タイマーボタンは各セット行ではなく <strong>種目カードのヘッダー</strong> に集約されました。種目ごとに1つだけ表示され、セット行の横幅が広く使えるようになりました。</p></div>
       <div class="card"><h4>🪟 フローティングミニタイマー</h4><p>タイマー起動中は画面下部にミニタイマーが常時表示され、残り時間の確認・再スタート・停止がその場で可能です。</p></div>
+      <div class="card"><h4>📤 トレーニングを画像で共有 <span class="badge-new">NEW</span></h4><p>ワークアウト画面のメニューから「今日のトレーニングを共有」を選ぶと、その日の記録を1枚のカード画像にしてSNSなどに共有できます。テンプレートは「ログ／ハイライト／部位」の3種類、サイズは縦(9:16)・横(16:9)・正方形(1:1)から選べます。画像はダーク基調で生成され、作成はすべてオフラインで完結します。</p></div>
 
       <h3>種目カードの操作</h3>
       <div class="steps">
@@ -846,9 +847,71 @@
 
       <div class="changelog-entry">
         <div class="ver-head">
+          <span class="ver-num">v2.8.0</span>
+          <span class="ver-date">2026-06-06</span>
+          <span class="ver-pin">LATEST</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>今日のトレーニングを画像で共有</strong>：種目ごとのセット内訳をカード画像にしてSNSや友人に共有可能。ワークアウト画面のメニューから利用</li>
+            <li><strong>共有カードのテンプレートを3種類用意</strong>：明細重視の「ログ」、自己ベスト更新や総ボリュームを大きく見せる「ハイライト」、鍛えた部位を主役にする「部位」から選択</li>
+            <li><strong>共有画像のサイズを選択可能</strong>：ストーリーズ向けの縦(9:16)、横(16:9)、正方形(1:1)の3サイズに対応</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.7.0</span>
+          <span class="ver-date">2026-06-05</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>前回値のワンタップ入力を追加</strong>：新規セットに前回の重量・回数をプレースホルダ表示し、「↺前回」で即反映</li>
+            <li><strong>「前回の構成をコピー」を追加</strong>：種目メニューから前回のセット構成を一括反映</li>
+            <li><strong>セット行の長押しメニューを追加</strong>：複製・ウォームアップ化を長押しから操作可能</li>
+            <li><strong>週間プログラムを追加</strong>：ルーティンを曜日に割り当て、当日のワークアウト画面に予定を表示し1タップで適用</li>
+            <li><strong>漸進的過負荷の提案を追加</strong>：前回が高回数達成の種目に「+◯kg」の提案を表示</li>
+            <li><strong>停滞検知を追加</strong>：一定期間ベスト更新がない種目に「停滞中」バッジを表示</li>
+            <li><strong>種目別の目標設定を追加</strong>：目標重量・期限を設定し達成度をバーで表示</li>
+            <li><strong>今週の部位別セット数を追加</strong>：目安レンジ（10〜20）と比較できる棒グラフを概要に表示</li>
+            <li><strong>推定1RM推移グラフと強度ゾーンを種目詳細に追加</strong></li>
+            <li><strong>統計サマリーの画像共有を追加</strong>：当日／今週の実績をカード画像で共有</li>
+            <li><strong>今日の推奨強度を追加</strong>：回復スコアとトレーニング負荷から高／中／低を提示</li>
+            <li><strong>除脂肪体重の推移と対体重比を追加</strong></li>
+            <li><strong>運動中の心拍（平均／最大）を追加</strong>：Apple Watchで記録した日にセッションの心拍を表示</li>
+            <li><strong>統計サマリーウィジェットを追加</strong>：連続日数・週間目標・前回の種目をホーム／ロック画面に表示</li>
+            <li><strong>ショートカット対応を追加</strong>：「ワークアウトを開始」「休憩タイマーを開始」をSiri／ショートカットから実行</li>
+            <li><strong>トレーニングリマインダーを追加</strong>：曜日指定の予定通知と、連続記録が途切れそうなときのリマインド</li>
+            <li><strong>過負荷の通知を追加</strong>：トレーニング負荷が高いとき休養を促す通知（通知許可済みの場合）</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>各画面の絞り込み・期間（日／月／半年／年など）の前回選択を記憶</strong>：次回も同じ条件で表示</li>
+            <li><strong>AIアドバイザーの詳細コンテキストに対応</strong>：設定「詳細」時に直近の実績や回復スコアを踏まえた助言が可能に</li>
+            <li><strong>Workoutの種目選択画面のフィルタを種目タブと同じ2段構成（種別＋部位）に統一</strong></li>
+            <li><strong>タブ切替・シートを閉じる際の体感速度を改善</strong>：重い再計算をキャッシュ化</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>統計「概要」のレイアウト幅がトレーニングの有無で変わる問題を修正</strong></li>
+            <li><strong>バックアップ復元の安全性を強化</strong>：削除と復元を分離しデータ整合性を向上</li>
+            <li><strong>レストタイマーの表示ズレと完了通知の重複を解消</strong></li>
+            <li><strong>HealthKitの権限判定を是正</strong>：読み取り許可済みでも権限要求が繰り返される問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
           <span class="ver-num">v2.6.0</span>
           <span class="ver-date">2026-06-03</span>
-          <span class="ver-pin">LATEST</span>
         </div>
         <div class="change-group">
           <div class="group-label group-feat">新機能</div>

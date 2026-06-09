@@ -183,7 +183,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v2.8.0</span>
+    <span class="version-badge">v2.9.0</span>
   </div>
 
   <div class="content" id="top">
@@ -636,6 +636,15 @@
         <span class="warn-icon">⚠️</span>
         <p>コンディション分析はHealthKit連携が有効で、HRV・安静時心拍・睡眠データがある場合のみ表示されます。すべての処理は端末内で完結し、データは外部送信されません。</p>
       </div>
+
+      <h3>各スコアの詳細画面 <span class="badge-new">v2.9.0</span></h3>
+      <p>回復スコア・トレーニング負荷・今日の推奨強度の各行を <strong>タップ</strong> すると、詳細画面が開きます（行の右端にある「›」が目印）。</p>
+      <div class="grid-2">
+        <div class="card"><h4>📋 内訳をわかりやすく表示</h4><p>回復スコアは <strong>HRV・安静時心拍・睡眠の実測値</strong>（ms / bpm / 時間）と状態（良好・標準・やや低下・低下）で表示。トレーニング負荷は直近1週間のボリューム・4週間の週平均・比率・状態を一覧表示します。</p></div>
+        <div class="card"><h4>📈 直近14日の推移</h4><p>回復スコア（0〜100）とトレーニング負荷（比率）の14日間の推移をグラフで表示。日々の変化を振り返れます。</p></div>
+        <div class="card"><h4>💡 今日の推奨強度の根拠</h4><p>回復スコアと負荷から「高 / 中 / 低」を提示し、その理由（例：回復が「やや疲労」、負荷が「過負荷」のため低め）を一文で表示します。</p></div>
+        <div class="card"><h4>📖 指標の解説</h4><p>各詳細画面の下部に、その指標が何を意味し、どのように算出されるかの解説を掲載しています。</p></div>
+      </div>
     </section>
 
     <section id="interval-timer">
@@ -847,9 +856,69 @@
 
       <div class="changelog-entry">
         <div class="ver-head">
+          <span class="ver-num">v2.9.0</span>
+          <span class="ver-date">2026-06-09</span>
+          <span class="ver-pin">LATEST</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>コンディション詳細画面を追加</strong>：統計タブ概要の回復スコア・トレーニング負荷・今日の推奨強度をタップすると、内訳・直近14日の推移グラフ・指標の解説を確認できる詳細画面を表示。回復スコアの内訳はHRV・安静時心拍・睡眠の実測値（ms / bpm / 時間）と状態でわかりやすく表示します</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.8.3</span>
+          <span class="ver-date">2026-06-09</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>統計集計の精度を改善</strong>：過去のワークアウトから削除した種目が、総ボリューム・セット数・トレーニング日数・履歴・ベスト記録に集計されてしまう問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.8.2</span>
+          <span class="ver-date">2026-06-08</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>身体データ追加画面のトグル初期状態を修正</strong>：前回OFFにした項目（身長・体脂肪率）が次回ONで開く問題を解消。前回未入力の項目は次回もOFFのまま開きます</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.8.1</span>
+          <span class="ver-date">2026-06-07</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li><strong>共有画像の表示不具合を修正</strong>：「白背景に白文字」で内容が見えない問題と、ログ型で種目リストが表示されない問題を解消</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>共有画像をテーマに追従</strong>：アプリのライト/ダーク設定に合わせて共有画像を生成</li>
+            <li><strong>出力の選択を記憶</strong>：テンプレートと向きの前回選択を次回も復元</li>
+            <li><strong>ストーリーズ表示を改善</strong>：縦向き共有画像の上部に余白を追加し、ストーリーズのUIと被りにくく調整</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
           <span class="ver-num">v2.8.0</span>
           <span class="ver-date">2026-06-06</span>
-          <span class="ver-pin">LATEST</span>
         </div>
         <div class="change-group">
           <div class="group-label group-feat">新機能</div>

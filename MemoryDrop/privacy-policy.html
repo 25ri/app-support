@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — おもいでドロップ</title>
+  <meta name="description" content="おもいでドロップのプライバシーポリシー。写真は端末内で読み込み、外部サーバーには送信しません。個人情報・使用状況データは収集しません。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #FFFAF4;
+      --bg-soft:   #FFF8EF;
+      --paper:     #FFFDF9;
+      --ink:       #493936;
+      --muted:     #927C75;
+      --line:      rgba(102,74,60,0.13);
+      --pink:      #FFDCE5;
+      --peach:     #FFE4CA;
+      --blue:      #DCECFF;
+      --mint:      #DDF5EC;
+      --lavender:  #EEE4FF;
+      --cream:     #FFF1C9;
+      --grad-primary: linear-gradient(135deg, #FFE0E8 0%, #FFE9CA 100%);
+      --radius:    22px;
+      --radius-sm: 16px;
+      --shadow-soft:  0 10px 30px rgba(102,74,60,0.10);
+      --shadow-card:  0 8px 24px rgba(102,74,60,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 6% -4%, rgba(238,228,255,0.5) 0%, transparent 40%),
+        radial-gradient(circle at 96% 2%, rgba(255,224,232,0.45) 0%, transparent 38%),
+        linear-gradient(180deg, var(--paper) 0%, var(--bg-soft) 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15.5px; line-height: 1.9; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--pink); color: var(--ink); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(146,124,117,0.35); border-radius: 8px; }
+
+    h1, h2, h3, .display { font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif; }
+
+    .top-bar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,253,249,0.78);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; padding: 14px 26px;
+    }
+    .top-bar .brand { display: flex; align-items: center; gap: 10px; }
+    .top-bar .brand .mark {
+      width: 30px; height: 30px; border-radius: 10px; background: var(--grad-primary);
+      box-shadow: var(--shadow-card); display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .top-bar .brand b { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .5px; }
+    .top-bar .brand span.sub { color: var(--muted); font-size: 13px; }
+    .top-bar a.back { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+    .top-bar a.back:hover { color: var(--ink); }
+
+    .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    /* ヒーロー */
+    .hero {
+      margin: 48px 0 40px; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 34px 32px; box-shadow: var(--shadow-soft);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50px; right: -40px; width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,220,229,0.55) 0%, transparent 70%); pointer-events: none;
+    }
+    .hero h1 { font-size: 30px; }
+    .hero .updated { color: var(--muted); font-size: 13px; margin-top: 10px; }
+
+    section { margin-bottom: 38px; }
+    .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 30px; height: 30px; padding: 0 9px; border-radius: 9px;
+      background: var(--grad-primary); color: var(--ink);
+      font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 13px; margin-bottom: 10px;
+    }
+    h2 { font-size: 20px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    p { color: var(--muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    .hl { color: var(--ink); font-weight: 700; }
+
+    .card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 18px 22px; margin: 14px 0; box-shadow: var(--shadow-card);
+    }
+    .card p { margin-bottom: 0; font-size: 14px; color: var(--ink); opacity: .85; }
+
+    ul.plist { list-style: none; margin: 6px 0 12px; }
+    ul.plist li {
+      color: var(--muted); font-size: 14px; padding: 9px 0; border-bottom: 1px solid var(--line);
+      display: flex; gap: 11px; align-items: flex-start;
+    }
+    ul.plist li:last-child { border-bottom: none; }
+    ul.plist li::before { content: '—'; color: #C98A86; flex-shrink: 0; }
+
+    footer {
+      margin-top: 16px; border-top: 1px solid var(--line); padding: 36px 0 60px; text-align: center;
+    }
+    footer .links { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    footer .links a { color: var(--ink); text-decoration: none; font-size: 14px; }
+    footer .links a:hover { color: #C98A86; }
+    footer small { color: var(--muted); font-size: 12.5px; display: block; line-height: 1.9; }
+    a.inline { color: #C98A86; }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 12px 18px; }
+      .hero { padding: 26px 22px; }
+      .hero h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="brand">
+      <span class="mark">🍃</span>
+      <b>おもいでドロップ</b>
+      <span class="sub">— プライバシー</span>
+    </div>
+    <a class="back" href="index.html">← ホームへ戻る</a>
+  </div>
+
+  <div class="wrap">
+
+    <div class="hero">
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">最終更新日：2026年</p>
+    </div>
+
+    <!-- 1 -->
+    <section>
+      <div class="num">01</div>
+      <h2>はじめに</h2>
+      <p>「おもいでドロップ」（以下「本アプリ」）は、ユーザーのプライバシーを尊重します。本アプリは、今日と同じ月日の過去年の写真＝「あの日の今日」を、ユーザーの端末内で表示するアプリです。本ポリシーは、本アプリにおける情報の取り扱いについて説明します。</p>
+    </section>
+
+    <!-- 2 -->
+    <section>
+      <div class="num">02</div>
+      <h2>収集する情報</h2>
+      <p>本アプリは、以下の情報を<span class="hl">一切収集しません</span>。アカウント登録やログインも不要です。</p>
+      <ul class="plist">
+        <li>個人を特定できる情報（氏名・メールアドレス・電話番号など）</li>
+        <li>使用状況データ・分析データ（解析・計測ツールは使用していません）</li>
+        <li>写真・動画・Live Photos そのもの（外部への送信は行いません）</li>
+        <li>アプリ内で付けたメモ・お気に入り・名前などの内容</li>
+      </ul>
+    </section>
+
+    <!-- 3 -->
+    <section>
+      <div class="num">03</div>
+      <h2>写真へのアクセス</h2>
+      <p>本アプリは、「あの日の今日」を見つけるために、iOSの写真機能（PhotoKit）を通じて<span class="hl">あなたの端末内で写真・Live Photos・動画を読み込みます</span>。読み込みや表示の処理は端末内で行われ、写真そのものを外部サーバーへ送信することはありません。</p>
+      <div class="card">
+        <p>写真へのアクセスは、初回起動では求めません。デモモードを見るだけなら許可は不要です。あなたが「自分の写真で始める」を選んだときにのみ、写真へのアクセスをお願いします。限定アクセス（選んだ写真だけを許可）にも対応しています。</p>
+      </div>
+      <p>本アプリは、写真ライブラリ本体を勝手に変更しません。「今後出さない」などの除外は本アプリ上の非表示として扱い、写真そのものは削除しません。共有は、あなたが明示的に操作したときだけ行います。</p>
+    </section>
+
+    <!-- 4 -->
+    <section>
+      <div class="num">04</div>
+      <h2>端末内に保存されるデータ</h2>
+      <p>本アプリで作成・設定したデータは、すべて<span class="hl">お使いの端末内にのみ保存</span>されます。</p>
+      <ul class="plist">
+        <li>お気に入り・メモ・除外設定・人やペットに付けた名前（端末内のデータベースに保存）</li>
+        <li>オンボーディングの完了状態・絞り込みや表示の設定（端末内の設定領域に保存）</li>
+        <li>元画質の保存コピー・共有用の一時画像・サムネイルのキャッシュ（端末内のファイルとして保存）</li>
+        <li>ウィジェット表示用の軽量データ（同じ開発元の本アプリとウィジェットの間でのみ共有）</li>
+      </ul>
+      <p>これらのデータは、開発者を含む第三者の外部サーバーへ送信されることはありません。端末のiCloudバックアップを有効にしている場合、本アプリのデータも端末のバックアップに含まれることがあります。その取り扱いはAppleのプライバシーポリシーに準じます。</p>
+    </section>
+
+    <!-- 5 -->
+    <section>
+      <div class="num">05</div>
+      <h2>位置情報とランドマーク推定</h2>
+      <p>本アプリは、写真に記録されている位置情報から、「京都」などのエリア名や「水族館の近く」のようなおおまかな表現を推定する機能を備えています。これは任意の機能で、設定から「オフ」「エリア名のみ」「ランドマークまで」を選べます。</p>
+      <p>エリア名を求める処理（逆ジオコーディング）には、<span class="hl">iOSの標準的な地理機能</span>を使用します。この処理では位置の座標がエリア名に変換されますが、<span class="hl">写真そのものは送信しません</span>。本アプリは、店舗名などを断定せず、「〜の近く」「〜の思い出」のようにやわらかく丸めて表示します。</p>
+    </section>
+
+    <!-- 6 -->
+    <section>
+      <div class="num">06</div>
+      <h2>写真の解析（人物・動物の有無）</h2>
+      <p>名前を付ける操作などの場面で、本アプリは「人が写っているか」「犬・猫などの動物が写っているか」といった<span class="hl">有無の手がかり</span>を提案することがあります。この解析はiOSの画像解析機能（Vision）を用いて<span class="hl">端末内（オンデバイス）で実行</span>され、外部には送信されません。誰であるかという固有名の特定は行いません。</p>
+    </section>
+
+    <!-- 7 -->
+    <section>
+      <div class="num">07</div>
+      <h2>iCloud写真の取り扱い</h2>
+      <p>写真がiCloud写真に保存されている場合、表示に必要な本体データを必要なときに取得することがあります。これはあなた自身のiCloudから写真を取り込むためのiOSの仕組みであり、本アプリがあなたの写真を外部へ送り出すものではありません。</p>
+    </section>
+
+    <!-- 8 -->
+    <section>
+      <div class="num">08</div>
+      <h2>共有</h2>
+      <p>写真や「あの日の山」を共有する際は、共有の直前に必ずプレビューを表示します。日付・場所・ランドマーク・人物名・ペット名・メモを表示するかどうかを選んでから、iOS標準の共有シートで共有できます。共有はあなたの明示的な操作によってのみ行われます。</p>
+    </section>
+
+    <!-- 9 -->
+    <section>
+      <div class="num">09</div>
+      <h2>広告とトラッキング</h2>
+      <p>本アプリは、<span class="hl">広告を表示せず</span>、ユーザーの行動をトラッキングすることもありません。第三者の広告・解析用のソフトウェア（SDK）も使用していません。</p>
+    </section>
+
+    <!-- 10 -->
+    <section>
+      <div class="num">10</div>
+      <h2>通知</h2>
+      <p>通知は初回起動では求めません。設定から有効化した場合に、その日の「あの日の今日」をお知らせする通知を端末内で予約します。通知の予約・配信のために情報を外部へ送信することはありません。</p>
+    </section>
+
+    <!-- 11 -->
+    <section>
+      <div class="num">11</div>
+      <h2>お子様のプライバシー</h2>
+      <p>本アプリは、13歳未満のお子様を対象としておらず、13歳未満のお子様から意図的に個人情報を収集することはありません。</p>
+    </section>
+
+    <!-- 12 -->
+    <section>
+      <div class="num">12</div>
+      <h2>セキュリティ</h2>
+      <p>本アプリは、端末内のデータ保護にiOSの標準的なセキュリティ機能を使用しています。</p>
+    </section>
+
+    <!-- 13 -->
+    <section>
+      <div class="num">13</div>
+      <h2>プライバシーポリシーの変更</h2>
+      <p>本ポリシーは、必要に応じて更新される場合があります。変更があった場合は、本ページの「最終更新日」を更新し、内容を反映します。</p>
+    </section>
+
+    <!-- 14 -->
+    <section>
+      <div class="num">14</div>
+      <h2>お問い合わせ</h2>
+      <p>本プライバシーポリシーに関するご質問・ご意見は、下記までお問い合わせください。</p>
+      <div class="card">
+        <p>📧 <a class="inline" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">ホーム</a>
+        <a href="support.html">サポート</a>
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+        <a href="mailto:25ri.apps.studio@gmail.com">お問い合わせ</a>
+      </div>
+      <small>おもいでドロップ ・ iOS 17.0 以上 / iPadOS 17.0 以上 ・ 2026年</small>
+    </footer>
+
+  </div>
+</body>
+</html>

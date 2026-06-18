@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サポート — おもいでドロップ</title>
+  <meta name="description" content="おもいでドロップの使い方・主な機能・よくある質問・お問い合わせ。あの日の今日をたどる iOS / iPadOS アプリのサポートページです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #FFFAF4;
+      --bg-soft:   #FFF8EF;
+      --paper:     #FFFDF9;
+      --ink:       #493936;
+      --muted:     #927C75;
+      --line:      rgba(102,74,60,0.13);
+      --pink:      #FFDCE5;
+      --peach:     #FFE4CA;
+      --blue:      #DCECFF;
+      --mint:      #DDF5EC;
+      --lavender:  #EEE4FF;
+      --cream:     #FFF1C9;
+      --grad-primary: linear-gradient(135deg, #FFE0E8 0%, #FFE9CA 100%);
+      --radius:    22px;
+      --radius-sm: 16px;
+      --shadow-soft:  0 10px 30px rgba(102,74,60,0.10);
+      --shadow-card:  0 8px 24px rgba(102,74,60,0.10);
+      --shadow-float: 0 18px 44px rgba(102,74,60,0.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 8% -4%, rgba(255,220,229,0.5) 0%, transparent 40%),
+        radial-gradient(circle at 96% 2%, rgba(221,245,236,0.5) 0%, transparent 38%),
+        linear-gradient(180deg, var(--paper) 0%, var(--bg-soft) 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15.5px; line-height: 1.85; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--pink); color: var(--ink); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(146,124,117,0.35); border-radius: 8px; }
+
+    h1, h2, h3, .display { font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif; }
+
+    .top-bar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,253,249,0.78);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; padding: 14px 26px;
+    }
+    .top-bar .brand { display: flex; align-items: center; gap: 10px; }
+    .top-bar .brand .mark {
+      width: 30px; height: 30px; border-radius: 10px; background: var(--grad-primary);
+      box-shadow: var(--shadow-card); display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .top-bar .brand b { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .5px; }
+    .top-bar .brand span.sub { color: var(--muted); font-size: 13px; }
+    .top-bar a.back { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+    .top-bar a.back:hover { color: var(--ink); }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ヒーロー */
+    .hero { padding: 56px 0 12px; }
+    .hero .label { font-size: 12px; letter-spacing: 2px; color: #C98A86; font-weight: 700; }
+    .hero h1 { font-size: 34px; margin-top: 8px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-top: 12px; max-width: 600px; }
+
+    section.block { padding: 34px 0; }
+    .block-label { font-size: 12px; letter-spacing: 2px; color: #C98A86; font-weight: 700; margin-bottom: 6px; }
+    h2.sec { font-size: 23px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+
+    .panel {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-soft);
+    }
+    .panel p { color: var(--muted); }
+    .panel .hl { color: var(--ink); font-weight: 700; }
+
+    /* 機能グリッド */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    .feature {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 20px 22px; box-shadow: var(--shadow-card); transition: transform .14s, box-shadow .2s;
+    }
+    .feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); }
+    .feature h3 { font-size: 15px; margin-bottom: 6px; display: flex; align-items: center; gap: 9px; }
+    .feature h3 .dot {
+      width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .feature p { color: var(--muted); font-size: 13.5px; line-height: 1.8; }
+    .t-pink { background: var(--pink); } .t-peach { background: var(--peach); }
+    .t-blue { background: var(--blue); } .t-mint { background: var(--mint); }
+    .t-lav { background: var(--lavender); } .t-cream { background: var(--cream); }
+
+    /* ヒント */
+    ul.tips { list-style: none; }
+    ul.tips li {
+      color: var(--muted); font-size: 14px; padding: 12px 2px; border-bottom: 1px solid var(--line);
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    ul.tips li:last-child { border-bottom: none; }
+    ul.tips li::before { content: '🍃'; flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+    ul.tips strong { color: var(--ink); font-weight: 700; }
+
+    /* FAQ */
+    .faq { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 26px; box-shadow: var(--shadow-soft); }
+    details { border-bottom: 1px solid var(--line); }
+    details:last-child { border-bottom: none; }
+    summary {
+      cursor: pointer; list-style: none; padding: 18px 30px 18px 0; position: relative;
+      font-weight: 500; font-size: 15px; color: var(--ink);
+      font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '＋'; position: absolute; right: 2px; top: 16px; color: #C98A86;
+      font-size: 18px; transition: transform .2s;
+    }
+    details[open] summary::after { content: '−'; }
+    details .a { color: var(--muted); font-size: 14px; padding: 0 0 18px; line-height: 1.85; }
+    details .a b { color: var(--ink); }
+
+    /* 連絡先 */
+    .contact {
+      background: linear-gradient(135deg, rgba(255,224,232,0.5), rgba(255,233,202,0.5));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; text-align: center;
+    }
+    .contact h3 { font-size: 18px; margin-bottom: 8px; }
+    .contact p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .contact a.mail {
+      display: inline-block; background: var(--paper); border: 1px solid var(--line);
+      border-radius: 999px; padding: 12px 26px; color: var(--ink); text-decoration: none;
+      font-size: 15px; font-weight: 500; box-shadow: var(--shadow-card); transition: transform .12s, box-shadow .2s;
+    }
+    .contact a.mail:hover { transform: translateY(-2px); box-shadow: var(--shadow-float); }
+
+    .note {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(221,245,236,0.55), rgba(220,236,255,0.4));
+      border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 22px; margin-top: 20px;
+    }
+    .note .ico { font-size: 18px; flex-shrink: 0; }
+    .note p { color: var(--ink); font-size: 13.5px; opacity: .85; }
+    .note a { color: #C98A86; }
+
+    footer {
+      margin-top: 24px; border-top: 1px solid var(--line); padding: 36px 0 60px; text-align: center;
+    }
+    footer .links { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    footer .links a { color: var(--ink); text-decoration: none; font-size: 14px; }
+    footer .links a:hover { color: #C98A86; }
+    footer small { color: var(--muted); font-size: 12.5px; display: block; line-height: 1.9; }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 12px 18px; }
+      .hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="brand">
+      <span class="mark">🍃</span>
+      <b>おもいでドロップ</b>
+      <span class="sub">— サポート</span>
+    </div>
+    <a class="back" href="index.html">← ホームへ戻る</a>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ヒーロー -->
+    <header class="hero">
+      <div class="label">SUPPORT</div>
+      <h1>サポート</h1>
+      <p>「おもいでドロップ」をご利用いただきありがとうございます。使い方やよくある質問をまとめました。解決しないことがあれば、お気軽にご連絡ください。</p>
+    </header>
+
+    <!-- アプリについて -->
+    <section class="block">
+      <div class="block-label">ABOUT</div>
+      <h2 class="sec">アプリについて</h2>
+      <div class="panel">
+        <p>
+          「おもいでドロップ」は、<span class="hl">今日と同じ月日の、過去の年の写真</span>＝「あの日の今日」をたどるアプリです。
+          去年の今日、一昨年の今日、もっと前の今日へ。年代と、場所・人・ペットなどの条件を組み合わせて思い出を絞り込めます。
+        </p>
+        <p>
+          写真・Live Photos・動画は<span class="hl">端末内で読み込み、外部には送信しません</span>。広告やトラッキングはありません。
+        </p>
+      </div>
+    </section>
+
+    <!-- 主な機能 -->
+    <section class="block">
+      <div class="block-label">FEATURES</div>
+      <h2 class="sec">主な機能</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3><span class="dot t-pink">🍃</span>あの日の今日</h3>
+          <p>今日と同じ月日の過去年写真が、上からそっと降って積もり、散らばります。枚数が多い日は「記憶の雨」に自動で切り替わります。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-blue">🖼️</span>フル表示</h3>
+          <p>もう一度タップでフル表示。左右スワイプで次の一枚へ、下スワイプで戻ります。Live Photos や動画はその場で再生できます。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-cream">🗓️</span>年代と条件で絞り込み</h3>
+          <p>去年・一昨年・もっと前・年別の年代に、場所・人・ペット・ランドマーク・お気に入りを掛け合わせて絞り込めます（複数選択）。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-mint">🏔️</span>お気に入りの山とメモ</h3>
+          <p>大切な一枚を「お気に入りの山」に。メモも残せます。どちらもこのアプリ独自の管理で、写真アプリのお気に入りとは別です。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-lav">🏷️</span>人・ペットの名づけ</h3>
+          <p>写っている人やペットに、アプリ内で任意の名前を付けられます。名前は写真ライブラリには書き戻さず、絞り込みや共有時に使えます。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-peach">📍</span>場所・ランドマーク</h3>
+          <p>写真の位置から、エリア名や「水族館の近く」のような表現をやわらかく推定します。店舗名は断定しません（設定でオフにできます）。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-pink">💞</span>共有プレビュー</h3>
+          <p>共有の前に必ずプレビュー。日付・場所・ランドマーク・人物名・ペット名・メモを表示するか選んでから、iOS標準の共有シートで送れます。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-blue">🪟</span>ウィジェット</h3>
+          <p>ホーム画面（小：あの日の1枚／中・大：あの日の山）とロック画面に対応。年代を選べる設定や、タップでその写真を開く動作にも対応します。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-mint">💾</span>保存容量の管理</h3>
+          <p>アプリ内の保存内容を確認し、古い元画質コピーや一時画像・キャッシュを整理できます。お気に入り・メモ・除外設定は残ります。</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-cream">✨</span>デモモードと軽量モード</h3>
+          <p>写真アクセスなしで体験できるデモモード。動作が重い・不安定なときは、演出や先読みを抑える軽量モードに切り替えられます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使い方のヒント -->
+    <section class="block">
+      <div class="block-label">TIPS</div>
+      <h2 class="sec">使い方のヒント</h2>
+      <ul class="tips">
+        <li><strong>まずはデモから</strong>　— 初回は写真アクセスを求めません。デモモードで「あの日の今日」を体験できます（設定からもいつでも開けます）。</li>
+        <li><strong>自分の写真で始める</strong>　— デモから「自分の写真で始める」を選んだ時だけ、写真アクセスをお願いします。</li>
+        <li><strong>限定アクセスでも使える</strong>　— 選んだ写真だけで動作します。「写真を追加」から、見せたい写真を後から増やせます。</li>
+        <li><strong>フル表示の操作</strong>　— カードをもう一度タップ（または長押し）でフル表示。左右で送り、下スワイプで戻ります。</li>
+        <li><strong>お気に入りの山</strong>　— フル表示から「お気に入りに追加」。設定の「お気に入り」からまとめて見返せます。</li>
+        <li><strong>メモを残す</strong>　— フル表示の「メモを残す」から、その日の気持ちを記録。共有時に出すかどうかは選べます。</li>
+        <li><strong>元画質でも保存</strong>　— 必要な写真だけ「元画質でも保存」。動画やLive Photosは重いため、既定ではコピーしません。</li>
+        <li><strong>今後出さない／今日は出さない</strong>　— 見せたくない写真はフル表示から除外できます（アプリ上の非表示で、写真は削除されません）。</li>
+        <li><strong>絞り込みの保存</strong>　— 前回選んだ条件は次の起動時にも引き継がれ、同じ体験から始められます。</li>
+        <li><strong>通知はあとから</strong>　— 初回は通知を求めません。設定の「通知」から、朝・昼・夜や「ある時だけ」を選んで有効化できます。</li>
+        <li><strong>動作が重いとき</strong>　— 設定の「軽量モード」をオン。前回に異常終了した場合は自動で軽量モードで復帰します。</li>
+      </ul>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="block">
+      <div class="block-label">FAQ</div>
+      <h2 class="sec">よくある質問</h2>
+      <div class="faq">
+        <details open>
+          <summary>今日撮った写真が出てきません</summary>
+          <div class="a">仕様です。「おもいでドロップ」は今日撮った写真を見せるアプリではなく、<b>今日と同じ月日の、過去の年の写真</b>＝「あの日の今日」をたどるアプリです。去年の今日、一昨年の今日…とさかのぼって楽しんでください。</div>
+        </details>
+        <details>
+          <summary>写真はどこかに送られますか？</summary>
+          <div class="a">いいえ。写真・Live Photos・動画は<b>あなたの端末の中で読み込み、外部サーバーには送信しません</b>。共有はあなたが明示的に操作したときだけ行われます。詳しくは<a href="privacy-policy.html" style="color:#C98A86">プライバシーポリシー</a>をご覧ください。</div>
+        </details>
+        <details>
+          <summary>去年の今日に写真がないときは？</summary>
+          <div class="a">すぐに空の画面にはしません。<b>もっと前の年を探す</b>・<b>近い日の思い出を見る</b>・<b>条件をゆるめる</b>・<b>デモを見る</b>といった次の一歩をご案内します。既定の「去年」が0枚のときは、自動でもっと前の年へ広げて表示します。</div>
+        </details>
+        <details>
+          <summary>限定アクセス（選んだ写真だけ許可）でも使えますか？</summary>
+          <div class="a">はい。許可された写真だけで動作します。「写真を追加」から、後から見せたい写真を増やせます。</div>
+        </details>
+        <details>
+          <summary>「お気に入りの山」は写真アプリのお気に入りと連動しますか？</summary>
+          <div class="a">いいえ。「お気に入りの山」は<b>このアプリ独自の管理</b>で、Apple純正の写真アプリのお気に入りとは別です。通常は元写真のIDとメモだけを保存します。</div>
+        </details>
+        <details>
+          <summary>除外した（今後出さない）写真を元に戻すには？</summary>
+          <div class="a">設定の「<b>除外した写真をリセット</b>」から解除できます。除外はこのアプリ上の非表示で、写真そのものは削除していません。</div>
+        </details>
+        <details>
+          <summary>人やペットの名前はどこから来ますか？</summary>
+          <div class="a">写真ライブラリから固有名を取得することは前提にしていません。<b>あなたがアプリ内で任意の名前を付ける</b>方式です。「人が写っているようです」「動物が写っているようです」といった控えめな手がかりは端末内の解析で表示します。付けた名前は写真ライブラリには書き戻しません。</div>
+        </details>
+        <details>
+          <summary>場所やランドマークの表示は正確ですか？</summary>
+          <div class="a">断定しすぎない方針です。エリア名や「水族館の近く」「舞浜の思い出」のように<b>やわらかく丸めて</b>表示します。店舗名などは断定しません。設定で「エリア名のみ」やオフにもできます。</div>
+        </details>
+        <details>
+          <summary>動作が重い・不安定なときは？</summary>
+          <div class="a">設定の「<b>軽量モード</b>」をオンにすると、落下する枚数・演出・先読みを抑えて軽く動きます。前回に異常終了した場合は、次回自動的に軽量モードで復帰します。</div>
+        </details>
+        <details>
+          <summary>通知は来ますか？</summary>
+          <div class="a">初回起動では通知を求めません。設定の「通知」から、朝・昼・夜、または「あの日の今日」がある時だけ、など好みのタイミングで有効化できます。</div>
+        </details>
+      </div>
+
+      <div class="note">
+        <span class="ico">📖</span>
+        <p>アプリの世界観や基本の流れは<a href="index.html">ホームページ</a>でも紹介しています。</p>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="block">
+      <div class="block-label">CONTACT</div>
+      <h2 class="sec">お問い合わせ</h2>
+      <div class="contact">
+        <h3>お気軽にご連絡ください</h3>
+        <p>ご質問・ご要望・不具合のご報告など、メールでお寄せください。順次対応いたします。</p>
+        <a class="mail" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">ホーム</a>
+        <a href="support.html">サポート</a>
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+        <a href="mailto:25ri.apps.studio@gmail.com">お問い合わせ</a>
+      </div>
+      <small>おもいでドロップ ・ iOS 17.0 以上 / iPadOS 17.0 以上 ・ 2026年</small>
+    </footer>
+
+  </div>
+</body>
+</html>

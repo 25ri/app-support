@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Memory Drop</title>
+  <meta name="description" content="How to use Memory Drop, its main features, FAQ, and contact. The support page for the iOS / iPadOS app that lets you revisit 'On This Day.'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #FFFAF4;
+      --bg-soft:   #FFF8EF;
+      --paper:     #FFFDF9;
+      --ink:       #493936;
+      --muted:     #927C75;
+      --line:      rgba(102,74,60,0.13);
+      --pink:      #FFDCE5;
+      --peach:     #FFE4CA;
+      --blue:      #DCECFF;
+      --mint:      #DDF5EC;
+      --lavender:  #EEE4FF;
+      --cream:     #FFF1C9;
+      --grad-primary: linear-gradient(135deg, #FFE0E8 0%, #FFE9CA 100%);
+      --radius:    22px;
+      --radius-sm: 16px;
+      --shadow-soft:  0 10px 30px rgba(102,74,60,0.10);
+      --shadow-card:  0 8px 24px rgba(102,74,60,0.10);
+      --shadow-float: 0 18px 44px rgba(102,74,60,0.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 8% -4%, rgba(255,220,229,0.5) 0%, transparent 40%),
+        radial-gradient(circle at 96% 2%, rgba(221,245,236,0.5) 0%, transparent 38%),
+        linear-gradient(180deg, var(--paper) 0%, var(--bg-soft) 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15.5px; line-height: 1.85; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--pink); color: var(--ink); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(146,124,117,0.35); border-radius: 8px; }
+
+    h1, h2, h3, .display { font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif; }
+
+    .top-bar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,253,249,0.78);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; padding: 14px 26px;
+    }
+    .top-bar .brand { display: flex; align-items: center; gap: 10px; }
+    .top-bar .brand .mark {
+      width: 30px; height: 30px; border-radius: 10px; background: var(--grad-primary);
+      box-shadow: var(--shadow-card); display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .top-bar .brand b { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .5px; }
+    .top-bar .brand span.sub { color: var(--muted); font-size: 13px; }
+    .top-bar a.back { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+    .top-bar a.back:hover { color: var(--ink); }
+    .top-bar .top-links { display: flex; gap: 18px; align-items: center; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ヒーロー */
+    .hero { padding: 56px 0 12px; }
+    .hero .label { font-size: 12px; letter-spacing: 2px; color: #C98A86; font-weight: 700; }
+    .hero h1 { font-size: 34px; margin-top: 8px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-top: 12px; max-width: 600px; }
+
+    section.block { padding: 34px 0; }
+    .block-label { font-size: 12px; letter-spacing: 2px; color: #C98A86; font-weight: 700; margin-bottom: 6px; }
+    h2.sec { font-size: 23px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+
+    .panel {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-soft);
+    }
+    .panel p { color: var(--muted); }
+    .panel .hl { color: var(--ink); font-weight: 700; }
+
+    /* 機能グリッド */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    .feature {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 20px 22px; box-shadow: var(--shadow-card); transition: transform .14s, box-shadow .2s;
+    }
+    .feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); }
+    .feature h3 { font-size: 15px; margin-bottom: 6px; display: flex; align-items: center; gap: 9px; }
+    .feature h3 .dot {
+      width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .feature p { color: var(--muted); font-size: 13.5px; line-height: 1.8; }
+    .t-pink { background: var(--pink); } .t-peach { background: var(--peach); }
+    .t-blue { background: var(--blue); } .t-mint { background: var(--mint); }
+    .t-lav { background: var(--lavender); } .t-cream { background: var(--cream); }
+
+    /* ヒント */
+    ul.tips { list-style: none; }
+    ul.tips li {
+      color: var(--muted); font-size: 14px; padding: 12px 2px; border-bottom: 1px solid var(--line);
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    ul.tips li:last-child { border-bottom: none; }
+    ul.tips li::before { content: '🍃'; flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+    ul.tips strong { color: var(--ink); font-weight: 700; }
+
+    /* FAQ */
+    .faq { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 26px; box-shadow: var(--shadow-soft); }
+    details { border-bottom: 1px solid var(--line); }
+    details:last-child { border-bottom: none; }
+    summary {
+      cursor: pointer; list-style: none; padding: 18px 30px 18px 0; position: relative;
+      font-weight: 500; font-size: 15px; color: var(--ink);
+      font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '＋'; position: absolute; right: 2px; top: 16px; color: #C98A86;
+      font-size: 18px; transition: transform .2s;
+    }
+    details[open] summary::after { content: '−'; }
+    details .a { color: var(--muted); font-size: 14px; padding: 0 0 18px; line-height: 1.85; }
+    details .a b { color: var(--ink); }
+
+    /* 連絡先 */
+    .contact {
+      background: linear-gradient(135deg, rgba(255,224,232,0.5), rgba(255,233,202,0.5));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; text-align: center;
+    }
+    .contact h3 { font-size: 18px; margin-bottom: 8px; }
+    .contact p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .contact a.mail {
+      display: inline-block; background: var(--paper); border: 1px solid var(--line);
+      border-radius: 999px; padding: 12px 26px; color: var(--ink); text-decoration: none;
+      font-size: 15px; font-weight: 500; box-shadow: var(--shadow-card); transition: transform .12s, box-shadow .2s;
+    }
+    .contact a.mail:hover { transform: translateY(-2px); box-shadow: var(--shadow-float); }
+    .contact a.mail + a.mail { margin-left: 10px; }
+
+    .note {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(221,245,236,0.55), rgba(220,236,255,0.4));
+      border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 22px; margin-top: 20px;
+    }
+    .note .ico { font-size: 18px; flex-shrink: 0; }
+    .note p { color: var(--ink); font-size: 13.5px; opacity: .85; }
+    .note a { color: #C98A86; }
+
+    footer {
+      margin-top: 24px; border-top: 1px solid var(--line); padding: 36px 0 60px; text-align: center;
+    }
+    footer .links { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    footer .links a { color: var(--ink); text-decoration: none; font-size: 14px; }
+    footer .links a:hover { color: #C98A86; }
+    footer small { color: var(--muted); font-size: 12.5px; display: block; line-height: 1.9; }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 12px 18px; }
+      .hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="brand">
+      <span class="mark">🍃</span>
+      <b>Memory Drop</b>
+      <span class="sub">— Support</span>
+    </div>
+    <div class="top-links">
+      <a class="back" href="../support.html">日本語</a>
+      <a class="back" href="index.html">← Back to home</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ヒーロー -->
+    <header class="hero">
+      <div class="label">SUPPORT</div>
+      <h1>Support</h1>
+      <p>Thank you for using Memory Drop. Here's a summary of how to use it and answers to common questions. If something isn't resolved, feel free to get in touch.</p>
+    </header>
+
+    <!-- アプリについて -->
+    <section class="block">
+      <div class="block-label">ABOUT</div>
+      <h2 class="sec">About the app</h2>
+      <div class="panel">
+        <p>
+          <span class="hl">Memory Drop</span> is an app for revisiting photos from the same month and day in past years — "On This Day."
+          This day last year, two years ago, and further back. Combine the era with filters like place, people, and pets to narrow down your memories.
+        </p>
+        <p>
+          Photos, Live Photos, and videos are <span class="hl">read on your device and never sent anywhere</span>. There are no ads or tracking.
+        </p>
+      </div>
+    </section>
+
+    <!-- 主な機能 -->
+    <section class="block">
+      <div class="block-label">FEATURES</div>
+      <h2 class="sec">Main features</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3><span class="dot t-pink">🍃</span>On This Day</h3>
+          <p>Photos from the same date in past years gently fall from above, pile up, and scatter. On days with many photos, it automatically switches to a "rain of memories."</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-blue">🖼️</span>Full view</h3>
+          <p>Tap again for full view. Swipe left or right for the next photo, swipe down to go back. Live Photos and videos play right there.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-cream">🗓️</span>Filter by era and conditions</h3>
+          <p>Combine eras — last year, two years ago, earlier, or by specific year — with place, people, pets, landmarks, and favorites to filter (multiple selections allowed).</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-mint">🏔️</span>Favorites and notes</h3>
+          <p>Add a treasured photo to Favorites. You can leave notes too. Both are managed within this app, separate from the Photos app's favorites.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-lav">🏷️</span>Naming people &amp; pets</h3>
+          <p>Give the people and pets in your photos any name you like, within the app. Names aren't written back to your photo library, and can be used for filtering and sharing.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-peach">📍</span>Place &amp; landmarks</h3>
+          <p>From a photo's location, it gently estimates an area name or phrases like "near the aquarium." It doesn't assert shop names (and can be turned off in settings).</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-pink">💞</span>Share preview</h3>
+          <p>Always preview before sharing. Choose whether to show the date, place, landmark, people's names, pet names, and notes, then send via the standard iOS share sheet.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-blue">🪟</span>Widgets</h3>
+          <p>Supports the Home Screen (small: one photo from this day / medium &amp; large: photos from this day) and the Lock Screen. You can choose the era, and tapping opens that photo.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-mint">💾</span>Storage management</h3>
+          <p>Check what the app has stored and clean up old full-resolution copies, temporary images, and caches. Your favorites, notes, and exclusion settings are kept.</p>
+        </div>
+        <div class="feature">
+          <h3><span class="dot t-cream">✨</span>Demo mode and Lite mode</h3>
+          <p>Demo mode lets you try the app without photo access. If it runs slowly or unstably, switch to Lite mode, which reduces effects and prefetching.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使い方のヒント -->
+    <section class="block">
+      <div class="block-label">TIPS</div>
+      <h2 class="sec">Tips for using the app</h2>
+      <ul class="tips">
+        <li><strong>Start with the demo</strong> — We don't ask for photo access on first launch. You can experience "On This Day" in demo mode (also available anytime from settings).</li>
+        <li><strong>Start with your photos</strong> — Only when you choose "Start with my photos" from the demo do we ask for photo access.</li>
+        <li><strong>Works with limited access</strong> — It works with only the photos you select. Use "Add photos" to add more later.</li>
+        <li><strong>Full view controls</strong> — Tap a card again (or press and hold) for full view. Swipe left/right to move through, swipe down to go back.</li>
+        <li><strong>Favorites</strong> — From full view, choose "Add to Favorites." Review them all from "Favorites" in settings.</li>
+        <li><strong>Leave a note</strong> — From "Leave a note" in full view, record how you felt that day. You can choose whether to show it when sharing.</li>
+        <li><strong>Save in full resolution</strong> — Save only the photos you need in full resolution. Videos and Live Photos are large, so they aren't copied by default.</li>
+        <li><strong>Hide from now on / for today</strong> — Photos you'd rather not see can be excluded from full view (hidden within the app; the photo isn't deleted).</li>
+        <li><strong>Saved filters</strong> — The conditions you chose last time carry over to the next launch, so you can start from the same experience.</li>
+        <li><strong>Notifications later</strong> — We don't ask for notifications at first. Enable them from "Notifications" in settings — morning, noon, night, or "only when there's something."</li>
+        <li><strong>When it's slow</strong> — Turn on "Lite mode" in settings. If the app crashed last time, it automatically returns in Lite mode.</li>
+      </ul>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="block">
+      <div class="block-label">FAQ</div>
+      <h2 class="sec">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Photos I took today don't show up</summary>
+          <div class="a">That's by design. Memory Drop isn't an app for showing photos you took today — it's for revisiting <b>photos from the same month and day in past years</b>, "On This Day." Enjoy going back through this day last year, two years ago, and beyond.</div>
+        </details>
+        <details>
+          <summary>Are my photos sent anywhere?</summary>
+          <div class="a">No. Photos, Live Photos, and videos are <b>read on your device and never sent to external servers</b>. Sharing happens only when you explicitly choose to. See the <a href="privacy-policy.html" style="color:#C98A86">Privacy Policy</a> for details.</div>
+        </details>
+        <details>
+          <summary>What if there are no photos from this day last year?</summary>
+          <div class="a">We won't just show you an empty screen. We'll suggest next steps like <b>searching earlier years</b>, <b>viewing memories from nearby days</b>, <b>loosening the filters</b>, or <b>watching the demo</b>. When "last year" has zero photos, it automatically expands to earlier years.</div>
+        </details>
+        <details>
+          <summary>Can I use it with limited access (only selected photos)?</summary>
+          <div class="a">Yes. It works with only the photos you've allowed. Use "Add photos" to add more later.</div>
+        </details>
+        <details>
+          <summary>Does "Favorites" sync with the Photos app's favorites?</summary>
+          <div class="a">No. "Favorites" is <b>managed within this app</b>, separate from Apple's Photos app favorites. Normally it only stores the original photo's ID and your notes.</div>
+        </details>
+        <details>
+          <summary>How do I restore an excluded (hidden) photo?</summary>
+          <div class="a">You can undo it from "<b>Reset excluded photos</b>" in settings. Exclusion is just hiding within this app; the photo itself isn't deleted.</div>
+        </details>
+        <details>
+          <summary>Where do the names of people and pets come from?</summary>
+          <div class="a">We don't rely on getting proper names from your photo library. Instead, <b>you assign any name you like within the app</b>. Subtle hints like "looks like a person" or "looks like an animal" come from on-device analysis. The names you assign aren't written back to your photo library.</div>
+        </details>
+        <details>
+          <summary>Are place and landmark labels accurate?</summary>
+          <div class="a">Our approach is not to over-assert. We show <b>gently rounded</b> labels like an area name, "near the aquarium," or "memories around Maihama." We don't assert shop names. You can set it to "area name only" or turn it off in settings.</div>
+        </details>
+        <details>
+          <summary>What if it's slow or unstable?</summary>
+          <div class="a">Turning on "<b>Lite mode</b>" in settings reduces the number of falling photos, effects, and prefetching for lighter operation. If the app crashed last time, it automatically returns in Lite mode next time.</div>
+        </details>
+        <details>
+          <summary>Will I get notifications?</summary>
+          <div class="a">We don't ask for notifications on first launch. From "Notifications" in settings, enable them at your preferred timing — morning, noon, night, or only when there's an "On This Day."</div>
+        </details>
+      </div>
+
+      <div class="note">
+        <span class="ico">📖</span>
+        <p>You can also learn about the app's world and basic flow on the <a href="index.html">home page</a>.</p>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="block">
+      <div class="block-label">CONTACT</div>
+      <h2 class="sec">Contact</h2>
+      <div class="contact">
+        <h3>Feel free to reach out</h3>
+        <p>Questions, requests, bug reports, and more — reach out by email or X anytime. We'll respond as we can.</p>
+        <a class="mail" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a>
+        <a class="mail" href="https://x.com/ni5rikawa" target="_blank" rel="noopener">@ni5rikawa</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="support.html">Support</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:25ri.apps.studio@gmail.com">Contact</a>
+        <a href="https://x.com/ni5rikawa" target="_blank" rel="noopener">@ni5rikawa</a>
+      </div>
+      <small>Memory Drop ・ iOS 17.0+ / iPadOS 17.0+ ・ 2026</small>
+    </footer>
+
+  </div>
+</body>
+</html>

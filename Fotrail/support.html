@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fotrailの使い方、位置情報・GPX・iCloud Driveに関するよくある質問とお問い合わせ先。">
+  <title>サポート — Fotrail</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav" aria-label="メインナビゲーション">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Fotrail</span><span>サポート</span></a>
+    <div class="nav-links"><a href="index.html">ホーム</a><a href="privacy-policy.html">プライバシー</a></div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow">サポート</span>
+      <h1 class="gradient-text">撮影へ出る前に、<br>迷いをなくす。</h1>
+      <p class="lead">基本操作、位置情報、GPX、iCloud Driveについてまとめています。</p>
+    </header>
+
+    <section class="section">
+      <div class="section-head"><span class="section-label">基本の使い方</span><h2>記録からGPX保存まで</h2></div>
+      <div class="content-card">
+        <ol>
+          <li><strong>記録名を入力する</strong> — 空欄でも日時を使った名前で開始できます。現在地から地名候補を選ぶこともできます。</li>
+          <li><strong>「記録を開始」をタップする</strong> — 初回だけ、用途を説明した後にiOSの位置情報許可画面を開きます。</li>
+          <li><strong>撮影中はそのまま持ち歩く</strong> — 画面ロック中や別アプリの使用中も記録を継続します。一時停止と再開も可能です。</li>
+          <li><strong>「終了」して保存する</strong> — 端末内にGPXを作成します。設定が有効ならiCloud Driveにも保存します。</li>
+          <li><strong>履歴から確認・共有する</strong> — ルート、ログ品質、記録地点を確認し、GPXの再生成や共有ができます。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="section-head"><span class="section-label">よくある質問</span><h2>困ったときは</h2></div>
+      <div class="content-card">
+        <details open><summary>「常に許可」は必要ですか？</summary><p>必要ありません。Fotrailは「このAppの使用中」の許可で、ユーザーが開始した記録中だけバックグラウンド位置情報セッションを維持します。記録を終了すると測位を停止します。</p></details>
+        <details><summary>バックグラウンドで記録されません</summary><p>iOSの位置情報設定、低電力モード、Appのバックグラウンド更新、端末の再起動状態をご確認ください。FotrailをAppスイッチャーから強制終了した後は、iOSの制約により記録を継続できません。</p></details>
+        <details><summary>標準と高精度の違いがわかりません</summary><p>精度設定はCore Locationへ求める測位精度、距離フィルタ、位置更新の扱いを変更します。ただし、建物・地下・端末状態・衛星の見通しにより結果は変動します。設定画面では用途、期待精度、消費電力の相対目安を表示しています。</p></details>
+        <details><summary>ログ保存間隔は正確な周期ですか？</summary><p>1秒・5秒・15秒・30秒は、受信した有効な位置情報をログ／GPXへ採用する最小間隔です。iOSへその周期での測位を強制するものではなく、環境により実際の間隔は長くなる場合があります。</p></details>
+        <details><summary>位置が大きく飛びました</summary><p>建物内や高層建築の周辺では測位が乱れることがあります。GPS設定の徒歩向け位置飛び補正を有効にすると、移動速度・直前の軌跡・精度を使って不自然な飛びを抑えます。補正は推定であり、完全な位置を保証するものではありません。</p></details>
+        <details><summary>GPXはどこにありますか？</summary><p>端末内の履歴から共有できます。iCloud Driveの自動保存を有効にした場合は、ファイルAppの「iCloud Drive」内にある「Fotrail」フォルダ直下にも保存します。</p></details>
+        <details><summary>iCloud Driveへ保存できません</summary><p>Apple Accountへのサインイン、iCloud Driveが有効であること、空き容量、FotrailのiCloud権限をご確認ください。iCloud保存に失敗しても端末内のGPSログとGPXは削除されず、設定や履歴から再試行できます。</p></details>
+        <details><summary>写真に位置情報を書き込みますか？</summary><p>いいえ。Fotrailは写真ライブラリやカメラを使用せず、写真データへ直接変更を加えません。デジタルカメラ側の写真とGPXを、対応ソフトで撮影時刻を使って関連付けるためのアプリです。</p></details>
+        <details><summary>記録データを削除するには？</summary><p>履歴の削除操作から端末内データを削除できます。iCloud Drive上の対応ファイルも同時に削除するか選択できます。ファイルAppから個別に削除することもできます。</p></details>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="content-card notice"><h3>安全のために</h3><p>運転中や歩行中に画面を注視・操作しないでください。記録開始と終了は、安全な場所で行ってください。</p></div>
+      <div class="content-card contact-box"><span class="section-label">お問い合わせ</span><h2>解決しない場合</h2><p>不具合の内容、iOSのバージョン、Fotrailのバージョン、再現手順をお知らせください。位置情報ログや個人情報を添付する必要はありません。</p><a class="button primary" href="mailto:25ri.apps.studio@gmail.com?subject=Fotrail%20%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88">メールで問い合わせる</a></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-links"><a href="index.html">ホーム</a><a href="support.html">サポート</a><a href="privacy-policy.html">プライバシーポリシー</a></div>Fotrail — 写真用GPSロガー<br>© 2026 Yuta Nigorikawa</footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fotrailは、写真撮影中の位置情報をiPhoneで記録し、GPXとして書き出せるローカルファーストのGPSロガーです。">
+  <title>Fotrail — 写真用GPSロガー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav" aria-label="メインナビゲーション">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Fotrail</span><span>写真用GPSロガー</span></a>
+    <div class="nav-links"><a href="support.html">サポート</a><a href="privacy-policy.html">プライバシー</a></div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow">撮影の移動を、正確な時間とともに</span>
+      <h1 class="gradient-text">写真に、<br>旅した軌跡を。</h1>
+      <p class="lead">Fotrailは、デジタルカメラでの撮影中にiPhoneで位置情報を記録し、写真整理に使えるGPXファイルを作成するGPSロガーです。ログは端末内を正本として保持します。</p>
+      <div class="actions"><a class="button primary" href="support.html">使い方を見る</a><a class="button" href="privacy-policy.html">データの扱いを確認</a></div>
+
+      <div class="route-card" aria-label="記録ルートのイメージ">
+        <svg class="route-line" viewBox="0 0 800 300" role="img" aria-label="街を歩いた軌跡">
+          <defs><linearGradient id="routeGradient" x1="0" x2="1"><stop stop-color="#4ee6b8"/><stop offset=".5" stop-color="#47c8ff"/><stop offset="1" stop-color="#6e93ff"/></linearGradient></defs>
+          <path d="M55 230 C125 180, 150 250, 218 198 S315 95, 390 132 S500 238, 565 166 S660 52, 748 92"/>
+          <circle cx="55" cy="230" r="10" fill="#4ee6b8"/><circle cx="748" cy="92" r="12" fill="#47c8ff" stroke="#eaf8ff" stroke-width="5"/>
+        </svg>
+        <div class="route-status"><strong>記録中</strong><span>清澄白河フォトウォーク</span></div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-head"><span class="section-label">主な機能</span><h2>撮影に必要な記録を、迷わず。</h2><p>記録開始からGPXの保存まで、iPhoneだけで完結します。</p></div>
+      <div class="grid">
+        <article class="card"><div class="card-icon">●</div><h3>バックグラウンドGPS</h3><p>画面ロック中や別のアプリを使用中も、明示的に終了するまで撮影ルートを記録します。</p></article>
+        <article class="card"><div class="card-icon">⌁</div><h3>GPX 1.1</h3><p>撮影時刻と位置を標準形式で書き出し。Lightroom Classicなどの対応ソフトで利用できます。</p></article>
+        <article class="card"><div class="card-icon">☁</div><h3>iCloud Drive</h3><p>任意でFotrailフォルダへ自動保存。失敗しても端末内の元ログとGPXは失われません。</p></article>
+        <article class="card"><div class="card-icon">◎</div><h3>撮影向け精度設定</h3><p>精度とログ保存間隔を用途に合わせて選択。各設定の違いと消費電力の目安も確認できます。</p></article>
+        <article class="card"><div class="card-icon">⌖</div><h3>位置飛び補正</h3><p>徒歩では不自然な測位の飛びを抑えるオプションを用意。元の受信精度も品質情報で確認できます。</p></article>
+        <article class="card"><div class="card-icon">◷</div><h3>ライブアクティビティ</h3><p>ロック画面やDynamic Islandから記録時間と状態を確認できます。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="content-card">
+        <span class="section-label">ローカルファースト</span>
+        <h2>記録の正本は、あなたのiPhoneに。</h2>
+        <p>位置情報ログ、セッション名、生成したGPXはまず端末内へ保存されます。開発者の独自サーバーへの送信、広告、トラッキング、利用分析SDKはありません。iCloud Drive保存もユーザーが選んだ場合だけ有効になります。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-links"><a href="index.html">ホーム</a><a href="support.html">サポート</a><a href="privacy-policy.html">プライバシーポリシー</a><a href="mailto:25ri.apps.studio@gmail.com">お問い合わせ</a></div>Fotrail — 写真用GPSロガー<br>© 2026 Yuta Nigorikawa</footer>
+</body>
+</html>

@@ -112,7 +112,7 @@
     .changelog-entry .ver-pin{background:var(--accent-dim);border:1px solid var(--border-accent);color:var(--accent);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:0.5px;}
     .change-group{margin-top:12px;}
     .change-group .group-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:8px;display:inline-block;padding:2px 8px;border-radius:3px;}
-    .group-feat{background:rgba(0,217,255,.10);color:var(--accent);border:1px solid rgba(0,217,255,.25);}
+    .group-feat,.group-new{background:rgba(0,217,255,.10);color:var(--accent);border:1px solid rgba(0,217,255,.25);}
     .group-imprv{background:rgba(52,211,153,.10);color:var(--success);border:1px solid rgba(52,211,153,.25);}
     .group-fix{background:rgba(251,191,36,.10);color:var(--warn);border:1px solid rgba(251,191,36,.25);}
     .change-group ul{list-style:none;padding-left:0;margin:0;}
@@ -158,14 +158,17 @@
     <a class="nav-link" href="#cardio"><span class="icon">🏃</span>有酸素運動の記録</a>
     <a class="nav-link" href="#bodyweight"><span class="icon">⚖️</span>自重トレーニング</a>
     <a class="nav-link" href="#templates"><span class="icon">📋</span>ルーティンテンプレート</a>
+    <a class="nav-link" href="#starter-programs"><span class="icon">🌱</span>スタータープログラム</a>
     <a class="nav-link" href="#personal-best"><span class="icon">🏆</span>パーソナルベスト</a>
     <a class="nav-link" href="#exercise-history"><span class="icon">📈</span>種目別の履歴ビュー</a>
+    <a class="nav-link" href="#progress-photos"><span class="icon">📸</span>進捗写真</a>
     <a class="nav-link" href="#condition"><span class="icon">❤️‍🩹</span>コンディション分析</a>
     <a class="nav-link" href="#interval-timer"><span class="icon">⏱️</span>インターバルタイマー</a>
     <a class="nav-link" href="#ai-suggestion"><span class="icon">🧠</span>AIによる種目提案</a>
     <a class="nav-link" href="#live-activity"><span class="icon">🏝️</span>Dynamic Island</a>
     <a class="nav-link" href="#widget"><span class="icon">📱</span>ホーム画面ウィジェット</a>
     <a class="nav-link" href="#healthkit"><span class="icon">❤️</span>HealthKit連携</a>
+    <a class="nav-link" href="#icloud-sync"><span class="icon">☁️</span>iCloud同期</a>
     <a class="nav-link" href="#archive"><span class="icon">🗑️</span>アーカイブ機能</a>
   </div>
 
@@ -183,7 +186,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v2.11.0</span>
+    <span class="version-badge">v2.36.0</span>
   </div>
 
   <div class="content" id="top">
@@ -191,8 +194,8 @@
     <div class="hero">
       <div class="hero-title"><span>BUFF</span></div>
       <p class="hero-desc">
-        筋力トレーニング・有酸素運動の記録に特化した、完全オフライン動作のiOSアプリ。
-        記録・分析・AI提案・コンディション管理までを1つのアプリで。
+        筋力トレーニング・有酸素運動の記録に特化した、iPhone・iPad対応のiOSアプリ。
+        基本機能はオフラインで使え、必要な場合だけiCloud同期を有効にできます。
       </p>
       <div class="tab-badges">
         <span class="tab-badge">👤 プロフィール</span>
@@ -208,7 +211,7 @@
       <h2>アプリ概要</h2>
       <div class="accent-line"></div>
 
-      <p>BUFFは、ジムや自宅でのトレーニングを真剣に行う方向けの、高機能なワークアウトログアプリです。インターネット接続不要で完全にオフラインで動作します。</p>
+      <p>BUFFは、ジムや自宅でのトレーニングを真剣に行う方向けの、高機能なワークアウトログアプリです。記録・分析・バックアップなどの基本機能はオフラインで利用でき、希望する場合は同じApple AccountのiPhoneとiPadでiCloud同期を有効にできます。</p>
 
       <div class="grid-2">
         <div class="card">
@@ -221,7 +224,7 @@
         </div>
         <div class="card">
           <h4>📊 詳細な統計分析</h4>
-          <p>ベスト記録・部位別ボリューム・トレーニングカレンダーなど多彩な統計表示。</p>
+          <p>ベスト記録・部位別ボリューム・トレーニングカレンダー・回復プラン・来週の進行提案などを表示。</p>
         </div>
         <div class="card">
           <h4>📈 種目別の履歴ビュー <span class="badge-new">NEW</span></h4>
@@ -244,20 +247,36 @@
           <p>Dynamic Islandに残り時間を表示。プリセット登録で素早くセット間休憩を計測。</p>
         </div>
         <div class="card">
-          <h4>📋 テンプレート機能</h4>
-          <p>よく使うルーティンをテンプレートとして保存。ワンタップで種目群を呼び出し。</p>
+          <h4>📋 テンプレートとスタータープログラム</h4>
+          <p>よく使うルーティンを保存できるほか、利用場所と運動頻度に合う初心者向けプログラムから始められます。</p>
         </div>
         <div class="card">
           <h4>❤️ HealthKit連携</h4>
           <p>体重・体脂肪率・身長データをApple Healthと同期（オプション設定）。</p>
         </div>
         <div class="card">
-          <h4>🌓 ライト／ダーク両モード <span class="badge-new">NEW</span></h4>
+          <h4>📸 進捗写真</h4>
+          <p>写真を日付・体重・メモと一緒に端末内へ保存。2枚を並べて身体の変化を比較できます。</p>
+        </div>
+        <div class="card">
+          <h4>☁️ 任意のiCloud同期 <span class="badge-new">v2.36.0</span></h4>
+          <p>ワークアウト・セット・種目・テンプレートを、同じApple AccountのiPhoneとiPadで同期できます。</p>
+        </div>
+        <div class="card">
+          <h4>📱 iPhone・iPad対応</h4>
+          <p>iPhoneの下部タブに加え、iPadでは広い画面を活かした2ペイン表示で記録や分析を確認できます。</p>
+        </div>
+        <div class="card">
+          <h4>⚖️ kg／lbの重量単位</h4>
+          <p>設定した単位が入力・履歴・統計・グラフ・共有画像・ウィジェットに反映されます。</p>
+        </div>
+        <div class="card">
+          <h4>🌓 ライト／ダーク両モード</h4>
           <p>設定でテーマ（ダーク／ライト／システム）を選択可能。OSの外観設定にも追従。</p>
         </div>
         <div class="card">
-          <h4>🔐 完全プライバシー保護</h4>
-          <p>広告なし・課金なし・データは端末内のみ。オフラインで全機能利用可能。</p>
+          <h4>🔐 プライバシー重視</h4>
+          <p>広告なし・追加課金なし。基本機能はオフラインで利用でき、iCloud同期は設定から明示的に有効化します。</p>
         </div>
       </div>
     </section>
@@ -267,7 +286,7 @@
       <h2>クイックスタート</h2>
       <div class="accent-line"></div>
 
-      <p>初めてアプリを起動すると、スプラッシュ画面のあとにオンボーディングチュートリアルが表示されます。チュートリアルは15ページ構成で、イントロダクション・基本機能・応用機能・分析機能のセクションに分かれています。途中で「スキップしてBUFFを始める」を選ぶこともできます。</p>
+      <p>初めてアプリを起動すると、スプラッシュ画面のあとに16ページのオンボーディングチュートリアルが表示されます。ワークアウト記録、統計、バックアップ、設定などの基本操作を確認でき、途中で「スキップ」を選ぶこともできます。</p>
 
       <div class="steps">
         <div class="step">
@@ -281,7 +300,7 @@
           <div class="step-num">2</div>
           <div class="step-body">
             <strong>ワークアウトタブを開く</strong>
-            <p>下部タブバーの中央「🏋️ ワークアウト」をタップしてトレーニング画面を開きます。</p>
+            <p>iPhoneは下部タブバー、iPadは上部タブから「🏋️ ワークアウト」を選び、トレーニング画面を開きます。</p>
           </div>
         </div>
         <div class="step">
@@ -309,7 +328,7 @@
 
       <div class="tip-box">
         <span class="tip-icon">✅</span>
-        <p>データは自動保存されます。セットを記録するたびにリアルタイムで保存されるので、記録し忘れる心配はありません。</p>
+        <p>データは自動保存されます。別のiPhone・iPadでも記録を使う場合は、プロフィール → 設定 → iCloud同期から任意で有効にできます。</p>
       </div>
     </section>
 
@@ -318,8 +337,8 @@
       <h2>基本的な操作</h2>
       <div class="accent-line"></div>
 
-      <h3>タブバー</h3>
-      <p>画面下部の5つのタブで主要機能にアクセスします。<span class="badge-new">NEW</span> v2.6.0 でタブ名が日本語化されました。</p>
+      <h3>画面の移動</h3>
+      <p>iPhoneは画面下部、iPadは画面上部の5つのタブで主要機能にアクセスします。iPadの各タブでは、広い画面に合わせて一覧と詳細を並べる2ペイン表示を使用します。</p>
 
       <table>
         <tr><th>タブ</th><th>アイコン</th><th>機能</th></tr>
@@ -329,6 +348,11 @@
         <tr><td><strong>AI</strong></td><td>🤖</td><td>AIトレーナーへの相談・質問テンプレート（iOS 26以上）</td></tr>
         <tr><td><strong>種目</strong></td><td>📚</td><td>種目の管理・検索・詳細確認</td></tr>
       </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">⬆️</span>
+        <p>表示中のタブをもう一度タップすると、その画面の先頭へ戻れます。</p>
+      </div>
 
       <h3>共通のジェスチャー</h3>
       <div class="grid-2">
@@ -415,14 +439,16 @@
       <p>コンディションと週間目標、各種レポートへの導線をまとめたダッシュボードです。</p>
       <div class="grid-2">
         <div class="card"><h4>❤️‍🩹 コンディション</h4><p>回復スコア・トレーニング負荷・オーバートレーニング警告・今日の推奨強度を表示。タップすると<a href="#condition" style="color:var(--accent)">コンディション分析</a>の詳細を確認できます。</p></div>
+        <div class="card"><h4>🧭 今日の回復プラン</h4><p>回復スコア・トレーニング負荷・週間進捗をまとめ、休養・軽め・通常など、その日の具体的な行動目安と判断根拠を表示します。</p></div>
         <div class="card"><h4>🎯 今週のチャレンジ</h4><p>回数・セット数・ボリューム・部位カバーの4指標で週間目標の達成度を表示。全達成を演出で祝福します。</p></div>
+        <div class="card"><h4>📈 来週の進行提案</h4><p>先週と前週を比較し、記録継続・負荷軽減・小幅増量・回数追加・維持の方針と、その判断根拠を確認できます。</p></div>
         <div class="card"><h4>🏆 殿堂（称号コレクション）</h4><p>ワークアウト回数・セット数・最長連続日数・総ボリュームの4軸20種の称号を、達成度に応じて表示。</p></div>
         <div class="card"><h4>🗓️ 週次レポート</h4><p>今週／先週の実績（前週比）・自己ベスト更新・部位別バランス・チャレンジ達成を1画面で振り返り。新しい週はバナーで案内。</p></div>
         <div class="card"><h4>📅 月間・年間レポート</h4><p>今月／先月／今年／昨年の実績・前期比・自己ベスト更新・部位別バランスをまとめて確認。</p></div>
       </div>
 
       <h3>ベスト記録タブ</h3>
-      <p>各種目の自己ベスト記録を一覧表示します。フィルターは2段構成で絞り込みが可能です。</p>
+      <p>各種目の自己ベスト記録を一覧表示します。フィルターは2段構成で絞り込めるほか、種目ごとの折りたたみ、全件の開閉、並べ替えに対応しています。並べ替えと開閉状態は次回起動時も保持されます。</p>
       <table>
         <tr><th>段</th><th>フィルター</th></tr>
         <tr><td>上段</td><td>全て / お気に入り / 胸 / 背中 / 脚 / 肩 / 腕 / 腹筋 / 有酸素</td></tr>
@@ -456,7 +482,7 @@
       <h2>🤖 AI（トレーナー）</h2>
       <div class="accent-line"></div>
 
-      <p>AIタブは、Apple Intelligence を活用した対話型のトレーニングアドバイザーです。すべての処理はデバイス上で完結し、データは外部に送信されません。</p>
+      <p>AIタブは、Apple Intelligenceのオンデバイスモデルを活用した対話型のトレーニングアドバイザーです。選択した記録と会話内容は端末内で処理され、外部サーバーへ送信されません。</p>
 
       <div class="warn-box">
         <span class="warn-icon">⚠️</span>
@@ -467,17 +493,18 @@
       <div class="grid-2">
         <div class="card"><h4>💬 マルチターン対話</h4><p>会話履歴を保持しながら、自然な流れで複数回のやり取りが可能。</p></div>
         <div class="card"><h4>📚 履歴ベースの回答</h4><p>登録種目・最近のトレーニング履歴・コンディション情報を踏まえて回答。</p></div>
-        <div class="card"><h4>❤️‍🩹 コンディション連動 <span class="badge-new">NEW</span></h4><p>v2.5.0 から、AIに回復スコアやトレーニング負荷の情報も共有可能に。体調を踏まえたアドバイスが得られます。</p></div>
+        <div class="card"><h4>❤️‍🩹 コンディション連動 <span class="badge-new">NEW</span></h4><p>v2.5.0 から、回復スコアやトレーニング負荷も端末内のAI処理に使用。体調を踏まえたアドバイスが得られます。</p></div>
         <div class="card"><h4>🔒 完全オンデバイス処理</h4><p>すべての推論はApple Intelligenceのオンデバイスモデルで実行。データは外部に送信されません。</p></div>
       </div>
 
-      <h3>データ共有レベル</h3>
-      <p>AIに共有するデータの粒度を「設定 → AIトレーナー」から変更可能です。</p>
+      <h3>AI処理に使用するデータ</h3>
+      <p>端末内のAI処理に使用するデータの粒度を「設定 → AIトレーナー」から変更可能です。</p>
       <table>
-        <tr><th>レベル</th><th>共有内容</th></tr>
+        <tr><th>レベル</th><th>処理に使用する内容</th></tr>
         <tr><td><strong>標準</strong></td><td>登録種目・部位・最近のトレーニング有無</td></tr>
         <tr><td><strong>詳細</strong></td><td>標準 + 直近5セッションの数値・自己ベスト・体重推移・コンディション情報</td></tr>
       </table>
+      <p>会話内容は会話中の文脈として保持されますが、新規会話の開始後やアプリ終了後には引き継がれません。AIの提案は参考情報として、体調や痛みに応じて調整してください。</p>
     </section>
 
     <section id="tab-exercises">
@@ -502,6 +529,7 @@
         <tr><td>器具</td><td>使用する器具（バーベル・ダンベル・マシンなど）</td></tr>
         <tr><td>ベスト記録</td><td>これまでの自己最高重量・回数・推定1RM</td></tr>
         <tr><td>履歴を見る <span class="badge-new">NEW</span></td><td>種目別の履歴ビューに直接遷移できるボタン</td></tr>
+        <tr><td>ジム別器具プロファイル</td><td>ジム名・器具名・重量刻み・バー重量・シート位置・メモを種目ごとに保存</td></tr>
       </table>
 
       <h3>種目の追加・編集・アーカイブ</h3>
@@ -513,13 +541,29 @@
       <h2>👤 プロフィール</h2>
       <div class="accent-line"></div>
 
-      <p>体重・体脂肪率・身長・周径囲を時系列で記録・グラフ表示するタブです。設定エントリポイントもここから開きます。</p>
+      <p>体重・体脂肪率・身長・周径囲と進捗写真を記録し、身体の変化を確認するタブです。設定エントリポイントもここから開きます。</p>
 
-      <h3>3つのサブタブ</h3>
+      <h3>4つのサブタブ</h3>
       <div class="card"><h4>📜 履歴</h4><p>記録した体重・体脂肪率・身長を時系列リストで表示。タップで編集、左スワイプで削除。データがない場合はわかりやすい空状態画面を表示。</p></div>
       <div class="card"><h4>📈 グラフ</h4><p>期間（日・週・月・6ヶ月・年）を選んで体重・体脂肪率・身長の推移をグラフで確認。</p></div>
-      <div class="card"><h4>⚙️ 設定 <span class="badge-new">NEW</span></h4><p>v2.6.0 から、設定が単一の「設定」エントリポイントに集約されました。詳細は「<a href="#settings" style="color:var(--accent)">各種設定</a>」をご覧ください。</p></div>
+      <div class="card"><h4>📸 写真</h4><p>日付・体重・メモと保存した進捗写真を一覧表示し、2枚を撮影日順で並べて比較できます。</p></div>
+      <div class="card"><h4>⚙️ 設定</h4><p>アプリの設定をまとめて開きます。詳細は「<a href="#settings" style="color:var(--accent)">各種設定</a>」をご覧ください。</p></div>
       <div class="card"><h4>📏 周径囲の記録 <span class="badge-new">NEW</span></h4><p>v2.10.0 から、腕・胸囲・ウエストなど9部位の周径囲を記録できます。プロフィールの「＋」から記録し、グラフタブで推移を確認できます。</p></div>
+    </section>
+
+    <section id="progress-photos">
+      <div class="section-label">Detail</div>
+      <h2>📸 進捗写真</h2>
+      <div class="accent-line"></div>
+
+      <p>プロフィールの「写真」タブで、身体の変化を写真として記録できます。写真アプリから明示的に選んだ画像だけを読み込み、日付・体重・メモと一緒に保存します。</p>
+
+      <div class="grid-2">
+        <div class="card"><h4>➕ 写真を追加</h4><p>プロフィール右上の「＋」→「進捗写真を追加」から、写真・撮影日・体重・メモを保存します。</p></div>
+        <div class="card"><h4>↔️ 2枚を比較</h4><p>比較したい2枚を選ぶと、撮影日順に並べて変化を確認できます。</p></div>
+        <div class="card"><h4>📦 バックアップ・復元</h4><p>進捗写真はJSONバックアップと復元の対象です。機種変更前などはバックアップを書き出してください。</p></div>
+        <div class="card"><h4>🔒 保存先</h4><p>進捗写真は端末内に保存され、iCloud同期の対象には含まれません。</p></div>
+      </div>
     </section>
 
     <section id="set-recording">
@@ -551,6 +595,9 @@
 
       <h3>セット完了チェック <span class="badge-new">NEW</span></h3>
       <p>v2.10.0 から、セットを終えたらチェックで完了をマークできます。チェックと同時にレストタイマーが自動で開始します（設定でOFF可能。レスト秒数は種目ごとに設定できます）。</p>
+
+      <h3>Siri・ショートカット・Action Buttonからの操作</h3>
+      <p>ワークアウト記録中は「次のセットを完了」「前のセットを反復」「次のセットの重量を調整」をSiriやショートカットから実行できます。保存後は8秒間、操作を取り消せます。</p>
 
       <h3>セット種別 <span class="badge-new">NEW</span></h3>
       <p>v2.11.0 から、セット種別が5種類に拡張されました。種別はセット行の「種別」ボタン（または長押しメニュー）から設定でき、統計のセット数には種別ごとの内訳が表示されます。</p>
@@ -613,6 +660,20 @@
       </div>
     </section>
 
+    <section id="starter-programs">
+      <div class="section-label">Detail</div>
+      <h2>🌱 スタータープログラム</h2>
+      <div class="accent-line"></div>
+
+      <p>初心者向けのルーティンを、利用場所と運動頻度に合わせて追加できます。ジム週2回・ジム週3回・自宅週2回のプログラムを用意しています。</p>
+
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>テンプレート一覧を開く</strong><p>ワークアウト画面からテンプレート一覧を開き、「スタータープログラム」を選びます。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>プログラムを選ぶ</strong><p>利用場所と週あたりの回数を確認し、自分に合うプログラムを選びます。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>ルーティンを追加する</strong><p>曜日を割り当てた初心者向けルーティンがテンプレートへ追加されます。既存の同名ルーティンは重複して追加されません。</p></div></div>
+      </div>
+    </section>
+
     <section id="personal-best">
       <div class="section-label">Detail</div>
       <h2>🏆 パーソナルベスト（自己ベスト）</h2>
@@ -668,7 +729,7 @@
         <div class="card"><h4>❤️ 回復スコア</h4><p>HRV・安静時心拍・睡眠から0〜100で算出。<strong>絶好調 / 良好 / やや疲労 / 要休養</strong>の4段階で表示。直近2日 vs 過去14日のベースライン比較で重み付け平均を計算。</p></div>
         <div class="card"><h4>📊 トレーニング負荷指標</h4><p>直近1週間のボリュームと4週間平均を比較し、<strong>最適 / 過負荷 / 不足</strong>の3段階で判定。</p></div>
         <div class="card"><h4>⚠️ オーバートレーニング警告</h4><p>同一部位3日以上連続実施・直近負荷が4週間平均の1.5倍超・7日以上の連続トレーニングをルールベースで検知し警告。</p></div>
-        <div class="card"><h4>🤖 AIアドバイス連動</h4><p>AIトレーナーが回復スコアや負荷状況を踏まえたアドバイスを返します（データ共有レベル「詳細」のとき）。</p></div>
+        <div class="card"><h4>🤖 AIアドバイス連動</h4><p>AIトレーナーが回復スコアや負荷状況を踏まえたアドバイスを返します（AI処理レベル「詳細」のとき）。</p></div>
       </div>
 
       <div class="warn-box">
@@ -684,6 +745,9 @@
         <div class="card"><h4>💡 今日の推奨強度の根拠</h4><p>回復スコアと負荷から「高 / 中 / 低」を提示し、その理由（例：回復が「やや疲労」、負荷が「過負荷」のため低め）を一文で表示します。</p></div>
         <div class="card"><h4>📖 指標の解説</h4><p>各詳細画面の下部に、その指標が何を意味し、どのように算出されるかの解説を掲載しています。</p></div>
       </div>
+
+      <h3>今日の回復プラン</h3>
+      <p>回復スコア・トレーニング負荷・週間目標の進捗をまとめて、休養・軽め・通常などの行動目安を表示します。提案の根拠も同じカード内で確認でき、ワークアウト内容へ自動反映されることはありません。</p>
     </section>
 
     <section id="interval-timer">
@@ -763,15 +827,36 @@
       <h3>同期設定</h3>
       <table>
         <tr><th>設定</th><th>説明</th></tr>
-        <tr><td>自動同期</td><td>データ変更時にHealthKitへ自動送信</td></tr>
+        <tr><td>自動同期</td><td>データ変更時や画面表示時に、BUFFとヘルスケアの差分を同期</td></tr>
+        <tr><td>同期プレビュー</td><td>取り込み・書き出し・競合するデータを同期前に確認</td></tr>
+        <tr><td>競合解決</td><td>両方にデータがある日はBUFF側／ヘルスケア側のどちらを採用するか選択</td></tr>
         <tr><td>同期対象</td><td>体重 / 体脂肪率 / 身長を個別にON/OFF</td></tr>
-        <tr><td>優先度</td><td>競合時に「最新のデータ」を優先するか設定</td></tr>
         <tr><td>コンディション用データ</td><td>HRV・安静時心拍・睡眠（読み取りのみ）</td></tr>
       </table>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
-        <p>v2.6.0 でHealthKit取り込み処理が高速化されました。長期間データの取り込みも素早く完了します。</p>
+        <p>v2.13.1 で長期間のヘルスケア同期と統計画面への反映が高速化されました。同期内容はプレビューで確認できるため、意図しない上書きを避けながら運用できます。</p>
+      </div>
+    </section>
+
+    <section id="icloud-sync">
+      <div class="section-label">Detail</div>
+      <h2>☁️ iCloud同期 <span class="badge-new">v2.36.0</span></h2>
+      <div class="accent-line"></div>
+
+      <p>同じApple AccountでサインインしているiPhoneとiPadの間で、BUFFの記録を同期できます。初期状態では無効で、プロフィール → 設定 → iCloud同期から明示的に有効にします。</p>
+
+      <table>
+        <tr><th>データ</th><th>取り扱い</th></tr>
+        <tr><td>ワークアウト・セット・種目・テンプレート</td><td>iCloud同期の対象</td></tr>
+        <tr><td>体重・体脂肪率・身長などの身体データ</td><td>HealthKit連携で同期</td></tr>
+        <tr><td>進捗写真</td><td>端末内に保存し、iCloud同期の対象外</td></tr>
+      </table>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p>iCloud同期を利用しない場合も、記録・分析・バックアップなどの基本機能はオフラインで利用できます。同期状況は設定画面で確認でき、「今すぐ同期」も実行できます。</p>
       </div>
     </section>
 
@@ -792,7 +877,7 @@
 
     <section id="settings">
       <div class="section-label">Settings</div>
-      <h2>⚙️ 各種設定 <span class="badge-new">v2.6.0 更新</span></h2>
+      <h2>⚙️ 各種設定</h2>
       <div class="accent-line"></div>
 
       <p>v2.6.0 から、設定が単一の「設定」エントリポイントに集約されました。プロフィールタブの「⚙️ 設定」をタップすると以下の項目にアクセスできます。</p>
@@ -802,16 +887,18 @@
         <tr><th>エントリ</th><th>内容</th></tr>
         <tr><td>インターバルタイマー プリセット</td><td>タイマープリセット（名前と秒数）の追加・削除・並び替え（最大10件）</td></tr>
         <tr><td>一般</td><td>テーマ・スプラッシュスクリーン・触覚フィードバック・ダイナミックアイランド・テキスト入力モード</td></tr>
-        <tr><td>AIトレーナー</td><td>AIに共有するデータレベル（標準/詳細）・応答スタイル</td></tr>
+        <tr><td>AIトレーナー</td><td>AI処理に使用するデータレベル（標準/詳細）・応答スタイル</td></tr>
         <tr><td>ヘルスケア連携</td><td>HealthKitとの同期設定</td></tr>
-        <tr><td>メンテナンス・データ管理</td><td>バックアップ・復元・統計の再計算など</td></tr>
-        <tr><td>情報</td><td>更新履歴・マニュアル・サポート等</td></tr>
+        <tr><td>iCloud同期</td><td>同じApple AccountのiPhone・iPad間でのワークアウト記録同期</td></tr>
+        <tr><td>メンテナンス・データ管理</td><td>バックアップ・復元・CSV読み込み・データ整合性チェック・統計の再計算など</td></tr>
+        <tr><td>更新履歴・マニュアル・サポート等</td><td>バージョン履歴・本マニュアル・サポート・プライバシーポリシー</td></tr>
       </table>
 
       <h3>一般設定</h3>
       <table>
         <tr><th>項目</th><th>内容</th></tr>
         <tr><td>テーマ <span class="badge-new">NEW</span></td><td>ダーク / ライト / システム の3択。詳細は「<a href="#theme" style="color:var(--accent)">テーマ</a>」参照</td></tr>
+        <tr><td>重量単位</td><td>キログラム（kg）またはポンド（lb）。入力・履歴・統計・グラフ・共有画像・ウィジェットへ連動</td></tr>
         <tr><td>スプラッシュスクリーン</td><td>起動時のスプラッシュ画面の表示/非表示</td></tr>
         <tr><td>触覚フィードバック</td><td>ボタン操作時の振動フィードバックのON/OFF（v2.6.0 から即時反映）</td></tr>
         <tr><td>ダイナミックアイランド</td><td>インターバルタイマー使用時のDynamic Island表示のON/OFF</td></tr>
@@ -823,6 +910,7 @@
       <div class="card"><h4>📂 バックアップから復元</h4><p>保存済みバックアップファイルを選択してデータを復元。機種変更時も完全に再現できます。</p></div>
       <div class="card"><h4>🔄 自動バックアップ</h4><p>ワークアウト保存のたびに自動でバックアップを作成。保持世代数を選択可能（3/5/10/20件）。</p></div>
       <div class="card"><h4>🔄 統計情報を再計算</h4><p>パーソナルベストや統計データの再計算を強制実行。</p></div>
+      <div class="card"><h4>🛡️ データ整合性センター</h4><p>保存件数・動作環境・最新バックアップの状態をまとめて確認し、バックアップ内容とSHA-256を検証できます。確認だけでは記録を変更しません。</p></div>
 
       <div class="tip-box">
         <span class="tip-icon">💡</span>
@@ -859,22 +947,31 @@
       <div class="card"><h4>A. 統計情報を再計算してください</h4><p>プロフィール → 設定 → メンテナンス・データ管理 → 「統計情報を再計算」を実行してください。</p></div>
 
       <h3>Dynamic Islandにタイマーが表示されない</h3>
-      <div class="card"><h4>A. 設定と通知を確認してください</h4><p>① プロフィール → 設定 → 一般 → ダイナミックアイランドが有効か確認。② iOSの「通知」→「BUFF」で通知が許可されているか確認。③ Dynamic Island対応機種（iPhone 14 Pro以降）かご確認ください。</p></div>
+      <div class="card"><h4>A. 設定と通知を確認してください</h4><p>① プロフィール → 設定 → 一般 → ダイナミックアイランドが有効か確認。② iOSの「通知」→「BUFF」で通知が許可されているか確認。③ Dynamic Island対応iPhoneかご確認ください。ロック画面のLive Activityは対応するiPhoneで確認できます。</p></div>
 
       <h3>ライトモードにすると一部の文字が薄く見える</h3>
       <div class="card"><h4>A. v2.6.0 で大幅に視認性を改善しました</h4><p>v2.6.0 ではライト/ダーク両モードでのコントラストを徹底的に調整しています。それでも特定箇所で読みにくい場合は、レビューや連絡先からお知らせください。</p></div>
 
       <h3>HealthKitとデータが一致しない</h3>
-      <div class="card"><h4>A. 手動同期を実行してください</h4><p>プロフィール → 設定 → ヘルスケア連携 から手動同期を実行。優先度設定もご確認ください。</p></div>
+      <div class="card"><h4>A. 同期プレビューで差分を確認してください</h4><p>プロフィール → 設定 → ヘルスケア連携 から手動同期を実行すると、取り込み・書き出し・競合内容を確認できます。両方にデータがある日は、BUFF側またはヘルスケア側のどちらを採用するか選択してください。</p></div>
 
       <h3>オフラインでも使えますか？</h3>
-      <div class="card"><h4>A. 完全オフラインで動作します</h4><p>BUFFはインターネット接続を一切必要としません。すべてのデータはお使いのiPhone内に保存されます。</p></div>
+      <div class="card"><h4>A. 基本機能はオフラインで使えます</h4><p>ワークアウト記録・統計・バックアップなどはインターネット接続なしで利用できます。iCloud同期を有効にした場合だけ、対象データの同期にネットワーク接続を使用します。</p></div>
+
+      <h3>iCloud同期では何が同期されますか？</h3>
+      <div class="card"><h4>A. ワークアウト記録・セット・種目・テンプレートが対象です</h4><p>同じApple AccountのiPhoneとiPadで同期します。身体データはHealthKit連携を使用し、進捗写真は端末内に保存されるためiCloud同期の対象外です。</p></div>
 
       <h3>データのバックアップはどうすればいいですか？</h3>
       <div class="card"><h4>A. JSONバックアップをご利用ください</h4><p>プロフィール → 設定 → メンテナンス・データ管理 →「バックアップ作成」で、JSONファイルをファイル appに書き出せます。iCloud Drive にも保存できるので、機種変更時の復元も容易です。</p></div>
 
       <h3>トレーニングデータをエクスポートできますか？</h3>
       <div class="card"><h4>A. CSVエクスポートが可能です</h4><p>統計タブの概要画面右上のシェアボタンからCSV形式でデータを出力できます。Excel互換のBOM付きUTF-8形式。</p></div>
+
+      <h3>書き出したCSVをアプリへ戻せますか？</h3>
+      <div class="card"><h4>A. プレビューを確認して安全に追加できます</h4><p>設定 → メンテナンス・データ管理 →「CSVから読み込む」で、追加予定と重複を確認してから読み込めます。既存記録は上書き・削除されません。セット種別やRPEを含む完全な復元にはJSONバックアップをご利用ください。</p></div>
+
+      <h3>保存データの状態を確認できますか？</h3>
+      <div class="card"><h4>A. データ整合性センターをご利用ください</h4><p>設定 → メンテナンス・データ管理 →「データ整合性センター」で、保存件数・動作環境・最新バックアップの状態を確認できます。確認操作だけでは記録を変更しません。</p></div>
 
       <h3>コンディション分析が表示されない</h3>
       <div class="card"><h4>A. HealthKitデータを確認してください</h4><p>コンディション分析はHRV・安静時心拍・睡眠データが必要です。Apple Watchやヘルスケアアプリでこれらのデータが記録されているかご確認ください。HealthKit連携の許可も必要です。</p></div>
@@ -895,9 +992,372 @@
 
       <div class="changelog-entry">
         <div class="ver-head">
+          <span class="ver-num">v2.36.0</span>
+          <span class="ver-date">2026-08-01</span>
+          <span class="ver-pin">LATEST</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能・改善</div>
+          <ul>
+            <li>iPhoneとiPadで使えるワークアウト記録のiCloud同期</li>
+            <li>iPhone・iPad間の初回同期と大量データ同期の安定性向上</li>
+            <li>種目一覧・プロフィール履歴の見やすいカード表示</li>
+            <li>iPad向け2ペイン表示によるワークアウト入力・統計確認の操作性向上</li>
+            <li>並べ替え・開閉状態を記憶するパーソナルベスト</li>
+            <li>グラフ表示と統計画面の操作安定性向上</li>
+            <li>下部タブ再タップ時の先頭スクロール</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.35.1</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">改善</div>
+          <ul>
+            <li>種目詳細からの簡略動作ガイドの取り下げ</li>
+            <li>進捗写真の目的・比較方法・端末内保存の説明追加</li>
+            <li>初回の写真追加と2枚比較を分かりやすくする操作案内</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.35.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>iPadでの表示に対応</li>
+            <li>上部タブとサイドバーによる画面移動</li>
+            <li>11インチ・13インチで本文が広がり過ぎない最大幅調整</li>
+            <li>v2.35.0時点での縦向き・横向き表示</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.33.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>日付・体重・メモと残せる進捗写真</li>
+            <li>変化を2枚で見比べられる進捗比較</li>
+            <li>バックアップ・復元に対応した端末内写真保存</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.32.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>キログラムとポンドを選べる重量単位</li>
+            <li>入力・履歴・統計・グラフ・ウィジェットの単位連動</li>
+            <li>既存記録を変えずに切り替えられる安全な表示変換</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.31.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>先週の実績から分かる来週の進行提案</li>
+            <li>負荷軽減・小幅増量・回数追加・維持の行動目安</li>
+            <li>RPEとボリューム変化を示す判断根拠</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.30.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>ジムごとの器具設定を種目別に記録</li>
+            <li>器具名・重量刻み・バー重量・シート位置の一覧確認</li>
+            <li>バックアップ復元と破損検知への対応</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.29.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>保存状態をまとめて確認できるデータ整合性センター</li>
+            <li>最新バックアップの内容検証とSHA-256確認</li>
+            <li>製品版・デバッグ版の環境分離表示</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.28.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>Siri・ショートカットからのセット完了</li>
+            <li>直前セットの反復と次セットの重量調整</li>
+            <li>誤操作を戻せる8秒間の取消</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.26.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>回復・負荷・週間進捗をまとめた今日の行動目安</li>
+            <li>推奨理由を確認できる分かりやすい回復プラン</li>
+            <li>週間目標までの残り回数表示</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.25.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-new">新機能</div>
+          <ul>
+            <li>頻度と場所から選べる初心者向け基本メニュー</li>
+            <li>テンプレートと曜日予定へのかんたん追加</li>
+            <li>既存テンプレートを守る安全な追加処理</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.23.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">パフォーマンス改善</div>
+          <ul>
+            <li>大量の身体履歴でも滑らかなグラフ操作</li>
+            <li>種目選択・ワークアウト提案の表示高速化</li>
+            <li>セット入力画面のメモリ消費削減</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.22.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">不具合修正・改善</div>
+          <ul>
+            <li>大きなバックアップを読み込む前の容量保護</li>
+            <li>ベスト記録・身体グラフの分かりやすい空表示</li>
+            <li>エラー通知とVoiceOver操作の改善</li>
+            <li>アプリ未起動時のLive Activity操作保持</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.21.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">新機能・改善</div>
+          <ul>
+            <li>BUFFから書き出したCSVのプレビュー付き再取込</li>
+            <li>既存記録の重複・上書き・削除を防ぐ追加方式</li>
+            <li>データ整合性チェックと非破壊の安全修復</li>
+            <li>CSV形式不正・保存失敗時のデータ保護</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.20.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li>AI処理に使用するデータ・端末内処理・会話履歴の扱いを分かりやすく表示</li>
+            <li>長い会話や画面移動後のAI応答を安定化</li>
+            <li>AI提案候補の上限設定・重複防止とVoiceOver操作を改善</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.19.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li>大きな文字サイズ・小型画面でのチュートリアルと日付操作を改善</li>
+            <li>VoiceOver読み上げとライトモード・ウィジェットの視認性を改善</li>
+            <li>起動時の種目照合とデータ保守処理を軽量化</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.18.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li>バックアップ復元後のウィジェット・通知整合性を改善</li>
+            <li>バックアップの重複作成と同秒ファイル名の衝突を防止</li>
+            <li>緊急復元バックアップの世代数・保存容量管理を改善</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.17.0</span>
+          <span class="ver-date">2026-07-29</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li>ヘルスケア同期の項目別比較と記録時刻判定を改善</li>
+            <li>同じ身体データの重複書き出しを防止</li>
+            <li>初回同期の一括取得と書き込み権限判定を改善</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.16.0</span>
+          <span class="ver-date">2026-07-21</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li>バックアップと起動時のデータ保護を強化 - 復元中断や保存先の異常時に既存データを安全に保護</li>
+            <li>ゴミ箱を含むバックアップの完全性を改善</li>
+            <li>ヘルスケア同期を改善 - 同期中の競合と重複を防ぎ、結果を正確に表示</li>
+            <li>自重セットを解除できない問題と、前回構成・次回プランで設定が意図せず変わる問題を修正</li>
+            <li>タイマーの設定引き継ぎ・再起動後の状態・入力値の保存に関する問題を修正</li>
+            <li>身体データとテンプレートの削除操作を改善</li>
+            <li>統計画面の表示速度とVoiceOver・視差効果を減らす設定への対応を改善</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.13.1</span>
+          <span class="ver-date">2026-07-16</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-imprv">機能改善</div>
+          <ul>
+            <li><strong>自重種目の自己ベスト判定を改善</strong>：体重の増減にかかわらず最高回数を独立した記録として更新</li>
+            <li><strong>統計・共有・CSV出力を改善</strong>：自重種目の最高回数と、有酸素種目の時間・距離・カロリーを適切に表示</li>
+            <li><strong>ヘルスケア同期と統計表示を高速化</strong>：長期間の同期処理を効率化し、最新データの反映を改善</li>
+            <li><strong>VoiceOver対応を改善</strong>：カレンダー・種目選択・タイマー操作を判別しやすく変更</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>ベスト記録の再計算で実際の達成日を維持するよう修正</li>
+            <li>バックアップ復元時の日付ずれと、起動時のデータ更新が再実行されない問題を修正</li>
+            <li>タイマー時間変更後の通知ずれ、睡眠時間の重複集計、統計・AI表示の更新漏れを修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.13.0</span>
+          <span class="ver-date">2026-07-08</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>ヘルスケアとの双方向同期</strong>：同期時に取り込み・書き出しの内容と競合をプレビューで確認でき、両方にデータがある日はBUFF／ヘルスケアのどちらを採用するか選択可能</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>バックアップ復元後に追加種目が消える・重複する場合があった問題を修正</li>
+            <li>ゴミ箱から統合済みの種目を復元した際に同名の種目が重複する問題を修正</li>
+            <li>身体データを同じ日に更新した際に体重・身長・体脂肪率がわずかにずれる問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
+          <span class="ver-num">v2.12.0</span>
+          <span class="ver-date">2026-07-07</span>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-feat">新機能</div>
+          <ul>
+            <li><strong>家トレ・筋肥大向けの種目を14種追加</strong>：脚・体幹・ダンベル種目を拡充</li>
+            <li><strong>手動で追加した種目とプリセットの自動統合</strong>：同名の手動種目の記録をプリセットへ引き継ぎ、一覧の重複を解消</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="group-label group-fix">不具合修正</div>
+          <ul>
+            <li>重量未入力セットの集計影響、ベスト記録の更新漏れ、ウォームアップセットでの誤ったPR演出を修正</li>
+            <li>体重・体脂肪率・自重計算・ウィジェット表示・グラフ単位・CSV書き出しの不具合を修正</li>
+            <li>初期種目への編集が起動時に戻る・削除した種目が復活する問題を修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="ver-head">
           <span class="ver-num">v2.11.0</span>
           <span class="ver-date">2026-06-16</span>
-          <span class="ver-pin">LATEST</span>
         </div>
         <div class="change-group">
           <div class="group-label group-feat">新機能</div>

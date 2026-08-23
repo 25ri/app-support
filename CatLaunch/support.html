@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ねこまんまの使い方、検索や位置情報のトラブル、データ削除、お問い合わせ先をご案内します。">
+  <meta name="theme-color" content="#f8f4e8">
+  <title>サポート — ねこまんま</title>
+  <style>
+    :root { color-scheme:light; --paper:#f8f4e8; --card:#fffdf7; --navy:#102936; --muted:#5e6b70; --teal:#287f82; --teal-soft:#dceeed; --yellow:#ffc957; --line:rgba(16,41,54,.14); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at 90% 0,#fff4c7 0,transparent 24%),var(--paper); color:var(--navy); font:16px/1.75 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI",sans-serif; }
+    a { color:var(--teal); }
+    a:focus-visible,summary:focus-visible { outline:3px solid var(--yellow); outline-offset:4px; }
+    header,main,footer { width:min(850px,calc(100% - 32px)); margin:auto; }
+    header { padding:24px 0; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { display:flex; flex-shrink:0; align-items:center; gap:9px; color:var(--navy); font-weight:800; text-decoration:none; white-space:nowrap; }
+    .paw { width:36px; height:36px; display:grid; place-items:center; border-radius:13px; background:var(--teal); color:white; }
+    nav { display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end; }
+    nav a { color:var(--navy); font-size:.9rem; font-weight:650; text-decoration:none; }
+    main { padding:52px 0 78px; }
+    .eyebrow { color:var(--teal); font-size:.8rem; font-weight:800; letter-spacing:.12em; }
+    h1 { margin:8px 0 0; font-size:clamp(2.5rem,7vw,4.8rem); line-height:1.08; letter-spacing:-.05em; }
+    .intro { max-width:680px; margin:18px 0 38px; color:var(--muted); font-size:1.08rem; }
+    .cat-note { margin:0 0 36px; padding:18px 22px; border:2px solid var(--navy); border-radius:20px; background:var(--card); font-weight:750; }
+    section { margin:20px 0; padding:28px; border:1px solid var(--line); border-radius:24px; background:var(--card); box-shadow:0 12px 34px rgba(16,41,54,.06); }
+    h2 { margin:0 0 14px; font-size:1.45rem; letter-spacing:-.02em; }
+    h3 { margin:0 0 5px; font-size:1.05rem; }
+    p,li { color:var(--muted); }
+    ol,ul { padding-left:1.3em; }
+    .steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:0; list-style:none; counter-reset:step; }
+    .steps li { padding:18px; border-radius:18px; background:var(--teal-soft); color:var(--navy); }
+    .steps li::before { counter-increment:step; content:counter(step); width:30px; height:30px; margin-bottom:10px; display:grid; place-items:center; border-radius:10px; background:var(--teal); color:white; font-weight:800; }
+    details { border-top:1px solid var(--line); padding:17px 0; }
+    details:first-of-type { border-top:0; padding-top:0; }
+    details:last-of-type { padding-bottom:0; }
+    summary { cursor:pointer; color:var(--navy); font-weight:750; }
+    details p,details ul { margin-bottom:0; }
+    .contact { border-color:rgba(40,127,130,.45); background:linear-gradient(145deg,var(--card),#edf7f5); }
+    .mail { display:inline-flex; min-height:48px; align-items:center; padding:11px 18px; border-radius:999px; background:var(--yellow); color:var(--navy); font-weight:800; text-decoration:none; }
+    footer { padding:28px 0 44px; border-top:1px solid var(--line); color:var(--muted); font-size:.86rem; }
+    footer p { margin:5px 0; }
+    @media (max-width:680px) { .steps { grid-template-columns:1fr; } section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="paw" aria-hidden="true">🐾</span><span>ねこまんま</span></a>
+    <nav aria-label="ページ案内"><a href="index.html">ホーム</a><a href="privacy-policy.html">プライバシー</a></nav>
+  </header>
+  <main>
+    <p class="eyebrow">SUPPORT</p>
+    <h1>困ったときも、<br>いっしょに<br>探すにゃ。</h1>
+    <p class="intro">使い方、位置情報、検索できない場合、保存したデータについてご案内します。</p>
+    <p class="cat-note">まずは通信状態と位置情報を見てみるにゃ。</p>
+
+    <section>
+      <h2>基本の使い方</h2>
+      <ol class="steps">
+        <li><strong>探し方を選ぶ</strong><br>「猫に全部おまかせ」または「条件を選んで探す」を選びます。</li>
+        <li><strong>一軒を確認する</strong><br>地図、徒歩時間、店舗情報、選ばれた理由を確認します。</li>
+        <li><strong>行き先を決める</strong><br>「ここにする」を選び、必要に応じてマップで経路を開きます。</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>よくある質問</h2>
+      <details open><summary>検索できない、候補が見つからない</summary><p>インターネット接続を確認し、少し時間をおいて再度お試しください。条件を指定している場合は、検索範囲、予算、料理ジャンル、苦手条件などを見直すと見つかることがあります。「絶対に出さない」に設定した条件は、候補不足でも自動では解除されません。</p></details>
+      <details><summary>位置情報を許可しなくても使えますか？</summary><p>はい。位置情報を許可しない場合は、駅名や住所などから検索地点を指定してください。位置情報の許可は、iPhoneの「設定」から後で変更できます。</p></details>
+      <details><summary>現在地は保存されますか？</summary><p>現在地は検索など必要な操作の都度取得し、現在地そのものを継続的には保存しません。ユーザーが保存した地点や、手動で使った地点の名称・座標は端末内に保存される場合があります。</p></details>
+      <details><summary>Google Mapsなど、設定したマップアプリで開けますか？</summary><p>対応するiOSでは、システムで選ばれたナビゲーションアプリへ店舗名、住所、座標などを引き渡します。iOSのバージョン、設定、対応状況によってはApple Mapsで開きます。経路や店舗情報の表示内容は、開いたマップアプリにより異なります。</p></details>
+      <details><summary>営業時間、価格、料理ジャンルは正確ですか？</summary><p>検索サービスから取得できた情報を表示しますが、更新の遅れや未取得があり得ます。営業中かどうか、正確な価格、メニュー、食材、待ち時間、アレルギー対応は保証できません。「未確認」の情報は来店前に店舗へご確認ください。</p></details>
+      <details><summary>選び直しは何回できますか？</summary><p>初回提案とは別に、初期設定では3回です。設定から回数を変更でき、無制限も選べます。同じ探索中に一度提案した店舗は、再提案しないようにしています。</p></details>
+      <details><summary>履歴や設定はどこに保存されますか？</summary><p>予算、時間、検索範囲、苦手条件、テーマ、選び直し回数、提案・訪問履歴などは端末内に保存されます。アカウントやクラウド同期はありません。</p></details>
+      <details><summary>データを削除するには？</summary><p>アプリの「設定」からデータ削除を実行できます。端末内の履歴や設定は初期化されますが、iOSの位置情報許可、外部サービス側の記録、お問い合わせメールは対象外です。アプリを削除することでも端末内のアプリデータを削除できます。</p></details>
+      <details><summary>オフラインでも検索できますか？</summary><p>店舗検索と地図情報の取得にはインターネット接続が必要です。通信できない場合は検索を完了できません。</p></details>
+    </section>
+
+    <section class="contact">
+      <h2>お問い合わせ</h2>
+      <p>不具合のご報告には、アプリのバージョン、iOSのバージョン、機種、再現手順を添えてください。位置情報や店舗名などは、調査に必要でご自身が送信を選んだ場合だけお送りください。</p>
+      <a class="mail" href="mailto:25ri.apps.studio@gmail.com?subject=%E3%81%AD%E3%81%93%E3%81%BE%E3%82%93%E3%81%BE%20%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88">メールで問い合わせる</a>
+      <p><a href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a></p>
+    </section>
+  </main>
+  <footer>
+    <p><a href="index.html">ホーム</a> ・ <a href="privacy-policy.html">プライバシーポリシー</a></p>
+    <p><a href="https://webservice.recruit.co.jp/" rel="noopener">Powered by ホットペッパーグルメ Webサービス</a></p>
+    <p>© 2026 Yuta Nigorikawa</p>
+  </footer>
+</body>
+</html>

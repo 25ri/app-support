@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ねこまんまは、歩ける時間や食べたい条件から、近くの飲食店を一軒だけ提案するiPhoneアプリです。">
+  <meta name="theme-color" content="#f8f4e8">
+  <title>ねこまんま — 今日のランチ、猫におまかせ。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper:#f8f4e8;
+      --card:#fffdf7;
+      --navy:#102936;
+      --muted:#5e6b70;
+      --teal:#287f82;
+      --teal-soft:#dceeed;
+      --yellow:#ffc957;
+      --line:rgba(16,41,54,.14);
+      --shadow:0 18px 50px rgba(16,41,54,.10);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:radial-gradient(circle at 85% 4%,#fff4c7 0,transparent 28%),var(--paper); color:var(--navy); font:16px/1.75 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI",sans-serif; }
+    a { color:var(--teal); }
+    a:focus-visible,summary:focus-visible { outline:3px solid var(--yellow); outline-offset:4px; }
+    .topbar { width:min(1040px,calc(100% - 32px)); margin:auto; padding:22px 0; display:flex; justify-content:space-between; align-items:center; gap:18px; }
+    .brand { display:flex; flex-shrink:0; align-items:center; gap:10px; color:var(--navy); text-decoration:none; font-weight:800; letter-spacing:.02em; white-space:nowrap; }
+    .paw { width:38px; height:38px; display:grid; place-items:center; border-radius:14px; background:var(--teal); color:white; font-size:20px; box-shadow:0 7px 18px rgba(40,127,130,.22); }
+    nav { display:flex; gap:18px; flex-wrap:wrap; justify-content:flex-end; }
+    nav a { color:var(--navy); font-size:.92rem; font-weight:650; text-decoration:none; }
+    main { width:min(1040px,calc(100% - 32px)); margin:auto; }
+    .hero { padding:66px 0 54px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr); align-items:center; gap:48px; }
+    .eyebrow { margin:0 0 14px; color:var(--teal); font-size:.8rem; font-weight:800; letter-spacing:.12em; }
+    h1 { margin:0; max-width:760px; font-size:clamp(2.7rem,7vw,5.7rem); line-height:1.06; letter-spacing:-.055em; }
+    .lead { margin:24px 0 0; max-width:650px; color:var(--muted); font-size:clamp(1.08rem,2vw,1.28rem); }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    .button { min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:12px 22px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--navy); font-weight:750; text-decoration:none; box-shadow:0 8px 24px rgba(16,41,54,.07); }
+    .button.primary { border-color:var(--yellow); background:var(--yellow); }
+    .button:hover { transform:translateY(-1px); }
+    .cat-stage { min-height:290px; position:relative; display:grid; place-items:center; }
+    .cat { width:168px; height:168px; display:grid; place-items:center; border-radius:50%; background:linear-gradient(145deg,#fffdf7,#e0efec); box-shadow:var(--shadow); font-size:88px; }
+    .bubble { position:absolute; right:2%; bottom:6px; max-width:260px; padding:13px 18px; border:2px solid var(--navy); border-radius:20px; background:var(--card); font-weight:750; box-shadow:0 8px 24px rgba(16,41,54,.08); }
+    .bubble::after { content:""; position:absolute; right:29px; top:-10px; width:16px; height:16px; background:var(--card); border-left:2px solid var(--navy); border-top:2px solid var(--navy); transform:rotate(45deg); }
+    section { padding:62px 0; }
+    .section-head { max-width:700px; margin-bottom:28px; }
+    h2 { margin:0; font-size:clamp(1.8rem,4vw,3rem); line-height:1.2; letter-spacing:-.035em; }
+    .section-head p { margin:12px 0 0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { padding:26px; border:1px solid var(--line); border-radius:24px; background:var(--card); box-shadow:0 12px 34px rgba(16,41,54,.07); }
+    .number { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:var(--teal-soft); color:var(--teal); font-weight:850; }
+    .card h3 { margin:18px 0 8px; font-size:1.18rem; }
+    .card p { margin:0; color:var(--muted); }
+    .choice { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .choice article { position:relative; overflow:hidden; padding:32px; border-radius:28px; }
+    .choice .quick { background:var(--yellow); }
+    .choice .custom { background:var(--teal); color:white; }
+    .choice h3 { margin:0 0 8px; font-size:1.45rem; }
+    .choice p { margin:0; color:inherit; opacity:.82; }
+    .note { margin-top:24px; padding:20px 22px; border-left:5px solid var(--teal); border-radius:14px; background:rgba(255,253,247,.7); color:var(--muted); }
+    .links { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding-bottom:64px; }
+    .link-card { display:block; padding:25px; border:1px solid var(--line); border-radius:22px; background:var(--card); color:var(--navy); text-decoration:none; }
+    .link-card strong { display:block; margin-bottom:4px; font-size:1.12rem; }
+    .link-card span { color:var(--muted); }
+    footer { border-top:1px solid var(--line); padding:28px 16px 44px; color:var(--muted); text-align:center; font-size:.86rem; }
+    footer p { margin:5px 0; }
+    @media (max-width:760px) {
+      .hero { grid-template-columns:1fr; padding-top:42px; gap:18px; }
+      .cat-stage { min-height:250px; }
+      .grid { grid-template-columns:1fr; }
+      .choice,.links { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) {
+      nav { gap:12px; }
+      .topbar { flex-direction:column; align-items:flex-start; }
+      .topbar nav { width:100%; justify-content:flex-start; }
+      h1 { font-size:2.85rem; }
+      .cat { width:144px; height:144px; font-size:74px; }
+      .bubble { right:0; max-width:260px; }
+    }
+    @media (prefers-reduced-motion:no-preference) { .button { transition:transform .16s ease; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="paw" aria-hidden="true">🐾</span><span>ねこまんま</span></a>
+    <nav aria-label="ページ案内"><a href="#features">できること</a><a href="support.html">サポート</a><a href="privacy-policy.html">プライバシー</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">ランチ決定アプリ</p>
+        <h1>今日のランチ、<br>猫におまかせ。</h1>
+        <p class="lead">たくさん探さず、近くの一軒へ。歩ける時間や食べたい条件をもとに、猫が候補をひとつ提案します。</p>
+        <div class="hero-actions"><a class="button primary" href="#features">できることを見る</a><a class="button" href="support.html">使い方・よくある質問</a></div>
+      </div>
+      <div class="cat-stage" aria-label="猫からのひとこと">
+        <div class="cat" aria-hidden="true">🐈</div>
+        <p class="bubble">お昼、そろそろ決めるにゃ。</p>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-head"><h2>迷う時間を、食べる時間へ。</h2><p>検索結果を延々と比べるのではなく、その日の条件に合う一軒との出会いをつくります。</p></div>
+      <div class="grid">
+        <article class="card"><span class="number">1</span><h3>猫に全部おまかせ</h3><p>保存した予算や歩ける時間を使って、すぐに探索。何も決めていない日にも使えます。</p></article>
+        <article class="card"><span class="number">2</span><h3>気分から条件を選ぶ</h3><p>料理ジャンル、予算、移動時間、苦手なものなど、その日だけの希望も加えられます。</p></article>
+        <article class="card"><span class="number">3</span><h3>一軒だけ、はっきり提案</h3><p>候補が決まったら地図と店舗情報を確認。選び直しの回数も設定できます。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>決め方は、その日のあなた次第。</h2></div>
+      <div class="choice">
+        <article class="quick"><h3>猫に全部おまかせ</h3><p>何も決めてなくても、任せてにゃ。</p></article>
+        <article class="custom"><h3>この条件で探す</h3><p>食べたい気分があれば、教えてにゃ。</p></article>
+      </div>
+      <p class="note">店舗の価格、メニュー、食材、営業状況、待ち時間、アレルギー対応は、取得できない場合があります。アプリ内で「未確認」と表示される情報は、来店前に店舗や地図サービスでご確認ください。</p>
+    </section>
+
+    <div class="links">
+      <a class="link-card" href="support.html"><strong>サポート</strong><span>使い方、検索できない場合、位置情報、データ削除について</span></a>
+      <a class="link-card" href="privacy-policy.html"><strong>プライバシーポリシー</strong><span>位置情報、外部サービス、端末内データの取り扱いについて</span></a>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="https://webservice.recruit.co.jp/" rel="noopener">Powered by ホットペッパーグルメ Webサービス</a></p>
+    <p>© 2026 Yuta Nigorikawa</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.studio-return {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 16px;
+  color: inherit;
+  font: 600 12px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  letter-spacing: 0;
+}
+.studio-return:hover { text-decoration: underline; }
+.studio-return:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.studio-return-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url("icons/arrow-left.svg") center/contain no-repeat;
+}
+.studio-return-label { font-weight: 400; font-size: 11px; }

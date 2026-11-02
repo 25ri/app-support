@@ -21,3 +21,30 @@
   mask: url("icons/arrow-left.svg") center/contain no-repeat;
 }
 .studio-return-label { font-weight: 400; font-size: 11px; }
+
+.studio-store-action { margin-block: 20px; }
+.studio-store-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: #1d4ed8;
+  color: #fff;
+  font: 600 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.studio-store-link:hover { background: #1e40af; }
+.studio-store-link:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px #fff;
+}

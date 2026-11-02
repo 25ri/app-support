@@ -11,27 +11,33 @@
   <meta property="og:description" content="記録することも、思い出すことも。日々に寄り添う9つのアプリを25Re App Studioから。">
   <title>25Re App Studio — いつもの毎日にちょっといいアプリを。</title>
   <link rel="icon" type="image/jpeg" href="assets/memorydrop.jpg">
-  <link rel="stylesheet" href="assets/studio.css">
-  <script src="assets/studio.js" defer></script>
+  <link rel="stylesheet" href="assets/studio.css?v=20261102-2">
+  <script src="assets/studio.js?v=20261102-2" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#apps">アプリ一覧へ移動</a>
-  <header class="site-header shell">
-    <a class="wordmark" href="./" aria-label="25Re App Studio ホーム">25Re App Studio</a>
-    <nav class="header-nav" aria-label="メインナビゲーション">
-      <a href="#apps">Apps</a>
-      <a href="#about">About</a>
-      <span class="locale" lang="en" aria-label="日本語">JP</span>
-    </nav>
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="wordmark" href="./" aria-label="25Re App Studio ホーム">25Re App Studio</a>
+      <nav class="header-nav" aria-label="メインナビゲーション">
+        <a href="#apps">アプリ一覧</a>
+        <a class="about-nav" href="#about">スタジオについて</a>
+        <a class="nav-store" href="https://apps.apple.com/jp/developer/25re/id444672397" aria-label="App Storeで25Reのアプリを見る">App Store</a>
+      </nav>
+    </div>
   </header>
 
   <main>
+    <div class="hero-scroll">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow" lang="en">SMALL APPS. BETTER DAYS.</p>
         <h1 id="hero-title"><span>いつもの毎日に</span><span>ちょっといいアプリを。</span></h1>
-        <p class="hero-description">記録も思い出も日々の楽しみも。<br>暮らしに寄り添う小さなアプリをつくっています。</p>
-        <a class="primary-link" href="#apps">アプリを見る<span class="arrow" aria-hidden="true"></span></a>
+        <p class="hero-description">記録も思い出も日々の楽しみも。<br>暮らしに寄り添うアプリをつくっています。</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#apps">アプリを選ぶ<span class="arrow" aria-hidden="true"></span></a>
+          <a class="text-link" href="https://apps.apple.com/jp/developer/25re/id444672397">App Storeで見る<span class="arrow" aria-hidden="true"></span></a>
+        </div>
       </div>
       <div class="hero-gallery" aria-label="25Reのアプリたち">
         <a class="hero-icon hero-buff" href="trelog/" aria-label="BUFFの紹介ページへ"><img src="assets/buff.jpg" width="184" height="184" alt="" fetchpriority="high"></a>
@@ -39,13 +45,14 @@
         <a class="hero-icon hero-fotrail" href="Fotrail/" aria-label="Fotrailの紹介ページへ"><img src="assets/fotrail.jpg" width="166" height="166" alt=""></a>
         <a class="hero-icon hero-cattoy" href="CatToy/" aria-label="にゃんじゃらしの紹介ページへ"><img src="assets/cattoy.jpg" width="167" height="167" alt=""></a>
         <a class="hero-icon hero-snipfuse" href="SnipFuse/" aria-label="SnipFuseの紹介ページへ"><img src="assets/snipfuse.jpg" width="153" height="153" alt=""></a>
-        <p class="gallery-note" aria-hidden="true">日々に<br>小さなよろこびを<br>ひとつずつ。</p>
       </div>
+      <p class="scroll-cue" aria-hidden="true"><span lang="en">A LITTLE MORE IN YOUR EVERYDAY</span><span class="arrow"></span></p>
     </section>
+    </div>
 
     <section class="apps-section shell" id="apps" aria-labelledby="apps-title">
-      <div class="collection-header">
-        <div class="collection-title"><h2 id="apps-title" lang="en">Our Apps</h2><p>つくっているアプリ</p></div>
+      <div class="collection-header" data-reveal>
+        <div class="collection-title"><p class="section-kicker" lang="en">THE COLLECTION</p><h2 id="apps-title">あなたの毎日に<br>どれを足す？</h2><p>気になるアプリを見つけてください。</p></div>
         <div class="filters" role="group" aria-label="公開状況で絞り込む">
           <button type="button" data-filter="all" aria-pressed="true" aria-controls="app-grid">すべて</button>
           <button type="button" data-filter="published" aria-pressed="false" aria-controls="app-grid">公開中</button>
@@ -54,85 +61,120 @@
       </div>
       <p class="result-summary" id="result-summary" role="status" aria-live="polite">すべてのアプリを9件表示しています。</p>
       <div class="app-grid" id="app-grid">
-        <article class="app-card" data-app="buff" data-published="true" data-review="true">
+        <article class="app-card" data-app="buff" data-reveal data-published="true" data-review="true">
           <a class="app-icon-link" href="trelog/" aria-label="BUFFの紹介ページへ"><img class="app-icon" src="assets/buff.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="trelog/">BUFF</a></h3>
+            <h3 class="app-name"><a href="trelog/">BUFF</a></h3><span class="app-status">公開中</span>
             <p class="app-description">トレーニングを<br>すばやく記録。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="trelog/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6759157626" aria-label="App StoreでBUFFを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="trelog/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
             <p class="review-note">更新版は審査待ち</p>
           </div>
         </article>
-        <article class="app-card" data-app="memorydrop" data-published="true" data-review="false">
+        <article class="app-card" data-app="memorydrop" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="MemoryDrop/" aria-label="おもいでドロップの紹介ページへ"><img class="app-icon" src="assets/memorydrop.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="MemoryDrop/">おもいでドロップ</a></h3>
+            <h3 class="app-name"><a href="MemoryDrop/">おもいでドロップ</a></h3><span class="app-status">公開中</span>
             <p class="app-description">あの日の写真と<br>もう一度出会う。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="MemoryDrop/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6781438234" aria-label="App Storeでおもいでドロップを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="MemoryDrop/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="fotrail" data-published="true" data-review="false">
+        <article class="app-card" data-app="fotrail" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="Fotrail/" aria-label="Fotrailの紹介ページへ"><img class="app-icon" src="assets/fotrail.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="Fotrail/">Fotrail</a></h3>
+            <h3 class="app-name"><a href="Fotrail/">Fotrail</a></h3><span class="app-status">公開中</span>
             <p class="app-description">写真の旅に<br>足あとを。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="Fotrail/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6792297035" aria-label="App StoreでFotrailを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="Fotrail/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="cattoy" data-published="true" data-review="false">
+        <article class="app-card" data-app="cattoy" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="CatToy/" aria-label="にゃんじゃらしの紹介ページへ"><img class="app-icon" src="assets/cattoy.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="CatToy/">にゃんじゃらし</a></h3>
+            <h3 class="app-name"><a href="CatToy/">にゃんじゃらし</a></h3><span class="app-status">公開中</span>
             <p class="app-description">猫と過ごす<br>楽しいひととき。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="CatToy/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6818675868" aria-label="App Storeでにゃんじゃらしを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="CatToy/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="microwave" data-published="true" data-review="false">
+        <article class="app-card" data-app="microwave" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="MicrowaveCalculator/" aria-label="レンチン換算の紹介ページへ"><img class="app-icon" src="assets/microwave.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="MicrowaveCalculator/">レンチン換算</a></h3>
+            <h3 class="app-name"><a href="MicrowaveCalculator/">レンチン換算</a></h3><span class="app-status">公開中</span>
             <p class="app-description">ワット数に合わせて<br>温め時間を計算。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="MicrowaveCalculator/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6800471197" aria-label="App Storeでレンチン換算を見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="MicrowaveCalculator/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="snipfuse" data-published="true" data-review="false">
+        <article class="app-card" data-app="snipfuse" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="SnipFuse/" aria-label="SnipFuseの紹介ページへ"><img class="app-icon" src="assets/snipfuse.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="SnipFuse/">SnipFuse</a></h3>
+            <h3 class="app-name"><a href="SnipFuse/">SnipFuse</a></h3><span class="app-status">公開中</span>
             <p class="app-description">いらない場面をカット。<br>動画をひとつに。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="SnipFuse/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6801063682" aria-label="App StoreでSnipFuseを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="SnipFuse/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="catlaunch" data-published="true" data-review="false">
+        <article class="app-card" data-app="catlaunch" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="CatLaunch/" aria-label="ねこまんまの紹介ページへ"><img class="app-icon" src="assets/catlaunch.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="CatLaunch/">ねこまんま</a></h3>
+            <h3 class="app-name"><a href="CatLaunch/">ねこまんま</a></h3><span class="app-status">公開中</span>
             <p class="app-description">今日のごはんは<br>猫におまかせ。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="CatLaunch/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6803927750" aria-label="App Storeでねこまんまを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="CatLaunch/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="nuan" data-published="false" data-review="true">
+        <article class="app-card" data-app="nuan" data-reveal data-published="false" data-review="true">
           <a class="app-icon-link" href="Cinelume/" aria-label="nuanの紹介ページへ"><img class="app-icon" src="assets/nuan.png" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="Cinelume/">nuan</a></h3>
+            <h3 class="app-name"><a href="Cinelume/">nuan</a></h3><span class="app-status review">審査待ち</span>
             <p class="app-description">写真も動画も<br>好きな色と質感に。</p>
-            <div class="app-meta"><span class="app-status review">審査待ち</span><a class="app-detail-link" href="Cinelume/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-detail-link" href="Cinelume/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
-        <article class="app-card" data-app="kosatsu" data-published="true" data-review="false">
+        <article class="app-card" data-app="kosatsu" data-reveal data-published="true" data-review="false">
           <a class="app-icon-link" href="kosatsu-note/" aria-label="考察ノートの紹介ページへ"><img class="app-icon" src="assets/kosatsu.jpg" width="136" height="136" alt="" loading="lazy"></a>
           <div class="app-info">
-            <h3 class="app-name"><a href="kosatsu-note/">考察ノート</a></h3>
+            <h3 class="app-name"><a href="kosatsu-note/">考察ノート</a></h3><span class="app-status">公開中</span>
             <p class="app-description">気づきや疑問を<br>つなげて考える。</p>
-            <div class="app-meta"><span class="app-status">公開中</span><a class="app-detail-link" href="kosatsu-note/">詳しく見る<span class="arrow" aria-hidden="true"></span></a></div>
+            <div class="app-meta"><a class="app-store-link" href="https://apps.apple.com/jp/app/id6827329475" aria-label="App Storeで考察ノートを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="app-detail-link" href="kosatsu-note/">詳しく<span class="arrow" aria-hidden="true"></span></a></div>
           </div>
         </article>
       </div>
       <p class="collection-note">公開状況は<time datetime="2026-11-02">2026年11月2日</time>時点です。審査中には公開済みアプリの更新版を含みます。</p>
     </section>
 
-    <section class="philosophy" id="about" aria-labelledby="about-title">
+    <section class="experience" aria-labelledby="experience-title">
       <div class="shell">
+        <div class="experience-heading" data-reveal><p class="section-kicker" lang="en">A CLOSER LOOK</p><h2 id="experience-title">使う毎日を<br>少しだけ想像してみる。</h2></div>
+        <div class="feature-stage">
+          <div class="feature-visual" data-active="buff" aria-label="アプリの画面紹介">
+            <figure class="feature-shot is-active" data-shot="buff" aria-hidden="false"><img src="assets/feature-buff.jpg" width="828" height="1800" alt="BUFFのApp Store紹介画像。ワークアウトの種目を選んで記録する画面。" loading="lazy"></figure>
+            <figure class="feature-shot" data-shot="memorydrop" aria-hidden="true"><img src="assets/feature-memorydrop.jpg" width="832" height="1800" alt="おもいでドロップのApp Store紹介画像。過去の同じ日の写真が降ってくる画面。" loading="lazy"></figure>
+            <figure class="feature-shot" data-shot="fotrail" aria-hidden="true"><img src="assets/feature-fotrail.jpg" width="832" height="1800" alt="FotrailのApp Store紹介画像。撮影中の移動ルートを地図上に記録する画面。" loading="lazy"></figure>
+            <nav class="feature-tabs" aria-label="紹介するアプリ"><a href="#feature-buff" data-feature-link="buff" aria-current="true">BUFF</a><a href="#feature-memorydrop" data-feature-link="memorydrop">おもいでドロップ</a><a href="#feature-fotrail" data-feature-link="fotrail">Fotrail</a></nav>
+          </div>
+          <div class="feature-steps">
+            <article class="feature-step is-active" data-feature="buff" id="feature-buff">
+              <p class="feature-app-name"><img src="assets/buff.jpg" width="40" height="40" alt="">BUFF</p>
+              <h3>トレーニングに<br>集中するために。</h3>
+              <p class="feature-description">前回の記録を確かめて<br>そのまま次のセットへ。<br>記録も振り返りもひとつに。</p>
+              <div class="feature-actions"><a class="primary-link" href="https://apps.apple.com/jp/app/id6759157626" aria-label="App StoreでBUFFを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="text-link" href="trelog/">もっと詳しく<span class="arrow" aria-hidden="true"></span></a></div>
+            </article>
+            <article class="feature-step" data-feature="memorydrop" id="feature-memorydrop">
+              <p class="feature-app-name"><img src="assets/memorydrop.jpg" width="40" height="40" alt="">おもいでドロップ</p>
+              <h3>忘れていた一日と<br>ふいに出会う。</h3>
+              <p class="feature-description">去年の今日も<br>もっと前の今日も。<br>同じ日に撮った写真ともう一度。</p>
+              <div class="feature-actions"><a class="primary-link" href="https://apps.apple.com/jp/app/id6781438234" aria-label="App Storeでおもいでドロップを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="text-link" href="MemoryDrop/">もっと詳しく<span class="arrow" aria-hidden="true"></span></a></div>
+            </article>
+            <article class="feature-step" data-feature="fotrail" id="feature-fotrail">
+              <p class="feature-app-name"><img src="assets/fotrail.jpg" width="40" height="40" alt="">Fotrail</p>
+              <h3>写真のそばに<br>歩いた道を。</h3>
+              <p class="feature-description">GPSの記録と写真の時刻を照合。<br>撮影場所をあとから振り返ると<br>旅の記憶がもう少し鮮やかに。</p>
+              <div class="feature-actions"><a class="primary-link" href="https://apps.apple.com/jp/app/id6792297035" aria-label="App StoreでFotrailを見る">App Storeで見る<span class="arrow" aria-hidden="true"></span></a><a class="text-link" href="Fotrail/">もっと詳しく<span class="arrow" aria-hidden="true"></span></a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy" id="about" aria-labelledby="about-title">
+      <div class="philosophy-media" aria-hidden="true"><img src="assets/studio-everyday.png" width="1896" height="830" alt="" loading="lazy"></div>
+      <div class="shell" data-reveal>
         <p class="eyebrow" lang="en">OUR PHILOSOPHY</p>
         <h2 id="about-title"><span>小さくつくって</span><span>毎日を少しよくする。</span></h2>
         <p class="philosophy-copy">日々の暮らしにそっと寄り添う。<br>そんな小さなアプリをこれからもつくり続けます。</p>
@@ -144,6 +186,7 @@
     <a class="wordmark" href="#top">25Re App Studio</a>
     <nav class="footer-links" aria-label="フッターナビゲーション">
       <a href="#apps">アプリ一覧</a>
+      <a href="https://apps.apple.com/jp/developer/25re/id444672397">App Store</a>
       <a href="mailto:25ri.apps.studio@gmail.com">サポート</a>
     </nav>
     <p class="copyright">© 2026 25Re App Studio<br><a class="support-contact" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a></p>

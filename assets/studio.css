@@ -82,7 +82,8 @@ h1 span { display: block; white-space: nowrap; }
 .app-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #78a62f; flex-shrink: 0; }
 .app-status.review::before { background: #969e98; }
 .detail-title { margin: 24px 0 0; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.4; font-weight: 750; letter-spacing: -.045em; }
-.detail-description { max-width: 30em; margin: 18px 0 0; color: #5a6254; font-size: 15px; line-height: 1.9; text-wrap: pretty; }
+/* Keep Japanese phrases together; balance is an enhancement over normal wrapping. */
+.detail-description { max-width: 30em; margin: 18px 0 0; color: #5a6254; font-size: 15px; line-height: 1.9; text-wrap: balance; }
 .detail-points { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 18px 0 0; padding: 0; list-style: none; color: #646c5e; font-size: 12px; }
 .detail-points li { border-bottom: 2px solid var(--lime); }
 .detail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-top: 26px; }

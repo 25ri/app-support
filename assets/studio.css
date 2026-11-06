@@ -99,7 +99,7 @@ h1 span { display: block; white-space: nowrap; }
 .screenshot-viewer::backdrop { background: #141715; }
 html:has(.screenshot-viewer[open]) { overflow: hidden; }
 .viewer-header, .viewer-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 20px; }
-.viewer-header h2 { margin: 0; font-size: 15px; font-weight: 650; }
+.viewer-header { justify-content: flex-end; }
 .viewer-header button, .viewer-controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: inherit; background: #ffffff20; font-size: 24px; cursor: pointer; }
 .viewer-header button:focus-visible, .viewer-controls button:focus-visible, .viewer-gallery:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
 .viewer-controls { justify-content: center; }

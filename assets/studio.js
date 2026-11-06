@@ -34,7 +34,7 @@ for (const gallery of document.querySelectorAll('.screenshot-gallery')) {
         copy.loading = 'eager';
         return copy;
       }));
-      viewer.querySelector('#viewer-title').textContent = `${gallery.closest('.app-panel').querySelector('h3').textContent}のスクリーンショット`;
+      viewer.querySelector('#viewer-title').textContent = `${gallery.closest('.app-panel').querySelector('h3').textContent}の画像`;
       viewer.showModal();
       viewerGallery.scrollLeft = index * viewerGallery.clientWidth;
       updateViewer();

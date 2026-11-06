@@ -90,8 +90,24 @@ h1 span { display: block; white-space: nowrap; }
 .detail-visual { min-width: 0; padding: 20px 0 14px; border-radius: 20px; background: #e9eff3; overflow: hidden; }
 .screenshot-gallery { display: flex; gap: 12px; height: 440px; padding: 0 20px 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; }
 .screenshot-gallery img { flex: none; width: auto; height: 100%; max-width: none; object-fit: contain; border-radius: 10px; box-shadow: 0 12px 28px -15px #14291a66; scroll-snap-align: start; }
+.screenshot-gallery button { flex: none; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; scroll-snap-align: start; }
+.screenshot-gallery button:focus-visible { outline: 2px solid #1764c0; outline-offset: 2px; }
 .screenshot-gallery:focus-visible { outline: 2px solid #1764c0; outline-offset: -2px; }
 .gallery-caption { margin: 4px 20px 0; color: #596357; font-size: 11px; }
+.screenshot-viewer { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: max(12px, env(safe-area-inset-top)) 0 max(12px, env(safe-area-inset-bottom)); border: 0; color: #fff; background: #141715; }
+.screenshot-viewer[open] { display: flex; flex-direction: column; }
+.screenshot-viewer::backdrop { background: #141715; }
+html:has(.screenshot-viewer[open]) { overflow: hidden; }
+.viewer-header, .viewer-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 20px; }
+.viewer-header h2 { margin: 0; font-size: 15px; font-weight: 650; }
+.viewer-header button, .viewer-controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: inherit; background: #ffffff20; font-size: 24px; cursor: pointer; }
+.viewer-header button:focus-visible, .viewer-controls button:focus-visible, .viewer-gallery:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.viewer-controls { justify-content: center; }
+.viewer-controls button[aria-disabled="true"] { opacity: .3; }
+.viewer-count { min-width: 64px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }
+.viewer-gallery { display: flex; flex: 1; min-height: 0; width: 100%; overflow-x: auto; overscroll-behavior: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.viewer-gallery::-webkit-scrollbar { display: none; }
+.viewer-gallery img { flex: 0 0 100%; width: 100%; height: 100%; min-width: 0; padding: 12px 20px; object-fit: contain; scroll-snap-align: center; }
 [data-app="memorydrop"] .detail-visual { background: #f4e9e2; }
 [data-app="fotrail"] .detail-visual { background: #e4eee5; }
 [data-app="cattoy"] .detail-visual, [data-app="catlaunch"] .detail-visual { background: #f6eed8; }

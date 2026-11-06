@@ -1,12 +1,12 @@
 @charset "UTF-8";
 :root {
   color-scheme: light;
-  --paper: #fafaf7;
-  --ink: #171918;
-  --muted: #686d66;
-  --line: #dfe2da;
-  --lime: #c9f95c;
-  --blue: #0066cc;
+  --paper: #171513;
+  --ink: #f4eee7;
+  --muted: #c4b8ad;
+  --line: #51463e;
+  --lime: #b88868;
+  --blue: #e2b99c;
   --nav-height: 76px;
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
 }
@@ -242,10 +242,36 @@ html:has(.screenshot-viewer[open]) { overflow: hidden; }
   .detail-actions .primary-link { padding-inline: 13px; font-size: 12px; }
   .detail-actions .text-link { font-size: 10px; }
 }
+/* A compact, icon-led introduction and quiet editorial dividers. */
+.site-header { background: rgb(248 245 240 / .94); border-color: var(--line); }
+.site-header.is-scrolled { background: rgb(248 245 240 / .9); border-color: var(--line); }
+.header-nav .nav-store:hover, .primary-link:hover { background: #684231; }
+.hero { display: block; min-height: 0; padding-block: 36px 22px; }
+.hero-gallery { width: min(500px, 86%); aspect-ratio: 1.35; margin: 0 auto; }
+.gallery-hint { position: static; width: auto; margin: 16px 0 0; text-align: center; }
+.apps-section { padding-block: 18px 48px; }
+.app-picker { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 20px; margin: 0; }
+.app-picker a { flex-direction: row; justify-content: flex-start; gap: 12px; min-height: 70px; padding: 10px 4px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; font-size: 13px; }
+.app-picker img { width: 38px; height: 38px; flex: none; }
+.app-picker a[aria-current="true"] { background: #eee7df; border-color: #9d806d; }
+.app-panel { gap: 36px; margin-top: 0; padding: 32px 0 0; border: 0; border-radius: 0; background: transparent; }
+.detail-copy { padding: 0; }
+.detail-visual { background: #ebe7e1; }
+@media (max-width: 760px) {
+  .hero { padding-block: 24px 18px; }
+  .hero-gallery { width: min(320px, 92%); margin: 0 auto; }
+  .gallery-hint { margin-top: 14px; }
+  .apps-section { padding-block: 12px 36px; }
+  .app-picker { gap: 0 8px; }
+  .app-picker a { flex-direction: column; justify-content: center; gap: 4px; min-height: 68px; padding: 8px 2px; font-size: 11px; }
+  .app-picker img { width: 30px; height: 30px; }
+  .app-panel { gap: 20px; padding: 24px 0 0; }
+}
+@media (max-width: 360px) { .app-picker a { font-size: 10px; } }
 @media (hover: hover) {
   .hero-icon:hover { scale: 1.06; z-index: 20; }
   .app-picker a:hover { background: #f0f1eb; }
-  .app-picker a[aria-current="true"]:hover { background: #e6efce; }
+  .app-picker a[aria-current="true"]:hover { background: #e8ded4; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -256,4 +282,25 @@ html:has(.screenshot-viewer[open]) { overflow: hidden; }
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .site-header.is-scrolled { background: var(--paper); backdrop-filter: none; -webkit-backdrop-filter: none; border-color: #818779; }
+}
+
+/* Dark neutrals and warm copper echo the photograph without tinting it. */
+.site-header { background: rgb(23 21 19 / .96); border-color: var(--line); }
+.site-header.is-scrolled { background: rgb(23 21 19 / .91); border-color: var(--line); }
+.header-nav .nav-store, .primary-link { color: #fff; background: #80513a; }
+.header-nav .nav-store:hover, .primary-link:hover { color: #fff; background: #986449; }
+.app-picker a[aria-current="true"], .app-picker a[aria-current="true"]:hover { background: #382d27; border-color: #c59675; }
+.app-status, .detail-description, .detail-points, .gallery-caption { color: #cfc2b5; }
+.app-status::before { background: #a8c58d; }
+.detail-visual, [data-app] .detail-visual { background: #2b2622; }
+.philosophy { background: #050505; color: #f6f1eb; }
+.philosophy-media { inset: 0; opacity: 1; }
+.philosophy-media img { width: 100%; height: 100%; object-fit: cover; object-position: 65% center; }
+.philosophy-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #000 0%, rgb(0 0 0 / .82) 28%, transparent 75%); }
+@media (hover: hover) { .app-picker a:hover { background: #302722; } }
+@media (max-width: 760px) {
+  .philosophy-media { inset: 0; opacity: 1; }
+  .philosophy-media img { object-position: left center; }
+  .philosophy-media::after { background: linear-gradient(90deg, #000 0%, rgb(0 0 0 / .85) 32%, transparent 78%); }
+  .philosophy h2 { font-size: clamp(20px, 5.8vw, 24px); }
 }

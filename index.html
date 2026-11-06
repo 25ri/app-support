@@ -11,16 +11,16 @@
   <meta property="og:description" content="日々の記録や楽しみに寄り添う9つのアプリをご紹介します。">
   <title>25ri App Studio — いつもの毎日にちょっといいアプリを</title>
   <link rel="icon" type="image/jpeg" href="assets/memorydrop.jpg">
-  <link rel="stylesheet" href="assets/studio.css?v=20261107-2">
-  <script src="assets/studio.js?v=20261106-2" defer></script>
+  <link rel="stylesheet" href="assets/studio.css?v=20261107-3">
+  <script src="assets/studio.js?v=20261107-3" defer></script>
 </head>
 <body id="top">
-  <a class="skip-link" href="#apps">アプリ一覧へ移動</a>
+  <a class="skip-link" href="#app-chooser">アプリ一覧へ移動</a>
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="wordmark" href="./" aria-label="25ri App Studio ホーム">25ri App Studio</a>
       <nav class="header-nav" aria-label="メインナビゲーション">
-        <a href="#apps">アプリ一覧</a>
+        <a href="#app-chooser">アプリ一覧</a>
         <a class="about-nav" href="#about">スタジオについて</a>
         <a class="nav-store" href="https://apps.apple.com/jp/developer/25re/id444672397" aria-label="App Storeで25riのアプリを見る">App Store</a>
       </nav>
@@ -31,7 +31,7 @@
     <div class="hero-scroll">
     <section class="hero shell" aria-labelledby="hero-title">
       <h1 id="hero-title" class="result-summary">25ri App Studio</h1>
-      <div class="hero-gallery" aria-label="25riのアプリたち">
+      <nav class="hero-gallery" id="app-chooser" aria-label="紹介するアプリを選ぶ">
         <a class="hero-icon hero-buff" href="#app-buff" data-app-link="buff" aria-label="BUFFの紹介へ"><img src="assets/buff.jpg" width="184" height="184" alt="" fetchpriority="high"></a>
         <a class="hero-icon hero-memory" href="#app-memorydrop" data-app-link="memorydrop" aria-label="おもいでドロップの紹介へ"><img src="assets/memorydrop.jpg" width="184" height="184" alt="" fetchpriority="high"></a>
         <a class="hero-icon hero-fotrail" href="#app-fotrail" data-app-link="fotrail" aria-label="Fotrailの紹介へ"><img src="assets/fotrail.jpg" width="166" height="166" alt=""></a>
@@ -41,30 +41,19 @@
         <a class="hero-icon hero-catlaunch" href="#app-catlaunch" data-app-link="catlaunch" aria-label="ねこまんまの紹介へ"><img src="assets/catlaunch.jpg" width="150" height="150" alt=""></a>
         <a class="hero-icon hero-nuan" href="#app-nuan" data-app-link="nuan" aria-label="nuanの紹介へ"><img src="assets/nuan.png" width="150" height="150" alt=""></a>
         <a class="hero-icon hero-kosatsu" href="#app-kosatsu" data-app-link="kosatsu" aria-label="考察ノートの紹介へ"><img src="assets/kosatsu.jpg" width="150" height="150" alt=""></a>
-      </div>
-      <p class="gallery-hint">アイコンをタップすると紹介が表示されます。</p>
+      </nav>
+      <p class="gallery-hint">アイコンをタップしてアプリを選べます</p>
     </section>
     </div>
 
     <section class="apps-section shell" id="apps" aria-labelledby="apps-title">
       <h2 id="apps-title" class="result-summary">アプリを選ぶ</h2>
       <div class="app-browser" id="app-browser">
-        <nav class="app-picker" aria-label="紹介するアプリを選ぶ">
-          <a href="#app-buff" data-app-link="buff" aria-current="true"><img src="assets/buff.jpg" width="36" height="36" alt=""><span>BUFF</span></a>
-          <a href="#app-memorydrop" data-app-link="memorydrop"><img src="assets/memorydrop.jpg" width="36" height="36" alt=""><span>おもいでドロップ</span></a>
-          <a href="#app-fotrail" data-app-link="fotrail"><img src="assets/fotrail.jpg" width="36" height="36" alt=""><span>Fotrail</span></a>
-          <a href="#app-cattoy" data-app-link="cattoy"><img src="assets/cattoy.jpg" width="36" height="36" alt=""><span>にゃんじゃらし</span></a>
-          <a href="#app-microwave" data-app-link="microwave"><img src="assets/microwave.jpg" width="36" height="36" alt=""><span>レンチン換算</span></a>
-          <a href="#app-snipfuse" data-app-link="snipfuse"><img src="assets/snipfuse.jpg" width="36" height="36" alt=""><span>SnipFuse</span></a>
-          <a href="#app-catlaunch" data-app-link="catlaunch"><img src="assets/catlaunch.jpg" width="36" height="36" alt=""><span>ねこまんま</span></a>
-          <a href="#app-nuan" data-app-link="nuan"><img src="assets/nuan.png" width="36" height="36" alt=""><span>nuan</span></a>
-          <a href="#app-kosatsu" data-app-link="kosatsu"><img src="assets/kosatsu.jpg" width="36" height="36" alt=""><span>考察ノート</span></a>
-        </nav>
         <p class="result-summary" id="app-announcement" role="status" aria-live="polite"></p>
         <div class="app-details" id="app-details">
           <article class="app-panel" id="app-buff" data-app="buff" aria-labelledby="name-buff" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/buff.jpg" width="52" height="52" alt=""><div><h3 id="name-buff">BUFF</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-buff">BUFF</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">トレーニングを記録する</h4>
               <p class="detail-description"><span class="phrase">種目や重量を</span><span class="phrase">すばやく記録できます。</span><span class="phrase">前回のセットと比べて</span><span class="phrase">日々の積み重ねを</span><span class="phrase">振り返れます。</span></p>
               <ul class="detail-points"><li>セットを記録</li><li>前回と比較</li></ul>
@@ -74,7 +63,7 @@
           </article>
           <article class="app-panel" id="app-memorydrop" data-app="memorydrop" aria-labelledby="name-memorydrop" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/memorydrop.jpg" width="52" height="52" alt=""><div><h3 id="name-memorydrop">おもいでドロップ</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-memorydrop">おもいでドロップ</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">思い出を振り返る</h4>
               <p class="detail-description"><span class="phrase">同じ日に撮った</span><span class="phrase">写真が画面に</span><span class="phrase">降ってきます。</span><span class="phrase">去年やもっと前の</span><span class="phrase">今日を振り返りながら</span><span class="phrase">忘れていた思い出に</span><span class="phrase">出会えます。</span></p>
               <ul class="detail-points"><li>同じ日の写真</li><li>思い出を再発見</li></ul>
@@ -84,7 +73,7 @@
           </article>
           <article class="app-panel" id="app-fotrail" data-app="fotrail" aria-labelledby="name-fotrail" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/fotrail.jpg" width="52" height="52" alt=""><div><h3 id="name-fotrail">Fotrail</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-fotrail">Fotrail</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">旅の足あとを残す</h4>
               <p class="detail-description"><span class="phrase">撮影中の</span><span class="phrase">移動ルートを</span><span class="phrase">GPSで記録できます。</span><span class="phrase">写真の撮影時刻と</span><span class="phrase">照らし合わせて</span><span class="phrase">旅の足あとや</span><span class="phrase">撮影場所を</span><span class="phrase">振り返れます。</span></p>
               <ul class="detail-points"><li>GPSルート</li><li>写真の撮影場所</li></ul>
@@ -94,7 +83,7 @@
           </article>
           <article class="app-panel" id="app-cattoy" data-app="cattoy" aria-labelledby="name-cattoy" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/cattoy.jpg" width="52" height="52" alt=""><div><h3 id="name-cattoy">にゃんじゃらし</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-cattoy">にゃんじゃらし</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">猫との時間を楽しむ</h4>
               <p class="detail-description"><span class="phrase">走るネズミや</span><span class="phrase">泳ぐ魚の映像を</span><span class="phrase">猫と楽しめます。</span><span class="phrase">5つのテーマを</span><span class="phrase">iPhoneやiPadの</span><span class="phrase">画面いっぱいに</span><span class="phrase">再生できます。</span></p>
               <ul class="detail-points"><li>5つの映像</li><li>オフライン再生</li></ul>
@@ -104,7 +93,7 @@
           </article>
           <article class="app-panel" id="app-microwave" data-app="microwave" aria-labelledby="name-microwave" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/microwave.jpg" width="52" height="52" alt=""><div><h3 id="name-microwave">レンチン換算</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-microwave">レンチン換算</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">温め時間を換算する</h4>
               <p class="detail-description"><span class="phrase">使うレンジの</span><span class="phrase">ワット数に合わせて</span><span class="phrase">温め時間を</span><span class="phrase">換算できます。</span><span class="phrase">食品ラベルの</span><span class="phrase">読み取りにも</span><span class="phrase">対応しています。</span></p>
               <ul class="detail-points"><li>ワット数を換算</li><li>ラベル読み取り</li></ul>
@@ -114,7 +103,7 @@
           </article>
           <article class="app-panel" id="app-snipfuse" data-app="snipfuse" aria-labelledby="name-snipfuse" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/snipfuse.jpg" width="52" height="52" alt=""><div><h3 id="name-snipfuse">SnipFuse</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-snipfuse">SnipFuse</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">動画を切ってつなぐ</h4>
               <p class="detail-description"><span class="phrase">動画の途中にある</span><span class="phrase">不要な場面を</span><span class="phrase">カットできます。</span><span class="phrase">残したクリップを</span><span class="phrase">つなげて</span><span class="phrase">一本の動画に</span><span class="phrase">仕上げられます。</span></p>
               <ul class="detail-points"><li>途中をカット</li><li>クリップを結合</li></ul>
@@ -124,7 +113,7 @@
           </article>
           <article class="app-panel" id="app-catlaunch" data-app="catlaunch" aria-labelledby="name-catlaunch" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/catlaunch.jpg" width="52" height="52" alt=""><div><h3 id="name-catlaunch">ねこまんま</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-catlaunch">ねこまんま</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">今日のごはんを選ぶ</h4>
               <p class="detail-description"><span class="phrase">歩ける時間や</span><span class="phrase">食べたい気分から</span><span class="phrase">近くのお店を</span><span class="phrase">一軒だけ提案します。</span><span class="phrase">迷う時間を減らして</span><span class="phrase">今日のごはんを</span><span class="phrase">決められます。</span></p>
               <ul class="detail-points"><li>近くの一軒</li><li>条件でおまかせ</li></ul>
@@ -134,7 +123,7 @@
           </article>
           <article class="app-panel" id="app-nuan" data-app="nuan" aria-labelledby="name-nuan" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/nuan.png" width="52" height="52" alt=""><div><h3 id="name-nuan">nuan</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-nuan">nuan</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">写真も動画も仕上げる</h4>
               <p class="detail-description"><span class="phrase">写真も動画も</span><span class="phrase">撮影から編集まで</span><span class="phrase">楽しめます。</span><span class="phrase">露出や色から</span><span class="phrase">粒子の質感まで</span><span class="phrase">調整して</span><span class="phrase">好みの仕上がりを</span><span class="phrase">つくれます。</span></p>
               <ul class="detail-points"><li>写真と動画</li><li>RAW現像</li></ul>
@@ -144,7 +133,7 @@
           </article>
           <article class="app-panel" id="app-kosatsu" data-app="kosatsu" aria-labelledby="name-kosatsu" tabindex="-1">
             <div class="detail-copy">
-              <div class="detail-identity"><img src="assets/kosatsu.jpg" width="52" height="52" alt=""><div><h3 id="name-kosatsu">考察ノート</h3><p class="app-status">公開中</p></div></div>
+              <div class="detail-identity"><div><h3 id="name-kosatsu">考察ノート</h3><p class="app-status">公開中</p></div></div>
               <h4 class="detail-title">気づきと伏線をつなぐ</h4>
               <p class="detail-description"><span class="phrase">ドラマや映画の</span><span class="phrase">気づきや疑問を</span><span class="phrase">作品ごとに</span><span class="phrase">記録できます。</span><span class="phrase">人物やタグで</span><span class="phrase">整理しながら</span><span class="phrase">メモ同士をつなげて</span><span class="phrase">考察を深められます。</span></p>
               <ul class="detail-points"><li>作品ごとに記録</li><li>伏線をつなぐ</li></ul>
@@ -175,7 +164,7 @@
   <footer class="site-footer shell" id="support">
     <a class="wordmark" href="#top">25ri App Studio</a>
     <nav class="footer-links" aria-label="フッターナビゲーション">
-      <a href="#apps">アプリ一覧</a>
+      <a href="#app-chooser">アプリ一覧</a>
       <a href="https://apps.apple.com/jp/developer/25re/id444672397">App Store</a>
       <a href="mailto:25ri.apps.studio@gmail.com">サポート</a>
     </nav>

@@ -5,7 +5,7 @@ const philosophy = document.querySelector('.philosophy');
 const browser = document.querySelector('#app-browser');
 const panels = [...document.querySelectorAll('.app-panel')];
 const appLinks = document.querySelectorAll('[data-app-link]');
-const pickerLinks = document.querySelectorAll('.app-picker a');
+const chooserLinks = document.querySelectorAll('.hero-icon');
 const announcement = document.querySelector('#app-announcement');
 const viewer = document.querySelector('.screenshot-viewer');
 const viewerGallery = viewer.querySelector('.viewer-gallery');
@@ -55,7 +55,7 @@ viewer.addEventListener('keydown', event => {
 
 function selectApp(panel) {
   for (const item of panels) item.hidden = item !== panel;
-  for (const link of pickerLinks) {
+  for (const link of chooserLinks) {
     if (link.dataset.appLink === panel.dataset.app) link.setAttribute('aria-current', 'true');
     else link.removeAttribute('aria-current');
   }
@@ -79,10 +79,6 @@ for (const link of appLinks) {
     const panel = panels.find(item => item.dataset.app === link.dataset.appLink);
     selectApp(panel);
     if (location.hash !== link.hash) history.pushState(null, '', link.hash);
-    if (link.classList.contains('hero-icon')) {
-      panel.scrollIntoView({ behavior: motionPreference.matches ? 'instant' : 'smooth', block: 'start' });
-      panel.focus({ preventScroll: true });
-    }
   });
 }
 window.addEventListener('hashchange', showLinkedApp);

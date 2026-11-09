@@ -82,6 +82,8 @@ h1 span { display: block; white-space: nowrap; }
 .detail-description { max-width: 30em; margin: 18px 0 0; color: #5a6254; font-size: 15px; line-height: 1.9; text-wrap: balance; }
 .detail-points { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 18px 0 0; padding: 0; list-style: none; color: #646c5e; font-size: 12px; }
 .detail-points li { border-bottom: 2px solid var(--lime); }
+.detail-update { display: grid; gap: 2px; margin: 16px 0 0; color: #cfc2b5; font-size: 12px; line-height: 1.7; }
+.update-meta { color: var(--muted); font-size: 11px; }
 .detail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-top: 26px; }
 .detail-visual { min-width: 0; padding: 20px 0 14px; border-radius: 20px; background: #e9eff3; overflow: hidden; }
 .screenshot-gallery { display: flex; gap: 12px; height: 440px; padding: 0 20px 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; }

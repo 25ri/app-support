@@ -11,7 +11,7 @@
   <meta property="og:description" content="日々の記録や楽しみに寄り添う9つのアプリをご紹介します。">
   <title>25ri App Studio — いつもの毎日にちょっといいアプリを</title>
   <link rel="icon" type="image/jpeg" href="assets/memorydrop.jpg">
-  <link rel="stylesheet" href="assets/studio.css?v=20261110-1">
+  <link rel="stylesheet" href="assets/studio.css?v=20261110-3">
   <script src="assets/studio.js?v=20261107-3" defer></script>
 </head>
 <body id="top">
@@ -46,6 +46,7 @@
     </section>
     </div>
 
+    <div class="app-exhibit">
     <section class="apps-section shell" id="apps" aria-labelledby="apps-title">
       <h2 id="apps-title" class="result-summary">アプリを選ぶ</h2>
       <div class="app-browser" id="app-browser">
@@ -155,6 +156,7 @@
       <p class="collection-note"><span class="phrase">公開状況は<time datetime="2026-11-10">2026年11月10日</time>時点です。</span><span class="phrase">公開中9本を掲載しています。</span></p>
     </section>
 
+    </div>
     <section class="philosophy" id="about" aria-labelledby="about-title">
       <div class="philosophy-media" aria-hidden="true"><img src="assets/studio-cat.jpg" width="1280" height="854" alt="" loading="lazy"></div>
       <div class="shell" data-reveal>
@@ -171,13 +173,15 @@
     <div class="viewer-controls"><button type="button" class="viewer-prev" aria-label="前の画像">←</button><span class="viewer-count" aria-live="polite"></span><button type="button" class="viewer-next" aria-label="次の画像">→</button></div>
   </dialog>
   <footer class="site-footer shell" id="support">
-    <a class="wordmark" href="#top">25ri App Studio</a>
-    <nav class="footer-links" aria-label="フッターナビゲーション">
-      <a href="#app-chooser">アプリ一覧</a>
-      <a href="https://apps.apple.com/jp/developer/25re/id444672397">App Store</a>
-      <a href="mailto:25ri.apps.studio@gmail.com">サポート</a>
-    </nav>
-    <p class="copyright">© 2026 25ri App Studio<br><a class="support-contact" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a></p>
+    <div class="footer-main">
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="#app-chooser">アプリ一覧 <span aria-hidden="true">↗</span></a>
+        <a href="https://apps.apple.com/jp/developer/25re/id444672397">App Store <span aria-hidden="true">↗</span></a>
+        <a href="mailto:25ri.apps.studio@gmail.com">サポート <span aria-hidden="true">↗</span></a>
+      </nav>
+      <a class="footer-brand" href="#top">25ri App Studio</a>
+    </div>
+    <p class="copyright">© 2026 25ri App Studio <a class="support-contact" href="mailto:25ri.apps.studio@gmail.com">25ri.apps.studio@gmail.com</a></p>
   </footer>
 </body>
 </html>

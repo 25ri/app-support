@@ -30,7 +30,7 @@
 <h2>ギャラリーで見る・保存する</h2>
 <p>一覧の写真・動画をタップして開き、左右のスワイプで移動します。画面をタップすると操作ボタンを表示・非表示にできます。写真は縦横比を保ち、操作ボタンの間に全体を表示します。ピンチやダブルタップで拡大できます。下部の「写真に保存」から、編集画面を開かずに現在の仕上がりを書き出せます。「情報」では撮影情報を確認できます。</p>
 <h2>写真・動画を編集する</h2>
-<p>ギャラリーで項目を開き、編集ボタンから調整します。写真では上スワイプでも編集画面を開けます。露出、明暗、コントラスト、彩度、ホワイトバランス、モノクロ、粒子、光のにじみ、回転・反転・傾き・トリミングを調整できます。動画ではコマ付きタイムラインで前後を切り出し、途中の不要な範囲を複数削除できます。長押しで細かく調整し、確認再生・取り消し・音声の変更もできます。原本は変更しません。</p>
+<p>ギャラリーで項目を開き、編集ボタンから調整します。写真では上スワイプでも編集画面を開けます。露出、明暗、コントラスト、彩度、ホワイトバランス、モノクロ、粒子、光のにじみ、背景ぼけ、回転・反転・傾き・トリミングを調整できます。動画ではコマ付きタイムラインで前後を切り出し、途中の不要な範囲を複数削除できます。長押しで細かく調整し、確認再生・取り消し・音声の変更もできます。原本は変更しません。</p>
 <p>「完了」は編集内容をアプリ内に保存します。写真ライブラリにも書き出す場合は、閲覧画面または編集画面下部の「写真に保存」ボタンを使います。写真はJPEG・HEIC、動画はMOVで書き出します。ここで選ぶ書き出し形式は撮影形式とは別の設定です。原本と編集情報は別々に保持します。</p>
 <h2>プリセットを作成する</h2>
 <ol>
@@ -39,6 +39,7 @@
 <li>自作プリセットは最大12件です。「プリセットを管理」で名前や調整値の変更・削除ができます。標準プリセットの表示名も変更・リセットできます。</li>
 </ol>
 <p>プリセットの変更・削除で、すでに保存した写真・動画の仕上がりが自動で変わることはありません。</p>
+<p>「設定」→「共通」→「プリセットを管理」→「Lightroomプリセットを読み込む」から、対応するXMPプリセットも読み込めます。対応する調整項目と処理方法が異なるため、Lightroomと同じ仕上がりになるとは限りません。</p>
 <h2>写真ライブラリへの保存</h2>
 <p>「設定」→「共通」→「撮影後に写真ライブラリへ保存」をオンにすると、選択した仕上がりで写真・動画を自動保存します。読み込みや再編集では自動保存しません。オフでも、撮影した原本はアプリ内のギャラリーに残ります。</p>
 <p>写真への限定アクセスでも書き出せます。「すべての写真」へのアクセスを許可するとnuanアルバムにも追加します。アクセスを拒否した場合、アプリ内の原本を保持します。iPhoneの設定アプリでnuanの写真へのアクセスを変更してから、もう一度保存してください。</p>
@@ -53,7 +54,7 @@
 </ul>
 <h2>撮影場所と原本の保管</h2>
 <p>「撮影場所を記録」がオンで位置情報へのアクセスを許可している場合、撮影時に取得できた位置を写真・動画に記録します。書き出し・共有にも含まれます。設定をオフにしても、既存ファイルの位置情報は消えません。読み込んだファイルの位置情報も、出力形式で扱える範囲で引き継ぎます。</p>
-<p>アプリを削除すると、アプリ内の原本・編集情報・設定も失われます。「写真に保存」と共有は仕上げた画像・動画の書き出しで、RAW原本や再編集用データのバックアップではありません。大切なファイルはアプリ外にも保管してください。OSのバックアップ・復元は端末とAppleのサービスの設定に従います。</p>
+<p>アプリを削除すると、アプリ内の原本・編集情報・設定も失われます。「写真に保存」と仕上がりの共有は、編集済みの画像・動画を書き出す操作です。RAW写真を含む共有では原本も選べますが、nuanの編集情報は含みません。アプリ内の原本と編集情報を一緒に復元できるバックアップではありません。大切なファイルはアプリ外にも保管してください。OSのバックアップ・復元は端末とAppleのサービスの設定に従います。</p>
 <h2>お問い合わせ</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>アプリの版、iPhoneの機種、iOSの版、問題が起きる操作をお知らせください。RAWの読み込みについては、撮影したカメラの機種とファイル形式も添えてください。パスワード・認証コード・不要な個人情報を送る必要はありません。</p>
@@ -83,7 +84,7 @@
 <h2>Browse and save from Gallery</h2>
 <p>Tap a photo or video in Gallery, then swipe left or right to move between items. Tap the screen to show or hide controls. Photos retain their aspect ratio and fit between the controls. Pinch or double-tap to zoom. Use Save to Photos at the bottom to export the current result without opening the editor. Info shows capture details.</p>
 <h2>Edit photos and videos</h2>
-<p>Open an item in Gallery and tap Edit. You can also swipe up on a photo to edit it. Adjust exposure, tone, contrast, saturation, white balance, monochrome, grain, Light Glow, rotation, flips, straightening and crop. Videos support frame-timeline trimming, removing multiple unwanted middle ranges, fine adjustment by holding a handle, review playback, undo and audio controls. Originals remain unchanged.</p>
+<p>Open an item in Gallery and tap Edit. You can also swipe up on a photo to edit it. Adjust exposure, tone, contrast, saturation, white balance, monochrome, grain, Light Glow, background blur, rotation, flips, straightening and crop. Videos support frame-timeline trimming, removing multiple unwanted middle ranges, fine adjustment by holding a handle, review playback, undo and audio controls. Originals remain unchanged.</p>
 <p>Done saves edits in the app. To export to Photos, use Save to Photos at the bottom of the viewer or editor. Photos export as JPEG or HEIC; videos export as MOV. Export format is independent of capture format. Originals and edit settings are kept separately.</p>
 <h2>Create presets</h2>
 <ol>
@@ -92,6 +93,7 @@
 <li>Save up to 12 custom presets. Manage Presets lets you rename, adjust or delete them. Built-in preset display names can also be changed and reset.</li>
 </ol>
 <p>Changing or deleting a preset does not automatically change the appearance of photos or videos already saved.</p>
+<p>To import a supported Lightroom XMP preset, open Settings → General → Manage Presets → Import Lightroom Preset. Supported adjustments and rendering differ, so results may differ from Lightroom.</p>
 <h2>Save to Photos</h2>
 <p>Enable automatic saving in Settings → General to save the selected look after capture. Importing or re-editing does not trigger automatic saving. Captured originals remain in the app even when automatic saving is off.</p>
 <p>Limited Photos access allows exporting. Full access also allows adding items to the nuan album. If access is denied, originals remain in the app. Change nuan’s Photos access in iPhone Settings, then retry saving.</p>
@@ -106,7 +108,7 @@
 </ul>
 <h2>Location and originals</h2>
 <p>When location recording is enabled and permission is granted, the available capture location is embedded in photos and videos, including exports and shares. Turning the setting off does not remove existing location metadata. Location already embedded in imported files is also retained where the output format allows.</p>
-<p>Deleting the app removes local originals, edits and settings. Save to Photos and Share export finished images and videos; they are not backups of RAW originals or re-editable data. Keep important files outside the app as well. OS backup and restoration follow your device settings and Apple’s services.</p>
+<p>Deleting the app removes local originals, edits and settings. Save to Photos and sharing finished results export edited images and videos. Sharing a selection that includes RAW photos also offers original files, without nuan editing data. These exports are not a backup that restores both the in-app originals and their edit settings. Keep important files outside the app as well. OS backup and restoration follow your device settings and Apple’s services.</p>
 <h2>Contact</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>Include the app version, iPhone model, iOS version and steps to reproduce. For RAW import issues, also include the source camera model and file format. Do not send passwords, verification codes or unnecessary personal information.</p></section>

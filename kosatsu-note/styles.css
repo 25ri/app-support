@@ -46,8 +46,8 @@ strong { font-weight: 700; }
 .notice p:first-child { margin-top: 0; }
 .notice p:last-child { margin-bottom: 0; }
 .contents { padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 12px; }
-.contents ul { margin-block: 0; }
-.contents a { display: inline-block; padding-block: .2rem; }
+.contents ul { margin-block: 0; padding-left: 0; list-style: none; }
+.contents a { display: block; padding-block: .2rem; }
 details { border-bottom: 1px solid var(--line); padding-block: .75rem; }
 summary { min-height: 44px; align-content: center; cursor: pointer; font-weight: 600; }
 details p, details ol, details ul { margin-left: 1.25rem; }

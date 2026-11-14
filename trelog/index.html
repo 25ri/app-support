@@ -192,7 +192,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v3.0.5</span>
+    <span class="version-badge">v3.8.2 · 審査提出版</span>
   </div>
 
   <div class="content" id="top">
@@ -204,7 +204,7 @@
         基本機能はオフラインで使え、必要な場合だけiCloud同期を有効にできます。
       </p>
       <div class="studio-store-action"><a class="studio-store-link" href="https://apps.apple.com/jp/app/id6759157626">App Storeで見る</a></div>
-      <p style="font-size:13px;color:var(--text2);">対応バージョン：v3.0.5（ビルド367・審査提出版） ／ 最終更新：2026年10月26日</p>
+      <p style="font-size:13px;color:var(--text2);">対応バージョン：v3.8.2（ビルド399・審査提出版） ／ 最終更新：2026年11月14日</p>
       <div class="tab-badges">
         <span class="tab-badge">👤 プロフィール</span>
         <span class="tab-badge">📊 統計</span>
@@ -385,7 +385,7 @@
       <h3>画面の構成</h3>
       <div class="card"><h4>📅 日付セレクター</h4><p>画面上部の日付をタップするとカレンダーが開きます。過去の日付を選ぶと、その日のセッションデータが表示されます。「前回」「次回」ボタンでトレーニング日をスキップ移動できます。</p></div>
       <div class="card"><h4>📝 セッションメモ</h4><p>セッション全体のメモを記録できます。コンディション・体調・特記事項などに活用してください。</p></div>
-      <div class="card"><h4>➕ 種目を追加</h4><p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。</p></div>
+      <div class="card"><h4>➕ 種目を追加</h4><p>「種目を追加」ボタンから種目ピッカーを開き、トレーニングする種目を選択します。複数の種目を追加できます。テキスト入力では、選択シートを閉じたあとに追加した種目の入力欄が選ばれます。</p></div>
       <div class="card"><h4>🧠 AI提案</h4><p>「種目を追加」ボタンの横に配置。タップすると過去の記録と選択した部位をもとに、おすすめ種目をAIが提案します。</p></div>
       <div class="card"><h4>📋 テンプレートから</h4><p>右上メニューの「テンプレートから」でルーティンを選び、種目群をまとめて追加できます。</p></div>
       <div class="card"><h4>📊 ワークアウトサマリー</h4><p>右上のグラフアイコンから、筋トレ・有酸素の集計、今日のレビュー、トレーニング時間を確認できます。</p></div>
@@ -416,6 +416,10 @@
 
       <h3>種目ヘッダーの前回値表示</h3>
       <p>種目カードのヘッダーで前回のセットを確認できます。追加重量のみの種目では体重を加算せず、追加重量と回数を区別して比較します。参照値と次回提案は、種目の記録方式や器具の設定に応じて表示されます。</p>
+
+      <h3 id="training-time" style="scroll-margin-top:88px">同じ日のトレーニング時間を回ごとに記録する</h3>
+      <p>同じ日に複数回トレーニングするときは、入力画面に表示される「○回目のトレーニングを始める」から次の回を開始できます。次の回の案内までの間隔は、プロフィール → 設定 → ヘルスケア連携 →「次の回を案内するまでの時間」で調整できます。</p>
+      <p>ワークアウトサマリーの「トレーニング時間」で各回を選んで確認し、「日時を修正」や、表示される場合の「時間を分ける」で記録済みの時間を調整できます。種目・セットは1日分のままです。分けた時間はBUFF内の表示と共有画像の合計時間に反映され、ヘルスケアの記録は変更されません。時間を計測しなくても筋トレの記録は保存できます。</p>
 
       <h3>ワークアウトサマリー</h3>
       <p>右上のグラフアイコンから開きます。記録内容を筋トレと有酸素に分けて集計し、トレーニング時間も確認できます。時間を計測しなくても筋トレ記録は保存できます。</p>
@@ -452,7 +456,7 @@
         <div class="card"><h4>📅 月間・年間レポート</h4><p>今月／先月／今年／昨年の実績・前期比・自己ベスト更新・部位別バランスをまとめて確認。</p></div>
       </div>
 
-      <h3 id="weekly-goal-recovery" style="scroll-margin-top:88px">過去の週目標を確認・復元する（v3.0.5）</h3>
+      <h3 id="weekly-goal-recovery" style="scroll-margin-top:88px">過去の週目標を確認・復元する（v3.2.0／旧3.0.5）</h3>
       <p>以前の保存形式の週目標が残っている場合、統計 →「振り返り」に「過去の週目標を確認」が表示されます。</p>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-body"><strong>保存内容を表示する</strong><p>「保存内容を表示」をタップし、日付ごとの目標と、表示されたタイムゾーン・週の開始曜日を確認します。</p></div></div>
@@ -473,13 +477,17 @@
         <p>筋力種目は最高重量・回数・推定1RMで表示されます。有酸素種目は最長時間・最長距離で表示されます。各カードのチャートで時系列推移も確認できます。</p>
       </div>
 
+      <h3 id="stats-display" style="scroll-margin-top:88px">分析・振り返りの表示を整える</h3>
+      <p>「分析」「振り返り」の右上にある「表示する項目」から、項目の表示・非表示と並び順を変更できます。「リセット」で標準の表示へ戻せます。分析の「サブ部位を含む」は、部位別の集計に共通の切り替えです。初期状態はメイン部位のみで、ONにすると種目に設定したサブ部位も集計に含みます。</p>
+      <p>部位ヒートマップには、選んだ指標の値と、前回その部位を鍛えた日からの日数を表示します。グラフは選択した記録の日付や対象期間も確認できます。</p>
+
       <h3>分析タブ</h3>
       <p>期間を「日・週・月・6ヶ月・年」から選び、以下のグラフとサマリーを確認できます。</p>
       <div class="card"><h4>🏃 有酸素サマリー</h4><p>期間フィルターに連動して、有酸素運動の総時間・総距離・消費カロリーを集計表示。</p></div>
       <div class="card"><h4>📅 トレーニング頻度グラフ</h4><p>期間に応じて日別/週別/月別に自動集計し、棒グラフで頻度を可視化。</p></div>
       <div class="card"><h4>📈 セット数推移グラフ</h4><p>期間内の日別セット数の推移を折れ線グラフで表示。</p></div>
       <div class="card"><h4>💪 総ボリューム推移グラフ</h4><p>セットごとの記録方式に応じた重量×回数を集計します。「追加重量のみ」は体重を含まず、追加重量0のセットは重量ボリューム0となります。回数の推移は種目別の履歴で確認できます。</p></div>
-      <div class="card"><h4>🔥 部位ヒートマップ <span class="badge-new">NEW</span></h4><p>期間中の部位別セット数を人体図の色の濃さで表示。表示する指標はセット数・ボリューム・レップ数・実施回数から切替可能。</p></div>
+      <div class="card"><h4>🔥 部位ヒートマップ <span class="badge-new">NEW</span></h4><p>期間中の部位別実績を人体図の色の濃さで表示。セット数・ボリューム・レップ数・実施回数から指標を選び、値と前回の実施からの日数を確認できます。</p></div>
       <div class="card"><h4>📊 部位別セット数の推移 <span class="badge-new">NEW</span></h4><p>部位ごとに直近12週のセット数を、目安レンジ（10〜20）とあわせて折れ線で表示。</p></div>
       <div class="card"><h4>🍩 部位別分布グラフ</h4><p>全体に占める各部位のトレーニング割合を表示。ドーナツ⇄横棒切替可能。</p></div>
       <div class="card"><h4>📊 種目別分布グラフ</h4><p>どの種目を最も多く行ったかを分布グラフで表示。ドーナツ⇄横棒切替可能。</p></div>
@@ -593,6 +601,10 @@
         <div class="card"><h4>⌨️ テキスト入力（デフォルト）</h4><p>数字キーボードで重量・回数を直接入力。素早い入力が可能。</p></div>
         <div class="card"><h4>🎛️ ダイヤル入力</h4><p>スクロールホイール形式で値を選択。誤入力が少ない。</p></div>
       </div>
+
+      <h3 id="first-input-focus" style="scroll-margin-top:88px">種目・セット追加後の入力</h3>
+      <p>テキスト入力モードでは、種目を選んで選択シートを閉じると、追加した種目の最初の入力欄が選ばれます。通常の筋力種目は重量、追加重量のない自重セットは回数、有酸素種目は時間から入力できます。登録重量の候補選択を有効にしている場合は、その入力方法で値を選びます。</p>
+      <p>種目・セットの並び順は、プロフィール → 設定 → ワークアウト設定で「新しい順」「古い順」から選べます。追加後は必要に応じて入力欄と種目の操作ボタンが見える位置へ移動します。v3.8.2では、初めて種目を追加したときの入力欄フォーカスを改善しています。</p>
 
       <h3>登録した重量から選ぶ</h3>
       <p>場所・器具に使える重量を登録すると、重量欄から候補を選べます。プロフィール → 設定 → 一般 →「登録重量を候補から選ぶ」をONにすると、テキスト入力モードで器具の重量設定がある場合に候補を表示します。初期状態はOFFで、候補がない場合は有効にできません。手入力にも切り替えられます。</p>
@@ -950,6 +962,9 @@
       <div class="card"><h4>アーカイブする</h4><p>種目を編集モードで選択 → 一括アーカイブ。種目リストから非表示になりますが、過去の記録は保持されます。</p></div>
       <div class="card"><h4>復元する</h4><p>種目タブ右上「⋮」→「アーカイブ」から復元可能。</p></div>
 
+      <h3>削除直後に元に戻す</h3>
+      <p>削除直後に表示される「元に戻す」から、その操作を取り消せます。案内は5秒で消え、スワイプでも閉じられます。プロフィール → 設定 → ワークアウト設定 →「削除の取り消し」で表示を切り替えられます。</p>
+
       <h3>セッションのゴミ箱</h3>
       <p>削除したセッションはゴミ箱に移動し、30日以内であれば復元できます。30日を超えると自動的にクリーンアップされます。</p>
     </section>
@@ -964,7 +979,7 @@
       <h3>設定メニュー構成</h3>
       <table>
         <tr><th>エントリ</th><th>内容</th></tr>
-        <tr><td>ワークアウト設定</td><td>場所・器具／いつもの条件・表示順・前回値・完了チェック・レストタイマー・PR演出・上級者モード・RPE等</td></tr>
+        <tr><td>ワークアウト設定</td><td>場所・器具／いつもの条件・表示順・前回値・削除の取り消し・完了チェック・レストタイマー・PR演出・上級者モード・RPE等</td></tr>
         <tr><td>インターバルタイマー プリセット</td><td>タイマープリセット（名前と秒数）の追加・削除・並び替え（最大10件）</td></tr>
         <tr><td>一般</td><td>テーマ・スプラッシュスクリーン・触覚フィードバック・ダイナミックアイランド・テキスト入力モード</td></tr>
         <tr><td>プライバシー・セキュリティ</td><td>アプリロック・バックグラウンド時の画面保護・ウィジェットのプライバシー設定</td></tr>
@@ -1080,27 +1095,105 @@
       <h2>📝 更新履歴</h2>
       <div class="accent-line"></div>
 
-      <p>主要なバージョンの更新内容です。公開・配布の時点によって、お使いのバージョンと異なる場合があります。詳細はリポジトリの CHANGELOG をご参照ください。</p>
+      <p>主要なバージョンの更新内容です。v3.8.2（ビルド399）は審査提出版のため、配信開始前はお使いのバージョンと操作・表示が異なる場合があります。配信状況はApp Storeでご確認ください。3.0.0以降の番号は見直し後の番号を記載し、過去の配布時の番号を括弧内に併記しています。</p>
 
       <div class="changelog-entry">
-        <div class="ver-head"><span class="ver-num">v3.0.5</span><span class="ver-date">2026-10-26</span><span class="ver-pin">審査提出版</span></div>
+        <div class="ver-head"><span class="ver-num">v3.8.2</span><span class="ver-date">2026-11-14</span><span class="ver-pin">審査提出版</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>初回の種目追加後の入力欄フォーカスの改善</li><li>起動時の履歴確認処理の高速化</li><li>データ読み込み中の画面応答性の改善</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.8.1</span><span class="ver-date">2026-11-13</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>統計グラフの文字と棒が重なる表示の修正</li><li>記録の表示・成長判定・ゴミ箱からの復元の安定性向上</li><li>場所・器具設定と計画データの引き継ぎの安定性向上</li><li>ヘルスケア連携の設定切り替えの安定性向上</li><li>長期間の身体グラフを見やすくし、選択した記録の日付を表示</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.8.0</span><span class="ver-date">2026-11-11</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>サブ部位の切り替えを分析全体で使う1つのスイッチに統一</li><li>AIに渡すトレーニング記録をモデルの容量に応じて拡充</li><li>iOS 27.2環境でのAIエラー処理とタイマーの互換性改善</li><li>部位ヒートマップのサブ部位切り替えを追加し、初期表示をメイン部位のみに変更</li><li>種目追加直後に入力欄へフォーカスしないことがある問題の修正</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.7.0</span><span class="ver-date">2026-11-10</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>部位ヒートマップに前回の実施からの日数を表示</li><li>AIトレーナーの種目提案に部位別の最終実施日を反映</li><li>種目追加直後に入力欄へフォーカスしないことがある問題の修正</li><li>セット追加時のスクロール動作の改善</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.6.0</span><span class="ver-date">2026-11-09</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>今回の更新で、3.0.0以降のバージョン番号を見直し。過去の配布時の番号は括弧内に併記</li><li>種目やセットを追加した直後に、入力欄が選ばれないことがある問題の修正</li><li>グラフの選択時に日付・期間を表示</li><li>分析・振り返りの項目の並べ替えと表示切り替え</li><li>部位ヒートマップに選択中の指標の値を表示</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.5.2（旧 3.0.17）</span><span class="ver-date">2026-11-08</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>ワークアウトに追加した未記録の種目を削除できない問題の修正</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.5.1（旧 3.0.16）</span><span class="ver-date">2026-11-06</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>統計の部位別グラフと不足表示の集計期間・判定基準の統一</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.5.0（旧 3.0.15）</span><span class="ver-date">2026-11-04</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>入力画面からのトレーニング開始と次の回を案内する間隔設定の追加</li><li>記録済みのトレーニング時間の分割・修正と共有時間の集計改善</li><li>同日のトレーニング時間の回ごとの記録・確認</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.3.1（旧 3.0.11）</span><span class="ver-date">2026-11-03</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>ワークアウト画面のスクロール負荷の軽減</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.3.0（旧 3.0.10）</span><span class="ver-date">2026-11-03</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>ゴミ箱からの復元・完全削除の不具合修正</li><li>削除直後に元に戻せる操作の追加</li><li>タイマーと入力欄が見えている場合に、追加・複製後の表示位置を維持する改善</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.2.3（旧 3.0.9）</span><span class="ver-date">2026-10-31</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>新しい順で種目・セットを追加した際の、タイマーボタンが見える位置への自動スクロールの改善</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.2.2（旧 3.0.8）</span><span class="ver-date">2026-10-28</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>ワークアウト入力画面の情報整理と操作の見やすさ向上</li><li>セット完了時のフィードバック改善</li><li>サマリーと振り返りの配置・読みやすさの改善</li><li>記録画面の重複処理削減</li><li>文字サイズ設定への対応改善</li><li>日付移動とタイマー表示のアクセシビリティ改善</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.2.1（旧 3.0.6）</span><span class="ver-date">2026-10-27</span></div>
+        <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
+          <li>共有画像の不要な見出しの削除と表示の整理</li>
+        </ul></div>
+      </div>
+      <div class="changelog-entry">
+        <div class="ver-head"><span class="ver-num">v3.2.0（旧 3.0.5）</span><span class="ver-date">2026-10-26</span></div>
         <div class="change-group"><div class="group-label group-fix">改善</div><ul><li>過去の週目標の一覧表示と確認付き復元への対応</li></ul></div>
       </div>
       <div class="changelog-entry">
-        <div class="ver-head"><span class="ver-num">v3.0.3</span><span class="ver-date">2026-10-25</span></div>
+        <div class="ver-head"><span class="ver-num">v3.1.2（旧 3.0.3）</span><span class="ver-date">2026-10-25</span></div>
         <div class="change-group"><div class="group-label group-fix">改善</div><ul>
           <li>週目標の保存と過去の記録保護の改善</li><li>Apple Watch記録との自動照合の精度向上</li>
           <li>身体データの共有保留と修復台帳のバックアップ・復元対応</li><li>数値入力とヘルスケア表示の安定性向上</li>
         </ul></div>
       </div>
       <div class="changelog-entry">
-        <div class="ver-head"><span class="ver-num">v3.0.2</span><span class="ver-date">2026-10-24</span></div>
+        <div class="ver-head"><span class="ver-num">v3.1.1（旧 3.0.2）</span><span class="ver-date">2026-10-24</span></div>
         <div class="change-group"><div class="group-label group-fix">改善</div><ul>
           <li>追加重量の目標達成率・回数の成長判定・前回値と器具別提案の整合性の改善</li><li>実績に応じた標準チャレンジ目標の改善</li>
         </ul></div>
       </div>
       <div class="changelog-entry">
-        <div class="ver-head"><span class="ver-num">v3.0.1</span><span class="ver-date">2026-10-23</span></div>
+        <div class="ver-head"><span class="ver-num">v3.1.0（旧 3.0.1）</span><span class="ver-date">2026-10-23</span></div>
         <div class="change-group"><div class="group-label group-new">新機能・改善</div><ul>
           <li>追加重量のみの記録と過去の記録の補正への対応</li><li>追加重量のみの種目における回数推移と過去の記録の整合性の改善</li><li>PR更新時の演出と表示タイミングの改善</li>
         </ul></div>

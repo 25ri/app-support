@@ -53,9 +53,17 @@
 <li>アプリ内で削除した項目は「最近削除した項目」から30日間復元できます。復元時の再保存がオンの場合、連動削除した項目を現在の編集内容で写真ライブラリへ新しく保存します。オフならアプリ内だけ復元します。</li>
 <li>アプリ内での完全削除は元に戻せません。完全削除と30日経過による整理では、写真ライブラリを変更しません。</li>
 </ul>
+<h2>バックアップと復元（1.13.0）</h2>
+<p>「設定」→「共通」→「バックアップと復元」で、ギャラリーの原本・編集情報・自作プリセットを一つのnuanbackupパッケージにまとめ、「ファイル」へ保存できます。最近削除した項目、未完了の撮影、写真ライブラリのコピー、アプリの操作設定は含みません。</p>
+<p>復元では内容を検証してから追加し、既存項目と同じIDは上書きせずにスキップします。同名または同じIDの自作プリセットも置き換えません。写真ライブラリへの自動保存・削除は行いません。バックアップには原本の位置情報も含まれるため、保管先や共有相手をご確認ください。</p>
+<h2>ギャラリー検索と書き出し設定</h2>
+<p>検索欄でプリセット名・写真や動画の種類・撮影日を探せます。「表示」→「検索・絞り込み」では、写真／動画、撮影日の期間、使用プリセットを指定できます。一覧上部で条件を確認し、「絞り込みを解除」で戻せます。変更されていない編集情報は再読み込み時に再利用します。</p>
+<p>「設定」→「共通」→「書き出し設定」で「保存用」「共有用」を選びます。「共有用」では写真の長辺の上限と圧縮品質を指定できます。位置情報を含めない設定は、仕上がりの写真・動画と写真ライブラリへ保存するコピーに適用します。自動保存は元のサイズ・最高画質を使います。動画の録画品質は変えません。原本の共有とバックアップは元ファイルを保ち、位置情報も残ります。</p>
+<h2>クイック操作と撮影時の負荷</h2>
+<p>撮影オプションの「クイック操作をカスタマイズ」、または「設定」→「共通」→「クイック操作」で、WB・撮影セット・ヒストグラム・ピーキングから最大3つを撮影画面へ追加できます。ピーキングはマニュアルフォーカス中に切り替えられます。端末の温度や省電力モードに応じてプレビューと解析の処理量を調整し、撮影原本の解像度や動画の録画設定は維持します。</p>
 <h2>撮影場所と原本の保管</h2>
-<p>「撮影場所を記録」がオンで位置情報へのアクセスを許可している場合、撮影時に取得できた位置を写真・動画に記録します。書き出し・共有にも含まれます。設定をオフにしても、既存ファイルの位置情報は消えません。読み込んだファイルの位置情報も、出力形式で扱える範囲で引き継ぎます。</p>
-<p>アプリを削除すると、アプリ内の原本・編集情報・設定も失われます。「写真に保存」と仕上がりの共有は、編集済みの画像・動画を書き出す操作です。RAW写真を含む共有では原本も選べますが、nuanの編集情報は含みません。アプリ内の原本と編集情報を一緒に復元できるバックアップではありません。大切なファイルはアプリ外にも保管してください。OSのバックアップ・復元は端末とAppleのサービスの設定に従います。</p>
+<p>「撮影場所を記録」がオンで位置情報へのアクセスを許可している場合、撮影時に取得できた位置を原本に記録します。仕上がりの書き出し・共有への位置情報は「書き出し設定」に従います。撮影場所の記録をオフにしても、既存原本の位置情報は消えません。</p>
+<p>アプリを削除すると、アプリ内の原本・編集情報・設定も失われます。「写真に保存」と仕上がりの共有は、編集済みの画像・動画を書き出す操作です。RAW写真を含む共有では原本も選べますが、nuanの編集情報は含みません。原本と編集情報を一緒に復元する場合は、上記の「バックアップと復元」を使用してください。大切なファイルはアプリ外にも保管してください。OSのバックアップ・復元は端末とAppleのサービスの設定に従います。</p>
 <h2>お問い合わせ</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>アプリの版、iPhoneの機種、iOSの版、問題が起きる操作をお知らせください。RAWの読み込みについては、撮影したカメラの機種とファイル形式も添えてください。パスワード・認証コード・不要な個人情報を送る必要はありません。</p>
@@ -108,12 +116,20 @@
 <li>Items deleted in the app can be restored from Recently Deleted for 30 days. If saving on restore is enabled, items deleted through linking are saved to Photos as new copies with the current edits. Otherwise, only the in-app item is restored.</li>
 <li>Permanent deletion in nuan cannot be undone. Permanent deletion and expiry after 30 days do not change Photos.</li>
 </ul>
+<h2>Backup and Restore (1.13.0)</h2>
+<p>Open Settings → General → Backup and Restore to save gallery originals, edits and custom presets together as a nuanbackup package in Files. Recently Deleted, unfinished captures, copies in Photos and app control preferences are excluded.</p>
+<p>Restore validates the package before adding items. Matching photo IDs and matching preset IDs or names are skipped without replacing existing data. Restore does not automatically save to or delete from Photos. Backups preserve location metadata in originals; check where you store or share them.</p>
+<h2>Gallery search and export settings</h2>
+<p>Search by preset name, photo/video type or capture date. View → Search and Filters offers media, date ranges and presets. Active filters appear above the grid and can be cleared. Reloading reuses unchanged edit metadata.</p>
+<p>Choose Saving or Sharing in Settings → General → Export Settings. Sharing offers photo long-edge limits and compression quality. Turning location off removes it from rendered photos/videos and copies saved to Photos. Automatic saving uses original size and maximum quality. Movie recording quality stays unchanged. Original sharing and backups preserve source files, including their location metadata.</p>
+<h2>Quick Actions and camera workload</h2>
+<p>Use Customize Quick Actions in camera options, or Settings → General → Quick Actions, to add up to three shortcuts for white balance, setups, histogram and peaking. Peaking toggles during manual focus. Preview and analysis work adapt to Low Power Mode and thermal conditions while original photo resolution and movie recording settings are preserved.</p>
 <h2>Location and originals</h2>
-<p>When location recording is enabled and permission is granted, the available capture location is embedded in photos and videos, including exports and shares. Turning the setting off does not remove existing location metadata. Location already embedded in imported files is also retained where the output format allows.</p>
-<p>Deleting the app removes local originals, edits and settings. Save to Photos and sharing finished results export edited images and videos. Sharing a selection that includes RAW photos also offers original files, without nuan editing data. These exports are not a backup that restores both the in-app originals and their edit settings. Keep important files outside the app as well. OS backup and restoration follow your device settings and Apple’s services.</p>
+<p>When location recording is enabled and permission is granted, the available capture location is embedded in originals. Location in rendered exports and shares follows Export Settings. Turning the setting off does not remove existing location metadata. Location already embedded in imported files is also retained where the output format allows.</p>
+<p>Deleting the app removes local originals, edits and settings. Save to Photos and sharing finished results export edited images and videos. Sharing a selection that includes RAW photos also offers original files, without nuan editing data. To restore both originals and edits, use Backup and Restore as described above. Keep important files outside the app as well. OS backup and restoration follow your device settings and Apple’s services.</p>
 <h2>Contact</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>Include the app version, iPhone model, iOS version and steps to reproduce. For RAW import issues, also include the source camera model and file format. Do not send passwords, verification codes or unnecessary personal information.</p></section>
-<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-14
+<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-17
 <a class="studio-return" href="../index.html"><span class="studio-return-icon" aria-hidden="true"></span><span>25ri App Studio</span><span class="studio-return-label">アプリ一覧</span></a>
 </footer></main></body></html>

@@ -57,12 +57,11 @@
       <p>In Library, search work titles, filter by type and progress, and sort manually, by recently opened, or by title. Manual reordering is available with no filters in manual order.</p>
       <p>In Notes, open the bookmark button “Saved Searches” to name and save the current query and filters, apply a saved search, rename it, or delete it. These preferences stay on this device and are not included in notebook backup or sync. Unavailable destinations are retained until you adjust or reset the filter. Matching note text is highlighted with a surrounding excerpt.</p>
       <p>The Notes tab searches the <strong>entire saved note body</strong>, titles, people and tags. Work, episode and type filters, as well as the option to hide resolved notes, also affect results. Use Show all to clear the search and filters.</p>
-      <p>Link notes also searches entire note bodies, but only among <strong>saved notes in the same work</strong>. The source note itself, drafts, additional details and notes in the trash are excluded. Episode filters and the work-wide-only option can narrow results further. Existing connections show their status; the same connection cannot be saved twice.</p>
-      <p>In version 1.11.0, searching places the result count and candidates first. You can select a note while the keyboard is open. Use Clear search and episode filters to reset the conditions. Open Settings at the top right of the linking screen to change the relationship or direction.</p>
+      <p>Link notes searches entire note bodies among <strong>saved notes in the same work</strong>. Narrow the results by episode or choose work-wide notes only. Use Clear search and episode filters if you cannot find a note. A connected result shows its relationship and a pencil icon. Tap it to edit the connection.</p>
     </section>
     <section aria-labelledby="review-through">
       <h2 id="review-through">Review So Far</h2>
-      <p>For a series or anime, open Review → Review So Far. In 1.15.1 and later, the view opens through the last episode marked as watched. If no episodes are marked as watched, choose the last episode to include from the numbered list. You can change the range later using the episode selector.</p>
+      <p>For a series or anime, open Review → Review So Far. The view opens through the last episode marked as watched. If none are marked as watched, choose the last episode to include from the numbered list. Use Review Through at the top to change the range.</p>
       <p>The selector uses the current season and episode list order and keeps future episode titles hidden. The view shows unanswered questions, unresolved clues and pinned notes through the selected episode, with connections only inside that range. Answers from later episodes do not mark earlier questions as resolved in this view.</p>
       <p>This is a read-only view. Work-wide notes and supplements are excluded because their story position is unknown. Text and photos reflect their currently saved content; this does not restore a note to a past edit or detect spoilers typed into an earlier note.</p>
     </section>
@@ -71,9 +70,11 @@
       <p>In 1.15.0, Write a new note and link opens the editor with its counterpart already selected. Saving the text also saves the connection. Drafts retain the counterpart, relationship, direction and optional connection note if you stop writing. Try the same flow in the guided practice notebook. A Related connection does not automatically resolve a question.</p>
       <ol>
         <li>Open Link notes in a note's connections section.</li>
-        <li>The initial relationship is Related. Change it to evidence, counterevidence or payoff / resolution as needed. In 1.15.0, connections accept any note type and remain when you change a note’s type. Choose payoff / resolution only when you want to give the connection that meaning.</li>
+        <li>The initial relationship is Related. Choose evidence, counterevidence, or payoff / resolution as needed. Connections accept any note type and remain when you change a note’s type.</li>
         <li>Select one or more notes, then confirm the relationship, direction and selection count before saving. Notes can belong to different episodes of the same work. An additional comment is optional.</li>
       </ol>
+      <p>Each pair of notes can have <strong>one connection</strong>. Open Edit connection from a linked note or a line on the map. Choose the relationship between the two note cards, use the up-and-down arrows to reverse the direction, or choose Change linked note to select a different note.</p>
+      <p>To merge older connections between the same two notes, open the connection you want to keep and choose Keep This Connection. Confirm the merge to retain the other connections’ comments in the remaining connection.</p>
       <p>For a question, use Record Resolution. For a clue, use Record Payoff. Choose an existing answer note or write a new one.</p>
       <p>On the connection map, drag to move and pinch or use the zoom controls to change scale. Overview fits the visible notes. The return control restores the original note and default scale; without a starting note, use reset. Double-tap a card to open the note.</p>
       <p>To create a connection on the map, choose a source card, then search for the target note. Tap a line to review or edit its relationship, direction and comment. The full-text and compact views let you choose how much to show.</p>
@@ -83,7 +84,7 @@
       <p>AI requires a device that supports Apple Intelligence, with the feature enabled and the model ready. Comparisons run on the device. Writing, search and manual linking work without AI.</p>
       <ol>
         <li>From a work's Review section, choose the option to find AI suggestions within the work. Choose a comparison scope and tap Find AI suggestions. You can also use Find AI suggestions for this note in the linking screen.</li>
-        <li>Work-wide suggestions display two notes as a pair. Check their episodes, relationship and direction, then open the review screen to read both notes in full and the proposed reason.</li>
+        <li>Work-wide suggestions show pairs of unconnected notes. The review screen places the notes and relationship first, followed by the reason and both notes in full.</li>
         <li>Confirm or change the relationship and direction, and save only what you choose. Showing a suggestion does not create a connection.</li>
       </ol>
       <p>Turn automatic searches during writing and saving on or off with Automatically Search for AI Connections in the editor or Settings → Note Input Settings. Even when automatic search is off, Search with AI runs one search using the current text. It also works while editing an existing note. The suggestion controls show progress and results; only the connections you choose are saved.</p>

@@ -58,9 +58,12 @@
 </ul>
 <h2>バックアップと復元（1.13.0）</h2>
 <p>「設定」→「共通」→「バックアップと復元」で、ギャラリーの原本・編集情報・自作プリセットを一つのnuanbackupパッケージにまとめ、「ファイル」へ保存できます。最近削除した項目、未完了の撮影、写真ライブラリのコピー、アプリの操作設定は含みません。</p>
-<p>復元では内容を検証してから追加し、既存項目と同じIDは上書きせずにスキップします。同名または同じIDの自作プリセットも置き換えません。写真ライブラリへの自動保存・削除は行いません。バックアップには原本の位置情報も含まれるため、保管先や共有相手をご確認ください。</p>
+<p>復元では内容を検証してから追加し、既存項目と同じIDは上書きせずにスキップします。同名または同じIDの自作プリセットも置き換えません。写真ライブラリへの自動保存・削除は行いません。新しく作成するバックアップには、この端末の写真ライブラリの識別子や書き出しの状態は含みません。バックアップには原本の位置情報も含まれるため、保管先や共有相手をご確認ください。</p>
 <h2>ギャラリー検索と書き出し設定</h2>
 <p>長い動画を「写真に保存」すると、書き出しの進み具合が％で表示され、写真ライブラリへの登録時に「写真に保存中」に変わります。書き出し中は進捗の「…」から中止できます。原本と編集内容はギャラリーに残ります。Apple Logの原本を渡すには「共有」→「原本を共有」を選びます。仕上がりを共有すると、編集を反映したSDR動画を書き出します。Apple Log 2など現像に対応していない動画は「原本を共有」で取り出せます。</p>
+<h3>保存を待っている項目を確認する（1.17.0）</h3>
+<p>ギャラリー左下の進捗表示で「…」→「保存待ち一覧」を開きます。サムネイルと撮影日時から項目を選ぶときは、その横の状態を確認してください。待機中の項目は個別に中止できます。ほかの項目の保存は続き、取り消した項目の原本と編集はギャラリーに残ります。</p>
+<p>編集画面では、保存ボタンにその項目の「保存待ち」、動画の書き出し率、「写真に保存中」が表示されます。複数の仕上がりを共有する場合は、準備中の項目番号と、現在の動画の書き出し率を確認できます。撮影画面では、書き出し進捗の下に原本の保存通知が表示されます。撮影した写真の原本を保存できず再試行が表示された場合は、「原本の保存を再試行」をタップしてください。</p>
 <p>検索欄でプリセット名・写真や動画の種類・撮影日を探せます。「表示」→「検索・絞り込み」では、写真／動画、撮影日の期間、使用プリセットを指定できます。一覧上部で条件を確認し、「絞り込みを解除」で戻せます。変更されていない編集情報は再読み込み時に再利用します。</p>
 <p>「設定」→「共通」→「書き出し設定」で「保存用」「共有用」を選びます。「共有用」では写真の長辺の上限と圧縮品質を指定できます。位置情報を含めない設定は、仕上がりの写真・動画と写真ライブラリへ保存するコピーに適用します。自動保存は元のサイズ・最高画質を使います。動画の録画品質は変えません。原本の共有とバックアップは元ファイルを保ち、位置情報も残ります。</p>
 <h2>クイック操作と撮影時の負荷</h2>
@@ -125,9 +128,12 @@
 </ul>
 <h2>Backup and Restore (1.13.0)</h2>
 <p>Open Settings → General → Backup and Restore to save gallery originals, edits and custom presets together as a nuanbackup package in Files. Recently Deleted, unfinished captures, copies in Photos and app control preferences are excluded.</p>
-<p>Restore validates the package before adding items. Matching photo IDs and matching preset IDs or names are skipped without replacing existing data. Restore does not automatically save to or delete from Photos. Backups preserve location metadata in originals; check where you store or share them.</p>
+<p>Restore validates the package before adding items. Matching photo IDs and matching preset IDs or names are skipped without replacing existing data. Restore does not automatically save to or delete from Photos. New backups omit device-specific Photos identifiers and export status. Backups preserve location metadata in originals; check where you store or share them.</p>
 <h2>Gallery search and export settings</h2>
 <p>Long video saves show export progress as a percentage, followed by Saving to Photos. To cancel during export, open the progress menu (…). The original and its edits stay in Gallery. To share an Apple Log recording, choose Share → Share Original. Sharing the finished look exports an edited SDR video. For Apple Log 2 or another unsupported Log format, choose Share Original to retrieve the source file.</p>
+<h3>Check the save queue (1.17.0)</h3>
+<p>In Gallery, open the ellipsis in the progress indicator at the bottom left and choose Save Queue. Identify an item by its thumbnail and capture date, then check its status. You can cancel individual waiting items. The other saves continue, and the cancelled item’s original and edits remain in Gallery.</p>
+<p>In the editor, the save button shows when the current item is waiting, its video export percentage, and when it is being saved to Photos. When sharing several edited items, the preparation count identifies the current item and the percentage shows progress for that video. On the camera screen, an original-save notice appears below the export percentage. If saving a captured photo’s original fails and the camera offers Retry Saving Original, tap it to try again.</p>
 <p>Search by preset name, photo/video type or capture date. View → Search and Filters offers media, date ranges and presets. Active filters appear above the grid and can be cleared. Reloading reuses unchanged edit metadata.</p>
 <p>Choose Saving or Sharing in Settings → General → Export Settings. Sharing offers photo long-edge limits and compression quality. Turning location off removes it from rendered photos/videos and copies saved to Photos. Automatic saving uses original size and maximum quality. Movie recording quality stays unchanged. Original sharing and backups preserve source files, including their location metadata.</p>
 <h2>Quick Actions and camera workload</h2>
@@ -138,6 +144,6 @@
 <h2>Contact</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>Include the app version, iPhone model, iOS version and steps to reproduce. For RAW import issues, also include the source camera model and file format. Do not send passwords, verification codes or unnecessary personal information.</p></section>
-<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-19
+<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-20
 <a class="studio-return" href="../index.html"><span class="studio-return-icon" aria-hidden="true"></span><span>25ri App Studio</span><span class="studio-return-label">アプリ一覧</span></a>
 </footer></main></body></html>

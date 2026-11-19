@@ -5,19 +5,19 @@
 </head><body><main>
 <nav><strong>nuan</strong><a href="privacy-policy.html">プライバシー</a><a href="#english" lang="en">English</a></nav>
 <h1>nuan サポート</h1>
-<p>1.15.0の操作に対応しています。更新版がApp Storeに反映されるまでは、一部の表示や操作が異なる場合があります。アプリ内の「設定」→「共通」→「このアプリについて」→「操作ガイド」からも使い方を確認できます。</p>
+<p>1.16.0の操作に対応しています。更新版がApp Storeに反映されるまでは、一部の表示や操作が異なる場合があります。アプリ内の「設定」→「共通」→「このアプリについて」→「操作ガイド」からも使い方を確認できます。</p>
 <p>nuanは、RAW・HEIF・JPEG写真や動画を撮影し、好きな色と質感に仕上げるiPhone向けカメラ・編集アプリです。iOS 26以降に対応します。買い切りで、RAW現像を含むすべての機能を利用できます。サブスクリプション・アプリ内課金はありません。</p>
 <h2>撮影する</h2>
 <ol>
 <li>カメラへのアクセスを許可し、写真・動画、倍率、仕上がりを選びます。撮影画面のプレビューまたはプリセットボタンを左右にスワイプすると、仕上がりを切り替えられます。</li>
 <li>写真では撮影画面の形式メニューでRAW・HEIF・JPEGを選びます。RAWは対応する端末・レンズ・撮影構成で利用できます。「設定」→「写真」→「撮影解像度」の「最大（自動）」は端末で利用できる最高解像度を優先し、実際の解像度はレンズ・倍率・撮影条件に応じて変わります。</li>
-<li>動画の解像度・フレームレート・音声は「設定」→「動画」で変更できます。動画はSDRのMOVで撮影します。RAW動画ではありません。</li>
+<li>「設定」→「動画」→「カラープロファイル」で標準（SDR）またはApple Logを選べます。対応するiPhoneでApple Logを選ぶと背面広角に切り替わり、現在の解像度・フレームレートを優先して対応画質が設定されます。同じ画面で画質や音声を調整し、「完了」で撮影に戻れます。撮影画面上部の画質メニューからも選べます。前面カメラやマクロで撮るときは標準（SDR）に切り替えてください。</li>
 <li>撮影すると原本と編集情報をアプリ内に保存します。ライブプレビューは撮影後のRAW現像と完全には一致しません。仕上がりを加えない表示には、プリセットの「Original」を選びます。</li>
 </ol>
 <p>被写体をタップするとピント位置を指定できます。人の顔・猫・犬の認識は「設定」→「共通」で切り替えられます。手動タップとAE/AFロックを優先し、明るさや構図によっては認識・追従できない場合があります。</p>
 <p>対応iPhoneでは、iPhoneの設定アプリの「カメラ」→「カメラコントロール」でnuanを選べます。初回はnuanを通常起動し、カメラの使用を許可してください。</p>
 <p>通常起動とロック画面からの起動では、撮影形式・設定を画面上部、シャッターと写真／動画の切り替えを画面下部に配置します。1.12.0の更新版では、起動・復帰時に撮影ボタン類が時刻や電波表示に重なる問題と、ギャラリーなどから戻るとプレビューが縮小して右へ寄る問題を修正しています。</p>
-<p>1.15.0 ビルド186から、撮影画面のボタンを枠のない表示に揃え、選択中の倍率を下線で示します。上部の四つ丸は撮影オプションを開きます。写真モードでは「AUTO」をタップしてシャッタースピードとISOを設定できます。</p>
+<p>1.15.0 ビルド186から、撮影画面のボタンを枠のない表示に揃え、選択中の倍率を下線で示します。上部の四つ丸は撮影オプションを開きます。写真モードでは「AUTO」をタップしてシャッタースピードとISOを設定できます。写真タイマーのカウント中は、シャッターをもう一度押すか、プリセット一覧を開くと撮影を中止できます。</p>
 <h2>撮影アシスト・撮影セット</h2>
 <p>撮影オプションの「撮影アシスト」では、WBをAUTO、現在の色で固定、対応カメラでの色温度・色かぶり指定に切り替えられます。「撮影セット」ではレンズ・画質・露出・WB・縦横比・仕上がりを名前付きで保存し、呼び出せます。現在値の一時的なWBロックは保存しません。</p>
 <p>対応する背面カメラでは、写真・動画の撮影画面に花のアイコンが表示されます。タップして手動でマクロを開始・解除できます。黄色はマクロ作動中です。手動での切替は録画前に行います。レンズを選び直すと手動マクロを解除し、アプリの再起動で一時的な操作をリセットします。</p>
@@ -31,10 +31,11 @@
 <p>Apple ProRAW（DNG）の読み込み・現像に対応します。その他のRAWは、使用中のiOSが読み込めるものが対象です。対応は撮影したカメラの機種、圧縮方式、記録形式、iOSバージョンによって異なり、すべてのRAW・DNGファイルに対応するものではありません。</p>
 <p>JPEG・HEIC画像や動画も読み込んで編集できます。処理済み画像の調整はRAW現像と同じ結果にはなりません。RAW撮影にはRAW対応の端末・カメラが必要ですが、RAW非対応の構成でも、対応するHEIF・JPEG撮影やファイルの読み込み・編集を利用できます。</p>
 <h2>ギャラリーで見る・保存する</h2>
-<p>一覧の写真・動画をタップして開き、左右のスワイプで移動します。画面をタップすると操作ボタンを表示・非表示にできます。写真は縦横比を保ち、操作ボタンの間に全体を表示します。ピンチやダブルタップで拡大できます。下部左端の保存ボタン（下向き矢印と「保存」）から、編集画面を開かずに現在の仕上がりを書き出せます。保存・共有・お気に入り・情報・編集・削除は一列に並びます。保存・削除・復元の結果は画面上部に表示され、ボタンはそのまま操作できます。文字サイズを大きくして横幅が足りない場合、保存ボタンはアイコンだけを表示します。「情報」では撮影情報を確認できます。</p>
+<p>一覧の写真・動画をタップして開き、左右のスワイプで移動します。画面をタップすると操作ボタンを表示・非表示にできます。写真は縦横比を保ち、操作ボタンの間に全体を表示します。ピンチやダブルタップで拡大できます。下部左端の保存ボタン（下向き矢印と「保存」）から、編集画面を開かずに現在の仕上がりを書き出せます。保存・共有・お気に入り・情報・編集・削除は一列に並びます。保存・削除・復元の結果は画面上部に表示され、ボタンはそのまま操作できます。文字サイズを大きくして横幅が足りない場合、保存ボタンはアイコンだけを表示します。「情報」では撮影情報と、切り抜き・現在の書き出しサイズを反映した写真の書き出し寸法の目安を確認できます。</p>
 <h2>写真・動画を編集する</h2>
 <p>ギャラリーで項目を開き、編集ボタンから調整します。写真では上スワイプでも編集画面を開けます。露出、明暗、コントラスト、彩度、ホワイトバランス、モノクロ、粒子、光のにじみ、背景ぼけ、回転・反転・傾き・トリミングを調整できます。動画ではコマ付きタイムラインで前後を切り出し、途中の不要な範囲を複数削除できます。長押しで細かく調整し、確認再生・取り消し・音声の変更もできます。原本は変更しません。</p>
-<p>「完了」は編集内容をアプリ内に保存します。写真ライブラリにも書き出す場合は、閲覧画面の下部左端の保存ボタン、または編集画面下部の「写真に保存」ボタンを使います。写真はJPEG・HEIC、動画はMOVで書き出します。ここで選ぶ書き出し形式は撮影形式とは別の設定です。原本と編集情報は別々に保持します。</p>
+<p>「原本と比較」を選んだまま拡大すると、未調整の写真の細部を確認できます。プリセットの一括適用や調整のペーストでは、各写真の背景ぼけを保持します。動画は「カット」「ルック」「調整」「音声」のどの画面でも再生でき、再生中にミュートを切り替えられます。</p>
+<p>「完了」は編集内容をアプリ内に保存します。「写真に保存」はその時点の仕上がりを書き出します。書き出したあと、アプリ内の編集を破棄しても、写真ライブラリには書き出した仕上がりが残ります。写真ライブラリにも書き出す場合は、閲覧画面の下部左端の保存ボタン、または編集画面下部の「写真に保存」ボタンを使います。写真はJPEG・HEIC、動画はMOVで書き出します。ここで選ぶ書き出し形式は撮影形式とは別の設定です。原本と編集情報は別々に保持します。</p>
 <h2>プリセットを作成する</h2>
 <ol>
 <li>「設定」→「共通」→「プリセットを管理」→「プリセットを作成」から、仕上がりを作成します。</li>
@@ -50,7 +51,7 @@
 <h2>削除と復元</h2>
 <p>削除時に「nuan内だけ削除」か「両方から削除」を選びます。「設定」→「共通」では、復元時に写真ライブラリへ再保存するかを選べます。</p>
 <ul>
-<li>「nuan内だけ削除」では写真ライブラリを変更しません。「両方から削除」では、nuanが保存先との対応を記録している写真・動画を写真ライブラリからも削除します。iOSの削除確認が表示されます。「すべての写真」へのアクセスが必要です。</li>
+<li>「nuan内だけ削除」では写真ライブラリを変更しません。「両方から削除」では、nuanが保存先との対応を記録している写真・動画を写真ライブラリからも削除します。中止するには、iOSの削除確認画面でキャンセルしてください。「すべての写真」へのアクセスが必要です。</li>
 <li>共有先から別に保存したコピーなど、対応を確認できない項目は削除しません。写真ライブラリへのアクセスや削除をキャンセルした場合は、アプリ内の原本を保持します。</li>
 <li>アプリ内で削除した項目は「最近削除した項目」から30日間復元できます。復元時の再保存がオンの場合、連動削除した項目を現在の編集内容で写真ライブラリへ新しく保存します。オフならアプリ内だけ復元します。</li>
 <li>アプリ内での完全削除は元に戻せません。完全削除と30日経過による整理では、写真ライブラリを変更しません。</li>
@@ -59,6 +60,7 @@
 <p>「設定」→「共通」→「バックアップと復元」で、ギャラリーの原本・編集情報・自作プリセットを一つのnuanbackupパッケージにまとめ、「ファイル」へ保存できます。最近削除した項目、未完了の撮影、写真ライブラリのコピー、アプリの操作設定は含みません。</p>
 <p>復元では内容を検証してから追加し、既存項目と同じIDは上書きせずにスキップします。同名または同じIDの自作プリセットも置き換えません。写真ライブラリへの自動保存・削除は行いません。バックアップには原本の位置情報も含まれるため、保管先や共有相手をご確認ください。</p>
 <h2>ギャラリー検索と書き出し設定</h2>
+<p>長い動画を「写真に保存」すると、書き出しの進み具合が％で表示され、写真ライブラリへの登録時に「写真に保存中」に変わります。書き出し中は進捗の「…」から中止できます。原本と編集内容はギャラリーに残ります。Apple Logの原本を渡すには「共有」→「原本を共有」を選びます。仕上がりを共有すると、編集を反映したSDR動画を書き出します。Apple Log 2など現像に対応していない動画は「原本を共有」で取り出せます。</p>
 <p>検索欄でプリセット名・写真や動画の種類・撮影日を探せます。「表示」→「検索・絞り込み」では、写真／動画、撮影日の期間、使用プリセットを指定できます。一覧上部で条件を確認し、「絞り込みを解除」で戻せます。変更されていない編集情報は再読み込み時に再利用します。</p>
 <p>「設定」→「共通」→「書き出し設定」で「保存用」「共有用」を選びます。「共有用」では写真の長辺の上限と圧縮品質を指定できます。位置情報を含めない設定は、仕上がりの写真・動画と写真ライブラリへ保存するコピーに適用します。自動保存は元のサイズ・最高画質を使います。動画の録画品質は変えません。原本の共有とバックアップは元ファイルを保ち、位置情報も残ります。</p>
 <h2>クイック操作と撮影時の負荷</h2>
@@ -70,19 +72,19 @@
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>アプリの版、iPhoneの機種、iOSの版、問題が起きる操作をお知らせください。RAWの読み込みについては、撮影したカメラの機種とファイル形式も添えてください。パスワード・認証コード・不要な個人情報を送る必要はありません。</p>
 <section id="english" lang="en"><h2>nuan Support</h2>
-<p>This guide covers version 1.15.0. Some controls may differ until the update is available on the App Store. You can also open Settings → General → About → Operation Guides in the app.</p>
+<p>This guide covers version 1.16.0. Some controls may differ until the update is available on the App Store. You can also open Settings → General → About → Operation Guides in the app.</p>
 <p>nuan is a RAW, HEIF and JPEG camera and photo/video editor for iPhone on iOS 26 or later. One purchase includes all features, including RAW development. There are no subscriptions or in-app purchases.</p>
 <h2>Capture</h2>
 <ol>
 <li>Allow camera access, then choose Photo or Video, zoom and a look. Swipe left or right on the preview or preset button to change looks.</li>
 <li>Choose RAW, HEIF or JPEG from the format menu on the capture screen. RAW capture requires a compatible iPhone, lens and capture configuration. In Settings → Photo → Capture Resolution, Maximum (Auto) prioritizes the highest resolution available on the device; the actual resolution varies with the lens, zoom and shooting conditions.</li>
-<li>Set video resolution, frame rate and audio in Settings → Video. Video is recorded as SDR MOV, not RAW video.</li>
+<li>Open Settings → Video → Color Profile to choose Standard (SDR) or Apple Log. On a compatible iPhone, Apple Log switches to the rear wide camera and keeps your resolution and frame rate when supported. Adjust quality or audio on the same screen, then tap Done to return to the camera. You can also choose Apple Log directly from the quality menu in the viewfinder. Switch to Standard (SDR) to use the front camera or macro.</li>
 <li>Originals and edits are stored in the app. Live preview is not identical to developed RAW output. Select Original to view without a look.</li>
 </ol>
 <p>Tap a subject to set the focus point. Enable or disable recognition of faces, cats and dogs in Settings → General. Manual taps and AE/AF Lock take priority. Detection and tracking depend on the scene and light.</p>
 <p>On compatible iPhones, choose nuan in the iPhone Settings app under Camera → Camera Control. Open nuan normally and grant camera access before first use.</p>
 <p>Normal launch and Lock Screen capture place format and settings at the top, with the shutter and Photo/Video switch at the bottom. The updated 1.12.0 build fixes camera controls overlapping the status bar during launch or resume, as well as the preview shrinking and shifting right after returning from Gallery or another screen.</p>
-<p>Starting with 1.15.0 build 186, capture controls are borderless and the selected zoom value is underlined. Tap the four-dot icon to open Capture Options. In Photo mode, tap AUTO to set shutter speed and ISO.</p>
+<p>Starting with 1.15.0 build 186, capture controls are borderless and the selected zoom value is underlined. Tap the four-dot icon to open Capture Options. In Photo mode, tap AUTO to set shutter speed and ISO. To cancel the photo timer during its countdown, tap the shutter again or open the preset picker.</p>
 <h2>Capture Assist and Camera Setups</h2>
 <p>In Capture Assist, choose automatic white balance, lock the current white balance, or set temperature and tint on supported cameras. Camera Setups saves and recalls the lens, image quality, exposure, white balance, aspect ratio and look under a name. A temporary lock of the current white balance is not saved.</p>
 <p>On supported rear cameras, a flower icon appears in both Photo and Video. Tap it to turn macro on or off manually. A yellow flower means macro is active. Make manual changes before recording. Selecting another lens releases manual macro, and restarting the app resets the temporary control.</p>
@@ -96,10 +98,11 @@
 <p>nuan supports importing and developing Apple ProRAW (DNG). Other RAW files must be readable by your installed iOS version. Compatibility depends on the camera model, compression, file format and iOS version. Not all RAW or DNG files are supported.</p>
 <p>You can also import JPEG, HEIC and video files. Adjustments to processed images differ from RAW development. RAW capture requires a RAW-capable camera. Supported HEIF/JPEG capture, importing and editing remain available in configurations without RAW capture.</p>
 <h2>Browse and save from Gallery</h2>
-<p>Tap a photo or video in Gallery, then swipe left or right to move between items. Tap the screen to show or hide controls. Photos retain their aspect ratio and fit between the controls. Pinch or double-tap to zoom. Use the save button at the bottom left (a downward arrow and Save) to export the current result without opening the editor. Save, Share, Favorite, Info, Edit and Delete share one row. Save, delete and restore results appear near the top, leaving the controls available. At larger text sizes, the save button shows only its icon when space is limited. Info shows capture details.</p>
+<p>Tap a photo or video in Gallery, then swipe left or right to move between items. Tap the screen to show or hide controls. Photos retain their aspect ratio and fit between the controls. Pinch or double-tap to zoom. Use the save button at the bottom left (a downward arrow and Save) to export the current result without opening the editor. Save, Share, Favorite, Info, Edit and Delete share one row. Save, delete and restore results appear near the top, leaving the controls available. At larger text sizes, the save button shows only its icon when space is limited. Info shows capture details and estimates photo export dimensions using the crop and current export size.</p>
 <h2>Edit photos and videos</h2>
 <p>Open an item in Gallery and tap Edit. You can also swipe up on a photo to edit it. Adjust exposure, tone, contrast, saturation, white balance, monochrome, grain, Light Glow, background blur, rotation, flips, straightening and crop. Videos support frame-timeline trimming, removing multiple unwanted middle ranges, fine adjustment by holding a handle, review playback, undo and audio controls. Originals remain unchanged.</p>
-<p>Done saves edits in the app. To export to Photos, use the save button at the bottom left of the viewer, or Save to Photos in the editor. Photos export as JPEG or HEIC; videos export as MOV. Export format is independent of capture format. Originals and edit settings are kept separately.</p>
+<p>Choose Compare Original and enlarge the preview to inspect the unedited photo. Applying a preset to a selection or pasting adjustments preserves each photo’s own background blur. Play video from any editing tool and toggle mute during playback.</p>
+<p>Done keeps your edits in nuan. Save to Photos exports the current result. If you then discard the edits in nuan, the exported copy remains in Photos. To export to Photos, use the save button at the bottom left of the viewer, or Save to Photos in the editor. Photos export as JPEG or HEIC; videos export as MOV. Export format is independent of capture format. Originals and edit settings are kept separately.</p>
 <h2>Create presets</h2>
 <ol>
 <li>Open Settings → General → Manage Presets → Create Preset.</li>
@@ -115,7 +118,7 @@
 <h2>Delete and restore</h2>
 <p>When deleting, choose Delete from nuan Only or Delete from Both. In Settings → General, you can choose whether restoring an item also saves it to Photos.</p>
 <ul>
-<li>Delete from nuan Only leaves Photos unchanged. Delete from Both also deletes the corresponding Photos items whose identifiers nuan recorded when saving. iOS displays a deletion confirmation. Full Photos access is required.</li>
+<li>Delete from nuan Only leaves Photos unchanged. Delete from Both also deletes the corresponding Photos items whose identifiers nuan recorded when saving. To cancel, use the iOS deletion confirmation. Full Photos access is required.</li>
 <li>Unmatched copies, such as copies saved separately through sharing, are not deleted. If you cancel Photos access or deletion, the original stays in the app.</li>
 <li>Items deleted in the app can be restored from Recently Deleted for 30 days. If saving on restore is enabled, items deleted through linking are saved to Photos as new copies with the current edits. Otherwise, only the in-app item is restored.</li>
 <li>Permanent deletion in nuan cannot be undone. Permanent deletion and expiry after 30 days do not change Photos.</li>
@@ -124,6 +127,7 @@
 <p>Open Settings → General → Backup and Restore to save gallery originals, edits and custom presets together as a nuanbackup package in Files. Recently Deleted, unfinished captures, copies in Photos and app control preferences are excluded.</p>
 <p>Restore validates the package before adding items. Matching photo IDs and matching preset IDs or names are skipped without replacing existing data. Restore does not automatically save to or delete from Photos. Backups preserve location metadata in originals; check where you store or share them.</p>
 <h2>Gallery search and export settings</h2>
+<p>Long video saves show export progress as a percentage, followed by Saving to Photos. To cancel during export, open the progress menu (…). The original and its edits stay in Gallery. To share an Apple Log recording, choose Share → Share Original. Sharing the finished look exports an edited SDR video. For Apple Log 2 or another unsupported Log format, choose Share Original to retrieve the source file.</p>
 <p>Search by preset name, photo/video type or capture date. View → Search and Filters offers media, date ranges and presets. Active filters appear above the grid and can be cleared. Reloading reuses unchanged edit metadata.</p>
 <p>Choose Saving or Sharing in Settings → General → Export Settings. Sharing offers photo long-edge limits and compression quality. Turning location off removes it from rendered photos/videos and copies saved to Photos. Automatic saving uses original size and maximum quality. Movie recording quality stays unchanged. Original sharing and backups preserve source files, including their location metadata.</p>
 <h2>Quick Actions and camera workload</h2>

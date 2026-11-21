@@ -192,7 +192,7 @@
 <div id="main">
   <div class="top-bar">
     <h1>USER MANUAL</h1>
-    <span class="version-badge">v3.9.0 · 審査提出向け</span>
+    <span class="version-badge">v3.10.1</span>
   </div>
 
   <div class="content" id="top">
@@ -204,7 +204,7 @@
         基本機能はオフラインで使え、必要な場合だけiCloud同期を有効にできます。
       </p>
       <div class="studio-store-action"><a class="studio-store-link" href="https://apps.apple.com/jp/app/id6759157626">App Storeで見る</a></div>
-      <p style="font-size:13px;color:var(--text2);">対応バージョン：v3.9.0（ビルド511・審査提出向け） ／ 2026年11月19日更新。お使いのバージョンによって、操作や表示が異なります。</p>
+      <p style="font-size:13px;color:var(--text2);">対応バージョン：v3.10.1（ビルド513） ／ 2026年11月21日更新。お使いのバージョンによって、操作や表示が異なります。</p>
       <div class="tab-badges">
         <span class="tab-badge">👤 プロフィール</span>
         <span class="tab-badge">📊 統計</span>
@@ -294,28 +294,28 @@
       <h2>クイックスタート</h2>
       <div class="accent-line"></div>
 
-      <p>初回は「最初の1セットを記録しましょう」という案内が表示されます。「記録を始める」を選ぶとワークアウトが開きます。詳しい使い方は、あとでプロフィール → 設定 → 更新履歴・マニュアル・サポート等 →「チュートリアルを表示」から確認できます。</p>
+      <p>初回は、セットの記録方法、統計と共有画像の見方、身体データの記録の順に、3ページの案内が表示されます。「次へ」「戻る」で読み進められます。すぐに入力したいときは、途中でも「記録を始める」でワークアウトを開けます。</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
             <strong>アプリを起動する</strong>
-            <p>初回の案内で、最初のセットを記録する手順を確認します。</p>
+            <p>最初のページで、種目を選び、重量・回数や時間・距離を入力して自動保存する手順を確認します。</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-body">
             <strong>「記録を始める」をタップ</strong>
-            <p>ワークアウトが開きます。次回以降は「ワークアウト」タブから記録できます。</p>
+            <p>ワークアウトが開きます。案内はあとから、プロフィール → 設定 →「更新履歴・マニュアル・サポート等」→「チュートリアルを表示」で再表示できます。「完了」または「閉じる」で設定に戻れます。</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
             <strong>「種目を追加」をタップ</strong>
-            <p>登録されている種目を名前で検索し、記録したい種目を選びます。検索した名前の種目が見つからないときは、「この名前で種目を追加」から登録できます。</p>
+            <p>ワークアウトの「種目を追加」から、記録したい種目を名前で検索・選択します。アクセシビリティ用の大きな文字を使っている場合は、提案のボタンの上にあります。見つからない種目は「この名前で種目を追加」から登録できます。</p>
           </div>
         </div>
         <div class="step">
@@ -991,7 +991,7 @@
         <tr><td>iCloud同期</td><td>同じApple AccountのiPhone・iPad間での記録・計画・同意した身体データや設定の同期</td></tr>
         <tr><td>削除済みデータ</td><td>種目のアーカイブ・セッションのゴミ箱の確認と復元</td></tr>
         <tr><td>メンテナンス・データ管理</td><td>バックアップ・復元・CSV読み込み・データ整合性チェック・統計の再計算など</td></tr>
-        <tr><td>更新履歴・マニュアル・サポート等</td><td>チュートリアル・バージョン履歴・本マニュアル・サポート・プライバシーポリシー</td></tr>
+        <tr><td>更新履歴・マニュアル・サポート等</td><td>初回と同じ操作案内・バージョン履歴・本マニュアル・サポート・プライバシーポリシー</td></tr>
       </table>
 
       <h3>一般設定</h3>
@@ -1096,10 +1096,37 @@
       <h2>📝 更新履歴</h2>
       <div class="accent-line"></div>
 
-      <p>主要なバージョンの更新内容です。v3.9.0（ビルド511）は審査提出向けの説明です。配信状況はApp Storeでご確認ください。3.0.0以降の番号は見直し後の番号を記載し、過去の配布時の番号を括弧内に併記しています。</p>
+      <p>主要なバージョンの更新内容です。配信状況はApp Storeでご確認ください。3.0.0以降の番号は見直し後の番号を記載し、過去の配布時の番号を括弧内に併記しています。</p>
+
+      <div class="changelog-entry" id="v3101">
+        <div class="ver-head"><span class="ver-num">v3.10.1</span><span class="ver-date">2026-11-21 · ビルド513</span></div>
+        <div class="change-group"><div class="group-label group-fix">ワークアウトの入力</div><ul>
+          <li>ワークアウトで「種目を追加」を提案より先に表示。アクセシビリティ用の大きな文字を使う場合は、ボタンを縦に並べて表示</li>
+          <li>セット入力の提案ボタンなどを押しやすくし、有酸素種目で入力した消費カロリーを消すボタンのVoiceOver読み上げを改善</li>
+        </ul></div>
+      </div>
+
+      <div class="changelog-entry" id="v3100">
+        <div class="ver-head"><span class="ver-num">v3.10.0</span><span class="ver-date">2026-11-20 · ビルド512</span></div>
+        <div class="change-group"><div class="group-label group-fix">使い方・記録・タイマー</div><ul>
+          <li>記録・統計・身体データの使い方を3ページで案内。設定から同じ内容を再表示</li>
+          <li>端末の暦によって入力途中の記録を保存・復旧できない日がある問題を修正</li>
+          <li>旧版の筋トレ記録でも「前回データ取得方法」の「最高値」で重量×回数が最大のセットを選択</li>
+          <li>セッション検索の結果から、旧版の履歴に残る削除済みの種目名・メモを除外</li>
+          <li>インターバルタイマーが終了予定より早く完了する問題を修正。24時間を超える設定も、アプリが動作を継続していればバックグラウンドからの復帰後に計測を継続</li>
+        </ul></div>
+        <div class="change-group"><div class="group-label group-fix">履歴・統計・データ管理</div><ul>
+          <li>身体データの履歴で日付と入力元を同じ行に表示。文字を大きく設定した場合は上下に配置</li>
+          <li>デフォルト体重の候補を表示するとき、身長や体脂肪率だけを入力した日の記録を飛ばし、直近のアプリ入力の体重を参照</li>
+          <li>値を記録していない種目を、カレンダーの実施部位やコンディションの連続トレーニング日数から除外</li>
+          <li>自己ベストの印は「日付指定」の共有画像に表示。「今週」「今月」「期間指定」の画像に編集中の日の印が混ざる問題を修正</li>
+          <li>CSVの日付は端末のタイムゾーンに合わせた西暦に統一。種目名・セットメモに含まれる改行を、書き出し・再取り込み時に保持</li>
+          <li>バックアップの復元上限は50 MiB。上限を超えて書き出したファイルは共有でき、復元の可否はバックアップの検査でも確認可能。世代整理で、上限内の直近のバックアップを優先して保持</li>
+        </ul></div>
+      </div>
 
       <div class="changelog-entry">
-        <div class="ver-head"><span class="ver-num">v3.9.0</span><span class="ver-date">2026-11-19 · ビルド511</span><span class="ver-pin">審査提出向け</span></div>
+        <div class="ver-head"><span class="ver-num">v3.9.0</span><span class="ver-date">2026-11-19 · ビルド511</span></div>
         <div class="change-group"><div class="group-label group-fix">新機能・改善</div><ul>
           <li>初回の案内からすぐにワークアウトを記録でき、検索から新しい種目を登録</li><li>選択日の種目提案とレビュー、前回値を使うセット入力を改善</li>
           <li>表示期間と全期間のCSV共有を選べるようにし、選択日に合わせて画像を共有</li><li>周径囲を1部位から保存し、履歴とグラフで確認</li>

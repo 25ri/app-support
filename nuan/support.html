@@ -23,8 +23,9 @@
 <p>写真・動画とも、プレビューの倍率表示（1×、2×など）をタップすると画角が切り替わります。選択中の倍率は金色で表示されます。iPhoneの「設定」→「アクセシビリティ」→「画面表示とテキストサイズ」で「カラー以外で区別」をオンにすると、選択中の倍率に白い枠も付きます。各数字の背後だけに小さな背景が付くので、その周りでは被写体の明るさをそのまま確認できます。四つ丸のボタンで撮影オプションを開けます。「今回のアップデート」には、前回のApp Store公開以降の変更が、今回のバージョンの見出しにまとまって表示されます。設定の「更新履歴」でもバージョンごとに変更点を読めます。途中でTestFlightを使ったり「完了」を押したりしても、同じ一覧を読み返せます。写真モードでは「AUTO」をタップしてシャッタースピードとISOを設定できます。写真タイマーのカウント中は、シャッターをもう一度押すか、プリセット一覧を開くと撮影を中止できます。</p>
 <h3>ロック画面で撮った写真・動画を開く</h3>
 <p>ロック画面からnuanを開くと、ロックしたまま写真や動画を撮れます。写真は撮影形式メニューで選んだ形式で記録します。RAW・Apple ProRAWは対応するカメラで利用できます。本体アプリでRAW撮影を続けるには、撮影形式メニューで「ロック解除してRAWカメラを開く」を選びます。</p>
-<p>ロック画面のカメラを閉じる前に、写真はシャッターを押したあとに「原本を保存しました」、動画は録画を止めたあとに「動画の原本を保存しました」と表示されるのを確認してください。RAWを取得できず通常画像を保存したときは、その旨が表示されます。</p>
-<p>ロックを解除してnuanのギャラリーを開くと、届いた原本から取り込まれます。撮った項目が見当たらないときは、ギャラリー下部に「撮影の取り込み状況」が表示されていれば開き、「再試行」をタップしてください。「設定」→「共通」→「サポート・診断」からも同じ画面を開けます。写真データが届く前にiOSが撮影処理を終了した場合や、再生できる動画ファイルが残らなかった場合は、nuanでその原本を復元できません。</p>
+<p>保存完了までの時間は撮影ごとに異なります。ロック画面のカメラを閉じる前に、写真はシャッターを押したあとに「原本を保存しました」、動画は録画を止めたあとに「動画の原本を保存しました」と表示されるのを確認してください。RAWを取得できず通常画像を保存したときは、その旨が表示されます。</p>
+<p>ロック画面のカメラを閉じると、iOSはその撮影の保存先に書き込まれたデータだけをnuanに引き渡します。写真の原本が届く前に撮影処理が終了したり、再生できる動画ファイルが残らなかったりした場合、その原本は復元できません。</p>
+<p>ロックを解除してnuanのギャラリーを開くと、届いた原本から取り込まれます。撮った項目が見当たらないときは、ギャラリー下部に「撮影の取り込み状況」が表示されていれば開き、「再試行」をタップしてください。「設定」→「共通」→「サポート・診断」からも同じ画面を開けます。</p>
 <p>RAWより先に通常画像が届いて「通常画像を回収」が表示されたら、タップすると通常画像をギャラリーに別の写真として保存できます。RAWが後から届けば、その原本も取り込まれます。</p>
 <h2>nuan 2.0の撮影機能</h2>
 <h3>好きな写真からルックを作る</h3>
@@ -113,8 +114,9 @@
 <p>In Photo and Video, tap a zoom value such as 1× or 2× in the viewfinder to change the framing. The selected zoom value appears in gold. If you turn on Differentiate Without Color in iPhone Settings → Accessibility → Display & Text Size, the selected value also has a white outline. Each number has a small dark background so you can judge the brightness of the scene around it. Tap the four-dot icon to open Capture Options. What’s New groups all changes since the previous App Store release under the current version number. Version History in Settings also groups changes by app version. You can reread the full list even if you installed an intermediate TestFlight build or already tapped Done. In Photo mode, tap AUTO to set shutter speed and ISO. To cancel the photo timer during its countdown, tap the shutter again or open the preset picker.</p>
 <h3>Find photos and videos taken from the Lock Screen</h3>
 <p>Open nuan from the Lock Screen to take photos or record video while your iPhone is locked. Photos use the format selected in the capture format menu. RAW and Apple ProRAW are available on supported cameras. To continue shooting in the main app, choose Unlock to open the RAW camera from the format menu.</p>
-<p>Before closing the Lock Screen camera, wait for “Original saved” after taking a photo, or “Original video saved” after stopping a recording. If RAW was unavailable and nuan saved a processed photo, the camera tells you which version it saved.</p>
-<p>After unlocking, open Gallery in nuan. Originals appear as the app receives them. If an item is missing and Capture import status appears at the bottom of Gallery, open it and tap Try Again. You can also open Capture import status from Settings → General → Support &amp; Diagnostics. If iOS ends the capture before the camera receives the photo data, or if no playable recording remains, nuan cannot recover that original.</p>
+<p>There is no fixed wait after capture. Before closing the Lock Screen camera, check for “Original saved” after each photo or “Original video saved” after stopping a recording. If RAW was unavailable and nuan saved a processed photo, the message says so.</p>
+<p>When you close the Lock Screen camera, iOS passes nuan only the data already written to storage for that capture. If capture ends before the original photo arrives, or if no playable recording remains, nuan cannot recover that original.</p>
+<p>After unlocking, open Gallery in nuan. Originals appear as the app receives them. If an item is missing and Capture import status appears at the bottom of Gallery, open it and tap Try Again. You can also open Capture import status from Settings → General → Support &amp; Diagnostics.</p>
 <p>If the standard photo arrives before the RAW file, tap Recover Standard Photo when it appears to save the standard image as a separate photo in Gallery. If the RAW original arrives later, nuan imports it too.</p>
 <h2>Shooting with nuan 2.0</h2>
 <h3>Create a look from a favorite photo</h3>

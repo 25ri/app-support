@@ -25,8 +25,8 @@
 <p>ロック画面からnuanを開くと、ロックしたまま写真や動画を撮れます。写真は撮影形式メニューで選んだ形式で記録します。RAW・Apple ProRAWは対応するカメラで利用できます。本体アプリでRAW撮影を続けるには、撮影形式メニューで「ロック解除してRAWカメラを開く」を選びます。</p>
 <p>保存完了までの時間は撮影ごとに異なります。ロック画面のカメラを閉じる前に、写真はシャッターを押したあとに「原本を保存しました」、動画は録画を止めたあとに「動画の原本を保存しました」と表示されるのを確認してください。RAWを取得できず通常画像を保存したときは、その旨が表示されます。</p>
 <p>ロック画面のカメラを閉じると、iOSはその撮影の保存先に書き込まれたデータだけをnuanに引き渡します。写真の原本が届く前に撮影処理が終了したり、再生できる動画ファイルが残らなかったりした場合、その原本は復元できません。</p>
-<p>ロックを解除してnuanのギャラリーを開くと、届いた原本から取り込まれます。撮った項目が見当たらないときは、ギャラリー下部に「撮影の取り込み状況」が表示されていれば開き、「再試行」をタップしてください。「設定」→「共通」→「サポート・診断」からも同じ画面を開けます。</p>
-<p>RAWより先に通常画像が届いて「通常画像を回収」が表示されたら、タップすると通常画像をギャラリーに別の写真として保存できます。RAWが後から届けば、その原本も取り込まれます。</p>
+<p>写真アプリへの保存がオフでも、ロックを解除してnuanを開くと、届いている写真・動画の原本がnuanのギャラリーに取り込まれます。撮った項目が見当たらないときは、ギャラリー下部に「撮影の取り込み状況」が表示されていれば開き、「再試行」をタップしてください。「設定」→「共通」→「サポート・診断」からも同じ画面を開けます。</p>
+<p>2.3.0では、RAWより先に通常画像が届くと、その画像をnuanのギャラリーに自動で取り込みます。後からDNGが届いたら、通常画像を残したまま別の写真として取り込みます。2.2.0をお使いの方は、「撮影の取り込み状況」に「通常画像を回収」が表示されたらタップしてください。</p>
 <h3>ロック画面の原本を写真アプリにも保存する（2.3.0から）</h3>
 <p>この設定は初期状態でオフです。iPhoneのロックを解除してnuanを開き、「設定」→「共通」→「ロック画面の原本を写真アプリにも保存」をオンにします。写真への追加を求められたら許可してください。拒否した場合は、iPhoneの設定アプリでnuanの写真へのアクセスを変更できます。端末の制限で追加できない場合も、nuanでの撮影・原本保存は続けられます。</p>
 <p>オンにすると、ロック画面で撮った写真の原本1枚、または録画を終えたMOVを「写真」にも追加します。RAW・Apple ProRAWでは取得できたDNGを優先します。HEIF・JPEG・MOVも編集や変換を加えずに保存し、位置情報など原本に記録された撮影情報を引き継ぎます。nuanには従来どおり原本が残り、「写真」へのコピーはnuanから削除したあとも残ります。「撮影後に写真ライブラリへ保存」は、選んだ仕上がりの自動書き出しを設定する項目です。</p>
@@ -120,8 +120,8 @@
 <p>Open nuan from the Lock Screen to take photos or record video while your iPhone is locked. Photos use the format selected in the capture format menu. RAW and Apple ProRAW are available on supported cameras. To continue shooting in the main app, choose Unlock to open the RAW camera from the format menu.</p>
 <p>There is no fixed wait after capture. Before closing the Lock Screen camera, check for “Original saved” after each photo or “Original video saved” after stopping a recording. If RAW was unavailable and nuan saved a processed photo, the message says so.</p>
 <p>When you close the Lock Screen camera, iOS passes nuan only the data already written to storage for that capture. If capture ends before the original photo arrives, or if no playable recording remains, nuan cannot recover that original.</p>
-<p>After unlocking, open Gallery in nuan. Originals appear as the app receives them. If an item is missing and Capture import status appears at the bottom of Gallery, open it and tap Try Again. You can also open Capture import status from Settings → General → Support &amp; Diagnostics.</p>
-<p>If the standard photo arrives before the RAW file, tap Recover Standard Photo when it appears to save the standard image as a separate photo in Gallery. If the RAW original arrives later, nuan imports it too.</p>
+<p>Even when saving to Photos is off, unlocking iPhone and opening nuan imports available original photos and videos into Gallery. If an item is missing and Capture import status appears at the bottom of Gallery, open it and tap Try Again. You can also open Capture import status from Settings → General → Support &amp; Diagnostics.</p>
+<p>In version 2.3.0, Gallery automatically imports a standard photo that arrives before its RAW file. When the DNG arrives, Gallery keeps both as separate photos. In version 2.2.0, open Capture import status and tap Recover Standard Photo when it appears.</p>
 <h3>Keep Lock Screen originals in Photos (version 2.3.0 or later)</h3>
 <p>This setting is off by default. Unlock iPhone, open nuan and go to Settings → General → Save Lock Screen Originals to Photos. Turn it on and allow nuan to add to Photos when prompted. If you denied permission, you can change nuan’s Photos access in iPhone Settings. If your device restricts Photos access, you can still capture and save originals in nuan.</p>
 <p>For each Lock Screen capture, nuan also adds one original photo or the completed MOV recording to Photos. For RAW and Apple ProRAW, it prefers the DNG when available. HEIF, JPEG and MOV files retain their original data, including any recorded location. nuan keeps its own original. Deleting the item from nuan leaves the separate copy in Photos. The existing automatic export setting controls whether nuan saves the finished look after capture.</p>

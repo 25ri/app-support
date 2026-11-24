@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Support for SnipFuse, an on-device video editor for trimming, removing unwanted ranges, joining clips, and reviewing silence suggestions.">
+  <meta name="description" content="Support for SnipFuse, an on-device video editor for selecting moments, trimming video, adjusting joins frame by frame, and reviewing silence suggestions.">
   <title>Support — SnipFuse</title>
   <style>
     :root { color-scheme: light dark; --ink:#1f2937; --muted:#5d6878; --paper:#f7f8fa; --card:#fff; --line:#dfe4eb; --accent:#2563eb; }
@@ -15,17 +15,25 @@
   <header><a class="brand" href="index.html">SnipFuse</a><a class="back" href="privacy-policy.html">Privacy Policy / プライバシーポリシー</a></header>
   <main>
     <h1>Support</h1>
-    <p class="intro">SnipFuse helps you trim videos, remove unwanted ranges, join clips with hard cuts, and review silence suggestions. Editing happens on your device.</p>
+    <p class="intro">SnipFuse helps you keep the moments you want, trim video, adjust joins, and review silence suggestions. Editing happens on your device.</p>
     <section>
       <h2>Getting started</h2>
-      <p>In version 1.3.0, the editing guide highlights the next button or row of video frames as you work on your own footage. On first launch, tap Choose Videos to begin. To try it again, open Help (?) on the Home screen and tap Start the editing guide.</p>
+      <p>The editing guide highlights the next button or row of video frames as you work on your own footage. On first launch, tap Choose Videos to begin. To try it again, open Help (?) on the Home screen and tap Start the editing guide.</p>
       <ol>
         <li>On the Home screen, tap Choose Videos and select one or more videos.</li>
         <li>In Cut, use Adjust Ends and drag either handle to trim. To remove a section, choose Remove Middle, drag across the frames, then tap the removal button showing the selected duration. If this creates a join, tap Review Cut to play it.</li>
         <li>In Clips, choose Add Videos to import more footage or Manage Clips to reorder and delete clips.</li>
         <li>In Silence, tap Find Silence, select the suggestions you want to remove, then tap Delete Selected. If you change the scope or sensitivity, tap Find Silence again for new suggestions.</li>
-        <li>Tap Export to review the result, then Export and Save to Photos to save a new video.</li>
+        <li>Tap Export to review the duration, save destination, and any storage warning above the preview. Open Video details for resolution and dynamic range. Tap Export and Save to Photos to save a new video.</li>
       </ol>
+    </section>
+    <section>
+      <h2>Select moments and fine-tune joins</h2>
+      <p>Available in SnipFuse 1.5.0 and later.</p>
+      <h3>Keep your favorite moments</h3>
+      <p>In Clips, tap Select Moments. Play the edit and tap Keep This Moment when you reach something you want to save. Each selection covers up to three seconds before and two seconds after that point. Tap the selection count to preview, adjust, or remove individual moments. Play the selected moments together, then tap Apply to Edit to keep them in the project. Overlapping selections play once in the result. To continue later, tap Save and Go to Projects and reopen the project.</p>
+      <h3>Adjust a join frame by frame</h3>
+      <p>From Cut, open a cut review and choose Adjust This Join. Tap Last Frame or First Frame, then drag or step one frame at a time to adjust that side. Play the join to check the picture and sound, then tap Apply. Undo brings back the previous join.</p>
     </section>
     <section>
       <h2>Frequently asked questions</h2>
@@ -43,17 +51,25 @@
 
     <div lang="ja">
       <h1>サポート</h1>
-      <p class="intro">SnipFuseは、動画のトリミング、不要な範囲の削除、ハードカットによる結合、無音候補の確認を、端末内で行う動画編集アプリです。</p>
+      <p class="intro">SnipFuseは、残したい場面の選択、動画のトリミング、つなぎ目の調整、無音候補の確認を端末内で行う動画編集アプリです。</p>
       <section>
         <h2>はじめかた</h2>
-        <p>バージョン1.3.0では、操作ガイドが次に触るボタンや動画のコマを枠と矢印で示します。初回は「動画を選ぶ」から、自分の動画で始められます。見返すには、ホーム右上のヘルプ（？）を開き、「操作ガイドを開始」をタップしてください。</p>
+        <p>操作ガイドが次に触るボタンや動画のコマを枠と矢印で示します。初回は「動画を選ぶ」から、自分の動画で始められます。見返すには、ホーム右上のヘルプ（？）を開き、「操作ガイドを開始」をタップしてください。</p>
         <ol>
           <li>ホームの「動画を選ぶ」を押し、編集したい動画を選びます。複数の動画も選べます。</li>
           <li>「カット」の「前後を調整」では、左右のハンドルで動画の始まりと終わりを調整できます。途中を切るには「途中を削除」を選び、不要な区間をなぞって、選択した長さが表示された削除ボタンを押します。新しくつなぎ目ができた場合は「確認再生」で前後を確認できます。</li>
           <li>「クリップ」の「ビデオを追加」で素材を取り込みます。「クリップを管理」では、並べ替えと削除ができます。</li>
           <li>「無音検出」の「無音を検出」を押し、削除したい候補だけを選んで「選択項目を削除」を押します。対象や感度を変えたら「無音を検出」をもう一度押してください。</li>
-          <li>「書き出す」を押して編集結果を確認し、「書き出して写真に保存」を押すと、新しい動画が保存されます。</li>
+          <li>「書き出す」を押すと、プレビューの上で動画の長さ、保存先、空き容量の警告を確認できます。解像度とHDR／SDRは「動画の詳細」を開いて確認できます。「書き出して写真に保存」を押すと、新しい動画が保存されます。</li>
         </ol>
+      </section>
+      <section>
+        <h2>場面を選ぶ・つなぎ目を微調整する</h2>
+        <p>SnipFuse 1.5.0以降で使えます。</p>
+        <h3>残したい場面を集める</h3>
+        <p>「クリップ」で「場面を選ぶ」を開き、動画を見ながら「今の場面を残す」を押します。押した位置の直前3秒から直後2秒までが候補になります。件数を押すと、候補ごとの再生、範囲の調整、削除ができます。選んだ場面を通して確認し、「編集に反映」を押すと、プロジェクトに反映されます。候補が重なる部分は仕上がりで一度だけ再生されます。「保存して一覧へ」で離れた場合は、プロジェクトを開き直すと続きから再開できます。</p>
+        <h3>つなぎ目を1コマずつ調整する</h3>
+        <p>「カット」でつなぎ目を確認再生し、「このつなぎ目を調整」を押します。「前の最後」か「次の最初」を選び、横にドラッグするかコマ送りで、その側の映像を調整します。映像と音のつながりを再生で確認し、「適用」を押します。適用前の位置には「取り消す」で戻れます。</p>
       </section>
       <section>
         <h2>よくある質問</h2>

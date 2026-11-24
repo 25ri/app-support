@@ -5,7 +5,7 @@
 </head><body><main>
 <nav><strong>nuan</strong><a href="privacy-policy.html">プライバシー</a><a href="#english" lang="en">English</a></nav>
 <h1>nuan サポート</h1>
-<p>2026年11月24日時点のApp Store公開版は2.2.0（Build 227）です。このページでは、審査提出対象の2.3.0（Build 229）で追加される機能も案内しています。ロック画面の原本を写真アプリにも保存する設定、救済プレビュー、録画中断時の保存が対象です。アプリ内の「設定」→「共通」→「このアプリについて」→「操作ガイド」からも使い方を確認できます。</p>
+<p>このページでは、2.3.0（Build 231）のロック画面での撮影と取り込みを案内しています。アプリ内でも「設定」→「共通」→「このアプリについて」→「操作ガイド」から使い方を確認できます。</p>
 <p>nuanは、RAW・HEIF・JPEG写真や動画を撮影し、好きな色と質感に仕上げるiPhone向けカメラ・編集アプリです。iOS 26以降に対応します。買い切りで、RAW現像を含むすべての機能を利用できます。サブスクリプション・アプリ内課金はありません。</p>
 <h2>撮影する</h2>
 <ol>
@@ -24,11 +24,11 @@
 <h3>ロック画面で撮った写真・動画を開く</h3>
 <p>ロック画面からnuanを開くと、ロックしたまま写真や動画を撮れます。写真は撮影形式メニューで選んだ形式で記録します。RAW・Apple ProRAWは対応するカメラで利用できます。本体アプリでRAW撮影を続けるには、撮影形式メニューで「ロック解除してRAWカメラを開く」を選びます。</p>
 <p>保存完了までの時間は撮影ごとに異なります。ロック画面のカメラを閉じる前に、写真はシャッターを押したあとに「原本を保存しました」、動画は録画を止めたあとに「動画の原本を保存しました」と表示されるのを確認してください。撮影直後にiPhoneをロックしたり画面を閉じたりすると、原本を保存できないことがあります。</p>
-<p>ロック画面のカメラを閉じると、iOSはその撮影の保存先に書き込まれたデータだけをnuanに引き渡します。写真の原本が届く前に撮影処理が終了したり、再生できる動画ファイルが残らなかったりした場合、その原本は復元できません。</p>
+<p>取り込み状況に撮影日時や「露光が終了」と表示されても、原本の保存が完了したことは確認できません。「再試行」で取り込めるのは、端末に残っている撮影データです。</p>
 <p>写真アプリへの保存がオフでも、ロックを解除してnuanを開くと、届いている写真・動画の原本がnuanのギャラリーに取り込まれます。撮った項目が見当たらないときは、ギャラリー下部に「撮影の取り込み状況」が表示されていれば開き、「再試行」をタップしてください。「設定」→「共通」→「サポート・診断」からも同じ画面を開けます。</p>
-<p>2.3.0（Build 229）以降のロック画面のRAW撮影では、選んだ画質と要求解像度を維持し、カメラにDNGだけを要求します。nuanは届いたDNGを先に保存し、その後でギャラリーの表示画像を作ります。Build 228以前の撮影でDNGと同時に通常画像を要求していた場合は、届いた通常画像も取り込めます。2.2.0をお使いの方は、「撮影の取り込み状況」に「通常画像を回収」が表示されたらタップしてください。</p>
-<p>2.3.0（Build 229）では、写真の原本が届かなかった場合、シャッターを押す直前の画像が残っていれば、ギャラリーに「救済プレビュー」と表示します。撮影時刻や解像度は原本と異なります。その撮影のDNGが後から届くと、nuanはDNGを優先します。</p>
-<p>同じビルドから、ロック画面で録画中にカメラが非アクティブになると、nuanは録画を止めてMOVの保存を始めます。保存が中断された場合は、再生できる区間だけがギャラリーに残ることがあります。</p>
+<p>2.3.0（Build 229）以降のロック画面のRAW撮影では、選んだ画質と要求解像度を維持し、カメラにDNGだけを要求します。Build 230以降では、シャッターを押す前から選んだ画質と解像度でRAW撮影を準備します。nuanは届いたDNGを先に保存し、その後でギャラリーの表示画像を作ります。Build 228以前の撮影でDNGと同時に通常画像を要求していた場合は、届いた通常画像も取り込めます。2.2.0をお使いの方は、「撮影の取り込み状況」に「通常画像を回収」が表示されたらタップしてください。</p>
+<p>Build 231では、シャッターを押した時点で直前の画像が用意できていれば、その場で保存します。原本が届かなかった場合、この画像がギャラリーに「救済プレビュー」として表示されます。撮影時刻や解像度は原本と異なります。同じ撮影のDNGが後から届けば、DNGを優先します。</p>
+<p>ロック画面で録画中にカメラが非アクティブになると、nuanは録画を止めてMOVの保存を始めます。標準（SDR）・Apple Logのどちらでも、完成したMOVがなくても記録済みの映像を読み取れれば、その区間と残った音声をMOVにまとめ、ギャラリーに「回収した動画」と表示します。音声が遅れている場合は映像を先に再生でき、後から音声を取り込むと同じ動画に反映されます。中断のタイミングによっては録画の末尾が欠けたり、再生できる映像が残らなかったりします。</p>
 <h3>ロック画面の原本を写真アプリにも保存する（2.3.0から）</h3>
 <p>この設定は初期状態でオフです。iPhoneのロックを解除してnuanを開き、「設定」→「共通」→「ロック画面の原本を写真アプリにも保存」をオンにします。写真への追加を求められたら許可してください。拒否した場合は、iPhoneの設定アプリでnuanの写真へのアクセスを変更できます。端末の制限で追加できない場合も、nuanでの撮影・原本保存は続けられます。</p>
 <p>オンにすると、ロック画面で撮った写真の原本1枚、または録画を終えたMOVを「写真」にも追加します。RAW・Apple ProRAWでは取得できたDNGを優先します。HEIF・JPEG・MOVも編集や変換を加えずに保存し、位置情報など原本に記録された撮影情報を引き継ぎます。nuanには従来どおり原本が残り、「写真」へのコピーはnuanから削除したあとも残ります。「撮影後に写真ライブラリへ保存」は、選んだ仕上がりの自動書き出しを設定する項目です。</p>
@@ -102,7 +102,7 @@
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>アプリの版、iPhoneの機種、iOSの版、問題が起きる操作をお知らせください。RAWの読み込みについては、撮影したカメラの機種とファイル形式も添えてください。パスワード・認証コード・不要な個人情報を送る必要はありません。</p>
 <section id="english" lang="en"><h2>nuan Support</h2>
-<p>As of November 24, 2026, the App Store version is 2.2.0 (build 227). This page also covers 2.3.0 (build 229), the update prepared for App Review. It includes saving Lock Screen originals to Photos, showing a Recovered Preview, and saving interrupted recordings. You can also open Settings → General → About → Operation Guides in the app.</p>
+<p>This page covers Lock Screen capture and import in version 2.3.0 (build 231). You can also find the Operation Guides in the app under Settings → General → About.</p>
 <p>nuan is a RAW, HEIF and JPEG camera and photo/video editor for iPhone on iOS 26 or later. One purchase includes all features, including RAW development. There are no subscriptions or in-app purchases.</p>
 <h2>Capture</h2>
 <ol>
@@ -121,11 +121,11 @@
 <h3>Find photos and videos taken from the Lock Screen</h3>
 <p>Open nuan from the Lock Screen to take photos or record video while your iPhone is locked. Photos use the format selected in the capture format menu. RAW and Apple ProRAW are available on supported cameras. To continue shooting in the main app, choose Unlock to open the RAW camera from the format menu.</p>
 <p>There is no fixed wait after capture. Before closing the Lock Screen camera, check for “Original saved” after each photo or “Original video saved” after stopping a recording. Locking iPhone or closing the camera immediately after capture can prevent the original from being saved.</p>
-<p>When you close the Lock Screen camera, iOS passes nuan only the data already written to storage for that capture. If capture ends before the original photo arrives, or if no playable recording remains, nuan cannot recover that original.</p>
+<p>A capture time or an exposure event in Capture import status does not confirm that the original was saved. Try Again can import capture data that remains on the device.</p>
 <p>Even when saving to Photos is off, unlocking iPhone and opening nuan imports available original photos and videos into Gallery. If an item is missing and Capture import status appears at the bottom of Gallery, open it and tap Try Again. You can also open Capture import status from Settings → General → Support &amp; Diagnostics.</p>
-<p>Starting with 2.3.0 (build 229), Lock Screen RAW capture requests only a DNG, keeping your quality setting and requested resolution. nuan saves the DNG as soon as it arrives, then creates its Gallery image. Gallery can still import companion photos from shots made with build 228 or earlier. In version 2.2.0, open Capture import status and tap Recover Standard Photo when it appears.</p>
-<p>Starting with 2.3.0 (build 229), if the original photo is missing, Gallery can show a frame from just before you pressed the shutter. It is labeled “Recovered Preview.” The frame has a different capture time and resolution from the original. If the DNG for that shot arrives later, nuan gives it priority.</p>
-<p>In the same build, nuan stops recording and starts saving the MOV when the Lock Screen camera becomes inactive. If saving is interrupted, only the playable portion of the video may appear in Gallery.</p>
+<p>Starting with 2.3.0 (build 229), Lock Screen RAW capture requests only a DNG, keeping your quality setting and requested resolution. From build 230 onward, nuan prepares RAW capture with those settings before you press the shutter. nuan saves the DNG as soon as it arrives, then creates its Gallery image. Gallery can still import companion photos from shots made with build 228 or earlier. In version 2.2.0, open Capture import status and tap Recover Standard Photo when it appears.</p>
+<p>In build 231, when you press the shutter, nuan saves a frame from just before the shutter if one is available. If the original does not arrive, Gallery shows that frame as a “Recovered Preview.” Its capture time and resolution differ from the original. If the DNG for the same shot arrives later, nuan gives it priority.</p>
+<p>When the Lock Screen camera becomes inactive, nuan stops recording and starts saving the MOV. If a Standard (SDR) or Apple Log recording was interrupted before the MOV was finished, nuan can save readable video and any available audio in a MOV labeled “Recovered Video” in Gallery. If audio is delayed, you can play the video first. Once the audio is imported, it is added to the same Gallery item. Depending on when the recording was interrupted, the ending may be missing or there may be no playable video.</p>
 <h3>Keep Lock Screen originals in Photos (version 2.3.0 or later)</h3>
 <p>This setting is off by default. Unlock iPhone, open nuan and go to Settings → General → Save Lock Screen Originals to Photos. Turn it on and allow nuan to add to Photos when prompted. If you denied permission, you can change nuan’s Photos access in iPhone Settings. If your device restricts Photos access, you can still capture and save originals in nuan.</p>
 <p>For each Lock Screen capture, nuan also adds one original photo or the completed MOV recording to Photos. For RAW and Apple ProRAW, it prefers the DNG when available. HEIF, JPEG and MOV files retain their original data, including any recorded location. nuan keeps its own original. Deleting the item from nuan leaves the separate copy in Photos. The existing automatic export setting controls whether nuan saves the finished look after capture.</p>

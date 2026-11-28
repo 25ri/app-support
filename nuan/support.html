@@ -28,6 +28,8 @@
 <p>写真モードを開き直すと、前回選んだプリセットで撮影を再開します。「設定」→「写真」→「レンズと絞りをプレビュー」がオンのときは、選んだレンズと絞りの効果も撮影画面で確認できます。</p>
 <p>ロック画面で「このプリセットはアプリで使用できます」と表示されたら、「アプリを開く」を選んでそのプリセットで撮影を続けられます。「オフで撮影」を選ぶと、ロック画面のままプリセットの効果を外して撮影できます。</p>
 <p>写真の深度データを保存できる倍率が限られるカメラでは、前回の倍率に最も近い対応倍率で再開します。動画は前回選んだ24fpsまたは30fpsを引き継ぎ、保存値が不正な場合は30fpsに戻ります。</p>
+<h3>Apple ProRAWの手動露出と写真への保存</h3>
+<p>写真モードで「AUTO」をタップすると、対応するカメラ構成でシャッタースピードとISOを設定できます。3.1.0以降は、指定した設定に対応しない場合にAUTOへ戻ります。48MPで撮ったApple ProRAWの保存に失敗した場合は、アップデート後にnuanのギャラリーで対象の写真を開き、「保存」からHEICで書き出し直せます。DNG原本はnuanに保存されます。</p>
 <h3>クラシックレンズと絞りを選ぶ</h3>
 <p>3.1.0では3本のレンズから選べます。「設定」→「写真」→「使用するレンズ」で撮影画面に出したいレンズをオンにします。写真のプレビューを上にスワイプすると「オフ」から焦点距離の短い順に切り替わり、最後のレンズの次で「オフ」に戻ります。下にスワイプすると逆順です。3.0.xでは35mmと50mmを選べます。</p>
 <p>シャッター右のレンズボタンを左にスワイプすると次のレンズ、右にスワイプすると前のレンズに切り替わります。プレビューの左右スワイプはプリセットの切り替えです。ピント枠や太陽マークの上で上下にドラッグすると露出を調整できます。</p>
@@ -152,6 +154,8 @@
 <p>When you reopen Photo mode, nuan uses the last preset you selected. Turn on Preview Lens and Aperture in Settings → Photo to see the effect of your selected lens and aperture in the viewfinder.</p>
 <p>If the Lock Screen camera shows “Open the App to Use This Preset,” tap Open App to keep shooting with that preset. Tap Capture Without a Look to stay on the Lock Screen and take a photo without the preset effect.</p>
 <p>On cameras that save photo depth data only at certain zoom levels, nuan resumes at the supported level closest to your previous zoom. Video keeps your last frame rate of 24 or 30 fps. If the saved value is invalid, nuan uses 30 fps.</p>
+<h3>Manual exposure and saving Apple ProRAW to Photos</h3>
+<p>In Photo mode, tap AUTO to set shutter speed and ISO on supported camera configurations. In version 3.1.0 and later, the camera returns to AUTO if the exposure setting is unsupported. If a 48 MP Apple ProRAW photo failed to save, update nuan, open the photo in the gallery, and tap Save to export it as HEIC again. The DNG original is stored in nuan.</p>
 <h3>Choose a classic lens and aperture</h3>
 <p>Version 3.1.0 offers three lenses. Under Settings → Photo → Lenses to Use, turn on the lenses you want in the viewfinder. Swipe up in the photo viewfinder to cycle from Off through those lenses in focal-length order and back to Off. Swipe down to reverse the order. Version 3.0.x offers the 35mm and 50mm lenses.</p>
 <p>On the lens button to the right of the shutter, swipe left for the next lens or right for the previous one. Swipe sideways in the viewfinder to switch presets. Drag up or down on the focus box or sun icon to adjust exposure.</p>
@@ -252,6 +256,6 @@
 <h2 id="contact-en">Contact</h2>
 <p><a href="mailto:25ri.apps.studio@gmail.com?subject=nuan%20Support">25ri.apps.studio@gmail.com</a></p>
 <p>Include the app version, iPhone model, iOS version and steps to reproduce. For RAW import issues, also include the source camera model and file format. Do not send passwords, verification codes or unnecessary personal information.</p></section>
-<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-27
+<footer>YUTA NIGORIKAWA · 更新日 / Updated: 2026-11-28
 <a class="studio-return" href="../index.html"><span class="studio-return-icon" aria-hidden="true"></span><span>25ri App Studio</span><span class="studio-return-label">アプリ一覧</span></a>
 </footer></main></body></html>
